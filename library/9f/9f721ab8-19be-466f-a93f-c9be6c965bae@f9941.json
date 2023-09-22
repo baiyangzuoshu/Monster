@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ui_win_txt_qianghua",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 1,
+      "width": 172,
+      "height": 73
+    },
+    "offset": {
+      "x": 0,
+      "y": -0.5
+    },
+    "originalSize": {
+      "width": 172,
+      "height": 74
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -86,
+        -36.5,
+        0,
+        86,
+        -36.5,
+        0,
+        -86,
+        36.5,
+        0,
+        86,
+        36.5,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        73,
+        172,
+        73,
+        0,
+        0,
+        172,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0.9864864864864865,
+        1,
+        0.9864864864864865
+      ],
+      "minPos": {
+        "x": -86,
+        "y": -36.5,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 86,
+        "y": 36.5,
+        "z": 0
+      }
+    },
+    "texture": "9f721ab8-19be-466f-a93f-c9be6c965bae@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "bullet",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "json": {
+    "bullet": []
+  }
+}

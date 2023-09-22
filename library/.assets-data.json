@@ -2360,5 +2360,6346 @@
   "2d850341-9dd2-4161-bb6d-65b27966bfe5": {
     "url": "db://assets/model/helloWorld/grass/grass.mtl",
     "value": {}
+  },
+  "6a3f824d-5cd1-4127-b07f-e24a7bff6ace": {
+    "url": "db://assets/Game/AssetsPackage/atlas",
+    "value": {}
+  },
+  "82876f4c-f262-4a36-8159-69c70f0ffe56": {
+    "url": "db://assets/Game/AssetsPackage/data",
+    "value": {}
+  },
+  "c9d40843-1f16-4e2e-8bd8-1df0e642707f": {
+    "url": "db://assets/Game/AssetsPackage/font",
+    "value": {}
+  },
+  "d7029839-dd2e-4255-8b7a-dd75e994993a": {
+    "url": "db://assets/Game/AssetsPackage/img",
+    "value": {}
+  },
+  "69756484-daba-40d7-b186-e06c9648b603": {
+    "url": "db://assets/Game/AssetsPackage/prefabs",
+    "value": {}
+  },
+  "bf2a6a77-bca7-4389-b9ab-cb20d298a76d": {
+    "url": "db://assets/Game/AssetsPackage/texture",
+    "value": {}
+  },
+  "ceac82b4-1273-46f6-a7b9-f902f505a3dd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block",
+    "value": {}
+  },
+  "cf490252-fe8e-4149-a964-36301dbd68a8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster",
+    "value": {}
+  },
+  "716e23e1-9ada-4abe-873b-432eb5efde81": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI",
+    "value": {}
+  },
+  "fc5f9f4d-2392-4cec-9212-268df1ea4256": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item",
+    "value": {}
+  },
+  "76f9b3f2-2d74-460d-8689-cdb54b6a70ad": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist",
+    "value": {
+      "depends": [
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@2bf89",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@5e932",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@53b6d",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@e2963",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@68399",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@b5123",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7ecf8",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@4e611",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@79c60",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@06114",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@88479",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@24b97",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@3f84d",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@8464b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@72969",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@db584",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@35c8f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@4a604",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@66d6f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@539f9",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@0e7b4",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@ce6c2",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@f73c0",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@0fee3",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@617e6",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@dca23",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@d5e81",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@a759a",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@9149e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@85f9f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@6555c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@3efef",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@68f86",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@a2abb",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@3dc8e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@8c46b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@9d5e5",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@69164",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@fc621",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@b0833",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@3c7be",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@23ce6",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@08df2",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@3cae7",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@1a2c4",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@04de2",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@c1559",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@da0b3",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@074dc",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@5d50c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@66cd1",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@20b13",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@bb165",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7ab79",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@f2a86",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@221d6",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@6b92a",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@540c7",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@a4b3c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@5f0e5",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@abc5b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@06f8a",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@54be7",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@086a2",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@38606",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@9e5e0",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@d6cc5",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@695f0",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@092f1",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@b5cbc",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@5650c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@013d1",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@10a04",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@ddae4",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@ff525",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7369c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@234cd",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@e71ad",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@6b28d",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@25f1d",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@4643c",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@fa162",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@cfa35",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@4c326",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@63db0",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@64c16",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@00aba",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@cf95b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@842d8",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@2b354",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7b738",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@b0e68",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@5973d",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@d463e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@1dc45",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@26c12",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@f362e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@23394",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7acf8",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@6eaff",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@2228f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@52795",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@52ad6",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@bbe48",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@af3a3",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@d6a93",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@b62b5",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@f0393",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@261e6",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@12b8f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@7f5c4",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@e1f9f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@776b8",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@2298e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@fcfaf",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@71b23",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@44b68",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@2e766",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@ac267",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@1bbed",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@8ea0a",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@4963b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@71027",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@6cc2e",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@c86d1",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@8a92b",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@ad43f",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@d3b81",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@584db",
+        "a1b134b7-2391-4674-bf5c-03f9978c757d@e7bf7"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist",
+    "value": {
+      "depends": [
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@17e56",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@4a421",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@8c419",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@385ca",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@a29aa",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@7fa3b",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@e5564",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@08074",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@dce59",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@c3b31",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@7cf96",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@40b2a",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@15e98",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@a8f5b",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@c6af8",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@d6f00",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@c0fa4",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@0370d",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@81ec5",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@2b9ff",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@aa112",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@cbb14",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@c62eb",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@725ea",
+        "e3bde0a0-9564-4399-bd55-4a170f91fb32@27240"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist",
+    "value": {
+      "depends": [
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@5b3be",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fdd70",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a9538",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a17b3",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0571f",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c0dc6",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ca26c",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@513ee",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@590c5",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9252d",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7163b",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@633a8",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c1516",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fd7a9",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@aee17",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e81df",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d7b93",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0383f",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7af70",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9d072",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d7202",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f75ad",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@62eec",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ed7f2",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@47fd5",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0fca4",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0d075",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ade04",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7e7b0",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@8a029",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@2e5de",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e55b3",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@97834",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fdf51",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f9a1c",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@98fdd",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@900df",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@4b4bb",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f4ded",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@b692c",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a98bb",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@03f2e",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@4f28b",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ff504",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0ceef",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@913b7",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d697c",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f88d0",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d9b06",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9305e",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@3bcb7",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@53be3",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@30411",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@58b86",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9e613",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@45cb1",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@17e28",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a1d53",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c7740",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9168d",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f34ca",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d60dd",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e7960",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@252db",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@864d6",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@57e2d",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@db21d",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@26147",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@6ca8d",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c4cac",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@1dd76",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@43924",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@2b066",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9a024",
+        "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@50f4c"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@23394": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@23394",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@27240": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@27240",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@26147": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@26147",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@38606": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@38606",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@17e56": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@17e56",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@30411": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@30411",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.png@6c48a",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@52795": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@52795",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@4a421": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@4a421",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@43924": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@43924",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@68399": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@68399",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@8c419": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@8c419",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@97834": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@97834",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@69164": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@69164",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@385ca": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@385ca",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@5b3be": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@5b3be",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@71027": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@71027",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@a29aa": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@a29aa",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fdd70": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@fdd70",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@72969": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@72969",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@7fa3b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@7fa3b",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.png@f9941",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a9538": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@a9538",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "e84666b5-3563-48fe-8451-4e235a2db16b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@88479": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@88479",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@e5564": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@e5564",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a17b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@a17b3",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@2bf89": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@2bf89",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@08074": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@08074",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0571f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@0571f",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@5e932": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@5e932",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@dce59": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@dce59",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c0dc6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@c0dc6",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@53b6d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@53b6d",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@c3b31": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@c3b31",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ca26c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@ca26c",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@e2963": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@e2963",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@7cf96": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@7cf96",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@513ee": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@513ee",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@b5123": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@b5123",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@40b2a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@40b2a",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@590c5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@590c5",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7ecf8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7ecf8",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@15e98": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@15e98",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9252d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9252d",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@4e611": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@4e611",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@a8f5b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@a8f5b",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7163b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@7163b",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@79c60": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@79c60",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@c6af8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@c6af8",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@633a8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@633a8",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@06114": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@06114",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@d6f00": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@d6f00",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c1516": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@c1516",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@24b97": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@24b97",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@c0fa4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@c0fa4",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fd7a9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@fd7a9",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@3f84d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@3f84d",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@0370d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@0370d",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@aee17": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@aee17",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@8464b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@8464b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.png@6c48a",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@81ec5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@81ec5",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e81df": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@e81df",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@db584": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@db584",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@2b9ff": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@2b9ff",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d7b93": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@d7b93",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@35c8f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@35c8f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.png@6c48a",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@aa112": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@aa112",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0383f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@0383f",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@4a604": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@4a604",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@cbb14": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@cbb14",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7af70": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@7af70",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@66d6f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@66d6f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@c62eb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@c62eb",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9d072": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9d072",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@539f9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@539f9",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "e3bde0a0-9564-4399-bd55-4a170f91fb32@725ea": {
+    "url": "db://assets/Game/AssetsPackage/atlas/deadEffect.plist@725ea",
+    "value": {
+      "depends": [
+        "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d7202": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@d7202",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@0e7b4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@0e7b4",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f75ad": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@f75ad",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@ce6c2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@ce6c2",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@62eec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@62eec",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@f73c0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@f73c0",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ed7f2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@ed7f2",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@0fee3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@0fee3",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@47fd5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@47fd5",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@617e6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@617e6",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0fca4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@0fca4",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@dca23": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@dca23",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0d075": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@0d075",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@d5e81": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@d5e81",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ade04": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@ade04",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@a759a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@a759a",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@7e7b0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@7e7b0",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@9149e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@9149e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@8a029": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@8a029",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist",
+    "value": {
+      "depends": [
+        "36586406-2bfc-43a3-ab96-e51f088061f8@53ad8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@10140",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@82ea1",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@88785",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@89c57",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a5b73",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@7e04b",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@e5295",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a41b0",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@f4b71",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@3ea2f",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@26691",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@27a41",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a1fdc",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@77715",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@b6588",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@f6fe9",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@53553",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@c9af8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@5d9cb",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@b8a33",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@dfa92",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@bf51b",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@1c695",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@b8223",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@f64ec",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@d3aa4",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@63184",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@0a21f",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@f71a0",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a59f4",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@74bb2",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@ee54c",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a67a3",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@5fce6",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@9038e",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@7db7d",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@effa8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@94b92",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@f94f0",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@71905",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@168c8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@ea267",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@d3cc9",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@0f0cf",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@2c662",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@d44f8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@8f644",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@b3358",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@02d0d",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@05685",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@1f770",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@a36d2",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@23657",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@309c7",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@167f8",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@52a3d",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@51af2",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@61fdd",
+        "36586406-2bfc-43a3-ab96-e51f088061f8@461b3"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@85f9f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@85f9f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@2e5de": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@2e5de",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "e84666b5-3563-48fe-8451-4e235a2db16b@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.png@f9941",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "19d7b4a5-76d7-4ebc-9903-b757aa9095ee": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.png@f9941",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@6555c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@6555c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e55b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@e55b3",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@3efef": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@3efef",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist",
+    "value": {
+      "depends": [
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@de666",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@864d7",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b15c4",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@fc673",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@cf91e",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@4ce24",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b3b0f",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@d89ce",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@71fc0",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@e9e61",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@df653",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@507fd",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@faa0f",
+        "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b6a50"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@10140": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@10140",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@68f86": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@68f86",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@fdf51": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@fdf51",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@23657": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@23657",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f9a1c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@f9a1c",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@a2abb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@a2abb",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@26691": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@26691",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@de666": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@de666",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@3dc8e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@3dc8e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@98fdd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@98fdd",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@53553": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@53553",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@864d7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@864d7",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@900df": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@900df",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@8c46b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@8c46b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@63184": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@63184",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@4b4bb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@4b4bb",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@9d5e5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@9d5e5",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b15c4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@b15c4",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@71905": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@71905",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f4ded": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@f4ded",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@fc621": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@fc621",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@fc673": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@fc673",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@b0833": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@b0833",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@77715": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@77715",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@cf91e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@cf91e",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@b692c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@b692c",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@3c7be": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@3c7be",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@88785": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@88785",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@4ce24": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@4ce24",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a98bb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@a98bb",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@23ce6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@23ce6",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@53ad8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@53ad8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@03f2e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@03f2e",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b3b0f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@b3b0f",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@08df2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@08df2",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@82ea1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@82ea1",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@4f28b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@4f28b",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@d89ce": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@d89ce",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@3cae7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@3cae7",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@89c57": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@89c57",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@ff504": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@ff504",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@71fc0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@71fc0",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a5b73": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a5b73",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@1a2c4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@1a2c4",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@0ceef": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@0ceef",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@e9e61": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@e9e61",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@04de2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@04de2",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@7e04b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@7e04b",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@913b7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@913b7",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@df653": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@df653",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@c1559": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@c1559",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@e5295": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@e5295",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d697c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@d697c",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@507fd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@507fd",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@da0b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@da0b3",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a41b0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a41b0",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f88d0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@f88d0",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@faa0f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@faa0f",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@074dc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@074dc",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.png@6c48a",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d9b06": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@d9b06",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@f4b71": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@f4b71",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ebba8ef1-b922-4c36-aa17-ad563f7d5183@b6a50": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.plist@b6a50",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "ad4c54f6-2763-4d77-aec6-a0d85364df3b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@5d50c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@5d50c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9305e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9305e",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@3ea2f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@3ea2f",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@66cd1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@66cd1",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@3bcb7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@3bcb7",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@27a41": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@27a41",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@53be3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@53be3",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@20b13": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@20b13",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.png@f9941",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a1fdc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a1fdc",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@bb165": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@bb165",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@58b86": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@58b86",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@b6588": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@b6588",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7ab79": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7ab79",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9e613": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9e613",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist",
+    "value": {
+      "depends": [
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@53ad8",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@10140",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@82ea1",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@7e04b",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@e5295",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a41b0",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@b6588",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@f6fe9",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@53553",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@b8223",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@f64ec",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@d3aa4",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a67a3",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@5fce6",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@9038e",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@ea267",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@d3cc9",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@0f0cf",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@1f770",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a36d2",
+        "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@23657"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@f6fe9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@f6fe9",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@f2a86": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@f2a86",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@45cb1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@45cb1",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@c9af8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@c9af8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@221d6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@221d6",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@17e28": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@17e28",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@5d9cb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@5d9cb",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@6b92a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@6b92a",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@a1d53": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@a1d53",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@10140": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@10140",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@b8a33": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@b8a33",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@540c7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@540c7",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@23657": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@23657",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c7740": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@c7740",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@dfa92": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@dfa92",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@53553": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@53553",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@a4b3c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@a4b3c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9168d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9168d",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@bf51b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@bf51b",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@5f0e5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@5f0e5",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@f34ca": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@f34ca",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@53ad8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@53ad8",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@1c695": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@1c695",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@d60dd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@d60dd",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@abc5b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@abc5b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@82ea1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@82ea1",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@b8223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@b8223",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@e7960": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@e7960",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@7e04b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@7e04b",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@06f8a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@06f8a",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@f64ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@f64ec",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@252db": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@252db",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@e5295": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@e5295",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@54be7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@54be7",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@d3aa4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@d3aa4",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@864d6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@864d6",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a41b0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@a41b0",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@086a2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@086a2",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@0a21f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@0a21f",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@57e2d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@57e2d",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@b6588": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@b6588",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@9e5e0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@9e5e0",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@f71a0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@f71a0",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@db21d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@db21d",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@f6fe9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@f6fe9",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@d6cc5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@d6cc5",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a59f4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a59f4",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@6ca8d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@6ca8d",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@b8223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@b8223",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@695f0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@695f0",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@74bb2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@74bb2",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@c4cac": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@c4cac",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@f64ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@f64ec",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@092f1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@092f1",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@ee54c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@ee54c",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@1dd76": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@1dd76",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@d3aa4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@d3aa4",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@b5cbc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@b5cbc",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@2b066": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@2b066",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a67a3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a67a3",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a67a3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@a67a3",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@5650c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@5650c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@5fce6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@5fce6",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@9a024": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@9a024",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@5fce6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@5fce6",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@013d1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@013d1",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0@50f4c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gameUI.plist@50f4c",
+    "value": {
+      "depends": [
+        "e84666b5-3563-48fe-8451-4e235a2db16b@6c48a"
+      ]
+    }
+  },
+  "a252b002-9449-4e4c-9eb0-a0f01eb040c6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@9038e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@9038e",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@9038e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@9038e",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@10a04": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@10a04",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@7db7d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@7db7d",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@ea267": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@ea267",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@ddae4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@ddae4",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@d3cc9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@d3cc9",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@effa8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@effa8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.png@6c48a",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@ff525": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@ff525",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@94b92": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@94b92",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@0f0cf": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@0f0cf",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7369c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7369c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@1f770": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@1f770",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@f94f0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@f94f0",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@234cd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@234cd",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3c1a1f14-42b8-4c0b-9084-588f2ecf69e0@a36d2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.plist@a36d2",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "0fa779c1-db11-4716-8bfe-3d963e3c3075": {
+    "url": "db://assets/Game/AssetsPackage/data/bullet.json",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@168c8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@168c8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@e71ad": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@e71ad",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@ea267": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@ea267",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@6b28d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@6b28d",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@d3cc9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@d3cc9",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "1e67c0b0-b418-4f29-8b6c-4af328ddbb4c": {
+    "url": "db://assets/Game/AssetsPackage/data/mapData.json",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@25f1d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@25f1d",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@0f0cf": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@0f0cf",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@4643c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@4643c",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "0b34de15-09fb-4d33-99cd-15eeae4805ac": {
+    "url": "db://assets/Game/AssetsPackage/data/monster.json",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@2c662": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@2c662",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@fa162": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@fa162",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@cfa35": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@cfa35",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@d44f8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@d44f8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "e740f398-2cb5-438e-8e1e-a3d093320e36": {
+    "url": "db://assets/Game/AssetsPackage/data/task.json",
+    "value": {
+      "depends": []
+    }
+  },
+  "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.png@6c48a",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@8f644": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@8f644",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@4c326": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@4c326",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "ad4c54f6-2763-4d77-aec6-a0d85364df3b@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/map.png@f9941",
+    "value": {
+      "depends": [
+        "ad4c54f6-2763-4d77-aec6-a0d85364df3b@6c48a"
+      ]
+    }
+  },
+  "c5f1cd6e-56b0-4ee5-a980-155351521562": {
+    "url": "db://assets/Game/AssetsPackage/font/DPFYuanW5.TTF",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@b3358": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@b3358",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@63db0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@63db0",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a252b002-9449-4e4c-9eb0-a0f01eb040c6@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/pad.png@f9941",
+    "value": {
+      "depends": [
+        "a252b002-9449-4e4c-9eb0-a0f01eb040c6@6c48a"
+      ]
+    }
+  },
+  "f07e953a-8c23-40c1-b70d-9c879e1721b9": {
+    "url": "db://assets/Game/AssetsPackage/font/Name-export.fnt",
+    "value": {
+      "depends": [
+        "2096b734-8d6c-4815-a675-66c8a6812be2@f9941"
+      ]
+    }
+  },
+  "2096b734-8d6c-4815-a675-66c8a6812be2": {
+    "url": "db://assets/Game/AssetsPackage/font/Name-export.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@02d0d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@02d0d",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@64c16": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@64c16",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@05685": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@05685",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@00aba": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@00aba",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@1f770": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@1f770",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@cf95b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@cf95b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "447c930f-0d4a-40e7-8145-86efda1030a8": {
+    "url": "db://assets/Game/AssetsPackage/img/attackScope.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@a36d2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@a36d2",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@842d8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@842d8",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "55d28692-09aa-4716-a595-78338f988732": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_bar.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@309c7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@309c7",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@2b354": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@2b354",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@167f8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@167f8",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7b738": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7b738",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@52a3d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@52a3d",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@b0e68": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@b0e68",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@51af2": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@51af2",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@5973d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@5973d",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@61fdd": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@61fdd",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "2096b734-8d6c-4815-a675-66c8a6812be2@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/font/Name-export.png@6c48a",
+    "value": {
+      "depends": [
+        "2096b734-8d6c-4815-a675-66c8a6812be2"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@d463e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@d463e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "36586406-2bfc-43a3-ab96-e51f088061f8@461b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/gun.plist@461b3",
+    "value": {
+      "depends": [
+        "19d7b4a5-76d7-4ebc-9903-b757aa9095ee@6c48a"
+      ]
+    }
+  },
+  "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_grid.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "55d28692-09aa-4716-a595-78338f988732@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_bar.png@6c48a",
+    "value": {
+      "depends": [
+        "55d28692-09aa-4716-a595-78338f988732"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@1dc45": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@1dc45",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@26c12": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@26c12",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "2096b734-8d6c-4815-a675-66c8a6812be2@f9941": {
+    "url": "db://assets/Game/AssetsPackage/font/Name-export.png@f9941",
+    "value": {
+      "depends": [
+        "2096b734-8d6c-4815-a675-66c8a6812be2@6c48a"
+      ]
+    }
+  },
+  "94ee0681-d94a-4622-9093-b4d05f945435": {
+    "url": "db://assets/Game/AssetsPackage/img/bg_1.jpg",
+    "value": {
+      "depends": []
+    }
+  },
+  "447c930f-0d4a-40e7-8145-86efda1030a8@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/attackScope.png@6c48a",
+    "value": {
+      "depends": [
+        "447c930f-0d4a-40e7-8145-86efda1030a8"
+      ]
+    }
+  },
+  "55d28692-09aa-4716-a595-78338f988732@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_bar.png@f9941",
+    "value": {
+      "depends": [
+        "55d28692-09aa-4716-a595-78338f988732@6c48a"
+      ]
+    }
+  },
+  "3696c01d-4cfb-448b-9b56-df1e3662258e": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@f362e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@f362e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7acf8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7acf8",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@6eaff": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@6eaff",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_grid.png@6c48a",
+    "value": {
+      "depends": [
+        "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@2228f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@2228f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "447c930f-0d4a-40e7-8145-86efda1030a8@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/attackScope.png@f9941",
+    "value": {
+      "depends": [
+        "447c930f-0d4a-40e7-8145-86efda1030a8@6c48a"
+      ]
+    }
+  },
+  "4c062cce-15c9-47df-b644-fbb6af203605": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@52ad6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@52ad6",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@bbe48": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@bbe48",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/auto_merge_grid.png@f9941",
+    "value": {
+      "depends": [
+        "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0@6c48a"
+      ]
+    }
+  },
+  "b0dc58fc-b5da-464b-bed3-5e1f86f02e61": {
+    "url": "db://assets/Game/AssetsPackage/img/btn_auto_merge.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "94ee0681-d94a-4622-9093-b4d05f945435@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/bg_1.jpg@6c48a",
+    "value": {
+      "depends": [
+        "94ee0681-d94a-4622-9093-b4d05f945435"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@af3a3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@af3a3",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3696c01d-4cfb-448b-9b56-df1e3662258e@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect1.png@6c48a",
+    "value": {
+      "depends": [
+        "3696c01d-4cfb-448b-9b56-df1e3662258e"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@d6a93": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@d6a93",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "4c062cce-15c9-47df-b644-fbb6af203605@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect2.png@6c48a",
+    "value": {
+      "depends": [
+        "4c062cce-15c9-47df-b644-fbb6af203605"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@b62b5": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@b62b5",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "3696c01d-4cfb-448b-9b56-df1e3662258e@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect1.png@f9941",
+    "value": {
+      "depends": [
+        "3696c01d-4cfb-448b-9b56-df1e3662258e@6c48a"
+      ]
+    }
+  },
+  "08361a04-2f7c-40fb-9400-f6e6645fc80f": {
+    "url": "db://assets/Game/AssetsPackage/img/func_mission.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@f0393": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@f0393",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "4c062cce-15c9-47df-b644-fbb6af203605@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/blood_rect2.png@f9941",
+    "value": {
+      "depends": [
+        "4c062cce-15c9-47df-b644-fbb6af203605@6c48a"
+      ]
+    }
+  },
+  "0604fdea-1ada-4f11-aac1-529cc31ce046": {
+    "url": "db://assets/Game/AssetsPackage/img/func_qianghua.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@261e6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@261e6",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@12b8f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@12b8f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "b0dc58fc-b5da-464b-bed3-5e1f86f02e61@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/btn_auto_merge.png@6c48a",
+    "value": {
+      "depends": [
+        "b0dc58fc-b5da-464b-bed3-5e1f86f02e61"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@7f5c4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@7f5c4",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@e1f9f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@e1f9f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "94ee0681-d94a-4622-9093-b4d05f945435@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/bg_1.jpg@f9941",
+    "value": {
+      "depends": [
+        "94ee0681-d94a-4622-9093-b4d05f945435@6c48a"
+      ]
+    }
+  },
+  "0cab2f10-6581-4db3-8d2f-5c36777f711b": {
+    "url": "db://assets/Game/AssetsPackage/img/func_shop.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@776b8": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@776b8",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "b0dc58fc-b5da-464b-bed3-5e1f86f02e61@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/btn_auto_merge.png@f9941",
+    "value": {
+      "depends": [
+        "b0dc58fc-b5da-464b-bed3-5e1f86f02e61@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@2298e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@2298e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist",
+    "value": {
+      "depends": [
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@5b3be",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdd70",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a9538",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a17b3",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0571f",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c0dc6",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ca26c",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@513ee",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@590c5",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9252d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7163b",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@633a8",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c1516",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fd7a9",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@aee17",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e81df",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7b93",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0383f",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7af70",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9d072",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7202",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f75ad",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@62eec",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ed7f2",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@47fd5",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0fca4",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0d075",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ade04",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7e7b0",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@8a029",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@2e5de",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e55b3",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@97834",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdf51",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f9a1c",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@98fdd",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@900df",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@4b4bb",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f4ded",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@b692c",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a98bb",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@03f2e",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@4f28b",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ff504",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0ceef",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@913b7",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d697c",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f88d0",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d9b06",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9305e",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@3bcb7",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@53be3",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@30411",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@58b86",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9e613",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@45cb1",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@17e28",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a1d53",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c7740",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9168d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f34ca",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d60dd",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e7960",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@252db",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@864d6",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@57e2d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@db21d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@26147",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@6ca8d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c4cac",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@1dd76",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@43924",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@2b066",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9a024",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@50f4c"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@fcfaf": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@fcfaf",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "08361a04-2f7c-40fb-9400-f6e6645fc80f@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/func_mission.png@6c48a",
+    "value": {
+      "depends": [
+        "08361a04-2f7c-40fb-9400-f6e6645fc80f"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@71b23": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@71b23",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "0604fdea-1ada-4f11-aac1-529cc31ce046@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/func_qianghua.png@6c48a",
+    "value": {
+      "depends": [
+        "0604fdea-1ada-4f11-aac1-529cc31ce046"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@44b68": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@44b68",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@26147": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@26147",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "08361a04-2f7c-40fb-9400-f6e6645fc80f@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/func_mission.png@f9941",
+    "value": {
+      "depends": [
+        "08361a04-2f7c-40fb-9400-f6e6645fc80f@6c48a"
+      ]
+    }
+  },
+  "68ecd090-ce79-436e-a42e-2c7de7076861": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@2e766": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@2e766",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@30411": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@30411",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@ac267": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@ac267",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "0604fdea-1ada-4f11-aac1-529cc31ce046@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/func_qianghua.png@f9941",
+    "value": {
+      "depends": [
+        "0604fdea-1ada-4f11-aac1-529cc31ce046@6c48a"
+      ]
+    }
+  },
+  "77c25841-cc32-4888-8c01-db82bc532438": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_help.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@43924": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@43924",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@1bbed": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@1bbed",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "0cab2f10-6581-4db3-8d2f-5c36777f711b@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/func_shop.png@6c48a",
+    "value": {
+      "depends": [
+        "0cab2f10-6581-4db3-8d2f-5c36777f711b"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@97834": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@97834",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@8ea0a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@8ea0a",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@5b3be": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@5b3be",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@4963b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@4963b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdd70": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@fdd70",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@6cc2e": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@6cc2e",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a9538": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@a9538",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "0cab2f10-6581-4db3-8d2f-5c36777f711b@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/func_shop.png@f9941",
+    "value": {
+      "depends": [
+        "0cab2f10-6581-4db3-8d2f-5c36777f711b@6c48a"
+      ]
+    }
+  },
+  "678037bf-8ef0-4add-b2d5-7662ddaffb9c": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_map.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@c86d1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@c86d1",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a17b3": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@a17b3",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@8a92b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@8a92b",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0571f": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@0571f",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@ad43f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@ad43f",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c0dc6": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@c0dc6",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "77c25841-cc32-4888-8c01-db82bc532438@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_help.png@6c48a",
+    "value": {
+      "depends": [
+        "77c25841-cc32-4888-8c01-db82bc532438"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@d3b81": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@d3b81",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ca26c": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@ca26c",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@584db": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@584db",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@513ee": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@513ee",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a1b134b7-2391-4674-bf5c-03f9978c757d@e7bf7": {
+    "url": "db://assets/Game/AssetsPackage/atlas/bullet.plist@e7bf7",
+    "value": {
+      "depends": [
+        "76f9b3f2-2d74-460d-8689-cdb54b6a70ad@6c48a"
+      ]
+    }
+  },
+  "b072d104-3845-4992-894b-9a7c6f3902d4": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_shop_reclaim.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "77c25841-cc32-4888-8c01-db82bc532438@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_help.png@f9941",
+    "value": {
+      "depends": [
+        "77c25841-cc32-4888-8c01-db82bc532438@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@590c5": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@590c5",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "14b89e59-8df2-4f04-a457-896699b05093": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "678037bf-8ef0-4add-b2d5-7662ddaffb9c@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_map.png@6c48a",
+    "value": {
+      "depends": [
+        "678037bf-8ef0-4add-b2d5-7662ddaffb9c"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9252d": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9252d",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7163b": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@7163b",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "678037bf-8ef0-4add-b2d5-7662ddaffb9c@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_map.png@f9941",
+    "value": {
+      "depends": [
+        "678037bf-8ef0-4add-b2d5-7662ddaffb9c@6c48a"
+      ]
+    }
+  },
+  "3b29f50e-ebde-4ca9-b6a5-8f23e13ec598": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@633a8": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@633a8",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c1516": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@c1516",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fd7a9": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@fd7a9",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "14b89e59-8df2-4f04-a457-896699b05093@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_1.png@6c48a",
+    "value": {
+      "depends": [
+        "14b89e59-8df2-4f04-a457-896699b05093"
+      ]
+    }
+  },
+  "b072d104-3845-4992-894b-9a7c6f3902d4@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_shop_reclaim.png@6c48a",
+    "value": {
+      "depends": [
+        "b072d104-3845-4992-894b-9a7c6f3902d4"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@aee17": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@aee17",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e81df": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@e81df",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "b072d104-3845-4992-894b-9a7c6f3902d4@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/icon_shop_reclaim.png@f9941",
+    "value": {
+      "depends": [
+        "b072d104-3845-4992-894b-9a7c6f3902d4@6c48a"
+      ]
+    }
+  },
+  "be686a20-144d-4462-a37a-0cb802c02de8": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_3.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "14b89e59-8df2-4f04-a457-896699b05093@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_1.png@f9941",
+    "value": {
+      "depends": [
+        "14b89e59-8df2-4f04-a457-896699b05093@6c48a"
+      ]
+    }
+  },
+  "12cf819f-1c70-4055-b3d6-f16882d74ddd": {
+    "url": "db://assets/Game/AssetsPackage/img/rank_item_avatar.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7b93": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@d7b93",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "3b29f50e-ebde-4ca9-b6a5-8f23e13ec598@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_2.png@6c48a",
+    "value": {
+      "depends": [
+        "3b29f50e-ebde-4ca9-b6a5-8f23e13ec598"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0383f": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@0383f",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "3b29f50e-ebde-4ca9-b6a5-8f23e13ec598@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_2.png@f9941",
+    "value": {
+      "depends": [
+        "3b29f50e-ebde-4ca9-b6a5-8f23e13ec598@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7af70": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@7af70",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "2dceab42-286f-4e3f-88d3-c847f8730688": {
+    "url": "db://assets/Game/AssetsPackage/img/redDot.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9d072": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9d072",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7202": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@d7202",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.png@6c48a",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861"
+      ]
+    }
+  },
+  "12cf819f-1c70-4055-b3d6-f16882d74ddd@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/rank_item_avatar.png@6c48a",
+    "value": {
+      "depends": [
+        "12cf819f-1c70-4055-b3d6-f16882d74ddd"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f75ad": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@f75ad",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@62eec": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@62eec",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "be686a20-144d-4462-a37a-0cb802c02de8@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_3.png@6c48a",
+    "value": {
+      "depends": [
+        "be686a20-144d-4462-a37a-0cb802c02de8"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ed7f2": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@ed7f2",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "12cf819f-1c70-4055-b3d6-f16882d74ddd@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/rank_item_avatar.png@f9941",
+    "value": {
+      "depends": [
+        "12cf819f-1c70-4055-b3d6-f16882d74ddd@6c48a"
+      ]
+    }
+  },
+  "4a57f16e-7929-4fa5-9067-89d0582c3765": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_coin.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@47fd5": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@47fd5",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "be686a20-144d-4462-a37a-0cb802c02de8@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/map_zhongdian_3.png@f9941",
+    "value": {
+      "depends": [
+        "be686a20-144d-4462-a37a-0cb802c02de8@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0fca4": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@0fca4",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6e734323-e3a2-48c9-be1f-e351142f88d0": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_fullAtk.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2dceab42-286f-4e3f-88d3-c847f8730688@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/redDot.png@6c48a",
+    "value": {
+      "depends": [
+        "2dceab42-286f-4e3f-88d3-c847f8730688"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0d075": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@0d075",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ade04": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@ade04",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "2dceab42-286f-4e3f-88d3-c847f8730688@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/redDot.png@f9941",
+    "value": {
+      "depends": [
+        "2dceab42-286f-4e3f-88d3-c847f8730688@6c48a"
+      ]
+    }
+  },
+  "6f4839b0-7217-4311-99ba-703bc73c8c62": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_rect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7e7b0": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@7e7b0",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@8a029": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@8a029",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@2e5de": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@2e5de",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "4a57f16e-7929-4fa5-9067-89d0582c3765@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_coin.png@6c48a",
+    "value": {
+      "depends": [
+        "4a57f16e-7929-4fa5-9067-89d0582c3765"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e55b3": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@e55b3",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6e734323-e3a2-48c9-be1f-e351142f88d0@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_fullAtk.png@6c48a",
+    "value": {
+      "depends": [
+        "6e734323-e3a2-48c9-be1f-e351142f88d0"
+      ]
+    }
+  },
+  "68ecd090-ce79-436e-a42e-2c7de7076861@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.png@f9941",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "689b57a0-8783-4957-adc6-83b8e53c8ea6": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_slow.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdf51": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@fdf51",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "4a57f16e-7929-4fa5-9067-89d0582c3765@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_coin.png@f9941",
+    "value": {
+      "depends": [
+        "4a57f16e-7929-4fa5-9067-89d0582c3765@6c48a"
+      ]
+    }
+  },
+  "84eac0f1-c70f-475b-b76c-6d671fcff496": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_speed.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f9a1c": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@f9a1c",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6e734323-e3a2-48c9-be1f-e351142f88d0@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_fullAtk.png@f9941",
+    "value": {
+      "depends": [
+        "6e734323-e3a2-48c9-be1f-e351142f88d0@6c48a"
+      ]
+    }
+  },
+  "62b8e4e6-e879-4b11-9016-be1e1ca04c26": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_txtRect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@98fdd": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@98fdd",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6f4839b0-7217-4311-99ba-703bc73c8c62@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_rect.png@6c48a",
+    "value": {
+      "depends": [
+        "6f4839b0-7217-4311-99ba-703bc73c8c62"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@900df": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@900df",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6f4839b0-7217-4311-99ba-703bc73c8c62@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_rect.png@f9941",
+    "value": {
+      "depends": [
+        "6f4839b0-7217-4311-99ba-703bc73c8c62@6c48a"
+      ]
+    }
+  },
+  "c759d9e7-d065-4f63-9c64-c6c8d069bf01": {
+    "url": "db://assets/Game/AssetsPackage/img/smallBtn_bg.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@4b4bb": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@4b4bb",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "689b57a0-8783-4957-adc6-83b8e53c8ea6@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_slow.png@6c48a",
+    "value": {
+      "depends": [
+        "689b57a0-8783-4957-adc6-83b8e53c8ea6"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f4ded": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@f4ded",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@b692c": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@b692c",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "84eac0f1-c70f-475b-b76c-6d671fcff496@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_speed.png@6c48a",
+    "value": {
+      "depends": [
+        "84eac0f1-c70f-475b-b76c-6d671fcff496"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a98bb": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@a98bb",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@03f2e": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@03f2e",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "62b8e4e6-e879-4b11-9016-be1e1ca04c26@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_txtRect.png@6c48a",
+    "value": {
+      "depends": [
+        "62b8e4e6-e879-4b11-9016-be1e1ca04c26"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@4f28b": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@4f28b",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "689b57a0-8783-4957-adc6-83b8e53c8ea6@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_slow.png@f9941",
+    "value": {
+      "depends": [
+        "689b57a0-8783-4957-adc6-83b8e53c8ea6@6c48a"
+      ]
+    }
+  },
+  "6cb05ea3-5d9f-4e0b-b3d8-9c40e432c2b7": {
+    "url": "db://assets/Game/AssetsPackage/img/touxiang_new.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "84eac0f1-c70f-475b-b76c-6d671fcff496@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_speed.png@f9941",
+    "value": {
+      "depends": [
+        "84eac0f1-c70f-475b-b76c-6d671fcff496@6c48a"
+      ]
+    }
+  },
+  "5f3c7646-d2ba-4aa9-b1ca-c11b0bf3cd7b": {
+    "url": "db://assets/Game/AssetsPackage/img/ts.tps",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ff504": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@ff504",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "62b8e4e6-e879-4b11-9016-be1e1ca04c26@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/skill_txtRect.png@f9941",
+    "value": {
+      "depends": [
+        "62b8e4e6-e879-4b11-9016-be1e1ca04c26@6c48a"
+      ]
+    }
+  },
+  "5f2ac2d8-a0d6-4169-8ea5-ba1baaeaaf0a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_bossWin.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0ceef": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@0ceef",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@913b7": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@913b7",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "c759d9e7-d065-4f63-9c64-c6c8d069bf01@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/smallBtn_bg.png@6c48a",
+    "value": {
+      "depends": [
+        "c759d9e7-d065-4f63-9c64-c6c8d069bf01"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d697c": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@d697c",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f88d0": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@f88d0",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "29e8c5c6-dee3-4f0b-b47c-2f38350a58a8": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d9b06": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@d9b06",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6cb05ea3-5d9f-4e0b-b3d8-9c40e432c2b7@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/touxiang_new.png@6c48a",
+    "value": {
+      "depends": [
+        "6cb05ea3-5d9f-4e0b-b3d8-9c40e432c2b7"
+      ]
+    }
+  },
+  "c759d9e7-d065-4f63-9c64-c6c8d069bf01@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/smallBtn_bg.png@f9941",
+    "value": {
+      "depends": [
+        "c759d9e7-d065-4f63-9c64-c6c8d069bf01@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9305e": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9305e",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "ae79511b-c793-42d7-b18f-e00c3f7524c0": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@3bcb7": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@3bcb7",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@53be3": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@53be3",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "6cb05ea3-5d9f-4e0b-b3d8-9c40e432c2b7@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/touxiang_new.png@f9941",
+    "value": {
+      "depends": [
+        "6cb05ea3-5d9f-4e0b-b3d8-9c40e432c2b7@6c48a"
+      ]
+    }
+  },
+  "a785ee91-988f-4095-97b4-ad2bc0945596": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p3.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@58b86": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@58b86",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9e613": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9e613",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@45cb1": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@45cb1",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "29e8c5c6-dee3-4f0b-b47c-2f38350a58a8@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p1.png@6c48a",
+    "value": {
+      "depends": [
+        "29e8c5c6-dee3-4f0b-b47c-2f38350a58a8"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@17e28": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@17e28",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "ae79511b-c793-42d7-b18f-e00c3f7524c0@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p2.png@6c48a",
+    "value": {
+      "depends": [
+        "ae79511b-c793-42d7-b18f-e00c3f7524c0"
+      ]
+    }
+  },
+  "5f2ac2d8-a0d6-4169-8ea5-ba1baaeaaf0a@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_bossWin.png@6c48a",
+    "value": {
+      "depends": [
+        "5f2ac2d8-a0d6-4169-8ea5-ba1baaeaaf0a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@a1d53": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@a1d53",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "29e8c5c6-dee3-4f0b-b47c-2f38350a58a8@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p1.png@f9941",
+    "value": {
+      "depends": [
+        "29e8c5c6-dee3-4f0b-b47c-2f38350a58a8@6c48a"
+      ]
+    }
+  },
+  "ae79511b-c793-42d7-b18f-e00c3f7524c0@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p2.png@f9941",
+    "value": {
+      "depends": [
+        "ae79511b-c793-42d7-b18f-e00c3f7524c0@6c48a"
+      ]
+    }
+  },
+  "9d449c22-ab3e-46a8-b841-ffc588cc5860": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p4.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ad1a7c03-b051-4b6c-aa59-e600c546a8ac": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c7740": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@c7740",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "5f2ac2d8-a0d6-4169-8ea5-ba1baaeaaf0a@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_bossWin.png@f9941",
+    "value": {
+      "depends": [
+        "5f2ac2d8-a0d6-4169-8ea5-ba1baaeaaf0a@6c48a"
+      ]
+    }
+  },
+  "fdf9b4ce-f079-40b9-9bd7-4d723e215054": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin_rect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9168d": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9168d",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f34ca": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@f34ca",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a785ee91-988f-4095-97b4-ad2bc0945596@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p3.png@6c48a",
+    "value": {
+      "depends": [
+        "a785ee91-988f-4095-97b4-ad2bc0945596"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d60dd": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@d60dd",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e7960": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@e7960",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@252db": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@252db",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "a785ee91-988f-4095-97b4-ad2bc0945596@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p3.png@f9941",
+    "value": {
+      "depends": [
+        "a785ee91-988f-4095-97b4-ad2bc0945596@6c48a"
+      ]
+    }
+  },
+  "d36b76b7-ca08-4e29-a888-8b4e7b31c640": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ad1a7c03-b051-4b6c-aa59-e600c546a8ac@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin.png@6c48a",
+    "value": {
+      "depends": [
+        "ad1a7c03-b051-4b6c-aa59-e600c546a8ac"
+      ]
+    }
+  },
+  "fdf9b4ce-f079-40b9-9bd7-4d723e215054@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin_rect.png@6c48a",
+    "value": {
+      "depends": [
+        "fdf9b4ce-f079-40b9-9bd7-4d723e215054"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@864d6": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@864d6",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@57e2d": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@57e2d",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@db21d": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@db21d",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@6ca8d": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@6ca8d",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "ad1a7c03-b051-4b6c-aa59-e600c546a8ac@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin.png@f9941",
+    "value": {
+      "depends": [
+        "ad1a7c03-b051-4b6c-aa59-e600c546a8ac@6c48a"
+      ]
+    }
+  },
+  "3e6ce654-a463-461c-85f4-0e7771dd42a5": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond_light.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "9d449c22-ab3e-46a8-b841-ffc588cc5860@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p4.png@6c48a",
+    "value": {
+      "depends": [
+        "9d449c22-ab3e-46a8-b841-ffc588cc5860"
+      ]
+    }
+  },
+  "fdf9b4ce-f079-40b9-9bd7-4d723e215054@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_coin_rect.png@f9941",
+    "value": {
+      "depends": [
+        "fdf9b4ce-f079-40b9-9bd7-4d723e215054@6c48a"
+      ]
+    }
+  },
+  "c2cf571d-c3a6-4a27-9cf9-8bb1b9a4d88c": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_enemy_slow.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@c4cac": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@c4cac",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@1dd76": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@1dd76",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@2b066": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@2b066",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "d36b76b7-ca08-4e29-a888-8b4e7b31c640@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond.png@6c48a",
+    "value": {
+      "depends": [
+        "d36b76b7-ca08-4e29-a888-8b4e7b31c640"
+      ]
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9a024": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@9a024",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "9d449c22-ab3e-46a8-b841-ffc588cc5860@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_boss_p4.png@f9941",
+    "value": {
+      "depends": [
+        "9d449c22-ab3e-46a8-b841-ffc588cc5860@6c48a"
+      ]
+    }
+  },
+  "31a9b5b9-6d00-4224-9ca6-3c9077761454": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_func_lock.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f4a200d4-df7c-4c5a-bf55-35491c7ba040@50f4c": {
+    "url": "db://assets/Game/AssetsPackage/img/gameUI.plist@50f4c",
+    "value": {
+      "depends": [
+        "68ecd090-ce79-436e-a42e-2c7de7076861@6c48a"
+      ]
+    }
+  },
+  "63e36411-05ca-4688-9afe-ef071f422e18": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_buildUpProb.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "d36b76b7-ca08-4e29-a888-8b4e7b31c640@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond.png@f9941",
+    "value": {
+      "depends": [
+        "d36b76b7-ca08-4e29-a888-8b4e7b31c640@6c48a"
+      ]
+    }
+  },
+  "4211f844-c880-4f06-8133-ce6c503345c7": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_coin.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "c2cf571d-c3a6-4a27-9cf9-8bb1b9a4d88c@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_enemy_slow.png@6c48a",
+    "value": {
+      "depends": [
+        "c2cf571d-c3a6-4a27-9cf9-8bb1b9a4d88c"
+      ]
+    }
+  },
+  "c2cf571d-c3a6-4a27-9cf9-8bb1b9a4d88c@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_enemy_slow.png@f9941",
+    "value": {
+      "depends": [
+        "c2cf571d-c3a6-4a27-9cf9-8bb1b9a4d88c@6c48a"
+      ]
+    }
+  },
+  "5f6bc25d-db1d-4ebd-b7e2-6cb7ae40b798": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_crit.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "3e6ce654-a463-461c-85f4-0e7771dd42a5@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond_light.png@6c48a",
+    "value": {
+      "depends": [
+        "3e6ce654-a463-461c-85f4-0e7771dd42a5"
+      ]
+    }
+  },
+  "63e36411-05ca-4688-9afe-ef071f422e18@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_buildUpProb.png@6c48a",
+    "value": {
+      "depends": [
+        "63e36411-05ca-4688-9afe-ef071f422e18"
+      ]
+    }
+  },
+  "31a9b5b9-6d00-4224-9ca6-3c9077761454@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_func_lock.png@6c48a",
+    "value": {
+      "depends": [
+        "31a9b5b9-6d00-4224-9ca6-3c9077761454"
+      ]
+    }
+  },
+  "4211f844-c880-4f06-8133-ce6c503345c7@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_coin.png@6c48a",
+    "value": {
+      "depends": [
+        "4211f844-c880-4f06-8133-ce6c503345c7"
+      ]
+    }
+  },
+  "63e36411-05ca-4688-9afe-ef071f422e18@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_buildUpProb.png@f9941",
+    "value": {
+      "depends": [
+        "63e36411-05ca-4688-9afe-ef071f422e18@6c48a"
+      ]
+    }
+  },
+  "9a5a362d-3757-45e2-aaf9-e823510b01fa": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_libraryCount.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "31a9b5b9-6d00-4224-9ca6-3c9077761454@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_func_lock.png@f9941",
+    "value": {
+      "depends": [
+        "31a9b5b9-6d00-4224-9ca6-3c9077761454@6c48a"
+      ]
+    }
+  },
+  "6a50e56e-6368-4ac7-83a6-f289c47e4cc4": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_price.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "4211f844-c880-4f06-8133-ce6c503345c7@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_coin.png@f9941",
+    "value": {
+      "depends": [
+        "4211f844-c880-4f06-8133-ce6c503345c7@6c48a"
+      ]
+    }
+  },
+  "0f213525-0525-47f9-b99c-1b87dcf482e9": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_towerPower.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "5f6bc25d-db1d-4ebd-b7e2-6cb7ae40b798@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_crit.png@6c48a",
+    "value": {
+      "depends": [
+        "5f6bc25d-db1d-4ebd-b7e2-6cb7ae40b798"
+      ]
+    }
+  },
+  "3e6ce654-a463-461c-85f4-0e7771dd42a5@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_diamond_light.png@f9941",
+    "value": {
+      "depends": [
+        "3e6ce654-a463-461c-85f4-0e7771dd42a5@6c48a"
+      ]
+    }
+  },
+  "f0c8d185-d8ce-462a-a2ac-e15c9f9ec89b": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "5f6bc25d-db1d-4ebd-b7e2-6cb7ae40b798@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_crit.png@f9941",
+    "value": {
+      "depends": [
+        "5f6bc25d-db1d-4ebd-b7e2-6cb7ae40b798@6c48a"
+      ]
+    }
+  },
+  "a457dd9a-a37d-4e05-afc8-38dcdcbfb483": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "9a5a362d-3757-45e2-aaf9-e823510b01fa@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_libraryCount.png@6c48a",
+    "value": {
+      "depends": [
+        "9a5a362d-3757-45e2-aaf9-e823510b01fa"
+      ]
+    }
+  },
+  "6a50e56e-6368-4ac7-83a6-f289c47e4cc4@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_price.png@6c48a",
+    "value": {
+      "depends": [
+        "6a50e56e-6368-4ac7-83a6-f289c47e4cc4"
+      ]
+    }
+  },
+  "0f213525-0525-47f9-b99c-1b87dcf482e9@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_towerPower.png@6c48a",
+    "value": {
+      "depends": [
+        "0f213525-0525-47f9-b99c-1b87dcf482e9"
+      ]
+    }
+  },
+  "9a5a362d-3757-45e2-aaf9-e823510b01fa@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_libraryCount.png@f9941",
+    "value": {
+      "depends": [
+        "9a5a362d-3757-45e2-aaf9-e823510b01fa@6c48a"
+      ]
+    }
+  },
+  "85b031c6-5d60-4822-ae46-953fd564e75c": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_lose.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "6a50e56e-6368-4ac7-83a6-f289c47e4cc4@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_price.png@f9941",
+    "value": {
+      "depends": [
+        "6a50e56e-6368-4ac7-83a6-f289c47e4cc4@6c48a"
+      ]
+    }
+  },
+  "9c4aaf54-05bc-42be-a1ef-18f81d90930e": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_img_2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f0c8d185-d8ce-462a-a2ac-e15c9f9ec89b@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set.png@6c48a",
+    "value": {
+      "depends": [
+        "f0c8d185-d8ce-462a-a2ac-e15c9f9ec89b"
+      ]
+    }
+  },
+  "0f213525-0525-47f9-b99c-1b87dcf482e9@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_g_towerPower.png@f9941",
+    "value": {
+      "depends": [
+        "0f213525-0525-47f9-b99c-1b87dcf482e9@6c48a"
+      ]
+    }
+  },
+  "7a9abc57-a04a-4944-a0eb-af9d005615ef": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_location.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f0c8d185-d8ce-462a-a2ac-e15c9f9ec89b@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set.png@f9941",
+    "value": {
+      "depends": [
+        "f0c8d185-d8ce-462a-a2ac-e15c9f9ec89b@6c48a"
+      ]
+    }
+  },
+  "2b174d57-9b1b-4d9e-88f2-04c52bbab41d": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_mergeRemind.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "85b031c6-5d60-4822-ae46-953fd564e75c@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_lose.png@6c48a",
+    "value": {
+      "depends": [
+        "85b031c6-5d60-4822-ae46-953fd564e75c"
+      ]
+    }
+  },
+  "a457dd9a-a37d-4e05-afc8-38dcdcbfb483@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set1.png@6c48a",
+    "value": {
+      "depends": [
+        "a457dd9a-a37d-4e05-afc8-38dcdcbfb483"
+      ]
+    }
+  },
+  "9c4aaf54-05bc-42be-a1ef-18f81d90930e@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_img_2.png@6c48a",
+    "value": {
+      "depends": [
+        "9c4aaf54-05bc-42be-a1ef-18f81d90930e"
+      ]
+    }
+  },
+  "85b031c6-5d60-4822-ae46-953fd564e75c@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_lose.png@f9941",
+    "value": {
+      "depends": [
+        "85b031c6-5d60-4822-ae46-953fd564e75c@6c48a"
+      ]
+    }
+  },
+  "ac464f79-ed6f-478a-b716-183d1a3fc3af": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_reclaim_tips.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "7a9abc57-a04a-4944-a0eb-af9d005615ef@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_location.png@6c48a",
+    "value": {
+      "depends": [
+        "7a9abc57-a04a-4944-a0eb-af9d005615ef"
+      ]
+    }
+  },
+  "9c4aaf54-05bc-42be-a1ef-18f81d90930e@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_img_2.png@f9941",
+    "value": {
+      "depends": [
+        "9c4aaf54-05bc-42be-a1ef-18f81d90930e@6c48a"
+      ]
+    }
+  },
+  "aa90cf7d-1e61-4642-a967-307d841218de": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_res_add_btn.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "7a9abc57-a04a-4944-a0eb-af9d005615ef@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_map_location.png@f9941",
+    "value": {
+      "depends": [
+        "7a9abc57-a04a-4944-a0eb-af9d005615ef@6c48a"
+      ]
+    }
+  },
+  "e664ef11-213f-4e27-8ab7-baad14dc2a2d": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_top.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a457dd9a-a37d-4e05-afc8-38dcdcbfb483@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_icon_set1.png@f9941",
+    "value": {
+      "depends": [
+        "a457dd9a-a37d-4e05-afc8-38dcdcbfb483@6c48a"
+      ]
+    }
+  },
+  "b92b37ef-cffb-41fb-b6c0-db497e4a568e": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_towerLevel.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2b174d57-9b1b-4d9e-88f2-04c52bbab41d@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_mergeRemind.png@6c48a",
+    "value": {
+      "depends": [
+        "2b174d57-9b1b-4d9e-88f2-04c52bbab41d"
+      ]
+    }
+  },
+  "ac464f79-ed6f-478a-b716-183d1a3fc3af@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_reclaim_tips.png@6c48a",
+    "value": {
+      "depends": [
+        "ac464f79-ed6f-478a-b716-183d1a3fc3af"
+      ]
+    }
+  },
+  "aa90cf7d-1e61-4642-a967-307d841218de@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_res_add_btn.png@6c48a",
+    "value": {
+      "depends": [
+        "aa90cf7d-1e61-4642-a967-307d841218de"
+      ]
+    }
+  },
+  "ac464f79-ed6f-478a-b716-183d1a3fc3af@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_reclaim_tips.png@f9941",
+    "value": {
+      "depends": [
+        "ac464f79-ed6f-478a-b716-183d1a3fc3af@6c48a"
+      ]
+    }
+  },
+  "fd579246-f185-456d-82ed-ec99a4c16cb9": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "b92b37ef-cffb-41fb-b6c0-db497e4a568e@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_towerLevel.png@6c48a",
+    "value": {
+      "depends": [
+        "b92b37ef-cffb-41fb-b6c0-db497e4a568e"
+      ]
+    }
+  },
+  "aa90cf7d-1e61-4642-a967-307d841218de@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_res_add_btn.png@f9941",
+    "value": {
+      "depends": [
+        "aa90cf7d-1e61-4642-a967-307d841218de@6c48a"
+      ]
+    }
+  },
+  "2b174d57-9b1b-4d9e-88f2-04c52bbab41d@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_mergeRemind.png@f9941",
+    "value": {
+      "depends": [
+        "2b174d57-9b1b-4d9e-88f2-04c52bbab41d@6c48a"
+      ]
+    }
+  },
+  "5433e315-27cc-4b24-9d65-64304f51ab00": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "41581fca-619a-4c98-bf87-735f1f1cd5a9": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "e664ef11-213f-4e27-8ab7-baad14dc2a2d@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_top.png@6c48a",
+    "value": {
+      "depends": [
+        "e664ef11-213f-4e27-8ab7-baad14dc2a2d"
+      ]
+    }
+  },
+  "b92b37ef-cffb-41fb-b6c0-db497e4a568e@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_towerLevel.png@f9941",
+    "value": {
+      "depends": [
+        "b92b37ef-cffb-41fb-b6c0-db497e4a568e@6c48a"
+      ]
+    }
+  },
+  "fd8defdb-892b-46d1-bd08-ee71cc6f3ed3": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn3.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "e664ef11-213f-4e27-8ab7-baad14dc2a2d@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_top.png@f9941",
+    "value": {
+      "depends": [
+        "e664ef11-213f-4e27-8ab7-baad14dc2a2d@6c48a"
+      ]
+    }
+  },
+  "ec6b6149-1658-4777-a89d-afa563fbb44c": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_close.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "fd579246-f185-456d-82ed-ec99a4c16cb9@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win.png@6c48a",
+    "value": {
+      "depends": [
+        "fd579246-f185-456d-82ed-ec99a4c16cb9"
+      ]
+    }
+  },
+  "41581fca-619a-4c98-bf87-735f1f1cd5a9@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn2.png@6c48a",
+    "value": {
+      "depends": [
+        "41581fca-619a-4c98-bf87-735f1f1cd5a9"
+      ]
+    }
+  },
+  "5433e315-27cc-4b24-9d65-64304f51ab00@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn1.png@6c48a",
+    "value": {
+      "depends": [
+        "5433e315-27cc-4b24-9d65-64304f51ab00"
+      ]
+    }
+  },
+  "fd8defdb-892b-46d1-bd08-ee71cc6f3ed3@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn3.png@6c48a",
+    "value": {
+      "depends": [
+        "fd8defdb-892b-46d1-bd08-ee71cc6f3ed3"
+      ]
+    }
+  },
+  "fd579246-f185-456d-82ed-ec99a4c16cb9@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win.png@f9941",
+    "value": {
+      "depends": [
+        "fd579246-f185-456d-82ed-ec99a4c16cb9@6c48a"
+      ]
+    }
+  },
+  "5433e315-27cc-4b24-9d65-64304f51ab00@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn1.png@f9941",
+    "value": {
+      "depends": [
+        "5433e315-27cc-4b24-9d65-64304f51ab00@6c48a"
+      ]
+    }
+  },
+  "4553f866-ee58-465c-b683-07d090631f03": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_inRect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "5011370c-7919-46c5-8df1-86c5da740dc8": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_lock.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "41581fca-619a-4c98-bf87-735f1f1cd5a9@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn2.png@f9941",
+    "value": {
+      "depends": [
+        "41581fca-619a-4c98-bf87-735f1f1cd5a9@6c48a"
+      ]
+    }
+  },
+  "61a83977-5d00-4591-b9a4-91d018c516c9": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_numbg_rect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ec6b6149-1658-4777-a89d-afa563fbb44c@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_close.png@6c48a",
+    "value": {
+      "depends": [
+        "ec6b6149-1658-4777-a89d-afa563fbb44c"
+      ]
+    }
+  },
+  "fd8defdb-892b-46d1-bd08-ee71cc6f3ed3@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_btn3.png@f9941",
+    "value": {
+      "depends": [
+        "fd8defdb-892b-46d1-bd08-ee71cc6f3ed3@6c48a"
+      ]
+    }
+  },
+  "2f1832ab-56ec-4422-bca4-bb461429ca8f": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ec6b6149-1658-4777-a89d-afa563fbb44c@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_close.png@f9941",
+    "value": {
+      "depends": [
+        "ec6b6149-1658-4777-a89d-afa563fbb44c@6c48a"
+      ]
+    }
+  },
+  "2de55feb-14ce-4cf1-86a5-de95089cceb3": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "5011370c-7919-46c5-8df1-86c5da740dc8@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_lock.png@6c48a",
+    "value": {
+      "depends": [
+        "5011370c-7919-46c5-8df1-86c5da740dc8"
+      ]
+    }
+  },
+  "4553f866-ee58-465c-b683-07d090631f03@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_inRect.png@6c48a",
+    "value": {
+      "depends": [
+        "4553f866-ee58-465c-b683-07d090631f03"
+      ]
+    }
+  },
+  "61a83977-5d00-4591-b9a4-91d018c516c9@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_numbg_rect.png@6c48a",
+    "value": {
+      "depends": [
+        "61a83977-5d00-4591-b9a4-91d018c516c9"
+      ]
+    }
+  },
+  "5011370c-7919-46c5-8df1-86c5da740dc8@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_lock.png@f9941",
+    "value": {
+      "depends": [
+        "5011370c-7919-46c5-8df1-86c5da740dc8@6c48a"
+      ]
+    }
+  },
+  "da12a8df-0f79-4cf1-926a-e723c743fba6": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_rect.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2f1832ab-56ec-4422-bca4-bb461429ca8f@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress1.png@6c48a",
+    "value": {
+      "depends": [
+        "2f1832ab-56ec-4422-bca4-bb461429ca8f"
+      ]
+    }
+  },
+  "4553f866-ee58-465c-b683-07d090631f03@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_inRect.png@f9941",
+    "value": {
+      "depends": [
+        "4553f866-ee58-465c-b683-07d090631f03@6c48a"
+      ]
+    }
+  },
+  "9f531fc9-3258-4970-8453-2f794e760d4c": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_title_bg.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2de55feb-14ce-4cf1-86a5-de95089cceb3@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress2.png@6c48a",
+    "value": {
+      "depends": [
+        "2de55feb-14ce-4cf1-86a5-de95089cceb3"
+      ]
+    }
+  },
+  "61a83977-5d00-4591-b9a4-91d018c516c9@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_numbg_rect.png@f9941",
+    "value": {
+      "depends": [
+        "61a83977-5d00-4591-b9a4-91d018c516c9@6c48a"
+      ]
+    }
+  },
+  "7f7e5a80-704b-4c42-bc77-c8858274055b": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2f1832ab-56ec-4422-bca4-bb461429ca8f@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress1.png@f9941",
+    "value": {
+      "depends": [
+        "2f1832ab-56ec-4422-bca4-bb461429ca8f@6c48a"
+      ]
+    }
+  },
+  "f39f011b-a4d8-46e5-a5cc-4e40aa909ee8": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "2de55feb-14ce-4cf1-86a5-de95089cceb3@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_progress2.png@f9941",
+    "value": {
+      "depends": [
+        "2de55feb-14ce-4cf1-86a5-de95089cceb3@6c48a"
+      ]
+    }
+  },
+  "9f721ab8-19be-466f-a93f-c9be6c965bae": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_qianghua.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "da12a8df-0f79-4cf1-926a-e723c743fba6@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_rect.png@6c48a",
+    "value": {
+      "depends": [
+        "da12a8df-0f79-4cf1-926a-e723c743fba6"
+      ]
+    }
+  },
+  "9f531fc9-3258-4970-8453-2f794e760d4c@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_title_bg.png@6c48a",
+    "value": {
+      "depends": [
+        "9f531fc9-3258-4970-8453-2f794e760d4c"
+      ]
+    }
+  },
+  "9f531fc9-3258-4970-8453-2f794e760d4c@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_title_bg.png@f9941",
+    "value": {
+      "depends": [
+        "9f531fc9-3258-4970-8453-2f794e760d4c@6c48a"
+      ]
+    }
+  },
+  "fc001567-14aa-4dbe-b747-212f9c796237": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "da12a8df-0f79-4cf1-926a-e723c743fba6@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_rect.png@f9941",
+    "value": {
+      "depends": [
+        "da12a8df-0f79-4cf1-926a-e723c743fba6@6c48a"
+      ]
+    }
+  },
+  "84133bfe-373b-41f9-9992-6ee55a806f33": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "7f7e5a80-704b-4c42-bc77-c8858274055b@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu1.png@6c48a",
+    "value": {
+      "depends": [
+        "7f7e5a80-704b-4c42-bc77-c8858274055b"
+      ]
+    }
+  },
+  "f39f011b-a4d8-46e5-a5cc-4e40aa909ee8@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu2.png@6c48a",
+    "value": {
+      "depends": [
+        "f39f011b-a4d8-46e5-a5cc-4e40aa909ee8"
+      ]
+    }
+  },
+  "9f721ab8-19be-466f-a93f-c9be6c965bae@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_qianghua.png@6c48a",
+    "value": {
+      "depends": [
+        "9f721ab8-19be-466f-a93f-c9be6c965bae"
+      ]
+    }
+  },
+  "7f7e5a80-704b-4c42-bc77-c8858274055b@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu1.png@f9941",
+    "value": {
+      "depends": [
+        "7f7e5a80-704b-4c42-bc77-c8858274055b@6c48a"
+      ]
+    }
+  },
+  "8025025c-02b0-4a88-8053-42d7c1dc70e9": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_shangdian.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f39f011b-a4d8-46e5-a5cc-4e40aa909ee8@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_chengjiu2.png@f9941",
+    "value": {
+      "depends": [
+        "f39f011b-a4d8-46e5-a5cc-4e40aa909ee8@6c48a"
+      ]
+    }
+  },
+  "792af89e-a6be-4829-9cf9-9550e5315fb3": {
+    "url": "db://assets/Game/AssetsPackage/img/VIP.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "9f721ab8-19be-466f-a93f-c9be6c965bae@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_qianghua.png@f9941",
+    "value": {
+      "depends": [
+        "9f721ab8-19be-466f-a93f-c9be6c965bae@6c48a"
+      ]
+    }
+  },
+  "8551ccd8-2811-4ebf-9e2c-7e18ce04b63e": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UITest.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "fc001567-14aa-4dbe-b747-212f9c796237@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu1.png@6c48a",
+    "value": {
+      "depends": [
+        "fc001567-14aa-4dbe-b747-212f9c796237"
+      ]
+    }
+  },
+  "fc001567-14aa-4dbe-b747-212f9c796237@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu1.png@f9941",
+    "value": {
+      "depends": [
+        "fc001567-14aa-4dbe-b747-212f9c796237@6c48a"
+      ]
+    }
+  },
+  "6e161480-aaf1-4b8e-a5a7-accb44a27328": {
+    "url": "db://assets/Game/AssetsPackage/texture/num.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "8025025c-02b0-4a88-8053-42d7c1dc70e9@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_shangdian.png@6c48a",
+    "value": {
+      "depends": [
+        "8025025c-02b0-4a88-8053-42d7c1dc70e9"
+      ]
+    }
+  },
+  "84133bfe-373b-41f9-9992-6ee55a806f33@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu2.png@6c48a",
+    "value": {
+      "depends": [
+        "84133bfe-373b-41f9-9992-6ee55a806f33"
+      ]
+    }
+  },
+  "792af89e-a6be-4829-9cf9-9550e5315fb3@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/img/VIP.png@6c48a",
+    "value": {
+      "depends": [
+        "792af89e-a6be-4829-9cf9-9550e5315fb3"
+      ]
+    }
+  },
+  "8025025c-02b0-4a88-8053-42d7c1dc70e9@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_shangdian.png@f9941",
+    "value": {
+      "depends": [
+        "8025025c-02b0-4a88-8053-42d7c1dc70e9@6c48a"
+      ]
+    }
+  },
+  "7d9c0bec-a529-4f42-b05f-1edd160861d6": {
+    "url": "db://assets/Game/AssetsPackage/texture/shadow.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "84133bfe-373b-41f9-9992-6ee55a806f33@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu2.png@f9941",
+    "value": {
+      "depends": [
+        "84133bfe-373b-41f9-9992-6ee55a806f33@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist",
+    "value": {
+      "depends": [
+        "06acf34d-9950-4474-acc0-39fa09aa943b@c30fb",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@c86cc",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@e7223",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@a795c",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@e7d45",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@116ec",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@855b3",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@c959d",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@4ce76",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@d6710",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@6422a",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@cdab0",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@c10f9",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@a8656",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@979f3",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@cb4df",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@7293b",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@6f893",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@1afa4",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@90704",
+        "06acf34d-9950-4474-acc0-39fa09aa943b@303c9"
+      ]
+    }
+  },
+  "eee809a2-e860-41cb-a190-142d03afacf0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "792af89e-a6be-4829-9cf9-9550e5315fb3@f9941": {
+    "url": "db://assets/Game/AssetsPackage/img/VIP.png@f9941",
+    "value": {
+      "depends": [
+        "792af89e-a6be-4829-9cf9-9550e5315fb3@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist",
+    "value": {
+      "depends": [
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c869a",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c30fb",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c86cc",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@e7223",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@a795c",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@e7d45",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@116ec",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@855b3",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c959d",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@4ce76",
+        "57228dba-1cca-49a6-a0e2-8e7a66672b8b@d6710"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@90704": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@90704",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@c30fb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@c30fb",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c869a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@c869a",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "7d9c0bec-a529-4f42-b05f-1edd160861d6@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/texture/shadow.png@6c48a",
+    "value": {
+      "depends": [
+        "7d9c0bec-a529-4f42-b05f-1edd160861d6"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c30fb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@c30fb",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@d6710": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@d6710",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "6e161480-aaf1-4b8e-a5a7-accb44a27328@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/texture/num.png@6c48a",
+    "value": {
+      "depends": [
+        "6e161480-aaf1-4b8e-a5a7-accb44a27328"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@d6710": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@d6710",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@6422a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@6422a",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c86cc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@c86cc",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "7d9c0bec-a529-4f42-b05f-1edd160861d6@f9941": {
+    "url": "db://assets/Game/AssetsPackage/texture/shadow.png@f9941",
+    "value": {
+      "depends": [
+        "7d9c0bec-a529-4f42-b05f-1edd160861d6@6c48a"
+      ]
+    }
+  },
+  "efc72a03-d793-4ea1-bbed-34a48789bc03": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@cdab0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@cdab0",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@e7223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@e7223",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@c10f9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@c10f9",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "eee809a2-e860-41cb-a190-142d03afacf0@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.png@6c48a",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@a795c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@a795c",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@a8656": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@a8656",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@e7d45": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@e7d45",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@979f3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@979f3",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@116ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@116ec",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@cb4df": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@cb4df",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@855b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@855b3",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@7293b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@7293b",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@c959d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@c959d",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@6f893": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@6f893",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "57228dba-1cca-49a6-a0e2-8e7a66672b8b@4ce76": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.plist@4ce76",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "eee809a2-e860-41cb-a190-142d03afacf0@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.png@f9941",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "f662a1f5-9e31-41f3-822e-cea955ea8b5f": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@1afa4": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@1afa4",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist",
+    "value": {
+      "depends": [
+        "d989c417-635e-4aef-8889-ba3aa9abe402@c869a",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@c30fb",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@c86cc",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@e7223",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@a795c",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@e7d45",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@116ec",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@855b3",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@c959d",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@4ce76",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@d6710",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@6422a",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@cdab0",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@c10f9",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@a8656",
+        "d989c417-635e-4aef-8889-ba3aa9abe402@979f3"
+      ]
+    }
+  },
+  "6e161480-aaf1-4b8e-a5a7-accb44a27328@f9941": {
+    "url": "db://assets/Game/AssetsPackage/texture/num.png@f9941",
+    "value": {
+      "depends": [
+        "6e161480-aaf1-4b8e-a5a7-accb44a27328@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@c86cc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@c86cc",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist",
+    "value": {
+      "depends": [
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c869a",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c30fb",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c86cc",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@e7223",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@a795c",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@e7d45",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@116ec",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@855b3",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c959d",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@4ce76",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@d6710",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@6422a",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@cdab0",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c10f9",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@a8656",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@979f3",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@cb4df",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@7293b",
+        "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@6f893"
+      ]
+    }
+  },
+  "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.png@6c48a",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@303c9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@303c9",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@c869a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c869a",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@e7223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@e7223",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "efc72a03-d793-4ea1-bbed-34a48789bc03@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_0.png@f9941",
+    "value": {
+      "depends": [
+        "efc72a03-d793-4ea1-bbed-34a48789bc03@6c48a"
+      ]
+    }
+  },
+  "500c58a7-7307-49d1-84d1-dde7af5219a1": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@c30fb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c30fb",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@a795c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@a795c",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c869a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c869a",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@d6710": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@d6710",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@e7d45": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@e7d45",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c30fb": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c30fb",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@6422a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@6422a",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@116ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@116ec",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.png@6c48a",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@d6710": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@d6710",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@cdab0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@cdab0",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@855b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@855b3",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@6422a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@6422a",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "f662a1f5-9e31-41f3-822e-cea955ea8b5f@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.png@f9941",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "7af184fc-9db6-4fc7-9f54-f04104c7ac06": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/UIGame.prefab",
+    "value": {
+      "depends": [
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e55b3",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f9a1c",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@97834",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdf51",
+        "65aaa013-284f-43bf-85c3-d5015020727f",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7b93",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@513ee",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0383f",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@590c5",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9252d",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0ceef",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@98fdd",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7af70",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ed7f2",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f75ad",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@62eec",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9d072",
+        "fdf9b4ce-f079-40b9-9bd7-4d723e215054@f9941",
+        "ad1a7c03-b051-4b6c-aa59-e600c546a8ac@f9941",
+        "aa90cf7d-1e61-4642-a967-307d841218de@f9941",
+        "d36b76b7-ca08-4e29-a888-8b4e7b31c640@f9941",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0fca4",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@5b3be",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f88d0",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@633a8",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@26147",
+        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7163b",
+        "94ee0681-d94a-4622-9093-b4d05f945435@f9941"
+      ],
+      "dependScripts": []
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@c10f9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c10f9",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@cdab0": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@cdab0",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@c959d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@c959d",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@a8656": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@a8656",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c10f9": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c10f9",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "06acf34d-9950-4474-acc0-39fa09aa943b@4ce76": {
+    "url": "db://assets/Game/AssetsPackage/atlas/block/block-1.plist@4ce76",
+    "value": {
+      "depends": [
+        "eee809a2-e860-41cb-a190-142d03afacf0@6c48a"
+      ]
+    }
+  },
+  "ea247c50-5cc6-46f9-b1ab-d47d94fc93a9": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/bullet.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@979f3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@979f3",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@a8656": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@a8656",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@c86cc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c86cc",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@979f3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@979f3",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@e7223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@e7223",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@cb4df": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@cb4df",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@a795c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@a795c",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "b2a278d6-7b9b-4e39-8017-907563d25853": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/cannon.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@7293b": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@7293b",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "ce5325af-42d7-4f90-88d2-089fe3cf6a46": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/deadEffect.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@e7d45": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@e7d45",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@6f893": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@6f893",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@116ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@116ec",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c86cc": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c86cc",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@855b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@855b3",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@e7223": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@e7223",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "f1be48a5-b1b9-44b3-ad7d-5323a3db79bb": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster0.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@c959d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c959d",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@a795c": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@a795c",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "d989c417-635e-4aef-8889-ba3aa9abe402@4ce76": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@4ce76",
+    "value": {
+      "depends": [
+        "f662a1f5-9e31-41f3-822e-cea955ea8b5f@6c48a"
+      ]
+    }
+  },
+  "d397f6b6-987e-46e2-9773-0d1ea071f964": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster1.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@e7d45": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@e7d45",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.png@6c48a",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@116ec": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@116ec",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@855b3": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@855b3",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "dc8baa06-dc8c-44f0-b584-fd4f775ca352": {
+    "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster2.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c959d": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c959d",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@4ce76": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@4ce76",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
+  },
+  "500c58a7-7307-49d1-84d1-dde7af5219a1@f9941": {
+    "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.png@f9941",
+    "value": {
+      "depends": [
+        "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
+      ]
+    }
   }
 }

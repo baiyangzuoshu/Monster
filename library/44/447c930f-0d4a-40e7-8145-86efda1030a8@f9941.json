@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "attackScope",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 239,
+      "height": 38
+    },
+    "offset": {
+      "x": 0,
+      "y": 0.5
+    },
+    "originalSize": {
+      "width": 239,
+      "height": 39
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -119.5,
+        -19,
+        0,
+        119.5,
+        -19,
+        0,
+        -119.5,
+        19,
+        0,
+        119.5,
+        19,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        39,
+        239,
+        39,
+        0,
+        1,
+        239,
+        1
+      ],
+      "nuv": [
+        0,
+        0.02564102564102564,
+        1,
+        0.02564102564102564,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -119.5,
+        "y": -19,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 119.5,
+        "y": 19,
+        "z": 0
+      }
+    },
+    "texture": "447c930f-0d4a-40e7-8145-86efda1030a8@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

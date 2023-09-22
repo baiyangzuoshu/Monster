@@ -97,6 +97,42 @@
     ],
     "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\model\\helloWorld\\soldier.FBX@f3caa": [
       "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\model\\helloWorld\\soldier.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\map.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\map.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\deadEffect.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\deadEffect.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\gun.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\gun.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\pad.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\pad.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\gameUI.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\gameUI.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\font\\Name-export.fnt": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\font\\Name-export.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\bullet.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\bullet.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\block\\block-1.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\block\\block-1.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_0.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_0.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_1.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_1.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\img\\gameUI.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\img\\gameUI.png"
+    ],
+    "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_2.plist": [
+      "D:\\work\\Monster\\assets\\Game\\AssetsPackage\\atlas\\monster\\monster_2.png"
     ]
   }
 }

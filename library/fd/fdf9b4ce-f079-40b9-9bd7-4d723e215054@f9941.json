@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ui_coin_rect",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 50,
+      "height": 46
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 50,
+      "height": 46
+    },
+    "rotated": false,
+    "capInsets": [
+      17,
+      6,
+      16,
+      7
+    ],
+    "vertices": {
+      "rawPosition": [
+        -25,
+        -23,
+        0,
+        25,
+        -23,
+        0,
+        -25,
+        23,
+        0,
+        25,
+        23,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        46,
+        50,
+        46,
+        0,
+        0,
+        50,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -25,
+        "y": -23,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 25,
+        "y": 23,
+        "z": 0
+      }
+    },
+    "texture": "fdf9b4ce-f079-40b9-9bd7-4d723e215054@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

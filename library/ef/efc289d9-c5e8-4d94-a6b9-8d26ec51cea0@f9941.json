@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "auto_merge_grid",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 11,
+      "height": 10
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 11,
+      "height": 10
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -5.5,
+        -5,
+        0,
+        5.5,
+        -5,
+        0,
+        -5.5,
+        5,
+        0,
+        5.5,
+        5,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        10,
+        11,
+        10,
+        0,
+        0,
+        11,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -5.5,
+        "y": -5,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 5.5,
+        "y": 5,
+        "z": 0
+      }
+    },
+    "texture": "efc289d9-c5e8-4d94-a6b9-8d26ec51cea0@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}
