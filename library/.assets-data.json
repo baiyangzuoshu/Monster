@@ -4933,7 +4933,7 @@
     }
   },
   "0fa779c1-db11-4716-8bfe-3d963e3c3075": {
-    "url": "db://assets/Game/AssetsPackage/data/bullet.json",
+    "url": "db://assets/Game/AssetsPackage/Datas/bullet.json",
     "value": {
       "depends": []
     }
@@ -4979,7 +4979,7 @@
     }
   },
   "1e67c0b0-b418-4f29-8b6c-4af328ddbb4c": {
-    "url": "db://assets/Game/AssetsPackage/data/mapData.json",
+    "url": "db://assets/Game/AssetsPackage/Datas/mapData.json",
     "value": {
       "depends": []
     }
@@ -5009,7 +5009,7 @@
     }
   },
   "0b34de15-09fb-4d33-99cd-15eeae4805ac": {
-    "url": "db://assets/Game/AssetsPackage/data/monster.json",
+    "url": "db://assets/Game/AssetsPackage/Datas/monster.json",
     "value": {
       "depends": []
     }
@@ -5047,7 +5047,7 @@
     }
   },
   "e740f398-2cb5-438e-8e1e-a3d093320e36": {
-    "url": "db://assets/Game/AssetsPackage/data/task.json",
+    "url": "db://assets/Game/AssetsPackage/Datas/task.json",
     "value": {
       "depends": []
     }
@@ -7792,10 +7792,7 @@
   },
   "8551ccd8-2811-4ebf-9e2c-7e18ce04b63e": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UITest.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "fc001567-14aa-4dbe-b747-212f9c796237@6c48a": {
     "url": "db://assets/Game/AssetsPackage/img/ui_win_txt_renwu1.png@6c48a",
@@ -8386,39 +8383,7 @@
   },
   "7af184fc-9db6-4fc7-9f54-f04104c7ac06": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/UIGame.prefab",
-    "value": {
-      "depends": [
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@e55b3",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f9a1c",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@97834",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@fdf51",
-        "65aaa013-284f-43bf-85c3-d5015020727f",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@d7b93",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@513ee",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0383f",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@590c5",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9252d",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0ceef",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@98fdd",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7af70",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@ed7f2",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f75ad",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@62eec",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@9d072",
-        "fdf9b4ce-f079-40b9-9bd7-4d723e215054@f9941",
-        "ad1a7c03-b051-4b6c-aa59-e600c546a8ac@f9941",
-        "aa90cf7d-1e61-4642-a967-307d841218de@f9941",
-        "d36b76b7-ca08-4e29-a888-8b4e7b31c640@f9941",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@0fca4",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@5b3be",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@f88d0",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@633a8",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@26147",
-        "f4a200d4-df7c-4c5a-bf55-35491c7ba040@7163b",
-        "94ee0681-d94a-4622-9093-b4d05f945435@f9941"
-      ],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "d989c417-635e-4aef-8889-ba3aa9abe402@c10f9": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c10f9",
@@ -8470,10 +8435,7 @@
   },
   "ea247c50-5cc6-46f9-b1ab-d47d94fc93a9": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/bullet.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "d989c417-635e-4aef-8889-ba3aa9abe402@979f3": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@979f3",
@@ -8533,10 +8495,7 @@
   },
   "b2a278d6-7b9b-4e39-8017-907563d25853": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/cannon.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@7293b": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@7293b",
@@ -8548,10 +8507,7 @@
   },
   "ce5325af-42d7-4f90-88d2-089fe3cf6a46": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/deadEffect.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "d989c417-635e-4aef-8889-ba3aa9abe402@e7d45": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@e7d45",
@@ -8603,10 +8559,7 @@
   },
   "f1be48a5-b1b9-44b3-ad7d-5323a3db79bb": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster0.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "d989c417-635e-4aef-8889-ba3aa9abe402@c959d": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_1.plist@c959d",
@@ -8634,10 +8587,7 @@
   },
   "d397f6b6-987e-46e2-9773-0d1ea071f964": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster1.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@e7d45": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@e7d45",
@@ -8673,10 +8623,7 @@
   },
   "dc8baa06-dc8c-44f0-b584-fd4f775ca352": {
     "url": "db://assets/Game/AssetsPackage/prefabs/UI/item/monster2.prefab",
-    "value": {
-      "depends": [],
-      "dependScripts": []
-    }
+    "value": {}
   },
   "0ffd4c17-0f19-4dc9-87d0-9a40097c37f6@c959d": {
     "url": "db://assets/Game/AssetsPackage/atlas/monster/monster_2.plist@c959d",
@@ -8700,6 +8647,18 @@
       "depends": [
         "500c58a7-7307-49d1-84d1-dde7af5219a1@6c48a"
       ]
+    }
+  },
+  "80148ed8-eda6-46bb-bbd2-3305d046ff19": {
+    "url": "db://assets/Game/AssetsPackage/Scenes/monster.scene",
+    "value": {
+      "depends": [
+        "80148ed8-eda6-46bb-bbd2-3305d046ff19",
+        "94ee0681-d94a-4622-9093-b4d05f945435@f9941",
+        "d032ac98-05e1-4090-88bb-eb640dcb5fc1@b47c0",
+        "6f01cf7f-81bf-4a7e-bd5d-0afc19696480@b47c0"
+      ],
+      "dependScripts": []
     }
   }
 }
