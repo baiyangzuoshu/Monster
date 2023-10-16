@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ui_win_txt_renwu2",
+    "texture": "e84666b5-3563-48fe-8451-4e235a2db16b",
+    "atlas": "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0",
+    "rect": [
+      675,
+      1073,
+      217,
+      155
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      217,
+      157
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

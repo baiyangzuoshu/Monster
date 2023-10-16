@@ -1,0 +1,83 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "deadEffect.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "ani_enemy_die_1": {
+      "__uuid__": "e5226470-e660-4075-8b47-cf035826cb6e"
+    },
+    "ani_enemy_die_10": {
+      "__uuid__": "18f5e630-bab6-4468-8412-469e96c5537c"
+    },
+    "ani_enemy_die_11": {
+      "__uuid__": "23a441c2-6598-4b5e-9746-3a55c63b435e"
+    },
+    "ani_enemy_die_12": {
+      "__uuid__": "df59417c-ada6-419c-a48e-f69cf466bc4a"
+    },
+    "ani_enemy_die_13": {
+      "__uuid__": "91415067-e06f-4572-8965-f81e0dc7f20d"
+    },
+    "ani_enemy_die_14": {
+      "__uuid__": "19e706bf-5395-4d4d-b128-e018c4a86f83"
+    },
+    "ani_enemy_die_15": {
+      "__uuid__": "652e04ee-b88c-49c9-a949-94a332e0fb98"
+    },
+    "ani_enemy_die_16": {
+      "__uuid__": "9b1e1432-678a-483b-a77a-a188d6f1c8ca"
+    },
+    "ani_enemy_die_17": {
+      "__uuid__": "8c60f39b-989d-451f-bc5e-cd2cae070bfe"
+    },
+    "ani_enemy_die_18": {
+      "__uuid__": "6d438b66-1843-483c-81a6-187c5da536c9"
+    },
+    "ani_enemy_die_19": {
+      "__uuid__": "03e1c235-d1d4-4f69-8ceb-f2bc1fc6d7c2"
+    },
+    "ani_enemy_die_2": {
+      "__uuid__": "38949eb9-de1f-4a7a-b9f7-2f0b5ae8909d"
+    },
+    "ani_enemy_die_20": {
+      "__uuid__": "15e6ad1b-5fb7-40d4-bf73-599713ba8b28"
+    },
+    "ani_enemy_die_21": {
+      "__uuid__": "e76da55f-522e-4b41-8b00-ab7029ffebbb"
+    },
+    "ani_enemy_die_22": {
+      "__uuid__": "7c8d62b4-7181-461c-bd19-0972a205e894"
+    },
+    "ani_enemy_die_23": {
+      "__uuid__": "fca43a20-b613-4478-aaa7-5289783782de"
+    },
+    "ani_enemy_die_24": {
+      "__uuid__": "788ca86d-e325-4750-a217-84328174e49b"
+    },
+    "ani_enemy_die_25": {
+      "__uuid__": "9709dca7-5d2c-46b4-b4bc-6253057c72bd"
+    },
+    "ani_enemy_die_3": {
+      "__uuid__": "44d745cc-15c1-47e2-b6b4-c13c42a04d2a"
+    },
+    "ani_enemy_die_4": {
+      "__uuid__": "ab360fef-137f-454c-bf15-7bb776074c2d"
+    },
+    "ani_enemy_die_5": {
+      "__uuid__": "04c91053-7d22-47f3-8933-aba2d567d899"
+    },
+    "ani_enemy_die_6": {
+      "__uuid__": "ee310ea2-3364-4072-8fb8-0550ca4dc5cd"
+    },
+    "ani_enemy_die_7": {
+      "__uuid__": "f839f5e3-9f41-46bb-903e-3e65e68befc0"
+    },
+    "ani_enemy_die_8": {
+      "__uuid__": "a381b754-6748-4ba7-9a1f-838ff9e258cd"
+    },
+    "ani_enemy_die_9": {
+      "__uuid__": "5af33a79-1524-4495-8f98-3d52dbe2f84a"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ui_reclaim_tips",
+    "texture": "e84666b5-3563-48fe-8451-4e235a2db16b",
+    "atlas": "f11d9f6e-b71f-4d47-b5ad-dc64434f34d0",
+    "rect": [
+      609,
+      633,
+      268,
+      64
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      268,
+      64
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

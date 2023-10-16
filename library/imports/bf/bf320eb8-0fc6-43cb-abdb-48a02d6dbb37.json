@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bullet_dj_h_5",
+    "texture": "76f9b3f2-2d74-460d-8689-cdb54b6a70ad",
+    "atlas": "a1b134b7-2391-4674-bf5c-03f9978c757d",
+    "rect": [
+      302,
+      400,
+      94,
+      113
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      94,
+      113
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

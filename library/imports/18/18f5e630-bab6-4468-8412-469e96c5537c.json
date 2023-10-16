@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ani_enemy_die_10",
+    "texture": "ffa19fcc-4bd5-4d9c-9db9-1874292ab8b6",
+    "atlas": "e3bde0a0-9564-4399-bd55-4a170f91fb32",
+    "rect": [
+      100,
+      2,
+      85,
+      72
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      85,
+      72
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
