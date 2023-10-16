@@ -28,7 +28,7 @@
   ],
   "preview-port": 7456,
   "design-resolution-width": 640,
-  "design-resolution-height": 1280,
+  "design-resolution-height": 1380,
   "fit-width": true,
   "fit-height": false,
   "use-project-simulator-setting": false,
@@ -48,5 +48,6 @@
     "audience": {
       "enable": false
     }
-  }
+  },
+  "start-scene": "fe1f13d8-9d24-4d68-9469-93176adea635"
 }

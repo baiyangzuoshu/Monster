@@ -31,8 +31,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var EventManager_1 = require("../FrameWork/manager/EventManager");
 var ExcelManager_1 = require("../FrameWork/manager/ExcelManager");
-var FGUIManager_1 = require("../FrameWork/manager/FGUIManager");
 var ResManager_1 = require("../FrameWork/manager/ResManager");
+var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
 var UIManager_1 = require("../FrameWork/manager/UIManager");
 var GameApp_1 = require("./GameApp");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -44,13 +44,11 @@ var GameLanch = /** @class */ (function (_super) {
     // LIFE-CYCLE CALLBACKS:
     GameLanch.prototype.onLoad = function () {
         //框架
-        this.addComponent(FGUIManager_1.default);
         this.addComponent(ExcelManager_1.ExcelManager);
-        //this.addComponent(NetWebsocketManager)
         this.addComponent(EventManager_1.EventManager);
         this.addComponent(ResManager_1.ResManager);
         this.addComponent(UIManager_1.UIManager);
-        //this.addComponent(NetEventManager)
+        this.addComponent(ResManagerPro_1.ResManagerPro);
         //游戏
         this.addComponent(GameApp_1.default);
     };

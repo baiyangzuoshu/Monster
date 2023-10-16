@@ -5,12 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
-import { EventManager } from "../FrameWork/manager/EventManager";
 import { ResManager } from "../FrameWork/manager/ResManager";
-import { UIManager } from "../FrameWork/manager/UIManager";
-import Cmd from "./Cmd";
-import Enum from "./Enum";
-import Stype from "./Stype";
+import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
 
 const {ccclass, property} = cc._decorator;
 
@@ -19,6 +15,7 @@ export default class GameApp extends cc.Component {
     private static _instance:GameApp=null
     private canvas:cc.Node=null
     private progressBar:cc.ProgressBar=null
+    private Loading:cc.Node=null
     // LIFE-CYCLE CALLBACKS:
 
     public static getInstance():GameApp{
@@ -26,31 +23,19 @@ export default class GameApp extends cc.Component {
     }
 
     public enterGame():void{
-        UIManager.getInstance().showUI("Login",this.canvas)
+        
     }
 
-    public startGame():void{
-        //加载资源
-        let pkg={
-            "prefabs":cc.Prefab,
-            "img":cc.SpriteFrame,
-            "Sounds":cc.AudioClip,
-            "data":cc.TextAsset,
-            "proto":cc.TextAsset,
-            "UI":cc.BufferAsset
-            //"UI":[{assetType:cc.BufferAsset,urls:["Bag"]},{assetType:cc.SpriteFrame,urls:["Bag_atlas0"]}],
-        }
-        this.progressBar.progress=0
-        ResManager.getInstance().parsePkg(pkg,(cur,total)=>{
-            console.log("cur total",cur,total)
-            this.progressBar.progress=cur*1.0/total
-        },()=>{
-            console.log("end")
-            //加载游戏
-            this.progressBar.node.active=false
-
-            this.enterGame()
-        })
+    public async startGame(){
+        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data",cc.JsonAsset);
+        this.progressBar.progress=0.3;
+        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture",cc.SpriteFrame);
+        this.progressBar.progress=0.5;
+        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds",cc.AudioClip);
+        this.progressBar.progress=0.8;
+        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs",cc.Prefab);
+        this.progressBar.progress=1;
+        this.Loading.active=false;
     }
 
     onLoad () {
@@ -63,29 +48,9 @@ export default class GameApp extends cc.Component {
         }
 
         this.canvas=cc.find("Canvas")
-        this.progressBar=this.canvas.getChildByName("ProgressBar").getComponent(cc.ProgressBar)
+        this.Loading=this.canvas.getChildByName("Loading");
+        this.progressBar=this.Loading.getChildByName("myProgressBar").getComponent(cc.ProgressBar)
         this.progressBar.progress=0
-
-        this.node.on(cc.Node.EventType.TOUCH_START,this.touchStart,this,true)
-        this.node.on(cc.Node.EventType.TOUCH_MOVE,this.touchMoved,this,true)
-        this.node.on(cc.Node.EventType.TOUCH_END,this.touchEnded,this,true)
-        this.node.on(cc.Node.EventType.TOUCH_CANCEL,this.touchCancel,this,true)
-    }
-
-    touchStart(e:cc.Event.EventTouch):void{
-        EventManager.getInstance().emit(Enum.EventName.TouchStart,e)
-    }
-
-    touchMoved(e:cc.Event.EventTouch):void{
-        EventManager.getInstance().emit(Enum.EventName.TouchMoved,e)
-    }
-
-    touchEnded(e:cc.Event.EventTouch):void{
-        EventManager.getInstance().emit(Enum.EventName.TouchEnded,e)
-    }
-
-    touchCancel(e:cc.Event.EventTouch):void{
-        EventManager.getInstance().emit(Enum.EventName.TouchCancel,e)
     }
 
     start () {
