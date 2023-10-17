@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
+var MapDataManager_1 = require("./Manager/MapDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameApp = /** @class */ (function (_super) {
     __extends(GameApp, _super);
@@ -86,13 +87,14 @@ var GameApp = /** @class */ (function (_super) {
     };
     GameApp.prototype.startGame = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var blockMapData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data", cc.JsonAsset)];
                     case 1:
                         _a.sent();
                         this.progressBar.progress = 0.3;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteFrame)];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteAtlas)];
                     case 2:
                         _a.sent();
                         this.progressBar.progress = 0.5;
@@ -102,6 +104,13 @@ var GameApp = /** @class */ (function (_super) {
                         this.progressBar.progress = 0.8;
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs", cc.Prefab)];
                     case 4:
+                        _a.sent();
+                        return [4 /*yield*/, MapDataManager_1.default.getInstance().loadData()];
+                    case 5:
+                        _a.sent();
+                        blockMapData = MapDataManager_1.default.getInstance().getCurBlockData();
+                        return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
+                    case 6:
                         _a.sent();
                         this.progressBar.progress = 1;
                         this.Loading.active = false;

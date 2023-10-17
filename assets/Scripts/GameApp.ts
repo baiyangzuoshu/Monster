@@ -5,8 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
-import { ResManager } from "../FrameWork/manager/ResManager";
 import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
+import MapDataManager from "./Manager/MapDataManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -29,11 +29,16 @@ export default class GameApp extends cc.Component {
     public async startGame(){
         await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data",cc.JsonAsset);
         this.progressBar.progress=0.3;
-        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture",cc.SpriteFrame);
+        await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture",cc.SpriteAtlas);
         this.progressBar.progress=0.5;
         await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds",cc.AudioClip);
         this.progressBar.progress=0.8;
         await ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs",cc.Prefab);
+        
+        await MapDataManager.getInstance().loadData();
+        var blockMapData= MapDataManager.getInstance().getCurBlockData();
+        await MapDataManager.getInstance().buildBlockMap(0,blockMapData);
+
         this.progressBar.progress=1;
         this.Loading.active=false;
     }

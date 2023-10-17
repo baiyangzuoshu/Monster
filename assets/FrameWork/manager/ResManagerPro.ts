@@ -29,22 +29,22 @@ export class ResManagerPro extends cc.Component {
 
     public async Init() {
         // 测试代码
-        cc.assetManager.loadBundle("Scenes", (err, bundle: cc.AssetManager.Bundle)=>{
-            if(err) {
-                console.log(err);
-                return;
-            }
+        // cc.assetManager.loadBundle("Scenes", (err, bundle: cc.AssetManager.Bundle)=>{
+        //     if(err) {
+        //         console.log(err);
+        //         return;
+        //     }
 
-            console.log(bundle);
-            var infos = bundle.getDirWithPath("", cc.SceneAsset);
-            console.log(infos)
-        });
+        //     console.log(bundle);
+        //     var infos = bundle.getDirWithPath("", cc.SceneAsset);
+        //     console.log(infos)
+        // });
 
-        var bundle = await this.IE_LoadBundle("Sounds"); 
-        console.log(bundle);
+        // var bundle = await this.IE_LoadBundle("Sounds"); 
+        // console.log(bundle);
 
-        var textData: cc.TextAsset = await this.IE_GetAsset("data", "map", cc.TextAsset) as any; 
-        console.log(textData.text);
+        // var textData: cc.TextAsset = await this.IE_GetAsset("data", "map", cc.TextAsset) as any; 
+        // console.log(textData.text);
     }
 
     private async IE_LoadAllAssetsInBundle(bundle: cc.AssetManager.Bundle, assetType) {
@@ -114,32 +114,19 @@ export class ResManagerPro extends cc.Component {
         return sceneData;
     }
 
-    public TryGetAsset(bundleName: string, assetPath: string) {
-        var bundle: cc.AssetManager.Bundle = cc.assetManager.getBundle(bundleName);
-        if(bundle === null) {
-            return null;
-        }
-
-        var assetData = bundle.get(assetPath);
-        /*if(!assetData) {
-            console.log("null ", assetPath);
-        }*/
-        return assetData;
-    }
-
     public async IE_GetAsset(bundleName: string, assetPath: string, assetType) {
         var bundle: cc.AssetManager.Bundle = cc.assetManager.getBundle(bundleName);
         if(bundle === null) {
             bundle = await this.IE_LoadBundle(bundleName) as any;
             if(bundle === null) {
-                // console.log("bundle load err: " + bundleName);
+                console.log("bundle load err: " + bundleName);
                 return;
             }
         }
-
-        var assetData = bundle.get(assetPath);
+        
+        var assetData = bundle.get(assetPath,assetType);
         if(assetData) {
-            return assetData; // 修改了没有返回资源的bug
+            return assetData; 
         }
 
         assetData = await this.IE_LoadAssetInBundle(bundle, assetPath, assetType) as any;
@@ -151,7 +138,7 @@ export class ResManagerPro extends cc.Component {
     }
 
     public ReleaseAllAssetInBundle(bundleName): void {
-        var bundle: cc.AssetManager.Bundle = cc.assetManager.getBundle("bundleName");
+        var bundle: cc.AssetManager.Bundle = cc.assetManager.getBundle(bundleName);
         if(bundle === null) {
             return;
         }

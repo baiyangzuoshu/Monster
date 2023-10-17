@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "87ac415e-2d3e-48fb-8800-56191a30be55": {
-    "asset": 1697461836325,
-    "meta": 1697462453001,
+    "asset": 1697463602873,
+    "meta": 1697524419799,
     "relativePath": "AssetsPackge"
   },
   "730eb07e-0fbe-4ade-9133-b25b3bfcd501": {
@@ -510,8 +510,8 @@
     "relativePath": "FrameWork"
   },
   "9d80f005-fed2-473e-9876-e160c53b2b88": {
-    "asset": 1697462482102,
-    "meta": 1697463347414,
+    "asset": 1697503383042,
+    "meta": 1697524419800,
     "relativePath": "Scripts"
   },
   "cf6f0b88-c177-4e01-8e27-49481e5624bf": {
@@ -1060,23 +1060,33 @@
     "relativePath": "FrameWork\\manager\\ResManager.ts"
   },
   "8c1d6d70-c113-4590-b303-17c9eb0b6a70": {
-    "asset": 1697461943401,
-    "meta": 1697462453001,
+    "asset": 1697463609428,
+    "meta": 1697524419800,
     "relativePath": "Boot"
   },
+  "27264197-5450-443a-b753-6f6cb2b3b945": {
+    "asset": 1697503404753,
+    "meta": 1697524419801,
+    "relativePath": "Scripts\\Manager"
+  },
   "57934dbd-030f-43e0-9bae-1c5c4747e414": {
-    "asset": 1697463062218,
-    "meta": 1697463082884,
+    "asset": 1697503522966,
+    "meta": 1697503619544,
     "relativePath": "Scripts\\GameLanch .ts"
   },
   "38b6db20-0ed4-4ec3-83b2-7df63441150b": {
-    "asset": 1697463115241,
-    "meta": 1697463119013,
+    "asset": 1697526044399,
+    "meta": 1697526079502,
     "relativePath": "FrameWork\\manager\\ResManagerPro.ts"
   },
   "62a39722-88f7-4e35-9aa4-fedd33a3c3c7": {
-    "asset": 1697464043017,
-    "meta": 1697464044276,
+    "asset": 1697526018531,
+    "meta": 1697526079524,
     "relativePath": "Scripts\\GameApp.ts"
+  },
+  "19b048ab-831f-4277-b5ea-42a711c2217b": {
+    "asset": 1697525982671,
+    "meta": 1697526079557,
+    "relativePath": "Scripts\\Manager\\MapDataManager.ts"
   }
 }

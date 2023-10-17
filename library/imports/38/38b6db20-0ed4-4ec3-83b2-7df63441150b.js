@@ -87,30 +87,8 @@ var ResManagerPro = /** @class */ (function (_super) {
     };
     ResManagerPro.prototype.Init = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var bundle, textData;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        // 测试代码
-                        cc.assetManager.loadBundle("Scenes", function (err, bundle) {
-                            if (err) {
-                                console.log(err);
-                                return;
-                            }
-                            console.log(bundle);
-                            var infos = bundle.getDirWithPath("", cc.SceneAsset);
-                            console.log(infos);
-                        });
-                        return [4 /*yield*/, this.IE_LoadBundle("Sounds")];
-                    case 1:
-                        bundle = _a.sent();
-                        console.log(bundle);
-                        return [4 /*yield*/, this.IE_GetAsset("data", "map", cc.TextAsset)];
-                    case 2:
-                        textData = _a.sent();
-                        console.log(textData.text);
-                        return [2 /*return*/];
-                }
+                return [2 /*return*/];
             });
         });
     };
@@ -209,17 +187,6 @@ var ResManagerPro = /** @class */ (function (_super) {
             });
         });
     };
-    ResManagerPro.prototype.TryGetAsset = function (bundleName, assetPath) {
-        var bundle = cc.assetManager.getBundle(bundleName);
-        if (bundle === null) {
-            return null;
-        }
-        var assetData = bundle.get(assetPath);
-        /*if(!assetData) {
-            console.log("null ", assetPath);
-        }*/
-        return assetData;
-    };
     ResManagerPro.prototype.IE_GetAsset = function (bundleName, assetPath, assetType) {
         return __awaiter(this, void 0, void 0, function () {
             var bundle, assetData;
@@ -232,14 +199,14 @@ var ResManagerPro = /** @class */ (function (_super) {
                     case 1:
                         bundle = (_a.sent());
                         if (bundle === null) {
-                            // console.log("bundle load err: " + bundleName);
+                            console.log("bundle load err: " + bundleName);
                             return [2 /*return*/];
                         }
                         _a.label = 2;
                     case 2:
-                        assetData = bundle.get(assetPath);
+                        assetData = bundle.get(assetPath, assetType);
                         if (assetData) {
-                            return [2 /*return*/, assetData]; // 修改了没有返回资源的bug
+                            return [2 /*return*/, assetData];
                         }
                         return [4 /*yield*/, this.IE_LoadAssetInBundle(bundle, assetPath, assetType)];
                     case 3:
@@ -253,7 +220,7 @@ var ResManagerPro = /** @class */ (function (_super) {
         cc.assetManager.releaseAsset(assetData);
     };
     ResManagerPro.prototype.ReleaseAllAssetInBundle = function (bundleName) {
-        var bundle = cc.assetManager.getBundle("bundleName");
+        var bundle = cc.assetManager.getBundle(bundleName);
         if (bundle === null) {
             return;
         }

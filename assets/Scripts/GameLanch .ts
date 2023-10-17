@@ -11,6 +11,7 @@ import { ResManager } from "../FrameWork/manager/ResManager";
 import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
 import { UIManager } from "../FrameWork/manager/UIManager";
 import GameApp from "./GameApp";
+import MapDataManager from "./Manager/MapDataManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -28,6 +29,7 @@ export default class GameLanch extends cc.Component {
          this.addComponent(ResManagerPro)
          //游戏
          this.addComponent(GameApp)
+         this.addComponent(MapDataManager)
     }
 
     start () {
