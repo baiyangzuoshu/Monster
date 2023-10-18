@@ -7,6 +7,7 @@
 
 import ECSFactory from "./ECSFactory";
 import MonsterEntity from "./Entities/MonsterEntity";
+import AnimateSystem from "./Systems/AnimateSystem";
 import NavSystem from "./Systems/NavSystem";
 
 const {ccclass, property} = cc._decorator;
@@ -42,8 +43,16 @@ export default class ECSManager extends cc.Component {
         }
     }
 
+    animateSystemMonster(dt:number){
+        for(let i=0;i<this.monsters.length;i++){
+            AnimateSystem.getInstance().onUpdate(dt,this.monsters[i].baseComponent,this.monsters[i].roleComponent,this.monsters[i].animateComponent);
+        }
+    }
+
     protected update(dt: number): void {
         //怪物行走
         this.navSystemMonster(dt);
+        //怪物动画
+        this.animateSystemMonster(dt);
     }
 }

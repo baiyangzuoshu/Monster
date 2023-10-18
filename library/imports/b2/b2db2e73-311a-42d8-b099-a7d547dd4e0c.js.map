@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\Scripts\\ECS\\Components\\AnimateComponent.ts"],"names":[],"mappings":";;;;;;AACA;IAAA;QACW,mBAAc,GAAQ,CAAC,CAAC;IACnC,CAAC;IAAD,uBAAC;AAAD,CAFA,AAEC,IAAA","file":"","sourceRoot":"/","sourcesContent":["\nexport default class AnimateComponent {\n    public playActionTime:number=0;    \n}\n"]}

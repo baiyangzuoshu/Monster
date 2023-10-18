@@ -1114,11 +1114,6 @@
     "meta": 1697536080879,
     "relativePath": "Scripts\\ECS\\Components\\TransformComponent.ts"
   },
-  "d0f1b167-7db7-4c4c-9428-5976d6a3aa79": {
-    "asset": 1697536250712,
-    "meta": 1697538496752,
-    "relativePath": "Scripts\\ECS\\Entities\\MonsterEntity.ts"
-  },
   "6a33831e-8ee1-4009-9386-5a755d57d60b": {
     "asset": 1697544212236,
     "meta": 1697544385960,
@@ -1154,34 +1149,54 @@
     "meta": 1697607980337,
     "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
   },
-  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
-    "asset": 1697607434650,
-    "meta": 1697607980359,
-    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
-  },
-  "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1697607892295,
-    "meta": 1697607980375,
-    "relativePath": "Scripts\\ECS\\ECSManager.ts"
-  },
-  "93c76cf2-e496-4bfd-9e75-58fe7c8aa1b3": {
-    "asset": 1697608497235,
-    "meta": 1697608602615,
-    "relativePath": "Scripts\\ECS\\Components\\NavComponent.ts"
-  },
-  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
-    "asset": 1697608910436,
-    "meta": 1697609026243,
-    "relativePath": "Scripts\\GameLanch .ts"
-  },
   "edaf096f-8e59-4ce7-9fa7-387bbc457458": {
     "asset": 1697609408241,
     "meta": 1697609411407,
     "relativePath": "Scripts\\ECS\\EntityUtils.ts"
   },
+  "93c76cf2-e496-4bfd-9e75-58fe7c8aa1b3": {
+    "asset": 1697614216963,
+    "meta": 1697614377160,
+    "relativePath": "Scripts\\ECS\\Components\\NavComponent.ts"
+  },
   "719f991c-595b-49ec-bfed-45b7d5328aba": {
-    "asset": 1697609707464,
-    "meta": 1697609716829,
+    "asset": 1697609810956,
+    "meta": 1697614377177,
     "relativePath": "Scripts\\ECS\\Systems\\NavSystem.ts"
+  },
+  "d60c8845-3f6a-48ae-bd7c-ec26448fdb07": {
+    "asset": 1697615406660,
+    "meta": 1697616392893,
+    "relativePath": "Scripts\\ECS\\Components\\RoleComponent.ts"
+  },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1697615480676,
+    "meta": 1697616392918,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "b2db2e73-311a-42d8-b099-a7d547dd4e0c": {
+    "asset": 1697616598126,
+    "meta": 1697616875659,
+    "relativePath": "Scripts\\ECS\\Components\\AnimateComponent.ts"
+  },
+  "8c250f92-185a-467f-9793-3d4628370175": {
+    "asset": 1697616874533,
+    "meta": 1697616875676,
+    "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "d0f1b167-7db7-4c4c-9428-5976d6a3aa79": {
+    "asset": 1697616857546,
+    "meta": 1697616875685,
+    "relativePath": "Scripts\\ECS\\Entities\\MonsterEntity.ts"
+  },
+  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
+    "asset": 1697616737846,
+    "meta": 1697616875711,
+    "relativePath": "Scripts\\GameLanch .ts"
+  },
+  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
+    "asset": 1697616916846,
+    "meta": 1697616952217,
+    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
   }
 }

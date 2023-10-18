@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '719f9kcWVtJ7L/tRbfVMoq6', 'NavSystem');
-// Scripts/ECS/Systems/NavSystem.ts
+cc._RF.push(module, 'f77bdQkyfVMPY5VSB6JiuT/', 'AnimateSystem');
+// Scripts/ECS/Systems/AnimateSystem.ts
 
 "use strict";
 // Learn TypeScript:
@@ -29,56 +29,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var EntityUtils_1 = require("../EntityUtils");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NavSystem = /** @class */ (function (_super) {
-    __extends(NavSystem, _super);
-    function NavSystem() {
+var AnimateSystem = /** @class */ (function (_super) {
+    __extends(AnimateSystem, _super);
+    function AnimateSystem() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    NavSystem_1 = NavSystem;
-    NavSystem.getInstance = function () {
-        return NavSystem_1._instance;
+    AnimateSystem_1 = AnimateSystem;
+    AnimateSystem.getInstance = function () {
+        return AnimateSystem_1._instance;
     };
-    NavSystem.prototype.onLoad = function () {
-        if (null === NavSystem_1._instance) {
-            NavSystem_1._instance = this;
+    AnimateSystem.prototype.onLoad = function () {
+        if (null === AnimateSystem_1._instance) {
+            AnimateSystem_1._instance = this;
         }
         else {
             this.destroy();
             return;
         }
     };
-    NavSystem.prototype.onUpdate = function (dt, navComponent, baseComponent, transformComponent) {
-        if (navComponent.curTime > 0) {
-            navComponent.curTime -= dt;
-            transformComponent.x += dt * navComponent.vx;
-            transformComponent.y += dt * navComponent.vy;
-            baseComponent.gameObject.x = transformComponent.x;
-            baseComponent.gameObject.y = transformComponent.y;
+    AnimateSystem.prototype.onUpdate = function (dt, baseComponent, roleComponent, animateComponent) {
+        if (animateComponent.playActionTime > 0) {
+            animateComponent.playActionTime -= dt;
             return;
         }
-        navComponent.curIndex++;
-        if (navComponent.pathList.length - 1 < navComponent.curIndex) {
-            return;
+        if (roleComponent.type > 0) {
+            animateComponent.playActionTime = 0.5 + 0.1;
+            var moveScale1 = cc.scaleTo(0.5, 1.1, 0.9);
+            var moveScale2 = cc.scaleTo(0.5, 0.9, 1.1);
+            var seqMoveScale = cc.sequence(moveScale1, moveScale2);
+            baseComponent.gameObject.runAction(seqMoveScale);
         }
-        var src = cc.v3(transformComponent.x, transformComponent.y, 0);
-        var dst = cc.v3(navComponent.pathList[navComponent.curIndex].x, navComponent.pathList[navComponent.curIndex].y, 0);
-        var dir = cc.v3();
-        cc.Vec3.subtract(dir, dst, src);
-        var dis = dir.len();
-        EntityUtils_1.default.getInstance().updateMonsterDirection(src, dst, baseComponent);
-        navComponent.curTime = dis / navComponent.speed;
-        navComponent.vx = navComponent.speed * dir.x / dis;
-        navComponent.vy = navComponent.speed * dir.y / dis;
+        else {
+            animateComponent.playActionTime = 0.2 + 0.1;
+            var jump1 = cc.moveBy(0.2, cc.v2(0, 30));
+            var jump2 = cc.moveBy(0.2, cc.v2(0, -30));
+            var seqJump = cc.sequence(jump1, jump2);
+            baseComponent.gameObject.runAction(seqJump);
+        }
     };
-    var NavSystem_1;
-    NavSystem._instance = null;
-    NavSystem = NavSystem_1 = __decorate([
+    var AnimateSystem_1;
+    AnimateSystem._instance = null;
+    AnimateSystem = AnimateSystem_1 = __decorate([
         ccclass
-    ], NavSystem);
-    return NavSystem;
+    ], AnimateSystem);
+    return AnimateSystem;
 }(cc.Component));
-exports.default = NavSystem;
+exports.default = AnimateSystem;
 
 cc._RF.pop();

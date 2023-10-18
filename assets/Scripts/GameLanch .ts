@@ -14,6 +14,7 @@ import DataManager from "./data/DataManager";
 import ECSFactory from "./ECS/ECSFactory";
 import ECSManager from "./ECS/ECSManager";
 import EntityUtils from "./ECS/EntityUtils";
+import AnimateSystem from "./ECS/Systems/AnimateSystem";
 import NavSystem from "./ECS/Systems/NavSystem";
 import GameApp from "./GameApp";
 import MapDataManager from "./Manager/MapDataManager";
@@ -36,6 +37,7 @@ export default class GameLanch extends cc.Component {
          //游戏
          this.addComponent(GameApp)
 
+         this.addComponent(AnimateSystem)
          this.addComponent(EntityUtils)
          this.addComponent(NavSystem)
          this.addComponent(PlayerDataManager).load();

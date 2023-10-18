@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ECSFactory_1 = require("./ECSFactory");
+var AnimateSystem_1 = require("./Systems/AnimateSystem");
 var NavSystem_1 = require("./Systems/NavSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ECSManager = /** @class */ (function (_super) {
@@ -107,9 +108,16 @@ var ECSManager = /** @class */ (function (_super) {
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
         }
     };
+    ECSManager.prototype.animateSystemMonster = function (dt) {
+        for (var i = 0; i < this.monsters.length; i++) {
+            AnimateSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].baseComponent, this.monsters[i].roleComponent, this.monsters[i].animateComponent);
+        }
+    };
     ECSManager.prototype.update = function (dt) {
         //怪物行走
         this.navSystemMonster(dt);
+        //怪物动画
+        this.animateSystemMonster(dt);
     };
     var ECSManager_1;
     ECSManager._instance = null;

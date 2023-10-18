@@ -38,6 +38,7 @@ var DataManager_1 = require("./data/DataManager");
 var ECSFactory_1 = require("./ECS/ECSFactory");
 var ECSManager_1 = require("./ECS/ECSManager");
 var EntityUtils_1 = require("./ECS/EntityUtils");
+var AnimateSystem_1 = require("./ECS/Systems/AnimateSystem");
 var NavSystem_1 = require("./ECS/Systems/NavSystem");
 var GameApp_1 = require("./GameApp");
 var MapDataManager_1 = require("./Manager/MapDataManager");
@@ -58,6 +59,7 @@ var GameLanch = /** @class */ (function (_super) {
         this.addComponent(ResManagerPro_1.ResManagerPro);
         //游戏
         this.addComponent(GameApp_1.default);
+        this.addComponent(AnimateSystem_1.default);
         this.addComponent(EntityUtils_1.default);
         this.addComponent(NavSystem_1.default);
         this.addComponent(PlayerDataManager_1.default).load();

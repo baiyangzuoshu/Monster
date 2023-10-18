@@ -93,7 +93,7 @@ var ECSFactory = /** @class */ (function (_super) {
     };
     ECSFactory.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
         return __awaiter(this, void 0, void 0, function () {
-            var entity, _pathPos, i, x, y, monsterPrefab, node;
+            var entity, _pathPos, i, x, y, monsterPrefab, node, monsterSpriteAtlas, right, left;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -111,6 +111,13 @@ var ECSFactory = /** @class */ (function (_super) {
                         node = cc.instantiate(monsterPrefab);
                         entity.baseComponent.gameObject = node;
                         this.monsterNode.addChild(node);
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "monster/monster_" + type, cc.SpriteAtlas)];
+                    case 2:
+                        monsterSpriteAtlas = _a.sent();
+                        right = entity.baseComponent.gameObject.getChildByName("item").getChildByName("scale").getChildByName("right").getComponent(cc.Sprite);
+                        left = entity.baseComponent.gameObject.getChildByName("item").getChildByName("scale").getChildByName("left").getComponent(cc.Sprite);
+                        right.spriteFrame = monsterSpriteAtlas.getSpriteFrame(index.toString());
+                        left.spriteFrame = monsterSpriteAtlas.getSpriteFrame(index.toString());
                         node.x = _pathPos[0].x;
                         node.y = _pathPos[0].y;
                         entity.transformComponent.x = _pathPos[0].x;
@@ -119,6 +126,8 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.navComponent.speed = speed;
                         entity.unitComponent.hp = hp;
                         entity.unitComponent.gold = gold;
+                        entity.roleComponent.type = type;
+                        entity.roleComponent.index = index;
                         return [2 /*return*/, entity];
                 }
             });
