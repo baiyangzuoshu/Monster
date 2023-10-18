@@ -850,8 +850,8 @@
     "relativePath": "AssetsPackge\\prefabs\\bullet\\gun_3.prefab"
   },
   "736bd016-db3a-493f-ba7f-e0c1d1666039": {
-    "asset": 1697434610733,
-    "meta": 1697434610736,
+    "asset": 1697609093438,
+    "meta": 1697609093442,
     "relativePath": "AssetsPackge\\prefabs\\monster\\msItem.prefab"
   },
   "4eef045c-4f13-4f57-9a25-e09a2f92d884": {
@@ -1069,24 +1069,119 @@
     "meta": 1697524419801,
     "relativePath": "Scripts\\Manager"
   },
-  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
-    "asset": 1697503522966,
-    "meta": 1697503619544,
-    "relativePath": "Scripts\\GameLanch .ts"
-  },
   "38b6db20-0ed4-4ec3-83b2-7df63441150b": {
     "asset": 1697526044399,
     "meta": 1697526079502,
     "relativePath": "FrameWork\\manager\\ResManagerPro.ts"
   },
-  "62a39722-88f7-4e35-9aa4-fedd33a3c3c7": {
-    "asset": 1697526018531,
-    "meta": 1697526079524,
-    "relativePath": "Scripts\\GameApp.ts"
+  "922ee5d2-af3c-42d4-ab19-ac78deaf5c8b": {
+    "asset": 1697533806216,
+    "meta": 1697533806217,
+    "relativePath": "Scripts\\ECS"
+  },
+  "3f97ec4b-7c16-4a8a-aeb7-2924d9ee6c8a": {
+    "asset": 1697533813138,
+    "meta": 1697533813139,
+    "relativePath": "Scripts\\ECS\\Entities"
+  },
+  "8852d52c-b819-4771-84bd-c0c4966edfc0": {
+    "asset": 1697533823665,
+    "meta": 1697533823666,
+    "relativePath": "Scripts\\ECS\\Systems"
+  },
+  "afd5a7f8-38d3-459f-8e61-167d94e07ec6": {
+    "asset": 1697533832320,
+    "meta": 1697533832321,
+    "relativePath": "Scripts\\ECS\\Components"
+  },
+  "fa30124b-537d-42ec-9caf-22f335c0466d": {
+    "asset": 1697534351386,
+    "meta": 1697534353342,
+    "relativePath": "Scripts\\data"
+  },
+  "3d9d354d-9cd9-4097-94af-14e8c4c36b28": {
+    "asset": 1573126650013,
+    "meta": 1697534353584,
+    "relativePath": "Scripts\\data\\intensifyData.js"
+  },
+  "70c03f8a-28e2-4acc-8af0-9a4f1ccc8227": {
+    "asset": 1572757842834,
+    "meta": 1697534353604,
+    "relativePath": "Scripts\\data\\taskData.js"
+  },
+  "99512388-6480-4345-9d93-a488194ecc5c": {
+    "asset": 1697535869437,
+    "meta": 1697536080879,
+    "relativePath": "Scripts\\ECS\\Components\\TransformComponent.ts"
+  },
+  "d0f1b167-7db7-4c4c-9428-5976d6a3aa79": {
+    "asset": 1697536250712,
+    "meta": 1697538496752,
+    "relativePath": "Scripts\\ECS\\Entities\\MonsterEntity.ts"
+  },
+  "6a33831e-8ee1-4009-9386-5a755d57d60b": {
+    "asset": 1697544212236,
+    "meta": 1697544385960,
+    "relativePath": "Scripts\\ECS\\Components\\BaseComponent.ts"
   },
   "19b048ab-831f-4277-b5ea-42a711c2217b": {
-    "asset": 1697525982671,
-    "meta": 1697526079557,
+    "asset": 1697544829045,
+    "meta": 1697544831261,
     "relativePath": "Scripts\\Manager\\MapDataManager.ts"
+  },
+  "62a39722-88f7-4e35-9aa4-fedd33a3c3c7": {
+    "asset": 1697544888650,
+    "meta": 1697544890488,
+    "relativePath": "Scripts\\GameApp.ts"
+  },
+  "9751dbcc-0710-43bb-ac71-52abc083841c": {
+    "asset": 1697545083817,
+    "meta": 1697545133094,
+    "relativePath": "Scripts\\Manager\\PlayerDataManager.ts"
+  },
+  "2c4f32f4-0432-4718-9386-f19650f43428": {
+    "asset": 1697545316972,
+    "meta": 1697545321090,
+    "relativePath": "Scripts\\data\\DataManager.ts"
+  },
+  "c2a8edc9-0ec1-4878-ad4c-9776cf1a6111": {
+    "asset": 1697546072157,
+    "meta": 1697546167153,
+    "relativePath": "Scripts\\Enum.ts"
+  },
+  "598f6593-2b7a-47ec-beeb-29f01b71e860": {
+    "asset": 1697607417124,
+    "meta": 1697607980337,
+    "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
+  },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1697607434650,
+    "meta": 1697607980359,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "8c250f92-185a-467f-9793-3d4628370175": {
+    "asset": 1697607892295,
+    "meta": 1697607980375,
+    "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "93c76cf2-e496-4bfd-9e75-58fe7c8aa1b3": {
+    "asset": 1697608497235,
+    "meta": 1697608602615,
+    "relativePath": "Scripts\\ECS\\Components\\NavComponent.ts"
+  },
+  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
+    "asset": 1697608910436,
+    "meta": 1697609026243,
+    "relativePath": "Scripts\\GameLanch .ts"
+  },
+  "edaf096f-8e59-4ce7-9fa7-387bbc457458": {
+    "asset": 1697609408241,
+    "meta": 1697609411407,
+    "relativePath": "Scripts\\ECS\\EntityUtils.ts"
+  },
+  "719f991c-595b-49ec-bfed-45b7d5328aba": {
+    "asset": 1697609707464,
+    "meta": 1697609716829,
+    "relativePath": "Scripts\\ECS\\Systems\\NavSystem.ts"
   }
 }

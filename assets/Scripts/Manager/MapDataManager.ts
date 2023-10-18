@@ -6,12 +6,14 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
+import DataManager from "../data/DataManager";
+import ECSManager from "../ECS/ECSManager";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class MapDataManager extends cc.Component {
-    private static _instance:MapDataManager=null
+    
     private cannonList:Array<any>=null;
     private mapBlockData:Array<any>=null;
     private pathList:Array<any>=null;
@@ -19,6 +21,7 @@ export default class MapDataManager extends cc.Component {
     private m_mapBlockItem:Array<any>=[];
     private blockMaps:cc.Node=null;
 
+    private static _instance:MapDataManager=null
     public static getInstance():MapDataManager{
         return MapDataManager._instance
     }
@@ -38,6 +41,7 @@ export default class MapDataManager extends cc.Component {
         this.startPos.push(cc.v2(640,0));
         let canvas=cc.find("Canvas");
         this.blockMaps=canvas.getChildByName("Game").getChildByName("blockMaps");
+        
     }
 
     getCurPahtList(){
@@ -114,5 +118,63 @@ export default class MapDataManager extends cc.Component {
                 com.spriteFrame = blockAtlas.getSpriteFrame(name)
             }
         }
+    }
+
+    beginCreateMonster(){
+        var index = 0;
+        var list = this.getCurPahtList();
+        var levelData = DataManager.getInstance().getCurMonsterData();
+        DataManager.getInstance().setCurMonsterCount(levelData.length);
+        var actionList=[];
+        for (let i = 0; i < levelData.length; i++) {
+            var offset = Math.random();
+            var seq = cc.sequence(cc.delayTime(0.2+offset),
+            cc.callFunc(function(){
+                if( index >= levelData.length ){
+                    return;
+                }
+                var speed = levelData[index].speed;
+                var node = this.createMonsterByData(levelData[index],list,speed);
+                
+                index++;
+            }.bind(this)));
+            actionList.push(seq);
+        }
+        var seqList = cc.sequence(actionList);
+        this.node.runAction(seqList);
+    }
+
+    async createMonsterByData(data,list,speed){
+        var type = data.type;
+        var id = data.id;
+        
+        var hp = data.hp;
+        var gold = data.gold;
+        await this.createMonster(type,id,list,hp,gold,speed);
+    }
+    //type 0:小怪物 1:中型怪物 2:boss
+    //index:怪物图片名
+    //起始点
+    async createMonster(type,index,list,hp,gold,speed){
+        gold = gold || 0;
+
+        await ECSManager.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
+
+        // let enemy = null;
+        // if (this.enemyPool.size() > 0) { // 通过 size 接口判断对象池中是否有空闲的对象
+        //     enemy = this.enemyPool.get();
+        // } else { // 如果没有空闲对象，也就是对象池中备用对象不够时，我们就用 cc.instantiate 重新创建
+        //     enemy = cc.instantiate(this.m_msItemPrefab);
+        // }
+        // enemy.isDead = false;
+        // this.monsterNode.addChild(enemy);
+        // var js = enemy.getComponent('msItem');
+        // js.setImage(type,index);
+        // js.setPath(list);
+        // js.setID(this.m_monsterIndex);
+        // js.setMaxHP(hp);
+        // js.setDeadGold(gold);
+        // this.m_monsterIndex++;
+        // return enemy;
     }
 }

@@ -10,8 +10,14 @@ import { ExcelManager } from "../FrameWork/manager/ExcelManager";
 import { ResManager } from "../FrameWork/manager/ResManager";
 import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
 import { UIManager } from "../FrameWork/manager/UIManager";
+import DataManager from "./data/DataManager";
+import ECSFactory from "./ECS/ECSFactory";
+import ECSManager from "./ECS/ECSManager";
+import EntityUtils from "./ECS/EntityUtils";
+import NavSystem from "./ECS/Systems/NavSystem";
 import GameApp from "./GameApp";
 import MapDataManager from "./Manager/MapDataManager";
+import PlayerDataManager from "./Manager/PlayerDataManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -29,7 +35,14 @@ export default class GameLanch extends cc.Component {
          this.addComponent(ResManagerPro)
          //游戏
          this.addComponent(GameApp)
+
+         this.addComponent(EntityUtils)
+         this.addComponent(NavSystem)
+         this.addComponent(PlayerDataManager).load();
+         this.addComponent(DataManager)
          this.addComponent(MapDataManager)
+         this.addComponent(ECSFactory)
+         this.addComponent(ECSManager)
     }
 
     start () {

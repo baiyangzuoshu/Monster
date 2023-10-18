@@ -66,6 +66,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
+var DataManager_1 = require("../data/DataManager");
+var ECSManager_1 = require("../ECS/ECSManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var MapDataManager = /** @class */ (function (_super) {
     __extends(MapDataManager, _super);
@@ -193,6 +195,62 @@ var MapDataManager = /** @class */ (function (_super) {
                         j++;
                         return [3 /*break*/, 1];
                     case 6: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MapDataManager.prototype.beginCreateMonster = function () {
+        var index = 0;
+        var list = this.getCurPahtList();
+        var levelData = DataManager_1.default.getInstance().getCurMonsterData();
+        DataManager_1.default.getInstance().setCurMonsterCount(levelData.length);
+        var actionList = [];
+        for (var i = 0; i < levelData.length; i++) {
+            var offset = Math.random();
+            var seq = cc.sequence(cc.delayTime(0.2 + offset), cc.callFunc(function () {
+                if (index >= levelData.length) {
+                    return;
+                }
+                var speed = levelData[index].speed;
+                var node = this.createMonsterByData(levelData[index], list, speed);
+                index++;
+            }.bind(this)));
+            actionList.push(seq);
+        }
+        var seqList = cc.sequence(actionList);
+        this.node.runAction(seqList);
+    };
+    MapDataManager.prototype.createMonsterByData = function (data, list, speed) {
+        return __awaiter(this, void 0, void 0, function () {
+            var type, id, hp, gold;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        type = data.type;
+                        id = data.id;
+                        hp = data.hp;
+                        gold = data.gold;
+                        return [4 /*yield*/, this.createMonster(type, id, list, hp, gold, speed)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    //type 0:小怪物 1:中型怪物 2:boss
+    //index:怪物图片名
+    //起始点
+    MapDataManager.prototype.createMonster = function (type, index, list, hp, gold, speed) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        gold = gold || 0;
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createMonsterEntity(type, index, list, hp, gold, speed)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });

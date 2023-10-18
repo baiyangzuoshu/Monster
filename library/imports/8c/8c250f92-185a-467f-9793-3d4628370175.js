@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '62a39ciiPdONZqk/t0zo8PH', 'GameApp');
-// Scripts/GameApp.ts
+cc._RF.push(module, '8c250+SGFpGf5eTPUYoNwF1', 'ECSManager');
+// Scripts/ECS/ECSManager.ts
 
 "use strict";
 // Learn TypeScript:
@@ -65,83 +65,59 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
-var MapDataManager_1 = require("./Manager/MapDataManager");
+var ECSFactory_1 = require("./ECSFactory");
+var NavSystem_1 = require("./Systems/NavSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var GameApp = /** @class */ (function (_super) {
-    __extends(GameApp, _super);
-    function GameApp() {
+var ECSManager = /** @class */ (function (_super) {
+    __extends(ECSManager, _super);
+    function ECSManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.canvas = null;
-        _this.progressBar = null;
-        _this.Loading = null;
+        _this.monsters = [];
         return _this;
-        // update (dt) {}
     }
-    GameApp_1 = GameApp;
-    // LIFE-CYCLE CALLBACKS:
-    GameApp.getInstance = function () {
-        return GameApp_1._instance;
+    ECSManager_1 = ECSManager;
+    ECSManager.getInstance = function () {
+        return ECSManager_1._instance;
     };
-    GameApp.prototype.enterGame = function () {
-    };
-    GameApp.prototype.startGame = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var blockMapData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data", cc.JsonAsset)];
-                    case 1:
-                        _a.sent();
-                        this.progressBar.progress = 0.3;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteAtlas)];
-                    case 2:
-                        _a.sent();
-                        this.progressBar.progress = 0.5;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds", cc.AudioClip)];
-                    case 3:
-                        _a.sent();
-                        this.progressBar.progress = 0.8;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs", cc.Prefab)];
-                    case 4:
-                        _a.sent();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().loadData()];
-                    case 5:
-                        _a.sent();
-                        blockMapData = MapDataManager_1.default.getInstance().getCurBlockData();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
-                    case 6:
-                        _a.sent();
-                        MapDataManager_1.default.getInstance().beginCreateMonster();
-                        this.progressBar.progress = 1;
-                        this.Loading.active = false;
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    GameApp.prototype.onLoad = function () {
-        if (null === GameApp_1._instance) {
-            GameApp_1._instance = this;
+    ECSManager.prototype.onLoad = function () {
+        if (null === ECSManager_1._instance) {
+            ECSManager_1._instance = this;
         }
         else {
             this.destroy();
             return;
         }
-        this.canvas = cc.find("Canvas");
-        this.Loading = this.canvas.getChildByName("Loading");
-        this.progressBar = this.Loading.getChildByName("myProgressBar").getComponent(cc.ProgressBar);
-        this.progressBar.progress = 0;
     };
-    GameApp.prototype.start = function () {
+    ECSManager.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createMonsterEntity(type, index, list, hp, gold, speed)];
+                    case 1:
+                        entity = _a.sent();
+                        this.monsters.push(entity);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    var GameApp_1;
-    GameApp._instance = null;
-    GameApp = GameApp_1 = __decorate([
+    ECSManager.prototype.navSystemMonster = function (dt) {
+        for (var i = 0; i < this.monsters.length; i++) {
+            NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
+        }
+    };
+    ECSManager.prototype.update = function (dt) {
+        //怪物行走
+        this.navSystemMonster(dt);
+    };
+    var ECSManager_1;
+    ECSManager._instance = null;
+    ECSManager = ECSManager_1 = __decorate([
         ccclass
-    ], GameApp);
-    return GameApp;
+    ], ECSManager);
+    return ECSManager;
 }(cc.Component));
-exports.default = GameApp;
+exports.default = ECSManager;
 
 cc._RF.pop();

@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '62a39ciiPdONZqk/t0zo8PH', 'GameApp');
-// Scripts/GameApp.ts
+cc._RF.push(module, '31dcfE3wuBKXbXhuGMCouvl', 'ECSFactory');
+// Scripts/ECS/ECSFactory.ts
 
 "use strict";
 // Learn TypeScript:
@@ -65,83 +65,72 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
-var MapDataManager_1 = require("./Manager/MapDataManager");
+var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
+var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var GameApp = /** @class */ (function (_super) {
-    __extends(GameApp, _super);
-    function GameApp() {
+var ECSFactory = /** @class */ (function (_super) {
+    __extends(ECSFactory, _super);
+    function ECSFactory() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.canvas = null;
-        _this.progressBar = null;
-        _this.Loading = null;
+        _this.monsterNode = null;
+        _this.entityID = 0;
         return _this;
-        // update (dt) {}
     }
-    GameApp_1 = GameApp;
-    // LIFE-CYCLE CALLBACKS:
-    GameApp.getInstance = function () {
-        return GameApp_1._instance;
+    ECSFactory_1 = ECSFactory;
+    ECSFactory.getInstance = function () {
+        return ECSFactory_1._instance;
     };
-    GameApp.prototype.enterGame = function () {
-    };
-    GameApp.prototype.startGame = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var blockMapData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data", cc.JsonAsset)];
-                    case 1:
-                        _a.sent();
-                        this.progressBar.progress = 0.3;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteAtlas)];
-                    case 2:
-                        _a.sent();
-                        this.progressBar.progress = 0.5;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds", cc.AudioClip)];
-                    case 3:
-                        _a.sent();
-                        this.progressBar.progress = 0.8;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs", cc.Prefab)];
-                    case 4:
-                        _a.sent();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().loadData()];
-                    case 5:
-                        _a.sent();
-                        blockMapData = MapDataManager_1.default.getInstance().getCurBlockData();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
-                    case 6:
-                        _a.sent();
-                        MapDataManager_1.default.getInstance().beginCreateMonster();
-                        this.progressBar.progress = 1;
-                        this.Loading.active = false;
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    GameApp.prototype.onLoad = function () {
-        if (null === GameApp_1._instance) {
-            GameApp_1._instance = this;
+    ECSFactory.prototype.onLoad = function () {
+        if (null === ECSFactory_1._instance) {
+            ECSFactory_1._instance = this;
         }
         else {
             this.destroy();
             return;
         }
-        this.canvas = cc.find("Canvas");
-        this.Loading = this.canvas.getChildByName("Loading");
-        this.progressBar = this.Loading.getChildByName("myProgressBar").getComponent(cc.ProgressBar);
-        this.progressBar.progress = 0;
+        var canvas = cc.find("Canvas");
+        this.monsterNode = canvas.getChildByName("Game").getChildByName("monsterNode");
     };
-    GameApp.prototype.start = function () {
+    ECSFactory.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity, _pathPos, i, x, y, monsterPrefab, node;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        entity = new MonsterEntity_1.default();
+                        _pathPos = [];
+                        for (i = 0; i < list.length; i++) {
+                            x = list[i].x * 106 + 106 / 2;
+                            y = -list[i].y * 106 - 106 / 2 - 35;
+                            _pathPos.push(cc.v2(x, y));
+                        }
+                        entity.baseComponent.entityID = this.entityID++;
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "monster/msItem", cc.Prefab)];
+                    case 1:
+                        monsterPrefab = _a.sent();
+                        node = cc.instantiate(monsterPrefab);
+                        entity.baseComponent.gameObject = node;
+                        this.monsterNode.addChild(node);
+                        node.x = _pathPos[0].x;
+                        node.y = _pathPos[0].y;
+                        entity.transformComponent.x = _pathPos[0].x;
+                        entity.transformComponent.y = _pathPos[0].y;
+                        entity.navComponent.pathList = _pathPos;
+                        entity.navComponent.speed = speed;
+                        entity.unitComponent.hp = hp;
+                        entity.unitComponent.gold = gold;
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
     };
-    var GameApp_1;
-    GameApp._instance = null;
-    GameApp = GameApp_1 = __decorate([
+    var ECSFactory_1;
+    ECSFactory._instance = null;
+    ECSFactory = ECSFactory_1 = __decorate([
         ccclass
-    ], GameApp);
-    return GameApp;
+    ], ECSFactory);
+    return ECSFactory;
 }(cc.Component));
-exports.default = GameApp;
+exports.default = ECSFactory;
 
 cc._RF.pop();

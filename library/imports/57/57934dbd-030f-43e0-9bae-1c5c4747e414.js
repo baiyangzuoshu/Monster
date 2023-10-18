@@ -34,8 +34,14 @@ var ExcelManager_1 = require("../FrameWork/manager/ExcelManager");
 var ResManager_1 = require("../FrameWork/manager/ResManager");
 var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
 var UIManager_1 = require("../FrameWork/manager/UIManager");
+var DataManager_1 = require("./data/DataManager");
+var ECSFactory_1 = require("./ECS/ECSFactory");
+var ECSManager_1 = require("./ECS/ECSManager");
+var EntityUtils_1 = require("./ECS/EntityUtils");
+var NavSystem_1 = require("./ECS/Systems/NavSystem");
 var GameApp_1 = require("./GameApp");
 var MapDataManager_1 = require("./Manager/MapDataManager");
+var PlayerDataManager_1 = require("./Manager/PlayerDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameLanch = /** @class */ (function (_super) {
     __extends(GameLanch, _super);
@@ -52,7 +58,13 @@ var GameLanch = /** @class */ (function (_super) {
         this.addComponent(ResManagerPro_1.ResManagerPro);
         //游戏
         this.addComponent(GameApp_1.default);
+        this.addComponent(EntityUtils_1.default);
+        this.addComponent(NavSystem_1.default);
+        this.addComponent(PlayerDataManager_1.default).load();
+        this.addComponent(DataManager_1.default);
         this.addComponent(MapDataManager_1.default);
+        this.addComponent(ECSFactory_1.default);
+        this.addComponent(ECSManager_1.default);
     };
     GameLanch.prototype.start = function () {
         GameApp_1.default.getInstance().startGame();
