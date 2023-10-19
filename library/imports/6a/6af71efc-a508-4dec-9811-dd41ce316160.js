@@ -66,15 +66,100 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
+var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
 var ECSManager_1 = require("../ECS/ECSManager");
+var Enum_1 = require("../Enum");
+var MapDataManager_1 = require("../Manager/MapDataManager");
+var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameUIControl = /** @class */ (function (_super) {
     __extends(GameUIControl, _super);
     function GameUIControl() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.m_canMakeCount = 10;
+        _this.m_maxMakeCount = 10;
+        _this.m_hammerAction = false;
+        _this.m_waterAction = false;
+        _this.m_water = null;
+        _this.m_hammer = null;
+        _this.m_makeNumberLabel = null;
+        _this.m_cannonList = [];
+        return _this;
     }
     GameUIControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
+        this.m_water = this.getChildByUrl("bottom/make/ui_build_water");
+        this.m_hammer = this.getChildByUrl("bottom/make/ui_build_hammer");
+        this.m_makeNumberLabel = this.getChildByUrl("bottom/make/num").getComponent(cc.Label);
+        this.updateGameUI();
+        this.registerBottomBtn();
+    };
+    GameUIControl.prototype.start = function () {
+        var _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
+        for (var i = 0; i < _cannonList.length; i++) {
+            this.m_cannonList[i] = this.createCannonData();
+            this.m_cannonList[i].pos = _cannonList[i];
+        }
+    };
+    GameUIControl.prototype.createCannonData = function () {
+        var obj = {};
+        obj.pos = cc.v2(0, 0);
+        obj.cannon = null;
+        return obj;
+    };
+    GameUIControl.prototype.getCanMakeIndex = function () {
+        for (var i = 0; i < this.m_cannonList.length; i++) {
+            if (this.m_cannonList[i].cannon == null) {
+                return i;
+            }
+        }
+        return null;
+    };
+    GameUIControl.prototype.addMakeNumber = function () {
+        this.m_canMakeCount++;
+        if (this.m_canMakeCount > this.m_maxMakeCount) {
+            this.m_canMakeCount = this.m_maxMakeCount;
+        }
+        this.updateMakeCount();
+    };
+    GameUIControl.prototype.subMakeNumber = function () {
+        this.m_canMakeCount--;
+        if (this.m_canMakeCount < 0) {
+            this.m_canMakeCount = 0;
+        }
+        if (!this.m_waterAction) {
+            this.m_water.height = 0;
+        }
+        this.updateMakeCount();
+    };
+    GameUIControl.prototype.updateMakeCount = function () {
+        this.m_makeNumberLabel.string = '' + this.m_canMakeCount + '/' + this.m_maxMakeCount;
+    };
+    GameUIControl.prototype.update = function (dt) {
+        if (this.m_canMakeCount < this.m_maxMakeCount) {
+            this.m_water.height += dt * 50;
+            this.m_waterAction = true;
+            if (this.m_water.height >= 133) {
+                this.addMakeNumber();
+                if (this.m_canMakeCount == this.m_maxMakeCount) {
+                    this.m_water.height = 133;
+                    this.m_waterAction = false;
+                }
+                else {
+                    this.m_water.height = 0;
+                }
+            }
+        }
+    };
+    GameUIControl.prototype.updateGameUI = function () {
+        if (!this.m_waterAction) {
+            this.m_water.height = 0;
+        }
+        var lv = PlayerDataManager_1.default.getInstance().getInternsifLevel(Enum_1.Intensify.INTENSIFY_KUORONG);
+        this.m_maxMakeCount = IntensifyDataManager_1.default.getInstance().getValue(Enum_1.Intensify.INTENSIFY_KUORONG, lv);
+        this.updateMakeCount();
+    };
+    GameUIControl.prototype.registerBottomBtn = function () {
         this.buttonAddClickEvent("bottom/make/make", this.clickBtnEvent, this);
         this.buttonAddClickEvent("bottom/make/autoMake", this.clickBtnEvent, this);
         this.buttonAddClickEvent("bottom/intensify", this.clickBtnEvent, this);
@@ -89,14 +174,35 @@ var GameUIControl = /** @class */ (function (_super) {
     };
     GameUIControl.prototype.clickBtnEvent = function (btn) {
         return __awaiter(this, void 0, void 0, function () {
+            var index, rot1, rot2, callFunc, seq, cannonEntity;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("clickBtnEvent", btn.name);
                         if (!("make<Button>" == btn.name)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(0, 1)];
+                        index = this.getCanMakeIndex();
+                        if (index == null) {
+                            return [2 /*return*/];
+                        }
+                        if (this.m_canMakeCount == 0) {
+                            return [2 /*return*/];
+                        }
+                        if (!this.m_hammerAction) {
+                            rot1 = cc.rotateTo(0.2, -90);
+                            rot2 = cc.rotateTo(0.2, 0);
+                            callFunc = cc.callFunc(function () {
+                                this.m_hammerAction = false;
+                            }.bind(this));
+                            seq = cc.sequence(rot1, rot2, callFunc);
+                            this.m_hammer.runAction(seq);
+                            this.m_hammerAction = true;
+                        }
+                        this.subMakeNumber();
+                        console.log(index);
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(index, 0)];
                     case 1:
-                        _a.sent();
+                        cannonEntity = _a.sent();
+                        this.m_cannonList[index].cannon = cannonEntity;
                         return [3 /*break*/, 3];
                     case 2:
                         if ("autoMake<Button>" == btn.name) {
@@ -124,8 +230,6 @@ var GameUIControl = /** @class */ (function (_super) {
                 }
             });
         });
-    };
-    GameUIControl.prototype.start = function () {
     };
     GameUIControl = __decorate([
         ccclass

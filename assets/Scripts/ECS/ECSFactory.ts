@@ -80,7 +80,7 @@ export default class ECSFactory extends cc.Component {
         return entity;
     }
 
-    public async createCannonEntity(index:number,level:number){
+    public async createCannonEntity(idx:number,level:number){
         let entity=new CannonEntitiy();
 
         entity.baseComponent.entityID=ECSFactory.entityID++;
@@ -111,7 +111,7 @@ export default class ECSFactory extends cc.Component {
         var startPos = cc.v2(317,-952);
         node.setPosition(startPos);
         var _cannonList = MapDataManager.getInstance().getCurCannonPoint();
-        var pos = _cannonList[index];
+        var pos = _cannonList[idx];
         var x = pos.x*106 + 106/2;
         var y = -pos.y*106 - 106/2;
         var endPos = cc.v2(x,y);

@@ -34,6 +34,8 @@ var ExcelManager_1 = require("../FrameWork/manager/ExcelManager");
 var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
 var UIManagerPro_1 = require("../FrameWork/manager/UIManagerPro");
 var DataManager_1 = require("./data/DataManager");
+var IntensifyDataManager_1 = require("./data/IntensifyDataManager");
+var TaskDataManager_1 = require("./data/TaskDataManager");
 var ECSFactory_1 = require("./ECS/ECSFactory");
 var ECSManager_1 = require("./ECS/ECSManager");
 var EntityUtils_1 = require("./ECS/EntityUtils");
@@ -65,6 +67,8 @@ var GameLanch = /** @class */ (function (_super) {
         this.addComponent(MapDataManager_1.default);
         this.addComponent(ECSFactory_1.default);
         this.addComponent(ECSManager_1.default);
+        this.addComponent(IntensifyDataManager_1.default);
+        this.addComponent(TaskDataManager_1.default);
     };
     GameLanch.prototype.start = function () {
         GameApp_1.default.getInstance().startGame();

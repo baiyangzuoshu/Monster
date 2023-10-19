@@ -37,11 +37,15 @@ export default class ECSManager extends cc.Component {
     async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
         this.monsters.push(entity);
+
+        return entity
     }
 
     public async createCannonEntity(index:number,level:number){
         let entity=await ECSFactory.getInstance().createCannonEntity(index,level);
         this.cannones.push(entity);
+        
+        return entity
     }
 
     navSystemMonster(dt:number){

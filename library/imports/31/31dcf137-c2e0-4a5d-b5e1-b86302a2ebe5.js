@@ -137,10 +137,9 @@ var ECSFactory = /** @class */ (function (_super) {
             });
         });
     };
-    ECSFactory.prototype.createCannonEntity = function (index, level) {
-        var index;
+    ECSFactory.prototype.createCannonEntity = function (idx, level) {
         return __awaiter(this, void 0, void 0, function () {
-            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
+            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, index, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -161,7 +160,6 @@ var ECSFactory = /** @class */ (function (_super) {
                     case 2:
                         gunSpriteAtlas = _a.sent();
                         frame = gunSpriteAtlas.getSpriteFrame(name);
-                        console.log(gunSpriteAtlas, name);
                         node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
                         index = Math.floor(lvData.level / 3);
                         name = '' + lvData.type + '_' + index;
@@ -174,7 +172,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         startPos = cc.v2(317, -952);
                         node.setPosition(startPos);
                         _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
-                        pos = _cannonList[index];
+                        pos = _cannonList[idx];
                         x = pos.x * 106 + 106 / 2;
                         y = -pos.y * 106 - 106 / 2;
                         endPos = cc.v2(x, y);

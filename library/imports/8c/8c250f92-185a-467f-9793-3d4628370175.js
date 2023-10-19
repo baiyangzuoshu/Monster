@@ -99,7 +99,7 @@ var ECSManager = /** @class */ (function (_super) {
                     case 1:
                         entity = _a.sent();
                         this.monsters.push(entity);
-                        return [2 /*return*/];
+                        return [2 /*return*/, entity];
                 }
             });
         });
@@ -113,7 +113,7 @@ var ECSManager = /** @class */ (function (_super) {
                     case 1:
                         entity = _a.sent();
                         this.cannones.push(entity);
-                        return [2 /*return*/];
+                        return [2 /*return*/, entity];
                 }
             });
         });

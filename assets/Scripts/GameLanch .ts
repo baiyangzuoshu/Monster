@@ -12,6 +12,8 @@ import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
 import { UIManager } from "../FrameWork/manager/UIManager";
 import { UIManagerPro } from "../FrameWork/manager/UIManagerPro";
 import DataManager from "./data/DataManager";
+import IntensifyDataManager from "./data/IntensifyDataManager";
+import TaskDataManager from "./data/TaskDataManager";
 import ECSFactory from "./ECS/ECSFactory";
 import ECSManager from "./ECS/ECSManager";
 import EntityUtils from "./ECS/EntityUtils";
@@ -45,6 +47,8 @@ export default class GameLanch extends cc.Component {
          this.addComponent(MapDataManager)
          this.addComponent(ECSFactory)
          this.addComponent(ECSManager)
+         this.addComponent(IntensifyDataManager);
+         this.addComponent(TaskDataManager);
     }
 
     start () {
