@@ -45,7 +45,7 @@ export default class MapDataManager extends cc.Component {
     }
 
     getCurPahtList(){
-        var index = 1;
+        var index = DataManager.getInstance().getCurBlockDataID();
         if(index >= this.pathList.length){
             index = this.pathList.length-1;
         }
@@ -53,7 +53,7 @@ export default class MapDataManager extends cc.Component {
     }
 
     getCurBlockData(){
-        var index = 1;
+        var index = DataManager.getInstance().getCurBlockDataID();
         if(index >= this.mapBlockData.length){
             index = this.mapBlockData.length-1;
         }

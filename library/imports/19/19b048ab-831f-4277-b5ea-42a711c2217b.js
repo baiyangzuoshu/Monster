@@ -101,14 +101,14 @@ var MapDataManager = /** @class */ (function (_super) {
         this.blockMaps = canvas.getChildByName("Game").getChildByName("blockMaps");
     };
     MapDataManager.prototype.getCurPahtList = function () {
-        var index = 1;
+        var index = DataManager_1.default.getInstance().getCurBlockDataID();
         if (index >= this.pathList.length) {
             index = this.pathList.length - 1;
         }
         return this.pathList[index];
     };
     MapDataManager.prototype.getCurBlockData = function () {
-        var index = 1;
+        var index = DataManager_1.default.getInstance().getCurBlockDataID();
         if (index >= this.mapBlockData.length) {
             index = this.mapBlockData.length - 1;
         }

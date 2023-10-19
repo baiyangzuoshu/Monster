@@ -66,6 +66,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
+var DataManager_1 = require("../data/DataManager");
+var MapDataManager_1 = require("../Manager/MapDataManager");
 var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -136,8 +138,9 @@ var ECSFactory = /** @class */ (function (_super) {
         });
     };
     ECSFactory.prototype.createCannonEntity = function (index, level) {
+        var index;
         return __awaiter(this, void 0, void 0, function () {
-            var entity, cannonPrefab, node;
+            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -149,6 +152,42 @@ var ECSFactory = /** @class */ (function (_super) {
                         node = cc.instantiate(cannonPrefab);
                         entity.baseComponent.gameObject = node;
                         this.moveCannon.addChild(node);
+                        lvData = DataManager_1.default.getInstance().cannonUpLevel[level];
+                        entity.unitComponent.atk = lvData.atk;
+                        entity.roleComponent.level = lvData.level;
+                        entity.roleComponent.type = lvData.type;
+                        name = '' + lvData.type + '_' + lvData.level;
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "cannon/gun", cc.SpriteAtlas)];
+                    case 2:
+                        gunSpriteAtlas = _a.sent();
+                        frame = gunSpriteAtlas.getSpriteFrame(name);
+                        console.log(gunSpriteAtlas, name);
+                        node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
+                        index = Math.floor(lvData.level / 3);
+                        name = '' + lvData.type + '_' + index;
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "cannon/pad", cc.SpriteAtlas)];
+                    case 3:
+                        padSpriteAtlas = _a.sent();
+                        frame = padSpriteAtlas.getSpriteFrame(name);
+                        node.getChildByName("pad").getComponent(cc.Sprite).spriteFrame = frame;
+                        node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = '' + (level + 1);
+                        startPos = cc.v2(317, -952);
+                        node.setPosition(startPos);
+                        _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
+                        pos = _cannonList[index];
+                        x = pos.x * 106 + 106 / 2;
+                        y = -pos.y * 106 - 106 / 2;
+                        endPos = cc.v2(x, y);
+                        moveTo = cc.moveTo(0.5, endPos);
+                        scaleTo1 = cc.scaleTo(0.2, 4, 4);
+                        delta = cc.delayTime(0.2);
+                        scaleTo2 = cc.scaleTo(0.1, 1, 1);
+                        seq = cc.sequence(scaleTo1, delta, scaleTo2, cc.callFunc(function () {
+                        }.bind(this)));
+                        sp = cc.spawn(moveTo, seq);
+                        node.runAction(sp);
+                        entity.transformComponent.x = x;
+                        entity.transformComponent.y = y;
                         return [2 /*return*/, entity];
                 }
             });

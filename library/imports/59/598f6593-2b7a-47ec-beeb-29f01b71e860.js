@@ -9,6 +9,7 @@ var UnitComponent = /** @class */ (function () {
     function UnitComponent() {
         this.hp = 0;
         this.gold = 0;
+        this.atk = 0;
         this.state = Enum_1.UnitState.Normal;
     }
     return UnitComponent;

@@ -32,7 +32,7 @@ export default class DataManager extends cc.Component {
     //当前怪物数量
     private  currentMonsterCount = 0;
     //炮台数据
-    private  cannonUpLevel = [
+    public  cannonUpLevel = [
         //圆炮
         { type: 6, level: 0, atk: 1 },//0
         { type: 6, level: 1, atk: 10 },//1
@@ -238,7 +238,7 @@ export default class DataManager extends cc.Component {
 
     //获取当前地图块id
 
-    private getCurBlockDataID () {
+    public getCurBlockDataID () {
         var checkPoint = PlayerDataManager.getInstance().getCheckPoint();
         var data = this.getData(checkPoint.big, checkPoint.small);
         return data.map.blockData;

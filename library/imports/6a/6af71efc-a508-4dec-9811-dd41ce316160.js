@@ -94,7 +94,7 @@ var GameUIControl = /** @class */ (function (_super) {
                     case 0:
                         console.log("clickBtnEvent", btn.name);
                         if (!("make<Button>" == btn.name)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(1, 1)];
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(0, 1)];
                     case 1:
                         _a.sent();
                         return [3 /*break*/, 3];

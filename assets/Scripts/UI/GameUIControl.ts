@@ -32,7 +32,7 @@ export default class GameUIControl extends UIControl {
     async clickBtnEvent(btn:cc.Button){
         console.log("clickBtnEvent",btn.name);
         if("make<Button>"==btn.name){
-            await ECSManager.getInstance().createCannonEntity(1,1);
+            await ECSManager.getInstance().createCannonEntity(0,1);
         }
         else if("autoMake<Button>"==btn.name){
 
