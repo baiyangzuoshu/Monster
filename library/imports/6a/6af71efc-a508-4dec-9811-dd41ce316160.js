@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '62a39ciiPdONZqk/t0zo8PH', 'GameApp');
-// Scripts/GameApp.ts
+cc._RF.push(module, '6af7178pQhN7JgR3UHOMWFg', 'GameUIControl');
+// Scripts/UI/GameUIControl.ts
 
 "use strict";
 // Learn TypeScript:
@@ -65,87 +65,73 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
-var UIManagerPro_1 = require("../FrameWork/manager/UIManagerPro");
-var MapDataManager_1 = require("./Manager/MapDataManager");
+var UIControl_1 = require("../../FrameWork/ui/UIControl");
+var ECSManager_1 = require("../ECS/ECSManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var GameApp = /** @class */ (function (_super) {
-    __extends(GameApp, _super);
-    function GameApp() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.canvas = null;
-        _this.progressBar = null;
-        _this.Loading = null;
-        return _this;
-        // update (dt) {}
+var GameUIControl = /** @class */ (function (_super) {
+    __extends(GameUIControl, _super);
+    function GameUIControl() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    GameApp_1 = GameApp;
-    // LIFE-CYCLE CALLBACKS:
-    GameApp.getInstance = function () {
-        return GameApp_1._instance;
+    GameUIControl.prototype.onLoad = function () {
+        _super.prototype.onLoad.call(this);
+        this.buttonAddClickEvent("bottom/make/make", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/make/autoMake", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/intensify", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/shop", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/destroy", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/cannon", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/task/bt", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/buffer/skill_coin0", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/buffer/skill_coin1", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/buffer/skill_coin2", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("bottom/buffer/skill_coin3", this.clickBtnEvent, this);
     };
-    GameApp.prototype.enterGame = function () {
-    };
-    GameApp.prototype.startGame = function () {
+    GameUIControl.prototype.clickBtnEvent = function (btn) {
         return __awaiter(this, void 0, void 0, function () {
-            var blockMapData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data", cc.JsonAsset)];
+                    case 0:
+                        console.log("clickBtnEvent", btn.name);
+                        if (!("make<Button>" == btn.name)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(1, 1)];
                     case 1:
                         _a.sent();
-                        this.progressBar.progress = 0.3;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteAtlas)];
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        this.progressBar.progress = 0.5;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds", cc.AudioClip)];
-                    case 3:
-                        _a.sent();
-                        this.progressBar.progress = 0.8;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs", cc.Prefab)];
-                    case 4:
-                        _a.sent();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().loadData()];
-                    case 5:
-                        _a.sent();
-                        blockMapData = MapDataManager_1.default.getInstance().getCurBlockData();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
-                    case 6:
-                        _a.sent();
-                        MapDataManager_1.default.getInstance().beginCreateMonster();
-                        return [4 /*yield*/, UIManagerPro_1.UIManagerPro.getInstance().showUI("GameUI")];
-                    case 7:
-                        _a.sent();
-                        this.progressBar.progress = 1;
-                        this.Loading.active = false;
-                        return [2 /*return*/];
+                        if ("autoMake<Button>" == btn.name) {
+                        }
+                        else if ("intensify<Button>" == btn.name) {
+                        }
+                        else if ("shop<Button>" == btn.name) {
+                        }
+                        else if ("destroy<Button>" == btn.name) {
+                        }
+                        else if ("cannon<Button>" == btn.name) {
+                        }
+                        else if ("bt<Button>" == btn.name) {
+                        }
+                        else if ("skill_coin0<Button>" == btn.name) {
+                        }
+                        else if ("skill_coin1<Button>" == btn.name) {
+                        }
+                        else if ("skill_coin2<Button>" == btn.name) {
+                        }
+                        else if ("skill_coin3<Button>" == btn.name) {
+                        }
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    GameApp.prototype.onLoad = function () {
-        if (null === GameApp_1._instance) {
-            GameApp_1._instance = this;
-        }
-        else {
-            this.destroy();
-            return;
-        }
-        this.canvas = cc.find("Canvas");
-        this.Loading = this.canvas.getChildByName("Loading");
-        this.progressBar = this.Loading.getChildByName("myProgressBar").getComponent(cc.ProgressBar);
-        this.progressBar.progress = 0;
+    GameUIControl.prototype.start = function () {
     };
-    GameApp.prototype.start = function () {
-    };
-    var GameApp_1;
-    GameApp._instance = null;
-    GameApp = GameApp_1 = __decorate([
+    GameUIControl = __decorate([
         ccclass
-    ], GameApp);
-    return GameApp;
-}(cc.Component));
-exports.default = GameApp;
+    ], GameUIControl);
+    return GameUIControl;
+}(UIControl_1.UIControl));
+exports.default = GameUIControl;
 
 cc._RF.pop();

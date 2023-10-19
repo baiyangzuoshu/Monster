@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import ECSFactory from "./ECSFactory";
+import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
 import AnimateSystem from "./Systems/AnimateSystem";
 import NavSystem from "./Systems/NavSystem";
@@ -31,10 +32,16 @@ export default class ECSManager extends cc.Component {
     }
 
     private monsters:Array<MonsterEntity>=[];
+    private cannones:Array<CannonEntitiy>=[];
 
     async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
         this.monsters.push(entity);
+    }
+
+    public async createCannonEntity(index:number,level:number){
+        let entity=await ECSFactory.getInstance().createCannonEntity(index,level);
+        this.cannones.push(entity);
     }
 
     navSystemMonster(dt:number){

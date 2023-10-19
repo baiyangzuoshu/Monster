@@ -31,9 +31,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var EventManager_1 = require("../FrameWork/manager/EventManager");
 var ExcelManager_1 = require("../FrameWork/manager/ExcelManager");
-var ResManager_1 = require("../FrameWork/manager/ResManager");
 var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
-var UIManager_1 = require("../FrameWork/manager/UIManager");
+var UIManagerPro_1 = require("../FrameWork/manager/UIManagerPro");
 var DataManager_1 = require("./data/DataManager");
 var ECSFactory_1 = require("./ECS/ECSFactory");
 var ECSManager_1 = require("./ECS/ECSManager");
@@ -54,8 +53,7 @@ var GameLanch = /** @class */ (function (_super) {
         //框架
         this.addComponent(ExcelManager_1.ExcelManager);
         this.addComponent(EventManager_1.EventManager);
-        this.addComponent(ResManager_1.ResManager);
-        this.addComponent(UIManager_1.UIManager);
+        this.addComponent(UIManagerPro_1.UIManagerPro);
         this.addComponent(ResManagerPro_1.ResManagerPro);
         //游戏
         this.addComponent(GameApp_1.default);

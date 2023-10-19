@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
+var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ECSFactory = /** @class */ (function (_super) {
@@ -73,7 +74,7 @@ var ECSFactory = /** @class */ (function (_super) {
     function ECSFactory() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.monsterNode = null;
-        _this.entityID = 0;
+        _this.moveCannon = null;
         return _this;
     }
     ECSFactory_1 = ECSFactory;
@@ -90,6 +91,7 @@ var ECSFactory = /** @class */ (function (_super) {
         }
         var canvas = cc.find("Canvas");
         this.monsterNode = canvas.getChildByName("Game").getChildByName("monsterNode");
+        this.moveCannon = canvas.getChildByName("Game").getChildByName("moveCannon");
     };
     ECSFactory.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
         return __awaiter(this, void 0, void 0, function () {
@@ -104,7 +106,7 @@ var ECSFactory = /** @class */ (function (_super) {
                             y = -list[i].y * 106 - 106 / 2 - 35;
                             _pathPos.push(cc.v2(x, y));
                         }
-                        entity.baseComponent.entityID = this.entityID++;
+                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "monster/msItem", cc.Prefab)];
                     case 1:
                         monsterPrefab = _a.sent();
@@ -133,8 +135,28 @@ var ECSFactory = /** @class */ (function (_super) {
             });
         });
     };
+    ECSFactory.prototype.createCannonEntity = function (index, level) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity, cannonPrefab, node;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        entity = new CannonEntitiy_1.default();
+                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "cannon", cc.Prefab)];
+                    case 1:
+                        cannonPrefab = _a.sent();
+                        node = cc.instantiate(cannonPrefab);
+                        entity.baseComponent.gameObject = node;
+                        this.moveCannon.addChild(node);
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
+    };
     var ECSFactory_1;
     ECSFactory._instance = null;
+    ECSFactory.entityID = 0;
     ECSFactory = ECSFactory_1 = __decorate([
         ccclass
     ], ECSFactory);

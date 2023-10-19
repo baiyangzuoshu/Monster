@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
+import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
 
 const {ccclass, property} = cc._decorator;
@@ -29,10 +30,12 @@ export default class ECSFactory extends cc.Component {
 
         let canvas=cc.find("Canvas");
         this.monsterNode=canvas.getChildByName("Game").getChildByName("monsterNode");
+        this.moveCannon=canvas.getChildByName("Game").getChildByName("moveCannon");
     }
 
     private monsterNode:cc.Node=null;
-    private entityID:number=0;
+    private moveCannon:cc.Node=null;
+    private static entityID:number=0;
 
     public async createMonsterEntity(type:number,index:number,list,hp,gold,speed){
         let entity=new MonsterEntity();
@@ -44,7 +47,7 @@ export default class ECSFactory extends cc.Component {
             _pathPos.push(cc.v2(x,y));
         }
 
-        entity.baseComponent.entityID=this.entityID++;
+        entity.baseComponent.entityID=ECSFactory.entityID++;
         let monsterPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","monster/msItem",cc.Prefab) as cc.Prefab;
         let node=cc.instantiate(monsterPrefab);
         entity.baseComponent.gameObject=node;
@@ -72,5 +75,17 @@ export default class ECSFactory extends cc.Component {
         entity.roleComponent.index=index;
 
         return entity;
+    }
+
+    public async createCannonEntity(index:number,level:number){
+        let entity=new CannonEntitiy();
+
+        entity.baseComponent.entityID=ECSFactory.entityID++;
+        let cannonPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","cannon",cc.Prefab) as cc.Prefab;
+        let node=cc.instantiate(cannonPrefab);
+        entity.baseComponent.gameObject=node;
+        this.moveCannon.addChild(node);
+
+        return entity
     }
 }

@@ -10,6 +10,7 @@ import { ExcelManager } from "../FrameWork/manager/ExcelManager";
 import { ResManager } from "../FrameWork/manager/ResManager";
 import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
 import { UIManager } from "../FrameWork/manager/UIManager";
+import { UIManagerPro } from "../FrameWork/manager/UIManagerPro";
 import DataManager from "./data/DataManager";
 import ECSFactory from "./ECS/ECSFactory";
 import ECSManager from "./ECS/ECSManager";
@@ -31,8 +32,7 @@ export default class GameLanch extends cc.Component {
          //框架
          this.addComponent(ExcelManager)
          this.addComponent(EventManager)
-         this.addComponent(ResManager)
-         this.addComponent(UIManager)
+         this.addComponent(UIManagerPro)
          this.addComponent(ResManagerPro)
          //游戏
          this.addComponent(GameApp)

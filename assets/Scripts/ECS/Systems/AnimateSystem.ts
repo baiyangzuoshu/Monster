@@ -36,7 +36,7 @@ export default class AnimateSystem extends cc.Component {
         }
         
         if( roleComponent.type > 0 ){
-            animateComponent.playActionTime=0.5+0.1;
+            animateComponent.playActionTime=1;
 
             var moveScale1 = cc.scaleTo(0.5,1.1,0.9);
             var moveScale2 = cc.scaleTo(0.5,0.9,1.1);
@@ -44,7 +44,7 @@ export default class AnimateSystem extends cc.Component {
     
             baseComponent.gameObject.runAction(seqMoveScale);
         }else{
-            animateComponent.playActionTime=0.2+0.1;
+            animateComponent.playActionTime=0.4;
 
             var jump1 = cc.moveBy(0.2,cc.v2(0,30));
             var jump2 = cc.moveBy(0.2,cc.v2(0,-30));

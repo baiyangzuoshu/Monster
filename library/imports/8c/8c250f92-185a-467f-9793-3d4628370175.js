@@ -74,6 +74,7 @@ var ECSManager = /** @class */ (function (_super) {
     function ECSManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.monsters = [];
+        _this.cannones = [];
         return _this;
     }
     ECSManager_1 = ECSManager;
@@ -98,6 +99,20 @@ var ECSManager = /** @class */ (function (_super) {
                     case 1:
                         entity = _a.sent();
                         this.monsters.push(entity);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ECSManager.prototype.createCannonEntity = function (index, level) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createCannonEntity(index, level)];
+                    case 1:
+                        entity = _a.sent();
+                        this.cannones.push(entity);
                         return [2 /*return*/];
                 }
             });

@@ -6,6 +6,8 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import { ResManagerPro } from "../FrameWork/manager/ResManagerPro";
+import { UIManager } from "../FrameWork/manager/UIManager";
+import { UIManagerPro } from "../FrameWork/manager/UIManagerPro";
 import MapDataManager from "./Manager/MapDataManager";
 
 const {ccclass, property} = cc._decorator;
@@ -40,6 +42,8 @@ export default class GameApp extends cc.Component {
         await MapDataManager.getInstance().buildBlockMap(0,blockMapData);
 
         MapDataManager.getInstance().beginCreateMonster();
+
+        await UIManagerPro.getInstance().showUI("GameUI");
 
         this.progressBar.progress=1;
         this.Loading.active=false;
