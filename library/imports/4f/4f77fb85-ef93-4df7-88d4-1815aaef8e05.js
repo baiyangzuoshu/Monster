@@ -558,32 +558,6 @@ var util = /** @class */ (function () {
         return { 'hour': hour, 'minute': minute, 'second': second };
     };
     /**
-     * TODO 需要将pako进行引入，目前已经去除了压缩算法的需要，如需要使用需引入库文件
-     * 将字符串进行压缩
-     * @param {String} str
-     */
-    util.zip = function (str) {
-        var binaryString = pako.gzip(encodeURIComponent(str), { to: 'string' });
-        return this.base64encode(binaryString);
-    };
-    /**
-     * todo 目前已经去除了压缩算法的需要，如需要使用需引入库文件
-     * 将数据进行解压
-     * @param {String} b64Data
-     */
-    util.unZip = function (b64Data) {
-        var strData = this.base64Decode(b64Data);
-        // Convert binary string to character-number array
-        var charData = strData.split('').map(function (x) { return x.charCodeAt(0); });
-        // Turn number array into byte-array
-        var binData = new Uint8Array(charData);
-        // // unzip
-        var data = pako.inflate(binData);
-        // Convert gunzipped byteArray back to ascii string:
-        strData = String.fromCharCode.apply(null, new Uint16Array(data));
-        return decodeURIComponent(strData);
-    };
-    /**
      * 数据加密
      * @param {String} str
      */
@@ -665,6 +639,34 @@ var util = /** @class */ (function () {
             v = curValue - (curValue - targetValue) * ratio;
         }
         return v;
+    };
+    //生成从minNum到maxNum的随机数
+    util.randomNum = function (minNum, maxNum) {
+        if (1 === arguments.length) {
+            return Math.random() * minNum + 1;
+        }
+        else if (2 === arguments.length) {
+            return Math.random() * (maxNum - minNum + 1) + minNum;
+        }
+    };
+    util.getAngle = function (start, end) {
+        //两点的x、y值
+        var x = end.x - start.x;
+        var y = end.y - start.y;
+        var hypotenuse = Math.sqrt(x * x + y * y);
+        //斜边长度
+        var cos = x / hypotenuse;
+        var radian = Math.acos(cos);
+        //求出弧度
+        var angle = 180 / (Math.PI / radian);
+        //用弧度算出角度
+        if (y < 0) {
+            angle = 0 - angle;
+        }
+        else if (y == 0 && x < 0) {
+            angle = 180;
+        }
+        return angle;
     };
     util = __decorate([
         ccclass

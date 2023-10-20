@@ -146,7 +146,7 @@ export default class GameUIControl extends UIControl {
             }
             
             this.subMakeNumber();
-            console.log(index)
+            
             let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,0);
             this.m_cannonList[index].cannon=cannonEntity;
         }

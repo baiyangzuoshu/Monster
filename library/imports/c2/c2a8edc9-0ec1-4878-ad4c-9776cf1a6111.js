@@ -4,7 +4,7 @@ cc._RF.push(module, 'c2a8e3JDsFIeK1Ml3bPGmER', 'Enum');
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Chengjiou = exports.Buffer = exports.Intensify = exports.Task = exports.UnitState = void 0;
+exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.UnitState = void 0;
 var UnitState;
 (function (UnitState) {
     UnitState[UnitState["Normal"] = 0] = "Normal";
@@ -22,13 +22,13 @@ var Intensify;
     Intensify[Intensify["INTENSIFY_KUORONG"] = 0] = "INTENSIFY_KUORONG";
     Intensify[Intensify["INTENSIFY_BAOJI"] = 1] = "INTENSIFY_BAOJI"; //暴击
 })(Intensify = exports.Intensify || (exports.Intensify = {}));
-var Buffer;
-(function (Buffer) {
-    Buffer[Buffer["BUFFER_JINBIFANBEI"] = 0] = "BUFFER_JINBIFANBEI";
-    Buffer[Buffer["BUFFER_GUAIWUJIANSHU"] = 1] = "BUFFER_GUAIWUJIANSHU";
-    Buffer[Buffer["BUFFER_GONGJIFANBEI"] = 2] = "BUFFER_GONGJIFANBEI";
-    Buffer[Buffer["BUFFER_QUANPINGGONGJI"] = 3] = "BUFFER_QUANPINGGONGJI"; //全屏攻击
-})(Buffer = exports.Buffer || (exports.Buffer = {}));
+var SkillBuffer;
+(function (SkillBuffer) {
+    SkillBuffer[SkillBuffer["BUFFER_JINBIFANBEI"] = 0] = "BUFFER_JINBIFANBEI";
+    SkillBuffer[SkillBuffer["BUFFER_GUAIWUJIANSHU"] = 1] = "BUFFER_GUAIWUJIANSHU";
+    SkillBuffer[SkillBuffer["BUFFER_GONGJIFANBEI"] = 2] = "BUFFER_GONGJIFANBEI";
+    SkillBuffer[SkillBuffer["BUFFER_QUANPINGGONGJI"] = 3] = "BUFFER_QUANPINGGONGJI"; //全屏攻击
+})(SkillBuffer = exports.SkillBuffer || (exports.SkillBuffer = {}));
 var Chengjiou;
 (function (Chengjiou) {
     Chengjiou[Chengjiou["CHENGJIOU_QIANGHUA_JINENG"] = 3] = "CHENGJIOU_QIANGHUA_JINENG"; //合并防御塔

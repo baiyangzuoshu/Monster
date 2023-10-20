@@ -8,6 +8,7 @@
 import ECSFactory from "./ECSFactory";
 import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
+import AISystem from "./Systems/AISystem";
 import AnimateSystem from "./Systems/AnimateSystem";
 import NavSystem from "./Systems/NavSystem";
 
@@ -44,7 +45,7 @@ export default class ECSManager extends cc.Component {
     public async createCannonEntity(index:number,level:number){
         let entity=await ECSFactory.getInstance().createCannonEntity(index,level);
         this.cannones.push(entity);
-        
+
         return entity
     }
 
@@ -56,8 +57,38 @@ export default class ECSManager extends cc.Component {
 
     animateSystemMonster(dt:number){
         for(let i=0;i<this.monsters.length;i++){
-            AnimateSystem.getInstance().onUpdate(dt,this.monsters[i].baseComponent,this.monsters[i].roleComponent,this.monsters[i].animateComponent);
+            AnimateSystem.getInstance().onMonsterUpdate(dt,this.monsters[i].baseComponent,this.monsters[i].roleComponent,this.monsters[i].animateComponent);
         }
+    }
+
+    AISystemCannon(dt:number){
+        for(let i=0;i<this.cannones.length;i++){
+            console.log(i)
+            AISystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent);
+        }
+    }
+
+    calcNearDistance(cannon):cc.Node{
+        var minDis = 9999;
+        var minMonster:cc.Node = null;
+        var curDis = 230;
+        
+        for (let i = 0; i < this.monsters.length; i++) {
+            let monster=this.monsters[i];
+            if( monster.unitComponent.isDead )continue;
+
+            let src=cc.v2(monster.baseComponent.gameObject.x,monster.baseComponent.gameObject.y);
+            let dst=cc.v2(cannon.x,cannon.y);
+            let dis=src.sub(dst).mag();
+            
+            //var dis = getDistance(this.node.children[i].getPosition(),cannon.getPosition());
+            if(dis < curDis && dis < Math.abs( minDis) ){
+                minDis = dis;
+                minMonster = monster.baseComponent.gameObject;
+            }
+        }
+        //cc.log(minDis);
+        return minMonster;
     }
 
     protected update(dt: number): void {
@@ -65,5 +96,7 @@ export default class ECSManager extends cc.Component {
         this.navSystemMonster(dt);
         //怪物动画
         this.animateSystemMonster(dt);
+        //AI
+        this.AISystemCannon(dt);
     }
 }

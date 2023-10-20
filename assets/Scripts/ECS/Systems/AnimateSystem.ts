@@ -29,7 +29,7 @@ export default class AnimateSystem extends cc.Component {
         }
     }
 
-    onUpdate (dt,baseComponent:BaseComponent,roleComponent:RoleComponent,animateComponent:AnimateComponent) {
+    onMonsterUpdate(dt,baseComponent:BaseComponent,roleComponent:RoleComponent,animateComponent:AnimateComponent) {
         if(animateComponent.playActionTime>0){
             animateComponent.playActionTime-=dt;
             return;

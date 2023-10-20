@@ -48,7 +48,7 @@ var AnimateSystem = /** @class */ (function (_super) {
             return;
         }
     };
-    AnimateSystem.prototype.onUpdate = function (dt, baseComponent, roleComponent, animateComponent) {
+    AnimateSystem.prototype.onMonsterUpdate = function (dt, baseComponent, roleComponent, animateComponent) {
         if (animateComponent.playActionTime > 0) {
             animateComponent.playActionTime -= dt;
             return;

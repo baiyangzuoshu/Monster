@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ECSFactory_1 = require("./ECSFactory");
+var AISystem_1 = require("./Systems/AISystem");
 var AnimateSystem_1 = require("./Systems/AnimateSystem");
 var NavSystem_1 = require("./Systems/NavSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -125,14 +126,42 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.animateSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
-            AnimateSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].baseComponent, this.monsters[i].roleComponent, this.monsters[i].animateComponent);
+            AnimateSystem_1.default.getInstance().onMonsterUpdate(dt, this.monsters[i].baseComponent, this.monsters[i].roleComponent, this.monsters[i].animateComponent);
         }
+    };
+    ECSManager.prototype.AISystemCannon = function (dt) {
+        for (var i = 0; i < this.cannones.length; i++) {
+            console.log(i);
+            AISystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent);
+        }
+    };
+    ECSManager.prototype.calcNearDistance = function (cannon) {
+        var minDis = 9999;
+        var minMonster = null;
+        var curDis = 230;
+        for (var i = 0; i < this.monsters.length; i++) {
+            var monster = this.monsters[i];
+            if (monster.unitComponent.isDead)
+                continue;
+            var src = cc.v2(monster.baseComponent.gameObject.x, monster.baseComponent.gameObject.y);
+            var dst = cc.v2(cannon.x, cannon.y);
+            var dis = src.sub(dst).mag();
+            //var dis = getDistance(this.node.children[i].getPosition(),cannon.getPosition());
+            if (dis < curDis && dis < Math.abs(minDis)) {
+                minDis = dis;
+                minMonster = monster.baseComponent.gameObject;
+            }
+        }
+        //cc.log(minDis);
+        return minMonster;
     };
     ECSManager.prototype.update = function (dt) {
         //怪物行走
         this.navSystemMonster(dt);
         //怪物动画
         this.animateSystemMonster(dt);
+        //AI
+        this.AISystemCannon(dt);
     };
     var ECSManager_1;
     ECSManager._instance = null;

@@ -10,7 +10,11 @@ var UnitComponent = /** @class */ (function () {
         this.hp = 0;
         this.gold = 0;
         this.atk = 0;
+        this.angle = 0;
         this.state = Enum_1.UnitState.Normal;
+        this.m_attackTarget = null;
+        this.isDead = false;
+        this.m_bFire = false;
     }
     return UnitComponent;
 }());

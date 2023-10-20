@@ -15,7 +15,7 @@ export enum Intensify{//强化
     INTENSIFY_BAOJI = 1//暴击
 }
 
-export enum Buffer{//buffer
+export enum SkillBuffer{//buffer
     BUFFER_JINBIFANBEI = 0 ,// 金币翻倍
     BUFFER_GUAIWUJIANSHU = 1, // 怪物减速
     BUFFER_GONGJIFANBEI = 2,  //攻击翻倍

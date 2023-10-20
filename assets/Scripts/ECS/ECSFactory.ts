@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
+import { util } from "../../FrameWork/Utils/util";
 import DataManager from "../data/DataManager";
 import MapDataManager from "../Manager/MapDataManager";
 import CannonEntitiy from "./Entities/CannonEntitiy";
@@ -83,29 +84,25 @@ export default class ECSFactory extends cc.Component {
     public async createCannonEntity(idx:number,level:number){
         let entity=new CannonEntitiy();
 
-        entity.baseComponent.entityID=ECSFactory.entityID++;
-
         let cannonPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","cannon",cc.Prefab) as cc.Prefab;
         let node=cc.instantiate(cannonPrefab);
         entity.baseComponent.gameObject=node;
         this.moveCannon.addChild(node);
 
         var lvData = DataManager.getInstance().cannonUpLevel[level];
-        entity.unitComponent.atk=lvData.atk;
-        entity.roleComponent.level=lvData.level;
-        entity.roleComponent.type=lvData.type;
         
         var name = ''+lvData.type+'_'+lvData.level;
         let gunSpriteAtlas=await ResManagerPro.Instance.IE_GetAsset("texture","cannon/gun",cc.SpriteAtlas) as cc.SpriteAtlas;
         var frame = gunSpriteAtlas.getSpriteFrame(name);
         node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
+        let angle=util.randomNum(0,360);
+        node.getChildByName("gun").angle=angle;
 
         var index = Math.floor(lvData.level/3);
         name = ''+lvData.type+'_'+index;
         let padSpriteAtlas=await ResManagerPro.Instance.IE_GetAsset("texture","cannon/pad",cc.SpriteAtlas) as cc.SpriteAtlas;
         frame = padSpriteAtlas.getSpriteFrame(name);
         node.getChildByName("pad").getComponent(cc.Sprite).spriteFrame = frame;
-
         node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = ''+(level+1);
 
         var startPos = cc.v2(317,-952);
@@ -126,10 +123,15 @@ export default class ECSFactory extends cc.Component {
         var sp = cc.spawn(moveTo,seq);
         node.runAction(sp);
 
+        entity.baseComponent.entityID=ECSFactory.entityID++;
+
         entity.transformComponent.x=x
         entity.transformComponent.y=y
 
-        
+        entity.unitComponent.angle=angle;
+        entity.unitComponent.atk=lvData.atk;
+        entity.roleComponent.level=lvData.level;
+        entity.roleComponent.type=lvData.type;
 
         return entity
     }

@@ -144,11 +144,6 @@
     "meta": 1686713932024,
     "relativePath": "FrameWork\\Utils\\frame_animation.ts"
   },
-  "4f77fb85-ef93-4df7-88d4-1815aaef8e05": {
-    "asset": 1686713915314,
-    "meta": 1686713932204,
-    "relativePath": "FrameWork\\Utils\\util.ts"
-  },
   "8c4e12e6-de66-42d8-89ab-65e600c4b2d8": {
     "asset": 1686800724348,
     "meta": 1686801000921,
@@ -644,11 +639,6 @@
     "meta": 1697616875685,
     "relativePath": "Scripts\\ECS\\Entities\\MonsterEntity.ts"
   },
-  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
-    "asset": 1697617134476,
-    "meta": 1697630156024,
-    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
-  },
   "4b774591-5e6b-4c74-9b42-e110cc8902f0": {
     "asset": 1697632934404,
     "meta": 1697633028819,
@@ -674,11 +664,6 @@
     "meta": 1697710772883,
     "relativePath": "Scripts\\ECS\\Components\\RoleComponent.ts"
   },
-  "598f6593-2b7a-47ec-beeb-29f01b71e860": {
-    "asset": 1697710578512,
-    "meta": 1697710772886,
-    "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
-  },
   "af3482a0-69bd-408e-81d7-052c10b53d9f": {
     "asset": 1697710594056,
     "meta": 1697710772921,
@@ -688,11 +673,6 @@
     "asset": 1697730406360,
     "meta": 1697731892331,
     "relativePath": "Scripts\\data\\IntensifyDataManager.ts"
-  },
-  "c2a8edc9-0ec1-4878-ad4c-9776cf1a6111": {
-    "asset": 1697730786488,
-    "meta": 1697731892340,
-    "relativePath": "Scripts\\Enum.ts"
   },
   "9836134e-b892-4283-b6b2-78b5acf3ed45": {
     "asset": 1685959570623,
@@ -1119,20 +1099,10 @@
     "meta": 1697732930260,
     "relativePath": "prefab\\light\\ambient.prefab"
   },
-  "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1697732751715,
-    "meta": 1697732930288,
-    "relativePath": "Scripts\\ECS\\ECSManager.ts"
-  },
   "f5331fd2-bf42-4ee3-a3fd-3e1657600eff": {
     "asset": 1685959570697,
     "meta": 1697732930289,
     "relativePath": "prefab\\light\\spot.prefab"
-  },
-  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
-    "asset": 1697731954232,
-    "meta": 1697732930308,
-    "relativePath": "Scripts\\GameLanch .ts"
   },
   "ddb99b39-7004-47cd-9705-751905c43c46": {
     "asset": 1685959570695,
@@ -1209,19 +1179,54 @@
     "meta": 1697732930465,
     "relativePath": "model\\primitives.fbx"
   },
-  "6af71efc-a508-4dec-9811-dd41ce316160": {
-    "asset": 1697733060986,
-    "meta": 1697733062761,
-    "relativePath": "Scripts\\UI\\GameUIControl.ts"
-  },
-  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
-    "asset": 1697733133126,
-    "meta": 1697733159088,
-    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
-  },
   "1e67c0b0-b418-4f29-8b6c-4af328ddbb4c": {
     "asset": 1697733253472,
     "meta": 1697733256568,
     "relativePath": "AssetsPackge\\data\\mapData.json"
+  },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1697771909477,
+    "meta": 1697772480207,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
+    "asset": 1697772020990,
+    "meta": 1697772480236,
+    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
+  },
+  "6af71efc-a508-4dec-9811-dd41ce316160": {
+    "asset": 1697772061832,
+    "meta": 1697772480264,
+    "relativePath": "Scripts\\UI\\GameUIControl.ts"
+  },
+  "4f77fb85-ef93-4df7-88d4-1815aaef8e05": {
+    "asset": 1697773184621,
+    "meta": 1697774066821,
+    "relativePath": "FrameWork\\Utils\\util.ts"
+  },
+  "598f6593-2b7a-47ec-beeb-29f01b71e860": {
+    "asset": 1697773729391,
+    "meta": 1697774066840,
+    "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
+  },
+  "c2a8edc9-0ec1-4878-ad4c-9776cf1a6111": {
+    "asset": 1697772857131,
+    "meta": 1697774066887,
+    "relativePath": "Scripts\\Enum.ts"
+  },
+  "57934dbd-030f-43e0-9bae-1c5c4747e414": {
+    "asset": 1697772664356,
+    "meta": 1697774066899,
+    "relativePath": "Scripts\\GameLanch .ts"
+  },
+  "8c250f92-185a-467f-9793-3d4628370175": {
+    "asset": 1697774299588,
+    "meta": 1697774318957,
+    "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "7057f01d-e35f-43c6-9072-9125e1d615de": {
+    "asset": 1697774394466,
+    "meta": 1697774395841,
+    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
   }
 }

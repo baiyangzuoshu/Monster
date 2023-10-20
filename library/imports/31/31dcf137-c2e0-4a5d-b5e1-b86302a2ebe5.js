@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
+var util_1 = require("../../FrameWork/Utils/util");
 var DataManager_1 = require("../data/DataManager");
 var MapDataManager_1 = require("../Manager/MapDataManager");
 var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
@@ -139,12 +140,11 @@ var ECSFactory = /** @class */ (function (_super) {
     };
     ECSFactory.prototype.createCannonEntity = function (idx, level) {
         return __awaiter(this, void 0, void 0, function () {
-            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, index, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
+            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, angle, index, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         entity = new CannonEntitiy_1.default();
-                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "cannon", cc.Prefab)];
                     case 1:
                         cannonPrefab = _a.sent();
@@ -152,15 +152,14 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.baseComponent.gameObject = node;
                         this.moveCannon.addChild(node);
                         lvData = DataManager_1.default.getInstance().cannonUpLevel[level];
-                        entity.unitComponent.atk = lvData.atk;
-                        entity.roleComponent.level = lvData.level;
-                        entity.roleComponent.type = lvData.type;
                         name = '' + lvData.type + '_' + lvData.level;
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "cannon/gun", cc.SpriteAtlas)];
                     case 2:
                         gunSpriteAtlas = _a.sent();
                         frame = gunSpriteAtlas.getSpriteFrame(name);
                         node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
+                        angle = util_1.util.randomNum(0, 360);
+                        node.getChildByName("gun").angle = angle;
                         index = Math.floor(lvData.level / 3);
                         name = '' + lvData.type + '_' + index;
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "cannon/pad", cc.SpriteAtlas)];
@@ -184,8 +183,13 @@ var ECSFactory = /** @class */ (function (_super) {
                         }.bind(this)));
                         sp = cc.spawn(moveTo, seq);
                         node.runAction(sp);
+                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
                         entity.transformComponent.x = x;
                         entity.transformComponent.y = y;
+                        entity.unitComponent.angle = angle;
+                        entity.unitComponent.atk = lvData.atk;
+                        entity.roleComponent.level = lvData.level;
+                        entity.roleComponent.type = lvData.type;
                         return [2 /*return*/, entity];
                 }
             });
