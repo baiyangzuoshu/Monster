@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "bullet_4",
+    "_name": "",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "gun_4",
+    "_name": "gun_2",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -43,8 +43,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70,
-      "height": 75
+      "width": 46,
+      "height": 76
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -244,8 +244,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
-      "height": 84
+      "width": 154,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -257,14 +257,14 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        32.503,
+        11.068,
         0,
         0,
         0,
-        0.7071067811865475,
-        0.7071067811865476,
+        0,
         1,
-        1,
+        0.5,
+        0.5,
         1
       ]
     },
@@ -272,7 +272,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 90
+      "z": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -297,7 +297,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "d2c1e68b-0faa-4b80-858c-e04e7b6b7e62"
+      "__uuid__": "5705938c-922a-405b-a34c-bc8cf5f16db7"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -324,11 +324,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "6750ee3b-5694-4bc3-883e-010c9d66f342"
+      "__uuid__": "65a74d80-c0aa-4642-b13c-71c6c21e9f15"
     },
     "_clips": [
       {
-        "__uuid__": "6750ee3b-5694-4bc3-883e-010c9d66f342"
+        "__uuid__": "65a74d80-c0aa-4642-b13c-71c6c21e9f15"
       }
     ],
     "playOnLoad": false,
@@ -350,8 +350,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 30,
-      "height": 84
+      "width": 140,
+      "height": 15
     },
     "_id": ""
   },
@@ -382,7 +382,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "595c513d-8edf-4ea3-b703-e8d37aeb4808"
+      "__uuid__": "27862e3d-b494-42e6-8268-83e90fc8fe92"
     },
     "_type": 0,
     "_sizeMode": 1,

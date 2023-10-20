@@ -69,6 +69,7 @@ var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
 var util_1 = require("../../FrameWork/Utils/util");
 var DataManager_1 = require("../data/DataManager");
 var MapDataManager_1 = require("../Manager/MapDataManager");
+var BulletEntity_1 = require("./Entities/BulletEntity");
 var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -78,6 +79,7 @@ var ECSFactory = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.monsterNode = null;
         _this.moveCannon = null;
+        _this.bulletBuild = null;
         return _this;
     }
     ECSFactory_1 = ECSFactory;
@@ -95,6 +97,7 @@ var ECSFactory = /** @class */ (function (_super) {
         var canvas = cc.find("Canvas");
         this.monsterNode = canvas.getChildByName("Game").getChildByName("monsterNode");
         this.moveCannon = canvas.getChildByName("Game").getChildByName("moveCannon");
+        this.bulletBuild = canvas.getChildByName("Game").getChildByName("bulletBuild");
     };
     ECSFactory.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
         return __awaiter(this, void 0, void 0, function () {
@@ -152,7 +155,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.baseComponent.gameObject = node;
                         this.moveCannon.addChild(node);
                         lvData = DataManager_1.default.getInstance().cannonUpLevel[level];
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "bullet/gun_" + lvData.type, cc.Prefab)];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "gun/gun_" + lvData.type, cc.Prefab)];
                     case 2:
                         gunPrefab = _a.sent();
                         gunNode = cc.instantiate(gunPrefab);
@@ -190,6 +193,33 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.roleComponent.level = lvData.level;
                         entity.roleComponent.type = lvData.type;
                         entity.gunComponent.gameObject = gunNode;
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
+    };
+    ECSFactory.prototype.createBulletEntity = function (level, worldPos, attackTarget, angle) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity, lvData, bulletPrefab, bulletNode, nodePos;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        entity = new BulletEntity_1.default();
+                        lvData = DataManager_1.default.getInstance().cannonUpLevel[level];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "bullet/bullet_" + lvData.type, cc.Prefab)];
+                    case 1:
+                        bulletPrefab = _a.sent();
+                        bulletNode = cc.instantiate(bulletPrefab);
+                        this.bulletBuild.addChild(bulletNode);
+                        nodePos = this.bulletBuild.convertToNodeSpaceAR(worldPos);
+                        bulletNode.setPosition(nodePos);
+                        bulletNode.angle = angle;
+                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
+                        entity.baseComponent.gameObject = bulletNode;
+                        entity.transformComponent.x = nodePos.x;
+                        entity.transformComponent.y = nodePos.y;
+                        entity.unitComponent.atk = lvData.atk;
+                        entity.unitComponent.m_attackTarget = attackTarget;
                         return [2 /*return*/, entity];
                 }
             });

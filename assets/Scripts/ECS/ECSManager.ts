@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import ECSFactory from "./ECSFactory";
+import BulletEntity from "./Entities/BulletEntity";
 import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
 import AISystem from "./Systems/AISystem";
@@ -34,6 +35,7 @@ export default class ECSManager extends cc.Component {
 
     private monsters:Array<MonsterEntity>=[];
     private cannones:Array<CannonEntitiy>=[];
+    private bullets:Array<BulletEntity>=[];
 
     async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
@@ -45,6 +47,13 @@ export default class ECSManager extends cc.Component {
     public async createCannonEntity(index:number,level:number){
         let entity=await ECSFactory.getInstance().createCannonEntity(index,level);
         this.cannones.push(entity);
+
+        return entity
+    }
+
+    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackTarget:cc.Node,angle:number){
+        let entity=await ECSFactory.getInstance().createBulletEntity(level,worldPos,attackTarget,angle);
+        this.bullets.push(entity);
 
         return entity
     }
@@ -63,8 +72,13 @@ export default class ECSManager extends cc.Component {
 
     AISystemCannon(dt:number){
         for(let i=0;i<this.cannones.length;i++){
-            console.log(i)
-            AISystem.getInstance().onCannonUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent);
+            AISystem.getInstance().onCannonUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent);
+        }
+    }
+
+    AISystemBullet(dt:number){
+        for(let i=0;i<this.bullets.length;i++){
+            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent);
         }
     }
 
@@ -97,5 +111,6 @@ export default class ECSManager extends cc.Component {
         this.animateSystemMonster(dt);
         //AI
         this.AISystemCannon(dt);
+        this.AISystemBullet(dt);
     }
 }

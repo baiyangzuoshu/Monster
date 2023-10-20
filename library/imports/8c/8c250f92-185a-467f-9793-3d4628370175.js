@@ -76,6 +76,7 @@ var ECSManager = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.monsters = [];
         _this.cannones = [];
+        _this.bullets = [];
         return _this;
     }
     ECSManager_1 = ECSManager;
@@ -119,6 +120,20 @@ var ECSManager = /** @class */ (function (_super) {
             });
         });
     };
+    ECSManager.prototype.createBulletEntity = function (level, worldPos, attackTarget, angle) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createBulletEntity(level, worldPos, attackTarget, angle)];
+                    case 1:
+                        entity = _a.sent();
+                        this.bullets.push(entity);
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
+    };
     ECSManager.prototype.navSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
@@ -131,8 +146,12 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.AISystemCannon = function (dt) {
         for (var i = 0; i < this.cannones.length; i++) {
-            console.log(i);
-            AISystem_1.default.getInstance().onCannonUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent);
+            AISystem_1.default.getInstance().onCannonUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent);
+        }
+    };
+    ECSManager.prototype.AISystemBullet = function (dt) {
+        for (var i = 0; i < this.bullets.length; i++) {
+            AISystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent);
         }
     };
     ECSManager.prototype.calcNearDistance = function (cannon) {
@@ -161,6 +180,7 @@ var ECSManager = /** @class */ (function (_super) {
         this.animateSystemMonster(dt);
         //AI
         this.AISystemCannon(dt);
+        this.AISystemBullet(dt);
     };
     var ECSManager_1;
     ECSManager._instance = null;

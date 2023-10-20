@@ -9,6 +9,7 @@ import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { util } from "../../FrameWork/Utils/util";
 import DataManager from "../data/DataManager";
 import MapDataManager from "../Manager/MapDataManager";
+import BulletEntity from "./Entities/BulletEntity";
 import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
 import EntityUtils from "./EntityUtils";
@@ -35,10 +36,12 @@ export default class ECSFactory extends cc.Component {
         let canvas=cc.find("Canvas");
         this.monsterNode=canvas.getChildByName("Game").getChildByName("monsterNode");
         this.moveCannon=canvas.getChildByName("Game").getChildByName("moveCannon");
+        this.bulletBuild=canvas.getChildByName("Game").getChildByName("bulletBuild");
     }
 
     private monsterNode:cc.Node=null;
     private moveCannon:cc.Node=null;
+    private bulletBuild:cc.Node=null;
     private static entityID:number=0;
 
     public async createMonsterEntity(type:number,index:number,list,hp,gold,speed){
@@ -91,7 +94,7 @@ export default class ECSFactory extends cc.Component {
 
         var lvData = DataManager.getInstance().cannonUpLevel[level];
         
-        let gunPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","bullet/gun_"+lvData.type,cc.Prefab) as cc.Prefab;
+        let gunPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","gun/gun_"+lvData.type,cc.Prefab) as cc.Prefab;
         let gunNode=cc.instantiate(gunPrefab);
         node.getChildByName("gun").addChild(gunNode);
 
@@ -136,5 +139,29 @@ export default class ECSFactory extends cc.Component {
         entity.gunComponent.gameObject=gunNode;
 
         return entity
+    }
+
+    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackTarget:cc.Node,angle:number){
+        let entity=new BulletEntity();
+
+        var lvData = DataManager.getInstance().cannonUpLevel[level];
+        
+        let bulletPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","bullet/bullet_"+lvData.type,cc.Prefab) as cc.Prefab;
+        let bulletNode=cc.instantiate(bulletPrefab);
+        this.bulletBuild.addChild(bulletNode);
+        let nodePos=this.bulletBuild.convertToNodeSpaceAR(worldPos);
+        bulletNode.setPosition(nodePos);
+        bulletNode.angle=angle;
+
+        entity.baseComponent.entityID=ECSFactory.entityID++;
+        entity.baseComponent.gameObject=bulletNode;
+
+        entity.transformComponent.x=nodePos.x;
+        entity.transformComponent.y=nodePos.y;
+
+        entity.unitComponent.atk=lvData.atk;
+        entity.unitComponent.m_attackTarget=attackTarget;
+
+        return entity;
     }
 }

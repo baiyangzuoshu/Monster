@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "gun_0",
+    "_name": "bullet_0",
     "_objFlags": 0,
     "_native": "",
     "data": {
