@@ -12,7 +12,7 @@ import MapDataManager from "../Manager/MapDataManager";
 import BulletEntity from "./Entities/BulletEntity";
 import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
-import { GameState } from "../Enum";
+import { BulletState, GameState } from "../Enum";
 
 const {ccclass, property} = cc._decorator;
 
@@ -136,7 +136,7 @@ export default class ECSFactory extends cc.Component {
 
         entity.unitComponent.angle=angle;
         entity.unitComponent.atk=lvData.atk;
-        entity.unitComponent.state = GameState.Normal;
+        entity.unitComponent.state = GameState.None;
 
         entity.roleComponent.level=level;
         entity.roleComponent.type=lvData.type;
@@ -156,7 +156,7 @@ export default class ECSFactory extends cc.Component {
         bulletNode.setPosition(nodePos);
         bulletNode.angle=angle;
         if(2==lvData.type){
-            bulletNode.angle = util.getAngle(nodePos, attackTarget.getPosition());
+            bulletNode.getChildByName("bullet").angle = util.getAngle(nodePos, attackTarget.getPosition());
         }
 
         entity.baseComponent.entityID=ECSFactory.entityID++;
@@ -172,6 +172,9 @@ export default class ECSFactory extends cc.Component {
         entity.shapeComponent.height=bulletNode.height;
 
         entity.roleComponent.type=lvData.type;
+
+        entity.animateComponent.state=BulletState.Effect;
+        entity.animateComponent.playActionTime=0.25;
 
         return entity;
     }

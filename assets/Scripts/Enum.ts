@@ -1,7 +1,14 @@
 export enum GameState{
-    Normal=0,
+    None=0,
     Active=1,
     Dead=2
+}
+
+export enum BulletState{
+    None=0,
+    Effect=1,
+    Attack=2,
+    Dead=3
 }
 
 export enum Task{//任务

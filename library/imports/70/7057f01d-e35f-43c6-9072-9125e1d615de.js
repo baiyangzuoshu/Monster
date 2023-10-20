@@ -152,8 +152,8 @@ var AISystem = /** @class */ (function (_super) {
             });
         });
     };
-    AISystem.prototype.onBulletUpdate = function (dt, unitComponent, baseComponent, transformComponent, roleComponent) {
-        if (unitComponent.isDead || unitComponent.m_attackTarget == null) {
+    AISystem.prototype.onBulletUpdate = function (dt, unitComponent, baseComponent, transformComponent, roleComponent, animateComponent) {
+        if (unitComponent.isDead || unitComponent.m_attackTarget == null || animateComponent.state != Enum_1.BulletState.Attack) {
             return;
         }
         if (6 == roleComponent.type || 4 == roleComponent.type || 2 == roleComponent.type || 0 == roleComponent.type) {

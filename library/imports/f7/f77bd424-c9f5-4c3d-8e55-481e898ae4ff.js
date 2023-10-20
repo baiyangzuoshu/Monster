@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Enum_1 = require("../../Enum");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var AnimateSystem = /** @class */ (function (_super) {
     __extends(AnimateSystem, _super);
@@ -67,6 +68,26 @@ var AnimateSystem = /** @class */ (function (_super) {
             var seqJump = cc.sequence(jump1, jump2);
             baseComponent.gameObject.runAction(seqJump);
         }
+    };
+    AnimateSystem.prototype.onBulletUpdate = function (dt, baseComponent, animateComponent) {
+        if (Enum_1.BulletState.Effect != animateComponent.state) {
+            return;
+        }
+        animateComponent.playActionTime -= dt;
+        if (animateComponent.playActionTime < 0) {
+            animateComponent.state = Enum_1.BulletState.Attack;
+            var bullet_1 = baseComponent.gameObject.getChildByName('bullet');
+            var effect_1 = baseComponent.gameObject.getChildByName('effect');
+            effect_1.active = false;
+            bullet_1.active = true;
+            return;
+        }
+        var effect = baseComponent.gameObject.getChildByName('effect');
+        var bullet = baseComponent.gameObject.getChildByName('bullet');
+        var effectAnimate = effect.getComponent(cc.Animation);
+        effect.active = true;
+        bullet.active = false;
+        effectAnimate.play('fire');
     };
     var AnimateSystem_1;
     AnimateSystem._instance = null;

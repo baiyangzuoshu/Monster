@@ -71,6 +71,12 @@ export default class ECSManager extends cc.Component {
         }
     }
 
+    animateSystemBullet(dt:number){
+        for(let i=0;i<this.bullets.length;i++){
+            AnimateSystem.getInstance().onBulletUpdate(dt,this.bullets[i].baseComponent,this.bullets[i].animateComponent);
+        }
+    }
+
     AISystemCannon(dt:number){
         for(let i=0;i<this.cannones.length;i++){
             AISystem.getInstance().onCannonUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent);
@@ -79,7 +85,7 @@ export default class ECSManager extends cc.Component {
 
     AISystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent,this.bullets[i].roleComponent);
+            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent,this.bullets[i].roleComponent,this.bullets[i].animateComponent);
         }
     }
 
@@ -123,6 +129,8 @@ export default class ECSManager extends cc.Component {
         this.navSystemMonster(dt);
         //怪物动画
         this.animateSystemMonster(dt);
+        //子弹动画
+        this.animateSystemBullet(dt);
         //AI
         this.AISystemCannon(dt);
         this.AISystemBullet(dt);

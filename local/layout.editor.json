@@ -14,12 +14,12 @@
         "children": [
           {
             "width": 304,
-            "height": 922,
+            "height": 919.5,
             "type": "dock-v",
             "children": [
               {
                 "width": 304,
-                "height": 300.65625,
+                "height": 299.84375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -28,7 +28,7 @@
               },
               {
                 "width": 304,
-                "height": 618.34375,
+                "height": 616.65625,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -39,7 +39,7 @@
           },
           {
             "width": 304,
-            "height": 922,
+            "height": 919.5,
             "type": "panel",
             "active": 0,
             "children": [
@@ -49,12 +49,12 @@
           },
           {
             "width": 1290,
-            "height": 922,
+            "height": 919.5,
             "type": "dock-v",
             "children": [
               {
                 "width": 1290,
-                "height": 651.421875,
+                "height": 649.640625,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -63,9 +63,9 @@
               },
               {
                 "width": 1290,
-                "height": 267.578125,
+                "height": 266.859375,
                 "type": "panel",
-                "active": 0,
+                "active": 1,
                 "children": [
                   "console",
                   "timeline",
@@ -86,7 +86,8 @@
         "timeline",
         "game-window"
       ]
-    }
+    },
+    " common-asset-worker-worker": {}
   },
   "panels": {
     "project-settings": {

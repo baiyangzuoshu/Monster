@@ -335,8 +335,8 @@
     "relativePath": "AssetsPackge\\prefabs\\bullet\\bullet_4.prefab"
   },
   "ffe9ff51-7f79-4957-9132-e09ed8f99586": {
-    "asset": 1697797705165,
-    "meta": 1697797705168,
+    "asset": 1697806711130,
+    "meta": 1697806711133,
     "relativePath": "AssetsPackge\\prefabs\\bullet\\bullet_3.prefab"
   },
   "736bd016-db3a-493f-ba7f-e0c1d1666039": {
@@ -629,11 +629,6 @@
     "meta": 1697614377177,
     "relativePath": "Scripts\\ECS\\Systems\\NavSystem.ts"
   },
-  "b2db2e73-311a-42d8-b099-a7d547dd4e0c": {
-    "asset": 1697616598126,
-    "meta": 1697616875659,
-    "relativePath": "Scripts\\ECS\\Components\\AnimateComponent.ts"
-  },
   "4b774591-5e6b-4c74-9b42-e110cc8902f0": {
     "asset": 1697632934404,
     "meta": 1697633028819,
@@ -673,11 +668,6 @@
     "asset": 1697733253472,
     "meta": 1697733256568,
     "relativePath": "AssetsPackge\\data\\mapData.json"
-  },
-  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
-    "asset": 1697772020990,
-    "meta": 1697772480236,
-    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
   },
   "4f77fb85-ef93-4df7-88d4-1815aaef8e05": {
     "asset": 1697773184621,
@@ -719,16 +709,6 @@
     "meta": 1697787298025,
     "relativePath": "AssetsPackge\\prefabs\\gun\\gun_2.prefab"
   },
-  "c5b8396d-f32e-48b3-9935-fe96e3b58016": {
-    "asset": 1697788446165,
-    "meta": 1697789068450,
-    "relativePath": "Scripts\\ECS\\Components\\ShapeComponent.ts"
-  },
-  "2d768fd3-afea-4c6b-8704-f8f8e44fca63": {
-    "asset": 1697788477305,
-    "meta": 1697789068514,
-    "relativePath": "Scripts\\ECS\\Entities\\BulletEntity.ts"
-  },
   "d0f1b167-7db7-4c4c-9428-5976d6a3aa79": {
     "asset": 1697788491116,
     "meta": 1697789068522,
@@ -738,11 +718,6 @@
     "asset": 1697789154531,
     "meta": 1697790168807,
     "relativePath": "Scripts\\GameLanch .ts"
-  },
-  "c2a8edc9-0ec1-4878-ad4c-9776cf1a6111": {
-    "asset": 1697790556280,
-    "meta": 1697790853724,
-    "relativePath": "Scripts\\Enum.ts"
   },
   "af3482a0-69bd-408e-81d7-052c10b53d9f": {
     "asset": 1697791469338,
@@ -1259,24 +1234,49 @@
     "meta": 1697797686416,
     "relativePath": "model\\primitives.fbx"
   },
-  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
-    "asset": 1697803114220,
-    "meta": 1697803116783,
-    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  "c5b8396d-f32e-48b3-9935-fe96e3b58016": {
+    "asset": 1697805104053,
+    "meta": 1697805113357,
+    "relativePath": "Scripts\\ECS\\Components\\ShapeComponent.ts"
   },
-  "7057f01d-e35f-43c6-9072-9125e1d615de": {
-    "asset": 1697803243791,
-    "meta": 1697803247592,
-    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
+  "b2db2e73-311a-42d8-b099-a7d547dd4e0c": {
+    "asset": 1697805304574,
+    "meta": 1697805350698,
+    "relativePath": "Scripts\\ECS\\Components\\AnimateComponent.ts"
   },
-  "6af71efc-a508-4dec-9811-dd41ce316160": {
-    "asset": 1697803395143,
-    "meta": 1697803403454,
-    "relativePath": "Scripts\\UI\\GameUIControl.ts"
+  "2d768fd3-afea-4c6b-8704-f8f8e44fca63": {
+    "asset": 1697805348323,
+    "meta": 1697805350762,
+    "relativePath": "Scripts\\ECS\\Entities\\BulletEntity.ts"
+  },
+  "c2a8edc9-0ec1-4878-ad4c-9776cf1a6111": {
+    "asset": 1697805180447,
+    "meta": 1697805350768,
+    "relativePath": "Scripts\\Enum.ts"
   },
   "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1697803753920,
-    "meta": 1697803774547,
+    "asset": 1697805868862,
+    "meta": 1697805877085,
     "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
+    "asset": 1697805939646,
+    "meta": 1697805941531,
+    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
+  },
+  "7057f01d-e35f-43c6-9072-9125e1d615de": {
+    "asset": 1697806421795,
+    "meta": 1697806424495,
+    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
+  },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1697807051148,
+    "meta": 1697807067301,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "6af71efc-a508-4dec-9811-dd41ce316160": {
+    "asset": 1697807063858,
+    "meta": 1697807067328,
+    "relativePath": "Scripts\\UI\\GameUIControl.ts"
   }
 }

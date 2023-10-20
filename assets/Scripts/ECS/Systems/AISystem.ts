@@ -7,7 +7,8 @@
 
 import utils = require("markdown-it/lib/common/utils");
 import { util } from "../../../FrameWork/Utils/util";
-import { GameState, SkillBuffer } from "../../Enum";
+import { BulletState, GameState, SkillBuffer } from "../../Enum";
+import AnimateComponent from "../Components/AnimateComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import TransformComponent from "../Components/TransformComponent";
@@ -99,8 +100,8 @@ export default class AISystem extends cc.Component {
         }
     }
 
-    onBulletUpdate(dt:number,unitComponent:UnitComponent,baseComponent:BaseComponent,transformComponent:TransformComponent,roleComponent:RoleComponent){
-        if( unitComponent.isDead || unitComponent.m_attackTarget == null ){
+    onBulletUpdate(dt:number,unitComponent:UnitComponent,baseComponent:BaseComponent,transformComponent:TransformComponent,roleComponent:RoleComponent,animateComponent:AnimateComponent){
+        if( unitComponent.isDead || unitComponent.m_attackTarget == null ||animateComponent.state!=BulletState.Attack){
             return;
         }
         

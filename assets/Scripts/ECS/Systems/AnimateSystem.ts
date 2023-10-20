@@ -5,6 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { BulletState } from "../../Enum";
 import AnimateComponent from "../Components/AnimateComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
@@ -52,5 +53,29 @@ export default class AnimateSystem extends cc.Component {
 
             baseComponent.gameObject.runAction(seqJump);
         }
+    }
+
+    onBulletUpdate(dt:number,baseComponent:BaseComponent,animateComponent:AnimateComponent){
+        if(BulletState.Effect!=animateComponent.state){
+            return;
+        }
+
+        animateComponent.playActionTime-=dt;
+
+        if(animateComponent.playActionTime<0){
+            animateComponent.state=BulletState.Attack;
+            let bullet = baseComponent.gameObject.getChildByName('bullet');
+            let effect =baseComponent.gameObject.getChildByName('effect');
+            effect.active = false;
+            bullet.active = true;
+            return;
+        }
+        
+        let effect = baseComponent.gameObject.getChildByName('effect');
+        let bullet = baseComponent.gameObject.getChildByName('bullet');
+        let effectAnimate = effect.getComponent(cc.Animation);
+        effect.active = true;
+        bullet.active = false;
+        effectAnimate.play('fire');
     }
 }

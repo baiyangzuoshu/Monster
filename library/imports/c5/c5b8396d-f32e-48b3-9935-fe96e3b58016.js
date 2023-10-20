@@ -23,7 +23,6 @@ var ShapeComponent = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.width = 0;
         _this.height = 0;
-        _this.radis = 0;
         return _this;
     }
     return ShapeComponent;
