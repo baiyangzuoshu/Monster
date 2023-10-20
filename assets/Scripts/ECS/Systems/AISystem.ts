@@ -31,7 +31,7 @@ export default class AISystem extends cc.Component {
         }
     }
 
-    onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent) {
+    onCannonUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent) {
         if( unitComponent.m_attackTarget == null){
             unitComponent.m_attackTarget = ECSManager.getInstance().calcNearDistance(baseComponent.gameObject);
         }

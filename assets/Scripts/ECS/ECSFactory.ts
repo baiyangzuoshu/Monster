@@ -91,17 +91,17 @@ export default class ECSFactory extends cc.Component {
 
         var lvData = DataManager.getInstance().cannonUpLevel[level];
         
-        var name = ''+lvData.type+'_'+lvData.level;
-        let gunSpriteAtlas=await ResManagerPro.Instance.IE_GetAsset("texture","cannon/gun",cc.SpriteAtlas) as cc.SpriteAtlas;
-        var frame = gunSpriteAtlas.getSpriteFrame(name);
-        node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
+        let gunPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","bullet/gun_"+lvData.type,cc.Prefab) as cc.Prefab;
+        let gunNode=cc.instantiate(gunPrefab);
+        node.getChildByName("gun").addChild(gunNode);
+
         let angle=util.randomNum(0,360);
         node.getChildByName("gun").angle=angle;
 
         var index = Math.floor(lvData.level/3);
-        name = ''+lvData.type+'_'+index;
+        let name = ''+lvData.type+'_'+index;
         let padSpriteAtlas=await ResManagerPro.Instance.IE_GetAsset("texture","cannon/pad",cc.SpriteAtlas) as cc.SpriteAtlas;
-        frame = padSpriteAtlas.getSpriteFrame(name);
+        let frame = padSpriteAtlas.getSpriteFrame(name);
         node.getChildByName("pad").getComponent(cc.Sprite).spriteFrame = frame;
         node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = ''+(level+1);
 
@@ -132,6 +132,8 @@ export default class ECSFactory extends cc.Component {
         entity.unitComponent.atk=lvData.atk;
         entity.roleComponent.level=lvData.level;
         entity.roleComponent.type=lvData.type;
+
+        entity.gunComponent.gameObject=gunNode;
 
         return entity
     }

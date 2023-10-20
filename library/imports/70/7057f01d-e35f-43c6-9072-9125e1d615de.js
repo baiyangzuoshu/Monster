@@ -50,7 +50,7 @@ var AISystem = /** @class */ (function (_super) {
             return;
         }
     };
-    AISystem.prototype.onUpdate = function (dt, unitComponent, baseComponent) {
+    AISystem.prototype.onCannonUpdate = function (dt, unitComponent, baseComponent) {
         if (unitComponent.m_attackTarget == null) {
             unitComponent.m_attackTarget = ECSManager_1.default.getInstance().calcNearDistance(baseComponent.gameObject);
         }
@@ -64,7 +64,7 @@ var AISystem = /** @class */ (function (_super) {
             var dir = cc.v3();
             cc.Vec3.subtract(dir, src, dst);
             var dis = dir.len();
-            cc.log(dis);
+            //cc.log(dis);
             var curDis = 230;
             Math.abs(dis);
             if (dis > curDis) {

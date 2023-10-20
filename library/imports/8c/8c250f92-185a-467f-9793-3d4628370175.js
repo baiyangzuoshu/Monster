@@ -132,7 +132,7 @@ var ECSManager = /** @class */ (function (_super) {
     ECSManager.prototype.AISystemCannon = function (dt) {
         for (var i = 0; i < this.cannones.length; i++) {
             console.log(i);
-            AISystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent);
+            AISystem_1.default.getInstance().onCannonUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent);
         }
     };
     ECSManager.prototype.calcNearDistance = function (cannon) {
@@ -146,7 +146,6 @@ var ECSManager = /** @class */ (function (_super) {
             var src = cc.v2(monster.baseComponent.gameObject.x, monster.baseComponent.gameObject.y);
             var dst = cc.v2(cannon.x, cannon.y);
             var dis = src.sub(dst).mag();
-            //var dis = getDistance(this.node.children[i].getPosition(),cannon.getPosition());
             if (dis < curDis && dis < Math.abs(minDis)) {
                 minDis = dis;
                 minMonster = monster.baseComponent.gameObject;

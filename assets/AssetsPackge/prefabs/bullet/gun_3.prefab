@@ -24,11 +24,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 13
       }
     ],
     "_prefab": {
-      "__id__": 15
+      "__id__": 14
     },
     "_opacity": 255,
     "_color": {
@@ -96,13 +96,10 @@
     "_components": [
       {
         "__id__": 11
-      },
-      {
-        "__id__": 12
       }
     ],
     "_prefab": {
-      "__id__": 13
+      "__id__": 12
     },
     "_opacity": 255,
     "_color": {
@@ -412,22 +409,6 @@
     },
     "fileId": "a4mK7LtrtHu688J8M/xfhE",
     "sync": false
-  },
-  {
-    "__type__": "0de4aliKC5Ie42uuTKSMU1z",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "m_cannon": {
-      "__id__": 8
-    },
-    "m_effect": {
-      "__id__": 3
-    },
-    "_id": ""
   },
   {
     "__type__": "cc.CircleCollider",

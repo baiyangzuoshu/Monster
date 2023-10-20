@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\Scripts\\ECS\\Components\\GunComponent.ts"],"names":[],"mappings":";;;;;;AACA;IAAA;QACW,eAAU,GAAS,IAAI,CAAC;IACnC,CAAC;IAAD,mBAAC;AAAD,CAFA,AAEC,IAAA","file":"","sourceRoot":"/","sourcesContent":["\nexport default class GunComponent  {\n    public gameObject:cc.Node=null;\n}\n"]}

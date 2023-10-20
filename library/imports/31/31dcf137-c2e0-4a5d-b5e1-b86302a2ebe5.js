@@ -140,7 +140,7 @@ var ECSFactory = /** @class */ (function (_super) {
     };
     ECSFactory.prototype.createCannonEntity = function (idx, level) {
         return __awaiter(this, void 0, void 0, function () {
-            var entity, cannonPrefab, node, lvData, name, gunSpriteAtlas, frame, angle, index, padSpriteAtlas, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
+            var entity, cannonPrefab, node, lvData, gunPrefab, gunNode, angle, index, name, padSpriteAtlas, frame, startPos, _cannonList, pos, x, y, endPos, moveTo, scaleTo1, delta, scaleTo2, seq, sp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -152,12 +152,11 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.baseComponent.gameObject = node;
                         this.moveCannon.addChild(node);
                         lvData = DataManager_1.default.getInstance().cannonUpLevel[level];
-                        name = '' + lvData.type + '_' + lvData.level;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("texture", "cannon/gun", cc.SpriteAtlas)];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "bullet/gun_" + lvData.type, cc.Prefab)];
                     case 2:
-                        gunSpriteAtlas = _a.sent();
-                        frame = gunSpriteAtlas.getSpriteFrame(name);
-                        node.getChildByName("gun").getComponent(cc.Sprite).spriteFrame = frame;
+                        gunPrefab = _a.sent();
+                        gunNode = cc.instantiate(gunPrefab);
+                        node.getChildByName("gun").addChild(gunNode);
                         angle = util_1.util.randomNum(0, 360);
                         node.getChildByName("gun").angle = angle;
                         index = Math.floor(lvData.level / 3);
@@ -190,6 +189,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.unitComponent.atk = lvData.atk;
                         entity.roleComponent.level = lvData.level;
                         entity.roleComponent.type = lvData.type;
+                        entity.gunComponent.gameObject = gunNode;
                         return [2 /*return*/, entity];
                 }
             });

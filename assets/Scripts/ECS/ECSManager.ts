@@ -64,7 +64,7 @@ export default class ECSManager extends cc.Component {
     AISystemCannon(dt:number){
         for(let i=0;i<this.cannones.length;i++){
             console.log(i)
-            AISystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent);
+            AISystem.getInstance().onCannonUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent);
         }
     }
 
@@ -81,7 +81,6 @@ export default class ECSManager extends cc.Component {
             let dst=cc.v2(cannon.x,cannon.y);
             let dis=src.sub(dst).mag();
             
-            //var dis = getDistance(this.node.children[i].getPosition(),cannon.getPosition());
             if(dis < curDis && dis < Math.abs( minDis) ){
                 minDis = dis;
                 minMonster = monster.baseComponent.gameObject;
