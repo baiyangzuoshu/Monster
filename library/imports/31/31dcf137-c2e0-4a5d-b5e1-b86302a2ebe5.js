@@ -195,7 +195,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.unitComponent.angle = angle;
                         entity.unitComponent.atk = lvData.atk;
                         entity.unitComponent.state = Enum_1.GameState.Normal;
-                        entity.roleComponent.level = lvData.level;
+                        entity.roleComponent.level = level;
                         entity.roleComponent.type = lvData.type;
                         return [2 /*return*/, entity];
                 }
@@ -218,6 +218,9 @@ var ECSFactory = /** @class */ (function (_super) {
                         nodePos = this.bulletBuild.convertToNodeSpaceAR(worldPos);
                         bulletNode.setPosition(nodePos);
                         bulletNode.angle = angle;
+                        if (2 == lvData.type) {
+                            bulletNode.angle = util_1.util.getAngle(nodePos, attackTarget.getPosition());
+                        }
                         entity.baseComponent.entityID = ECSFactory_1.entityID++;
                         entity.baseComponent.gameObject = bulletNode;
                         entity.transformComponent.x = nodePos.x;
@@ -226,6 +229,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.unitComponent.m_attackTarget = attackTarget;
                         entity.shapeComponent.width = bulletNode.width;
                         entity.shapeComponent.height = bulletNode.height;
+                        entity.roleComponent.type = lvData.type;
                         return [2 /*return*/, entity];
                 }
             });

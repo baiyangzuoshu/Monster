@@ -79,7 +79,7 @@ export default class ECSManager extends cc.Component {
 
     AISystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent);
+            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent,this.bullets[i].roleComponent);
         }
     }
 

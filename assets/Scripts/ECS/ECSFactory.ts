@@ -138,7 +138,7 @@ export default class ECSFactory extends cc.Component {
         entity.unitComponent.atk=lvData.atk;
         entity.unitComponent.state = GameState.Normal;
 
-        entity.roleComponent.level=lvData.level;
+        entity.roleComponent.level=level;
         entity.roleComponent.type=lvData.type;
 
         return entity
@@ -155,6 +155,9 @@ export default class ECSFactory extends cc.Component {
         let nodePos=this.bulletBuild.convertToNodeSpaceAR(worldPos);
         bulletNode.setPosition(nodePos);
         bulletNode.angle=angle;
+        if(2==lvData.type){
+            bulletNode.angle = util.getAngle(nodePos, attackTarget.getPosition());
+        }
 
         entity.baseComponent.entityID=ECSFactory.entityID++;
         entity.baseComponent.gameObject=bulletNode;
@@ -167,6 +170,8 @@ export default class ECSFactory extends cc.Component {
 
         entity.shapeComponent.width=bulletNode.width;
         entity.shapeComponent.height=bulletNode.height;
+
+        entity.roleComponent.type=lvData.type;
 
         return entity;
     }

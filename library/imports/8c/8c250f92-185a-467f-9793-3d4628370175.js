@@ -152,13 +152,16 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.AISystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
-            AISystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent);
+            AISystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent, this.bullets[i].roleComponent);
         }
     };
     ECSManager.prototype.collectHitSystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
             var hitPos = cc.v2(this.bullets[i].unitComponent.m_attackTarget.x, this.bullets[i].unitComponent.m_attackTarget.y);
             var isHit = CollectHitSystem_1.default.getInstance().onUpdate(dt, hitPos, this.bullets[i].shapeComponent, this.bullets[i].transformComponent, this.bullets[i].unitComponent);
+            if (1 === this.bullets[i].roleComponent.type) {
+                isHit = true;
+            }
             if (isHit) {
                 this.bullets[i].unitComponent.isDead = true;
                 this.bullets[i].baseComponent.gameObject.destroy();

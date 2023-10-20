@@ -198,7 +198,7 @@ var GameUIControl = /** @class */ (function (_super) {
                             this.m_hammerAction = true;
                         }
                         this.subMakeNumber();
-                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(index, 0)];
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createCannonEntity(index, 22)];
                     case 1:
                         cannonEntity = _a.sent();
                         this.m_cannonList[index].cannon = cannonEntity;

@@ -85,7 +85,7 @@ export default class AISystem extends cc.Component {
                 }
 
                 if( Math.abs(unitComponent.angle - angle) < Math.abs(moveAngle) ){
-                    unitComponent.fireTime = 2.0;
+                    unitComponent.fireTime = 1.0;
                     
                     let worldPos=baseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
                     await ECSManager.getInstance().createBulletEntity(roleComponent.level,worldPos,unitComponent.m_attackTarget,unitComponent.angle);
@@ -99,25 +99,68 @@ export default class AISystem extends cc.Component {
         }
     }
 
-    onBulletUpdate(dt:number,unitComponent:UnitComponent,baseComponent:BaseComponent,transformComponent:TransformComponent){
+    onBulletUpdate(dt:number,unitComponent:UnitComponent,baseComponent:BaseComponent,transformComponent:TransformComponent,roleComponent:RoleComponent){
         if( unitComponent.isDead || unitComponent.m_attackTarget == null ){
             return;
         }
-        var move = 500*dt;
-
-        var target = unitComponent.m_attackTarget;
-        var targetH = target.height;
-        var moveToPos = target.getPosition();
-        moveToPos.y += targetH/2;
-        var angle = util.getAngle(baseComponent.gameObject.getPosition(),moveToPos);
         
-        var x = Math.cos(angle * (Math.PI/180)) * move ;
-        var y = Math.sin(angle * (Math.PI/180)) * move ;
+        if(6==roleComponent.type||4==roleComponent.type||2==roleComponent.type||0==roleComponent.type){
+            var move = 500*dt;
 
-        baseComponent.gameObject.x += x;
-        baseComponent.gameObject.y += y;
+            var target = unitComponent.m_attackTarget;
+            var targetH = target.height;
+            var moveToPos = target.getPosition();
+            moveToPos.y += targetH/2;
+            var angle = util.getAngle(baseComponent.gameObject.getPosition(),moveToPos);
+            
+            var x = Math.cos(angle * (Math.PI/180)) * move ;
+            var y = Math.sin(angle * (Math.PI/180)) * move ;
+    
+            baseComponent.gameObject.x += x;
+            baseComponent.gameObject.y += y;
+    
+            transformComponent.x=baseComponent.gameObject.x;
+            transformComponent.y=baseComponent.gameObject.y;
+        }
+        else if(1==roleComponent.type){
+           
+            var target = unitComponent.m_attackTarget;
+            var targetPos = target.getPosition();
+    
+            var bulletPos = baseComponent.gameObject.convertToWorldSpaceAR(cc.v2(0,0));
+            var targetPos = target.convertToWorldSpaceAR(cc.v2(0,0));
+    
+            var targetH = target.height;
+            targetPos.y += targetH/2;
+            var angle = util.getAngle(bulletPos,targetPos);
+            this.node.angle = angle;
+            let dir=cc.v3()
+            cc.Vec3.subtract(dir,cc.v3(targetPos.x,targetPos.y),cc.v3(bulletPos.x,bulletPos.y))
+            var dis = dir.len();
+    
+            dis = Math.abs(dis);
+        }
+        else if(3==roleComponent.type){
+            
+            var move = 500*dt;
 
-        transformComponent.x=baseComponent.gameObject.x;
-        transformComponent.y=baseComponent.gameObject.y;
+            var target = unitComponent.m_attackTarget;
+            var targetH = target.height;
+            var moveToPos = target.getPosition();
+            moveToPos.y += targetH/2;
+            var angle = util.getAngle(baseComponent.gameObject.getPosition(),moveToPos);
+            
+            var x = Math.cos(angle * (Math.PI/180)) * move ;//+ this._playerNode.x;
+            var y = Math.sin(angle * (Math.PI/180)) * move ;//+ this._playerNode.y;
+
+            baseComponent.gameObject.angle = angle - 90;
+
+            baseComponent.gameObject.x += x;
+            baseComponent.gameObject.y += y;
+
+            transformComponent.x=baseComponent.gameObject.x;
+            transformComponent.y=baseComponent.gameObject.y;
+        }
+        
     }
 }
