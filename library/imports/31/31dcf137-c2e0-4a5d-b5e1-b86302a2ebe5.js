@@ -72,6 +72,7 @@ var MapDataManager_1 = require("../Manager/MapDataManager");
 var BulletEntity_1 = require("./Entities/BulletEntity");
 var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
+var Enum_1 = require("../Enum");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ECSFactory = /** @class */ (function (_super) {
     __extends(ECSFactory, _super);
@@ -136,6 +137,8 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.unitComponent.gold = gold;
                         entity.roleComponent.type = type;
                         entity.roleComponent.index = index;
+                        entity.shapeComponent.width = node.width;
+                        entity.shapeComponent.height = node.height;
                         return [2 /*return*/, entity];
                 }
             });
@@ -182,6 +185,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         delta = cc.delayTime(0.2);
                         scaleTo2 = cc.scaleTo(0.1, 1, 1);
                         seq = cc.sequence(scaleTo1, delta, scaleTo2, cc.callFunc(function () {
+                            entity.unitComponent.state = Enum_1.GameState.Active;
                         }.bind(this)));
                         sp = cc.spawn(moveTo, seq);
                         node.runAction(sp);
@@ -190,9 +194,9 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.transformComponent.y = y;
                         entity.unitComponent.angle = angle;
                         entity.unitComponent.atk = lvData.atk;
+                        entity.unitComponent.state = Enum_1.GameState.Normal;
                         entity.roleComponent.level = lvData.level;
                         entity.roleComponent.type = lvData.type;
-                        entity.gunComponent.gameObject = gunNode;
                         return [2 /*return*/, entity];
                 }
             });
@@ -220,6 +224,8 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.transformComponent.y = nodePos.y;
                         entity.unitComponent.atk = lvData.atk;
                         entity.unitComponent.m_attackTarget = attackTarget;
+                        entity.shapeComponent.width = bulletNode.width;
+                        entity.shapeComponent.height = bulletNode.height;
                         return [2 /*return*/, entity];
                 }
             });

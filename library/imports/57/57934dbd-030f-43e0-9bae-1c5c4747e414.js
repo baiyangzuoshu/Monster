@@ -41,6 +41,7 @@ var ECSManager_1 = require("./ECS/ECSManager");
 var EntityUtils_1 = require("./ECS/EntityUtils");
 var AISystem_1 = require("./ECS/Systems/AISystem");
 var AnimateSystem_1 = require("./ECS/Systems/AnimateSystem");
+var CollectHitSystem_1 = require("./ECS/Systems/CollectHitSystem");
 var NavSystem_1 = require("./ECS/Systems/NavSystem");
 var GameApp_1 = require("./GameApp");
 var MapDataManager_1 = require("./Manager/MapDataManager");
@@ -71,6 +72,7 @@ var GameLanch = /** @class */ (function (_super) {
         this.addComponent(IntensifyDataManager_1.default);
         this.addComponent(TaskDataManager_1.default);
         this.addComponent(AISystem_1.default);
+        this.addComponent(CollectHitSystem_1.default);
     };
     GameLanch.prototype.start = function () {
         GameApp_1.default.getInstance().startGame();

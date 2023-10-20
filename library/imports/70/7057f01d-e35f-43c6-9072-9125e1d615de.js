@@ -66,6 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = require("../../../FrameWork/Utils/util");
+var Enum_1 = require("../../Enum");
 var ECSManager_1 = require("../ECSManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var AISystem = /** @class */ (function (_super) {
@@ -92,6 +93,9 @@ var AISystem = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        if (unitComponent.state != Enum_1.GameState.Active) {
+                            return [2 /*return*/];
+                        }
                         if (unitComponent.m_attackTarget == null) {
                             unitComponent.m_attackTarget = ECSManager_1.default.getInstance().calcNearDistance(baseComponent.gameObject);
                         }
@@ -116,7 +120,8 @@ var AISystem = /** @class */ (function (_super) {
                         angle = util_1.util.getAngle(start, end);
                         angle += 360;
                         angle -= 90;
-                        if (!unitComponent.m_bFire) return [3 /*break*/, 1];
+                        unitComponent.fireTime -= dt;
+                        if (!(unitComponent.fireTime > 0)) return [3 /*break*/, 1];
                         unitComponent.angle = angle;
                         baseComponent.gameObject.getChildByName("gun").angle = unitComponent.angle;
                         return [3 /*break*/, 3];
@@ -133,7 +138,7 @@ var AISystem = /** @class */ (function (_super) {
                             baseComponent.gameObject.getChildByName("gun").angle = unitComponent.angle;
                         }
                         if (!(Math.abs(unitComponent.angle - angle) < Math.abs(moveAngle))) return [3 /*break*/, 3];
-                        unitComponent.m_bFire = true;
+                        unitComponent.fireTime = 2.0;
                         worldPos = baseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0, 0, 0));
                         return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(roleComponent.level, worldPos, unitComponent.m_attackTarget, unitComponent.angle)];
                     case 2:

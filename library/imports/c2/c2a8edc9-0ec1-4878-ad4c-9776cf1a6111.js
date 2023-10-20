@@ -4,13 +4,13 @@ cc._RF.push(module, 'c2a8e3JDsFIeK1Ml3bPGmER', 'Enum');
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.UnitState = void 0;
-var UnitState;
-(function (UnitState) {
-    UnitState[UnitState["Normal"] = 0] = "Normal";
-    UnitState[UnitState["Active"] = 1] = "Active";
-    UnitState[UnitState["Dead"] = 2] = "Dead";
-})(UnitState = exports.UnitState || (exports.UnitState = {}));
+exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.GameState = void 0;
+var GameState;
+(function (GameState) {
+    GameState[GameState["Normal"] = 0] = "Normal";
+    GameState[GameState["Active"] = 1] = "Active";
+    GameState[GameState["Dead"] = 2] = "Dead";
+})(GameState = exports.GameState || (exports.GameState = {}));
 var Task;
 (function (Task) {
     Task[Task["TASK_HEBING_FANGYUTA"] = 0] = "TASK_HEBING_FANGYUTA";

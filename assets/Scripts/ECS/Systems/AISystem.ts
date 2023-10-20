@@ -7,7 +7,7 @@
 
 import utils = require("markdown-it/lib/common/utils");
 import { util } from "../../../FrameWork/Utils/util";
-import { SkillBuffer } from "../../Enum";
+import { GameState, SkillBuffer } from "../../Enum";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import TransformComponent from "../Components/TransformComponent";
@@ -34,6 +34,10 @@ export default class AISystem extends cc.Component {
     }
 
     async onCannonUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent) {
+        if(unitComponent.state != GameState.Active){
+            return
+        }
+        
         if( unitComponent.m_attackTarget == null){
             unitComponent.m_attackTarget = ECSManager.getInstance().calcNearDistance(baseComponent.gameObject);
         }
@@ -59,7 +63,10 @@ export default class AISystem extends cc.Component {
             var angle = util.getAngle(start,end);
             angle += 360;
             angle -= 90;
-            if( unitComponent.m_bFire ){
+
+            unitComponent.fireTime-=dt;
+
+            if( unitComponent.fireTime>0 ){
                 unitComponent.angle=angle;
                 baseComponent.gameObject.getChildByName("gun").angle=unitComponent.angle;
             }else{
@@ -76,16 +83,17 @@ export default class AISystem extends cc.Component {
                     unitComponent.angle += 360;
                     baseComponent.gameObject.getChildByName("gun").angle=unitComponent.angle;
                 }
-                
 
                 if( Math.abs(unitComponent.angle - angle) < Math.abs(moveAngle) ){
-                    unitComponent.m_bFire = true;
-                    //this.beginFire();
+                    unitComponent.fireTime = 2.0;
+                    
                     let worldPos=baseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
                     await ECSManager.getInstance().createBulletEntity(roleComponent.level,worldPos,unitComponent.m_attackTarget,unitComponent.angle);
 
                     baseComponent.gameObject.getChildByName("gun").angle=angle;
                     unitComponent.angle=angle;
+
+                    unitComponent.m_attackTarget=null;
                 }
             }
         }

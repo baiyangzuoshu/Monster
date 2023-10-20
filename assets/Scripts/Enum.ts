@@ -1,4 +1,4 @@
-export enum UnitState{
+export enum GameState{
     Normal=0,
     Active=1,
     Dead=2

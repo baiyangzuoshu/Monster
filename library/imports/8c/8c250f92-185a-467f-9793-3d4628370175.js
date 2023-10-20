@@ -68,6 +68,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ECSFactory_1 = require("./ECSFactory");
 var AISystem_1 = require("./Systems/AISystem");
 var AnimateSystem_1 = require("./Systems/AnimateSystem");
+var CollectHitSystem_1 = require("./Systems/CollectHitSystem");
 var NavSystem_1 = require("./Systems/NavSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ECSManager = /** @class */ (function (_super) {
@@ -154,6 +155,18 @@ var ECSManager = /** @class */ (function (_super) {
             AISystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent);
         }
     };
+    ECSManager.prototype.collectHitSystemBullet = function (dt) {
+        for (var i = 0; i < this.bullets.length; i++) {
+            var hitPos = cc.v2(this.bullets[i].unitComponent.m_attackTarget.x, this.bullets[i].unitComponent.m_attackTarget.y);
+            var isHit = CollectHitSystem_1.default.getInstance().onUpdate(dt, hitPos, this.bullets[i].shapeComponent, this.bullets[i].transformComponent, this.bullets[i].unitComponent);
+            if (isHit) {
+                this.bullets[i].unitComponent.isDead = true;
+                this.bullets[i].baseComponent.gameObject.destroy();
+                this.bullets.splice(i, 1);
+                i--;
+            }
+        }
+    };
     ECSManager.prototype.calcNearDistance = function (cannon) {
         var minDis = 9999;
         var minMonster = null;
@@ -181,6 +194,8 @@ var ECSManager = /** @class */ (function (_super) {
         //AI
         this.AISystemCannon(dt);
         this.AISystemBullet(dt);
+        //碰撞检测
+        this.collectHitSystemBullet(dt);
     };
     var ECSManager_1;
     ECSManager._instance = null;

@@ -12,7 +12,7 @@ import MapDataManager from "../Manager/MapDataManager";
 import BulletEntity from "./Entities/BulletEntity";
 import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
-import EntityUtils from "./EntityUtils";
+import { GameState } from "../Enum";
 
 const {ccclass, property} = cc._decorator;
 
@@ -81,6 +81,9 @@ export default class ECSFactory extends cc.Component {
         entity.roleComponent.type=type;
         entity.roleComponent.index=index;
 
+        entity.shapeComponent.width=node.width;
+        entity.shapeComponent.height=node.height;
+
         return entity;
     }
 
@@ -121,7 +124,7 @@ export default class ECSFactory extends cc.Component {
         var delta = cc.delayTime(0.2);
         var scaleTo2 = cc.scaleTo(0.1,1,1);
         var seq = cc.sequence(scaleTo1,delta,scaleTo2,cc.callFunc(function(){
-            
+            entity.unitComponent.state = GameState.Active;
         }.bind(this)));
         var sp = cc.spawn(moveTo,seq);
         node.runAction(sp);
@@ -133,10 +136,10 @@ export default class ECSFactory extends cc.Component {
 
         entity.unitComponent.angle=angle;
         entity.unitComponent.atk=lvData.atk;
+        entity.unitComponent.state = GameState.Normal;
+
         entity.roleComponent.level=lvData.level;
         entity.roleComponent.type=lvData.type;
-
-        entity.gunComponent.gameObject=gunNode;
 
         return entity
     }
@@ -161,6 +164,9 @@ export default class ECSFactory extends cc.Component {
 
         entity.unitComponent.atk=lvData.atk;
         entity.unitComponent.m_attackTarget=attackTarget;
+
+        entity.shapeComponent.width=bulletNode.width;
+        entity.shapeComponent.height=bulletNode.height;
 
         return entity;
     }
