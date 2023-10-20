@@ -19,6 +19,7 @@ import ECSManager from "./ECS/ECSManager";
 import EntityUtils from "./ECS/EntityUtils";
 import AISystem from "./ECS/Systems/AISystem";
 import AnimateSystem from "./ECS/Systems/AnimateSystem";
+import AttackSystem from "./ECS/Systems/AttackSystem";
 import CollectHitSystem from "./ECS/Systems/CollectHitSystem";
 import NavSystem from "./ECS/Systems/NavSystem";
 import GameApp from "./GameApp";
@@ -52,7 +53,8 @@ export default class GameLanch extends cc.Component {
          this.addComponent(IntensifyDataManager);
          this.addComponent(TaskDataManager);
          this.addComponent(AISystem);
-         this.addComponent(CollectHitSystem)
+         this.addComponent(CollectHitSystem);
+         this.addComponent(AttackSystem);
     }
 
     start () {

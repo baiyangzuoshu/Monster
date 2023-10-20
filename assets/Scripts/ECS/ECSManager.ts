@@ -11,6 +11,7 @@ import CannonEntitiy from "./Entities/CannonEntitiy";
 import MonsterEntity from "./Entities/MonsterEntity";
 import AISystem from "./Systems/AISystem";
 import AnimateSystem from "./Systems/AnimateSystem";
+import AttackSystem from "./Systems/AttackSystem";
 import CollectHitSystem from "./Systems/CollectHitSystem";
 import NavSystem from "./Systems/NavSystem";
 
@@ -77,9 +78,9 @@ export default class ECSManager extends cc.Component {
         }
     }
 
-    AISystemCannon(dt:number){
+    attackSystemUpdate(dt:number){
         for(let i=0;i<this.cannones.length;i++){
-            AISystem.getInstance().onCannonUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent);
+            AttackSystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent);
         }
     }
 
@@ -102,9 +103,9 @@ export default class ECSManager extends cc.Component {
         }
     }
 
-    calcNearDistance(cannon):cc.Node{
+    calcNearDistance(cannon):MonsterEntity{
         var minDis = 9999;
-        var minMonster:cc.Node = null;
+        var minMonster:MonsterEntity = null;
         var curDis = 230;
         
         for (let i = 0; i < this.monsters.length; i++) {
@@ -117,7 +118,7 @@ export default class ECSManager extends cc.Component {
             
             if(dis < curDis && dis < Math.abs( minDis) ){
                 minDis = dis;
-                minMonster = monster.baseComponent.gameObject;
+                minMonster = monster;
             }
         }
         //cc.log(minDis);
@@ -132,9 +133,10 @@ export default class ECSManager extends cc.Component {
         //子弹动画
         this.animateSystemBullet(dt);
         //AI
-        this.AISystemCannon(dt);
         this.AISystemBullet(dt);
         //碰撞检测
         this.collectHitSystemBullet(dt);
+        //
+        this.attackSystemUpdate(dt);
     }
 }

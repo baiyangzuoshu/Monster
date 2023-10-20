@@ -68,6 +68,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ECSFactory_1 = require("./ECSFactory");
 var AISystem_1 = require("./Systems/AISystem");
 var AnimateSystem_1 = require("./Systems/AnimateSystem");
+var AttackSystem_1 = require("./Systems/AttackSystem");
 var CollectHitSystem_1 = require("./Systems/CollectHitSystem");
 var NavSystem_1 = require("./Systems/NavSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -137,6 +138,12 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.navSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
+            if (this.monsters[i].unitComponent.isDead) {
+                this.monsters[i].baseComponent.gameObject.destroy();
+                this.monsters.splice(i, 1);
+                i--;
+                continue;
+            }
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
         }
     };
@@ -150,9 +157,9 @@ var ECSManager = /** @class */ (function (_super) {
             AnimateSystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].baseComponent, this.bullets[i].animateComponent);
         }
     };
-    ECSManager.prototype.AISystemCannon = function (dt) {
+    ECSManager.prototype.attackSystemUpdate = function (dt) {
         for (var i = 0; i < this.cannones.length; i++) {
-            AISystem_1.default.getInstance().onCannonUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent);
+            AttackSystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent);
         }
     };
     ECSManager.prototype.AISystemBullet = function (dt) {
@@ -185,7 +192,7 @@ var ECSManager = /** @class */ (function (_super) {
             var dis = src.sub(dst).mag();
             if (dis < curDis && dis < Math.abs(minDis)) {
                 minDis = dis;
-                minMonster = monster.baseComponent.gameObject;
+                minMonster = monster;
             }
         }
         //cc.log(minDis);
@@ -199,10 +206,11 @@ var ECSManager = /** @class */ (function (_super) {
         //子弹动画
         this.animateSystemBullet(dt);
         //AI
-        this.AISystemCannon(dt);
         this.AISystemBullet(dt);
         //碰撞检测
         this.collectHitSystemBullet(dt);
+        //
+        this.attackSystemUpdate(dt);
     };
     var ECSManager_1;
     ECSManager._instance = null;

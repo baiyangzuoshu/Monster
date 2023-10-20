@@ -7,12 +7,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Enum_1 = require("../../Enum");
 var UnitComponent = /** @class */ (function () {
     function UnitComponent() {
-        this.hp = 0;
-        this.gold = 0;
-        this.atk = 0;
         this.angle = 0;
-        this.state = Enum_1.GameState.Normal;
+        this.state = Enum_1.GameState.None;
         this.m_attackTarget = null;
+        this.attackEntity = null;
         this.isDead = false;
         this.fireTime = 0;
     }

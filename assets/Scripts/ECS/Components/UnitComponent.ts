@@ -1,12 +1,11 @@
 import { GameState } from "../../Enum";
+import MonsterEntity from "../Entities/MonsterEntity";
 
 export default class UnitComponent  {
-    public hp:number=0;
-    public gold:number=0;
-    public atk:number=0;
     public angle:number=0;
-    public state:GameState=GameState.Normal;
+    public state:GameState=GameState.None;
     public m_attackTarget:cc.Node=null;
+    public attackEntity:MonsterEntity=null;
     public isDead:boolean=false;
     public fireTime:number=0;
 }

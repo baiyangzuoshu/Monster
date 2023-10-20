@@ -75,9 +75,9 @@ export default class ECSFactory extends cc.Component {
         entity.navComponent.pathList=_pathPos;
         entity.navComponent.speed=speed;
 
-        entity.unitComponent.hp=hp;
-        entity.unitComponent.gold=gold;
-        
+        entity.roleComponent.hp=hp;
+        entity.roleComponent.maxHp=hp;
+        entity.roleComponent.gold=gold;
         entity.roleComponent.type=type;
         entity.roleComponent.index=index;
 
@@ -135,11 +135,11 @@ export default class ECSFactory extends cc.Component {
         entity.transformComponent.y=y
 
         entity.unitComponent.angle=angle;
-        entity.unitComponent.atk=lvData.atk;
         entity.unitComponent.state = GameState.None;
 
         entity.roleComponent.level=level;
         entity.roleComponent.type=lvData.type;
+        entity.roleComponent.atk=lvData.atk;
 
         return entity
     }
@@ -165,13 +165,13 @@ export default class ECSFactory extends cc.Component {
         entity.transformComponent.x=nodePos.x;
         entity.transformComponent.y=nodePos.y;
 
-        entity.unitComponent.atk=lvData.atk;
         entity.unitComponent.m_attackTarget=attackTarget;
 
         entity.shapeComponent.width=bulletNode.width;
         entity.shapeComponent.height=bulletNode.height;
 
         entity.roleComponent.type=lvData.type;
+        entity.roleComponent.atk=lvData.atk;
 
         entity.animateComponent.state=BulletState.Effect;
         entity.animateComponent.playActionTime=0.25;

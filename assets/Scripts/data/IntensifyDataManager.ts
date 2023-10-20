@@ -70,7 +70,7 @@ export default class IntensifyDataManager extends cc.Component {
         return data.icon;
         
     }
-    public getValue(ID,index){
+    public getValue(ID,index):number{
         var data = this.getIntensifyDataByID(ID);
         if( data == null ){
             return null;

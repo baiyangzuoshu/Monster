@@ -264,15 +264,15 @@ export default class DataManager extends cc.Component {
         this.currentMonsterCount = count;
     }
     //获取当前关卡怪物数量
-    private  getCurMonsterCount () {
+    public  getCurMonsterCount () {
         return this.currentMonsterCount;
     }
     //增加关卡怪物数量
-    private  addCurMonsterCount () {
+    public  addCurMonsterCount () {
         return this.currentMonsterCount++;
     }
     //减少关卡怪物数量
-    private  subCurMonsterCount () {
+    public  subCurMonsterCount () {
         return this.currentMonsterCount--;
     }
     private  isCurBossAttack(){
