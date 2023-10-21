@@ -138,12 +138,6 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.navSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
-            if (this.monsters[i].unitComponent.isDead) {
-                this.monsters[i].baseComponent.gameObject.destroy();
-                this.monsters.splice(i, 1);
-                i--;
-                continue;
-            }
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
         }
     };

@@ -153,7 +153,7 @@ var AttackSystem = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (unitComponent.state != Enum_1.GameState.Active) {
+                        if (unitComponent.state != Enum_1.GameState.Active || unitComponent.isDead) {
                             return [2 /*return*/];
                         }
                         if (unitComponent.m_attackTarget == null) {

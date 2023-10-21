@@ -101,7 +101,7 @@ export default class AttackSystem extends cc.Component {
     }
 
     async onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent) {
-        if(unitComponent.state != GameState.Active){
+        if(unitComponent.state != GameState.Active||unitComponent.isDead){
             return
         }
         

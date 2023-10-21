@@ -109,7 +109,7 @@ export default class ECSFactory extends cc.Component {
         let padSpriteAtlas=await ResManagerPro.Instance.IE_GetAsset("texture","cannon/pad",cc.SpriteAtlas) as cc.SpriteAtlas;
         let frame = padSpriteAtlas.getSpriteFrame(name);
         node.getChildByName("pad").getComponent(cc.Sprite).spriteFrame = frame;
-        node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = ''+(level+1);
+        node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = ''+(lvData.level+1);
 
         var startPos = cc.v2(317,-952);
         node.setPosition(startPos);

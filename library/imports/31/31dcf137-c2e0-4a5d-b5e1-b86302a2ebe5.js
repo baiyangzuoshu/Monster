@@ -173,7 +173,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         padSpriteAtlas = _a.sent();
                         frame = padSpriteAtlas.getSpriteFrame(name);
                         node.getChildByName("pad").getComponent(cc.Sprite).spriteFrame = frame;
-                        node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = '' + (level + 1);
+                        node.getChildByName("ui_towerLevel").getChildByName("lv").getComponent(cc.Label).string = '' + (lvData.level + 1);
                         startPos = cc.v2(317, -952);
                         node.setPosition(startPos);
                         _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();

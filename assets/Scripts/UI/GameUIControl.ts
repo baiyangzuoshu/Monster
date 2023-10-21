@@ -8,7 +8,9 @@
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
-import { Intensify } from "../Enum";
+import CannonEntitiy from "../ECS/Entities/CannonEntitiy";
+import EntityUtils from "../ECS/EntityUtils";
+import { Chengjiou, Intensify, Task } from "../Enum";
 import MapDataManager from "../Manager/MapDataManager";
 import PlayerDataManager from "../Manager/PlayerDataManager";
 
@@ -24,6 +26,10 @@ export default class GameUIControl extends UIControl {
     private m_hammer:cc.Node = null;
     private m_makeNumberLabel:cc.Label = null;
     private m_cannonList = [];
+    private m_curZIndex:number=0;
+    private m_selecetCannon = null;
+    private m_moveCannon = null;
+    private m_moveCannonNode:cc.Node=null;
 
     onLoad () {
         super.onLoad();
@@ -37,23 +43,196 @@ export default class GameUIControl extends UIControl {
     }
 
     start () {
+        let canvas=cc.find("Canvas");
+        this.m_moveCannonNode=canvas.getChildByName("Game").getChildByName("moveCannon");
+
         var _cannonList = MapDataManager.getInstance().getCurCannonPoint();
         for (let i = 0; i < _cannonList.length; i++) {
             this.m_cannonList[i] = this.createCannonData();
             this.m_cannonList[i].pos = _cannonList[i];
+        }
+        this.m_curZIndex = 100;
+        this.m_moveCannonNode.on('touchstart',this.touchStart,this);
+        this.m_moveCannonNode.on('touchmove',this.touchMove,this);
+        this.m_moveCannonNode.on('touchend',this.touchEnd,this);
+        this.m_moveCannonNode.on('touchcancel',this.touchCancel,this);
+    }
+
+    touchStart(event){
+        var pos = event.getLocation();
+        let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
+        this.m_selecetCannon = this.getCannonByPosition(nodePos);
+        if( this.m_selecetCannon != null ){
+            var cannonEntity:CannonEntitiy = this.m_selecetCannon.cannonEntity;
+            if( cannonEntity != null){
+                if( this.m_moveCannon != null ){
+                    this.m_moveCannon.removeFromParent();
+                    this.m_moveCannon = null;
+                }
+                this.m_moveCannon = cc.instantiate(cannonEntity.baseComponent.gameObject);
+                this.m_moveCannonNode.addChild(this.m_moveCannon);
+                //var cloneCannon = this.m_moveCannon.getComponent('cannon');
+                //this.showCannonRange(cannon);
+                //cannon.node.opacity = 127;
+                //this.showCannonHint(cannon.node._selfData.cannon);
+                //g_bottomUI.setShowDestroy(true);
+            }else{
+                this.m_selecetCannon = null;
+            }
+        }
+    }
+    touchMove(event){
+        if( this.m_moveCannon == null) 
+            return;
+
+        var delta = event.getDelta();
+        var pos = this.m_moveCannon.getPosition();
+        pos.x += delta.x;
+        pos.y += delta.y;
+        this.m_moveCannon.setPosition(pos);
+
+        var pos = event.getLocation();
+        let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
+        var cannon = this.getCannonByPosition(nodePos);
+        if( cannon != null ){
+            var cannonEntity = cannon.cannonEntity;
+            if( cannonEntity != null){
+                //this.showCannonRange(cannon);
+            }else{
+                //this.hideCannonRange();
+            }
+        }
+    }
+    touchEnd(event){
+        //this.setAllCannonOpacity();
+        var pos = event.getLocation();
+        let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
+        var block = this.getCannonByPosition(nodePos);
+        console.log(block)
+        if(block != null){
+            if( this.m_moveCannon != null ){
+                this.changeCannon(this.m_selecetCannon,block);
+            }
+        }
+        
+        if( this.m_moveCannon != null ){
+            this.m_moveCannon.removeFromParent();
+            this.m_moveCannon = null;
+            ///this.hideCannonHint();
+        }
+
+        
+        //this.hideCannonRange();
+
+        //g_bottomUI.setShowDestroy(false);
+
+        var pos = event.getLocation();
+        // if( g_bottomUI.isInDestroy(pos)){
+        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
+        //     this.m_selecetCannon.cannonEntity.node.destroy();
+        //     this.m_selecetCannon.cannon = null;
+        // }
+    }
+    touchCancel(event){
+        //this.setAllCannonOpacity();
+        if( this.m_moveCannon != null ){
+            this.m_moveCannon.removeFromParent();
+            this.m_moveCannon = null;
+        }
+                    
+        //this.hideCannonRange();
+        //g_bottomUI.setShowDestroy(false);
+
+        var pos = event.getLocation();
+        // if( g_bottomUI.isInDestroy(pos)){
+        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
+        //     this.m_selecetCannon.cannonEntity.node.destroy();
+        //     this.m_selecetCannon.cannon = null;
+        // }
+    }
+
+    changeCannon(startItem,endItem){
+        if( startItem.pos.x == endItem.pos.x && 
+            startItem.pos.y == endItem.pos.y){
+                return;
+            }
+        let startEntity:CannonEntitiy=startItem.cannonEntity;
+        let endEntity:CannonEntitiy=endItem.cannonEntity;
+        if( startEntity == null ){
+            return;
+        }
+        //3.结束为有炮,需要合成.
+        var playEffect = false;
+        if( endEntity != null ){
+            if( EntityUtils.getInstance().cannonCompare(startEntity.roleComponent,endEntity.roleComponent)){
+                EntityUtils.getInstance().cannonLevelUp(startEntity.roleComponent,startEntity.baseComponent);
+                endEntity.unitComponent.isDead=true;
+                endEntity.baseComponent.gameObject.destroy();
+                endEntity = null;
+                playEffect = true;
+                //
+                PlayerDataManager.getInstance().addTaskCount(Task.TASK_HEBING_FANGYUTA);
+                PlayerDataManager.getInstance().addTaskCount(Chengjiou.CHENGJIOU_QIANGHUA_JINENG);
+            }
+        }
+
+        //1.结束位置没有炮
+        if( endItem == null ){
+            // var a = 1;
+            // a = 1;
+
+        }
+        if( endEntity == null ){
+            startEntity.baseComponent.gameObject.x = endItem.pos.x * 106 + 106/2;
+            startEntity.baseComponent.gameObject.y = -endItem.pos.y * 106 - 106/2;
+            startEntity.transformComponent.x=startEntity.baseComponent.gameObject.x;
+            startEntity.transformComponent.y=startEntity.baseComponent.gameObject.y;
+            
+            endItem.cannonEntity = startItem.cannonEntity;
+            startItem.cannonEntity = endEntity;
+            if( playEffect ){
+                //endEntity.effectAction();
+            }
+        }else{
+            
+            //2.结束位置有炮,但是登陆或类型不同.
+            startEntity.baseComponent.gameObject.x = endItem.pos.x * 106 + 106/2;
+            startEntity.baseComponent.gameObject.y = -endItem.pos.y * 106 - 106/2;
+            startEntity.transformComponent.x=startEntity.baseComponent.gameObject.x;
+            startEntity.transformComponent.y=startEntity.baseComponent.gameObject.y;
+
+            endEntity.baseComponent.gameObject.x = startItem.pos.x * 106 + 106/2;
+            endEntity.baseComponent.gameObject.y = -startItem.pos.y * 106 - 106/2;
+            endEntity.transformComponent.x=startEntity.baseComponent.gameObject.x;
+            endEntity.transformComponent.y=startEntity.baseComponent.gameObject.y;
+
+            endItem.cannonEntity = startItem.cannonEntity;
+            startItem.cannonEntity = endEntity;
         }
     }
 
     createCannonData(){
         var obj:any= {};
         obj.pos = cc.v2(0,0);
-        obj.cannon = null;
+        obj.cannonEntity = null;
         return obj;
+    }
+
+    getCannonByPosition(nodePos){
+        let x = Math.floor(nodePos.x/106);
+        let y = Math.floor((-nodePos.y)/106);
+        console.log(x,y);
+        for (let i = 0; i < this.m_cannonList.length; i++) {
+            if(this.m_cannonList[i].pos.x == x && this.m_cannonList[i].pos.y == y){
+                return this.m_cannonList[i];
+            }
+        }
+        return null;
     }
 
     getCanMakeIndex(){
         for (let i = 0; i < this.m_cannonList.length; i++) {
-            if(this.m_cannonList[i].cannon == null ){
+            if(this.m_cannonList[i].cannonEntity == null ){
                 return i;
             }
         }
@@ -148,7 +327,7 @@ export default class GameUIControl extends UIControl {
             this.subMakeNumber();
             
             let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,0);
-            this.m_cannonList[index].cannon=cannonEntity;
+            this.m_cannonList[index].cannonEntity=cannonEntity;
         }
         else if("autoMake<Button>"==btn.name){
 
