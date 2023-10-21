@@ -94,12 +94,10 @@ var TaskDataManager = /** @class */ (function (_super) {
         return award[index];
     };
     TaskDataManager.prototype.getTitle = function (taskID, index) {
-        console.log(taskID, index);
         var taskData = this.getTaskDataByID(taskID);
         if (taskData == null) {
             return null;
         }
-        console.log(taskData);
         var title = taskData.title;
         if (index >= taskData.max.leight) {
             index = taskData.max.leight - 1;
