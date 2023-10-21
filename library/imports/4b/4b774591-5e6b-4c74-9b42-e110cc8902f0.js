@@ -128,25 +128,36 @@ var UIManagerPro = /** @class */ (function (_super) {
         });
     };
     UIManagerPro.prototype.showPrefab = function (uiName) {
-        if (!this._allShowPanel[uiName]) {
-            this._allShowPanel[uiName] = new Panel();
-            var prefab_1 = this.createPrefab(uiName);
-            this._allShowPanel[uiName].prefab = prefab_1;
-        }
-        var panel = this._allShowPanel[uiName];
-        if (panel.open) {
-            return -1;
-        }
-        panel.opening = true;
-        panel.open = false;
-        panel.closeTime = 0;
-        var prefab = panel.prefab;
-        var node = cc.instantiate(prefab);
-        node.parent = this._canvas;
-        node.setSiblingIndex(this._localZOrder++);
-        panel.self = node;
-        node.addComponent(prefab.data.name + "Control");
-        return 0;
+        return __awaiter(this, void 0, Promise, function () {
+            var prefab_1, panel, prefab, node;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!!this._allShowPanel[uiName]) return [3 /*break*/, 2];
+                        this._allShowPanel[uiName] = new Panel();
+                        return [4 /*yield*/, this.createPrefab(uiName)];
+                    case 1:
+                        prefab_1 = _a.sent();
+                        this._allShowPanel[uiName].prefab = prefab_1;
+                        _a.label = 2;
+                    case 2:
+                        panel = this._allShowPanel[uiName];
+                        if (panel.open) {
+                            return [2 /*return*/, -1];
+                        }
+                        panel.opening = true;
+                        panel.open = false;
+                        panel.closeTime = 0;
+                        prefab = panel.prefab;
+                        node = cc.instantiate(prefab);
+                        node.parent = this._canvas;
+                        node.setSiblingIndex(this._localZOrder++);
+                        panel.self = node;
+                        node.addComponent(prefab.data.name + "Control");
+                        return [2 /*return*/, 0];
+                }
+            });
+        });
     };
     UIManagerPro.prototype.closePrefab = function (uiName) {
         var panel = this._allShowPanel[uiName];

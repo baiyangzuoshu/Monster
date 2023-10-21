@@ -19,7 +19,7 @@
             "children": [
               {
                 "width": 304,
-                "height": 299.84375,
+                "height": 300.1875,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -28,7 +28,7 @@
               },
               {
                 "width": 304,
-                "height": 616.65625,
+                "height": 616.3125,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -54,7 +54,7 @@
             "children": [
               {
                 "width": 1290,
-                "height": 649.640625,
+                "height": 649.234375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -63,7 +63,7 @@
               },
               {
                 "width": 1290,
-                "height": 266.859375,
+                "height": 267.265625,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -86,8 +86,7 @@
         "timeline",
         "game-window"
       ]
-    },
-    " common-asset-worker-worker": {}
+    }
   },
   "panels": {
     "project-settings": {

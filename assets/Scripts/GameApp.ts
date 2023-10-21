@@ -43,7 +43,7 @@ export default class GameApp extends cc.Component {
 
         MapDataManager.getInstance().beginCreateMonster();
 
-        await UIManagerPro.getInstance().showUI("GameUI");
+        await UIManagerPro.getInstance().showPrefab("GameUI");
 
         this.progressBar.progress=1;
         this.Loading.active=false;

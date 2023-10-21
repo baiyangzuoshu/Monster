@@ -55,11 +55,11 @@ export class UIManagerPro extends cc.Component {
         return prefab
     }
 
-    public showPrefab(uiName:string):number{
+    public async showPrefab(uiName:string):Promise<number>{
         if(!this._allShowPanel[uiName]){
             this._allShowPanel[uiName]=new Panel()
 
-            let prefab=this.createPrefab(uiName)
+            let prefab=await this.createPrefab(uiName)
             this._allShowPanel[uiName].prefab=prefab
         }
         let panel=this._allShowPanel[uiName] as Panel

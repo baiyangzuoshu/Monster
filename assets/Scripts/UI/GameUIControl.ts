@@ -5,6 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { UIManagerPro } from "../../FrameWork/manager/UIManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
@@ -333,7 +334,7 @@ export default class GameUIControl extends UIControl {
 
         }
         else if("intensify<Button>"==btn.name){
-
+            UIManagerPro.getInstance().showPrefab("IntensifyUI");
         }
         else if("shop<Button>"==btn.name){
 

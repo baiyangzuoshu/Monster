@@ -65,6 +65,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var UIManagerPro_1 = require("../../FrameWork/manager/UIManagerPro");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
 var ECSManager_1 = require("../ECS/ECSManager");
@@ -369,6 +370,7 @@ var GameUIControl = /** @class */ (function (_super) {
                         if ("autoMake<Button>" == btn.name) {
                         }
                         else if ("intensify<Button>" == btn.name) {
+                            UIManagerPro_1.UIManagerPro.getInstance().showPrefab("IntensifyUI");
                         }
                         else if ("shop<Button>" == btn.name) {
                         }

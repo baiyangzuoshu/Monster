@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '62a39ciiPdONZqk/t0zo8PH', 'GameApp');
-// Scripts/GameApp.ts
+cc._RF.push(module, '147b1V5cFVM+rdJknt0B6wX', 'IntensifyUIControl');
+// Scripts/UI/IntensifyUIControl.ts
 
 "use strict";
 // Learn TypeScript:
@@ -65,87 +65,91 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ResManagerPro_1 = require("../FrameWork/manager/ResManagerPro");
-var UIManagerPro_1 = require("../FrameWork/manager/UIManagerPro");
-var MapDataManager_1 = require("./Manager/MapDataManager");
+var UIManagerPro_1 = require("../../FrameWork/manager/UIManagerPro");
+var UIControl_1 = require("../../FrameWork/ui/UIControl");
+var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
+var IntensifyItemControl_1 = require("./IntensifyItemControl");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var GameApp = /** @class */ (function (_super) {
-    __extends(GameApp, _super);
-    function GameApp() {
+var IntensifyUIControl = /** @class */ (function (_super) {
+    __extends(IntensifyUIControl, _super);
+    function IntensifyUIControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.canvas = null;
-        _this.progressBar = null;
-        _this.Loading = null;
+        _this.m_item = [];
+        _this.m_content = null;
         return _this;
         // update (dt) {}
     }
-    GameApp_1 = GameApp;
     // LIFE-CYCLE CALLBACKS:
-    GameApp.getInstance = function () {
-        return GameApp_1._instance;
+    IntensifyUIControl.prototype.onLoad = function () {
+        _super.prototype.onLoad.call(this);
+        this.updateData();
+        this.m_content = this.getChildByUrl("ui_win_inRect/scrollView/view/content");
+        this.buttonAddClickEvent("ui_win_rect/colse", this.clickBtnEvent, this);
     };
-    GameApp.prototype.enterGame = function () {
-    };
-    GameApp.prototype.startGame = function () {
+    IntensifyUIControl.prototype.updateData = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var blockMapData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("data", cc.JsonAsset)];
+            var i, data, i, _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        for (i = 0; i < this.m_item.length; i++) {
+                            this.m_item[i].node.active = false;
+                        }
+                        data = IntensifyDataManager_1.default.getInstance().getData();
+                        i = 0;
+                        _c.label = 1;
                     case 1:
-                        _a.sent();
-                        this.progressBar.progress = 0.3;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("texture", cc.SpriteAtlas)];
+                        if (!(i < data.length)) return [3 /*break*/, 5];
+                        if (!(this.m_item[i] == null)) return [3 /*break*/, 3];
+                        _a = this.m_item;
+                        _b = i;
+                        return [4 /*yield*/, this.createItem(i)];
                     case 2:
-                        _a.sent();
-                        this.progressBar.progress = 0.5;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("Sounds", cc.AudioClip)];
+                        _a[_b] = _c.sent();
+                        _c.label = 3;
                     case 3:
-                        _a.sent();
-                        this.progressBar.progress = 0.8;
-                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_LoadBundleAndAllAssets("prefabs", cc.Prefab)];
+                        this.m_item[i].node.active = true;
+                        this.m_item[i].setID(i);
+                        this.m_item[i].updateItem();
+                        _c.label = 4;
                     case 4:
-                        _a.sent();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().loadData()];
-                    case 5:
-                        _a.sent();
-                        blockMapData = MapDataManager_1.default.getInstance().getCurBlockData();
-                        return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
-                    case 6:
-                        _a.sent();
-                        MapDataManager_1.default.getInstance().beginCreateMonster();
-                        return [4 /*yield*/, UIManagerPro_1.UIManagerPro.getInstance().showPrefab("GameUI")];
-                    case 7:
-                        _a.sent();
-                        this.progressBar.progress = 1;
-                        this.Loading.active = false;
-                        return [2 /*return*/];
+                        i++;
+                        return [3 /*break*/, 1];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
     };
-    GameApp.prototype.onLoad = function () {
-        if (null === GameApp_1._instance) {
-            GameApp_1._instance = this;
-        }
-        else {
-            this.destroy();
-            return;
-        }
-        this.canvas = cc.find("Canvas");
-        this.Loading = this.canvas.getChildByName("Loading");
-        this.progressBar = this.Loading.getChildByName("myProgressBar").getComponent(cc.ProgressBar);
-        this.progressBar.progress = 0;
+    IntensifyUIControl.prototype.createItem = function (ID) {
+        return __awaiter(this, void 0, void 0, function () {
+            var itemPrefab, item, ts;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, UIManagerPro_1.UIManagerPro.getInstance().createOnlyPrefab("IntensifyItem")];
+                    case 1:
+                        itemPrefab = _a.sent();
+                        item = cc.instantiate(itemPrefab);
+                        this.m_content.addChild(item);
+                        item.active = true;
+                        ts = item.addComponent(IntensifyItemControl_1.default);
+                        ts.setID(ID);
+                        return [2 /*return*/, ts];
+                }
+            });
+        });
     };
-    GameApp.prototype.start = function () {
+    IntensifyUIControl.prototype.clickBtnEvent = function (btn) {
+        if ("colse<Button>" == btn.name) {
+            UIManagerPro_1.UIManagerPro.getInstance().closePrefab("IntensifyUI");
+        }
     };
-    var GameApp_1;
-    GameApp._instance = null;
-    GameApp = GameApp_1 = __decorate([
+    IntensifyUIControl.prototype.start = function () {
+    };
+    IntensifyUIControl = __decorate([
         ccclass
-    ], GameApp);
-    return GameApp;
-}(cc.Component));
-exports.default = GameApp;
+    ], IntensifyUIControl);
+    return IntensifyUIControl;
+}(UIControl_1.UIControl));
+exports.default = IntensifyUIControl;
 
 cc._RF.pop();
