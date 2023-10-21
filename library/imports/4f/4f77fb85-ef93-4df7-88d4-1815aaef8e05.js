@@ -668,6 +668,12 @@ var util = /** @class */ (function () {
         }
         return angle;
     };
+    util.Stringformat = function (str, args) {
+        for (var s = str, i = 0; i < args.length; i++) {
+            s = s.replace(new RegExp("\\{" + i + "\\}", "g"), args[i]);
+        }
+        return s;
+    };
     util = __decorate([
         ccclass
     ], util);

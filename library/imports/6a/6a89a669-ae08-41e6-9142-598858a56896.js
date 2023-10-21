@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var util_1 = require("../../FrameWork/Utils/util");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TaskDataManager = /** @class */ (function (_super) {
     __extends(TaskDataManager, _super);
@@ -93,15 +94,19 @@ var TaskDataManager = /** @class */ (function (_super) {
         return award[index];
     };
     TaskDataManager.prototype.getTitle = function (taskID, index) {
+        console.log(taskID, index);
         var taskData = this.getTaskDataByID(taskID);
         if (taskData == null) {
             return null;
         }
+        console.log(taskData);
         var title = taskData.title;
         if (index >= taskData.max.leight) {
             index = taskData.max.leight - 1;
         }
-        return title.format(this.data[taskID].max[index]);
+        var args = [];
+        args.push(this.data[taskID].max[index]);
+        return util_1.util.Stringformat(title, args); //title.format(this.data[taskID].max[index]);
     };
     TaskDataManager.prototype.getMaxCount = function (taskID, maxIndex) {
         var taskData = this.getTaskDataByID(taskID);

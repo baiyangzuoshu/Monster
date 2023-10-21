@@ -330,6 +330,9 @@ export default class GameUIControl extends UIControl {
             let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,0);
             this.m_cannonList[index].cannonEntity=cannonEntity;
         }
+        else if("bt<Button>"==btn.name){
+            UIManagerPro.getInstance().showPrefab("TaskUI");
+        }
         else if("autoMake<Button>"==btn.name){
 
         }

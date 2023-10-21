@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { util } from "../../FrameWork/Utils/util";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -77,11 +79,14 @@ export default class TaskDataManager extends cc.Component {
         if( taskData == null ){
             return null;
         }
-        var title = taskData.title;
+        var title:string = taskData.title;
         if( index >= taskData.max.leight ){
             index = taskData.max.leight-1;
         }
-        return title.format(this.data[taskID].max[index]);
+
+        let args=[];
+        args.push(this.data[taskID].max[index])
+        return util.Stringformat(title,args)//title.format(this.data[taskID].max[index]);
     }
     public getMaxCount(taskID,maxIndex){
         var taskData = this.getTaskDataByID(taskID);

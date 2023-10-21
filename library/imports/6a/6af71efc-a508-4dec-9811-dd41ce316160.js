@@ -367,7 +367,10 @@ var GameUIControl = /** @class */ (function (_super) {
                         this.m_cannonList[index].cannonEntity = cannonEntity;
                         return [3 /*break*/, 3];
                     case 2:
-                        if ("autoMake<Button>" == btn.name) {
+                        if ("bt<Button>" == btn.name) {
+                            UIManagerPro_1.UIManagerPro.getInstance().showPrefab("TaskUI");
+                        }
+                        else if ("autoMake<Button>" == btn.name) {
                         }
                         else if ("intensify<Button>" == btn.name) {
                             UIManagerPro_1.UIManagerPro.getInstance().showPrefab("IntensifyUI");

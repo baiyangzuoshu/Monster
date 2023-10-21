@@ -742,4 +742,11 @@ export class util {
         }
         return angle;
       }
+
+      public static Stringformat(str:string,args:Array<any>){
+        for(var s=str, i=0; i<args.length; i++){
+          s = s.replace(new RegExp("\\{"+i+"\\}","g"), args[i]);
+        }
+        return s;
+      }
 }
