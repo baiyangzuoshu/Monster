@@ -14,7 +14,7 @@ import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
 import CannonEntity from "../ECS/Entities/CannonEntity";
 import EntityUtils from "../ECS/EntityUtils";
-import { Chengjiou, GameStateType, Intensify, Task } from "../Enum";
+import { Chengjiou, GameStateType, Intensify, SkillBuffer, Task } from "../Enum";
 import { GameUI } from "../EventName";
 import MapDataManager from "../Manager/MapDataManager";
 import PlayerDataManager from "../Manager/PlayerDataManager";
@@ -43,6 +43,7 @@ export default class GameUIControl extends UIControl {
     private m_nextCrown:cc.Node=null;
     private crownBuild:cc.Node=null;
     private m_destroyNode:cc.Node=null;
+    private skillNodeArray:Array<any>=[];
 
     onLoad () {
         super.onLoad();
@@ -60,7 +61,26 @@ export default class GameUIControl extends UIControl {
         this.registerBottomBtn();
         this.registerUIEvents();
         this.registerTopBtn();
+        this.loadSkillNodes();
     }
+
+    loadSkillNodes(){
+        for(let i=0;i<4;i++){
+            let obj:any={}
+            obj.m_lock=this.getChildByUrl("bottom/buffer/skill_coin"+i+"/ui_func_lock");
+            obj.m_cd=this.getChildByUrl("bottom/buffer/skill_coin"+i+"/New Node/New Sprite(Splash)").getComponent(cc.Sprite);
+            obj.m_time=this.getChildByUrl("bottom/buffer/skill_coin"+i+"/time").getComponent(cc.Label);
+            obj.m_bufferType=i;
+            obj.m_lock.active = false;
+            obj.m_cd.node.active = false;
+            obj.m_time.node.active = false;
+
+            obj.m_timeData = 0;
+            obj.m_maxTime = 60;
+            this.skillNodeArray[i]=obj;
+        }
+    }
+
 
     registerUIEvents(){
         EventManager.getInstance().addEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
@@ -451,6 +471,10 @@ export default class GameUIControl extends UIControl {
     }
 
     update (dt) {
+        for(let i=0;i<4;i++){
+            this.updateSkill(dt,i);
+        }
+
         if( this.m_canMakeCount < this.m_maxMakeCount){
             this.m_water.height += dt*50;
             this.m_waterAction = true;
@@ -562,20 +586,82 @@ export default class GameUIControl extends UIControl {
 
         }
         else if("skill_coin0<Button>"==btn.name){
-
+            this.onClickSkill(0);
         }
         else if("skill_coin1<Button>"==btn.name){
-
+            this.onClickSkill(1);
         }
         else if("skill_coin2<Button>"==btn.name){
-
+            this.onClickSkill(2);
         }
         else if("skill_coin3<Button>"==btn.name){
-            
+            this.onClickSkill(3);
         }
 
     }
 
+    updateSkill(dt,i) {
+        let skill=this.skillNodeArray[i];
+        if( skill.m_timeData == 0 )return;
+        
+        if( skill.m_timeData > 0 ){
+            skill.m_timeData -= dt;
+        }
+        if( skill.m_timeData < 0 ){
+            skill.m_timeData = 0;
+            skill.m_cd.node.active = false;
+            skill.m_time.node.active = false;
+            PlayerDataManager.getInstance().bufferState[skill.m_bufferType] = false;
+                
+            if( skill.m_bufferType == SkillBuffer.BUFFER_GUAIWUJIANSHU ){
+                //g_monsterBuild.setAllSlow(false);
+            }
+            return;
+        }
+        skill.m_time.string = this.formatSeconds(skill.m_timeData);
+        var per = skill.m_timeData/skill.m_maxTime;
+        skill.m_cd.fillRange = per;
+    }
+
+    onClickSkill(i){
+        let skill=this.skillNodeArray[i];
+        if(skill.m_timeData > 0 )return;
+
+        skill.m_cd.node.active = true;
+        skill.m_time.node.active = true;
+
+        skill.m_timeData = skill.m_maxTime;
+        skill.m_time.string = this.formatSeconds(skill.m_timeData);
+
+        PlayerDataManager.getInstance().bufferState[skill.m_bufferType] = true;
+
+        if( skill.m_bufferType == SkillBuffer.BUFFER_GUAIWUJIANSHU ){
+            //g_monsterBuild.setAllSlow(true);
+        }
+    }
+
+    formatSeconds(value) {
+        var theTime = Math.floor(value);// 秒
+        var middle= 0;// 分
+
+        if(theTime > 60) {
+            middle= Math.floor(theTime/60);
+            theTime = Math.floor(theTime%60);
+        }
+
+        var result = ""+theTime;
+        
+        if(middle > 0) 
+        {
+            result = ""+middle+":"+result;
+        }
+        else
+        {
+            result = "00:"+result;
+        }
+
+        return result;
+    }
 }
 
 

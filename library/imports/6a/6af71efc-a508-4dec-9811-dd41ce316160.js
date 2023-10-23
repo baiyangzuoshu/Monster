@@ -101,6 +101,7 @@ var GameUIControl = /** @class */ (function (_super) {
         _this.m_nextCrown = null;
         _this.crownBuild = null;
         _this.m_destroyNode = null;
+        _this.skillNodeArray = [];
         return _this;
     }
     GameUIControl.prototype.onLoad = function () {
@@ -117,6 +118,22 @@ var GameUIControl = /** @class */ (function (_super) {
         this.registerBottomBtn();
         this.registerUIEvents();
         this.registerTopBtn();
+        this.loadSkillNodes();
+    };
+    GameUIControl.prototype.loadSkillNodes = function () {
+        for (var i = 0; i < 4; i++) {
+            var obj = {};
+            obj.m_lock = this.getChildByUrl("bottom/buffer/skill_coin" + i + "/ui_func_lock");
+            obj.m_cd = this.getChildByUrl("bottom/buffer/skill_coin" + i + "/New Node/New Sprite(Splash)").getComponent(cc.Sprite);
+            obj.m_time = this.getChildByUrl("bottom/buffer/skill_coin" + i + "/time").getComponent(cc.Label);
+            obj.m_bufferType = i;
+            obj.m_lock.active = false;
+            obj.m_cd.node.active = false;
+            obj.m_time.node.active = false;
+            obj.m_timeData = 0;
+            obj.m_maxTime = 60;
+            this.skillNodeArray[i] = obj;
+        }
     };
     GameUIControl.prototype.registerUIEvents = function () {
         EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.refreshGoldDiamond, this.refreshGoldDiamond, this);
@@ -164,7 +181,7 @@ var GameUIControl = /** @class */ (function (_super) {
     };
     GameUIControl.prototype.gameOver = function () {
         this.moveToNextMap();
-        this.showSucceed();
+        this.showFaild();
     };
     GameUIControl.prototype.buildEndPoint = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -518,6 +535,9 @@ var GameUIControl = /** @class */ (function (_super) {
         });
     };
     GameUIControl.prototype.update = function (dt) {
+        for (var i = 0; i < 4; i++) {
+            this.updateSkill(dt, i);
+        }
         if (this.m_canMakeCount < this.m_maxMakeCount) {
             this.m_water.height += dt * 50;
             this.m_waterAction = true;
@@ -624,18 +644,72 @@ var GameUIControl = /** @class */ (function (_super) {
                         else if ("bt<Button>" == btn.name) {
                         }
                         else if ("skill_coin0<Button>" == btn.name) {
+                            this.onClickSkill(0);
                         }
                         else if ("skill_coin1<Button>" == btn.name) {
+                            this.onClickSkill(1);
                         }
                         else if ("skill_coin2<Button>" == btn.name) {
+                            this.onClickSkill(2);
                         }
                         else if ("skill_coin3<Button>" == btn.name) {
+                            this.onClickSkill(3);
                         }
                         _a.label = 3;
                     case 3: return [2 /*return*/];
                 }
             });
         });
+    };
+    GameUIControl.prototype.updateSkill = function (dt, i) {
+        var skill = this.skillNodeArray[i];
+        if (skill.m_timeData == 0)
+            return;
+        if (skill.m_timeData > 0) {
+            skill.m_timeData -= dt;
+        }
+        if (skill.m_timeData < 0) {
+            skill.m_timeData = 0;
+            skill.m_cd.node.active = false;
+            skill.m_time.node.active = false;
+            PlayerDataManager_1.default.getInstance().bufferState[skill.m_bufferType] = false;
+            if (skill.m_bufferType == Enum_1.SkillBuffer.BUFFER_GUAIWUJIANSHU) {
+                //g_monsterBuild.setAllSlow(false);
+            }
+            return;
+        }
+        skill.m_time.string = this.formatSeconds(skill.m_timeData);
+        var per = skill.m_timeData / skill.m_maxTime;
+        skill.m_cd.fillRange = per;
+    };
+    GameUIControl.prototype.onClickSkill = function (i) {
+        var skill = this.skillNodeArray[i];
+        if (skill.m_timeData > 0)
+            return;
+        skill.m_cd.node.active = true;
+        skill.m_time.node.active = true;
+        skill.m_timeData = skill.m_maxTime;
+        skill.m_time.string = this.formatSeconds(skill.m_timeData);
+        PlayerDataManager_1.default.getInstance().bufferState[skill.m_bufferType] = true;
+        if (skill.m_bufferType == Enum_1.SkillBuffer.BUFFER_GUAIWUJIANSHU) {
+            //g_monsterBuild.setAllSlow(true);
+        }
+    };
+    GameUIControl.prototype.formatSeconds = function (value) {
+        var theTime = Math.floor(value); // 秒
+        var middle = 0; // 分
+        if (theTime > 60) {
+            middle = Math.floor(theTime / 60);
+            theTime = Math.floor(theTime % 60);
+        }
+        var result = "" + theTime;
+        if (middle > 0) {
+            result = "" + middle + ":" + result;
+        }
+        else {
+            result = "00:" + result;
+        }
+        return result;
     };
     GameUIControl = __decorate([
         ccclass

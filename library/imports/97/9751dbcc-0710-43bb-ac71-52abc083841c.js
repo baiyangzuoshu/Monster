@@ -39,6 +39,7 @@ var PlayerDataManager = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.userData = null;
         _this.gameState = Enum_1.GameStateType.None;
+        _this.bufferState = [];
         _this.getTaskByID = function (taskID) {
             if (this.userData.taskData == null) {
                 this.userData.taskData = [];

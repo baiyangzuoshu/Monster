@@ -31,7 +31,8 @@ export default class PlayerDataManager extends cc.Component {
 
     private userData:any = null;
     private gameState:GameStateType=GameStateType.None;
-
+    public  bufferState=[];
+    
     set gameStateType(value:GameStateType){
         this.gameState=value
     }
