@@ -99,6 +99,7 @@ var GameUIControl = /** @class */ (function (_super) {
         _this.m_curCrown = null;
         _this.m_nextCrown = null;
         _this.crownBuild = null;
+        _this.m_destroyNode = null;
         return _this;
     }
     GameUIControl.prototype.onLoad = function () {
@@ -109,6 +110,7 @@ var GameUIControl = /** @class */ (function (_super) {
         this.m_labGold = this.getChildByUrl("top/glod/btGlod/ui_coin_rect/gold").getComponent(cc.Label);
         this.m_diamond = this.getChildByUrl("top/glod/btDiamond/ui_coin_rect/diamond").getComponent(cc.Label);
         this.m_makeNumberLabel = this.getChildByUrl("bottom/make/num").getComponent(cc.Label);
+        this.m_destroyNode = this.getChildByUrl("bottom/destroy");
         this.updateGameUI();
         this.refreshGoldDiamond();
         this.registerBottomBtn();
@@ -130,7 +132,7 @@ var GameUIControl = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         canvas = cc.find("Canvas");
-                        this.m_moveCannonNode = canvas.getChildByName("Game").getChildByName("moveCannon");
+                        this.m_moveCannonNode = this.getChildByUrl("moveCannon");
                         this.crownBuild = canvas.getChildByName("Game").getChildByName("crownBuild");
                         _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
                         for (i = 0; i < _cannonList.length; i++) {
@@ -228,11 +230,9 @@ var GameUIControl = /** @class */ (function (_super) {
                 }
                 this.m_moveCannon = cc.instantiate(cannonEntity.baseComponent.gameObject);
                 this.m_moveCannonNode.addChild(this.m_moveCannon);
-                //var cloneCannon = this.m_moveCannon.getComponent('cannon');
-                //this.showCannonRange(cannon);
-                //cannon.node.opacity = 127;
-                //this.showCannonHint(cannon.node._selfData.cannon);
-                //g_bottomUI.setShowDestroy(true);
+                this.m_moveCannon.getChildByName("range").active = true;
+                this.showCannonHint(cannonEntity);
+                this.setShowDestroy(true);
             }
             else {
                 this.m_selecetCannon = null;
@@ -253,10 +253,10 @@ var GameUIControl = /** @class */ (function (_super) {
         if (cannon != null) {
             var cannonEntity = cannon.cannonEntity;
             if (cannonEntity != null) {
-                //this.showCannonRange(cannon);
+                cannonEntity.baseComponent.gameObject.getChildByName("range").active = true;
             }
             else {
-                //this.hideCannonRange();
+                this.hideCannonRange();
             }
         }
     };
@@ -265,7 +265,6 @@ var GameUIControl = /** @class */ (function (_super) {
         var pos = event.getLocation();
         var nodePos = this.m_moveCannonNode.convertToNodeSpaceAR(pos);
         var block = this.getCannonByPosition(nodePos);
-        console.log(block);
         if (block != null) {
             if (this.m_moveCannon != null) {
                 this.changeCannon(this.m_selecetCannon, block);
@@ -274,16 +273,16 @@ var GameUIControl = /** @class */ (function (_super) {
         if (this.m_moveCannon != null) {
             this.m_moveCannon.removeFromParent();
             this.m_moveCannon = null;
-            ///this.hideCannonHint();
+            this.hideCannonHint();
         }
-        //this.hideCannonRange();
-        //g_bottomUI.setShowDestroy(false);
+        this.hideCannonRange();
+        this.setShowDestroy(false);
         var pos = event.getLocation();
-        // if( g_bottomUI.isInDestroy(pos)){
-        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
-        //     this.m_selecetCannon.cannonEntity.node.destroy();
-        //     this.m_selecetCannon.cannon = null;
-        // }
+        if (this.isInDestroy(pos)) {
+            // this.m_selecetCannon.cannonEntity.node.removeFromParent();
+            // this.m_selecetCannon.cannonEntity.node.destroy();
+            // this.m_selecetCannon.cannonEntity = null;
+        }
     };
     GameUIControl.prototype.touchCancel = function (event) {
         //this.setAllCannonOpacity();
@@ -291,14 +290,14 @@ var GameUIControl = /** @class */ (function (_super) {
             this.m_moveCannon.removeFromParent();
             this.m_moveCannon = null;
         }
-        //this.hideCannonRange();
-        //g_bottomUI.setShowDestroy(false);
+        this.hideCannonRange();
+        this.setShowDestroy(false);
         var pos = event.getLocation();
-        // if( g_bottomUI.isInDestroy(pos)){
-        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
-        //     this.m_selecetCannon.cannonEntity.node.destroy();
-        //     this.m_selecetCannon.cannon = null;
-        // }
+        if (this.isInDestroy(pos)) {
+            // this.m_selecetCannon.cannonEntity.node.removeFromParent();
+            // this.m_selecetCannon.cannonEntity.node.destroy();
+            // this.m_selecetCannon.cannon = null;
+        }
     };
     GameUIControl.prototype.changeCannon = function (startItem, endItem) {
         if (startItem.pos.x == endItem.pos.x &&
@@ -353,6 +352,45 @@ var GameUIControl = /** @class */ (function (_super) {
             endItem.cannonEntity = startItem.cannonEntity;
             startItem.cannonEntity = endEntity;
         }
+    };
+    GameUIControl.prototype.showCannonHint = function (cannon) {
+        for (var i = 0; i < this.m_cannonList.length; i++) {
+            var entity = this.m_cannonList[i].cannonEntity;
+            if (entity != null) {
+                if (entity.roleComponent.level == cannon.roleComponent.level) {
+                    entity.baseComponent.gameObject.getChildByName("ui_mergeRemind").active = true;
+                }
+            }
+        }
+    };
+    GameUIControl.prototype.hideCannonHint = function () {
+        for (var i = 0; i < this.m_cannonList.length; i++) {
+            var entity = this.m_cannonList[i].cannonEntity;
+            if (entity != null) {
+                entity.baseComponent.gameObject.getChildByName("ui_mergeRemind").active = false;
+            }
+        }
+    };
+    GameUIControl.prototype.hideCannonRange = function () {
+        for (var i = 0; i < this.m_cannonList.length; i++) {
+            var cannonEntity = this.m_cannonList[i].cannonEntity;
+            if (cannonEntity != null) {
+                cannonEntity.baseComponent.gameObject.getChildByName("range").active = false;
+            }
+        }
+    };
+    GameUIControl.prototype.setShowDestroy = function (bShow) {
+        this.m_destroyNode.active = bShow;
+    };
+    GameUIControl.prototype.isInDestroy = function (world_pos) {
+        var pos = this.m_destroyNode.convertToNodeSpaceAR(world_pos);
+        if (pos.x < 50 &&
+            pos.x > -50 &&
+            pos.y < 50 &&
+            pos.y > -50) {
+            return true;
+        }
+        return false;
     };
     GameUIControl.prototype.createCannonData = function () {
         var obj = {};

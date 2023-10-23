@@ -7,7 +7,7 @@
 
 import utils = require("markdown-it/lib/common/utils");
 import { util } from "../../../FrameWork/Utils/util";
-import { BulletState, GameState, SkillBuffer } from "../../Enum";
+import { BulletState, SkillBuffer } from "../../Enum";
 import AnimateComponent from "../Components/AnimateComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";

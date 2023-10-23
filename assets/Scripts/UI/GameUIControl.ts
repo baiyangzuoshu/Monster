@@ -11,7 +11,7 @@ import { UIManagerPro } from "../../FrameWork/manager/UIManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
-import CannonEntitiy from "../ECS/Entities/CannonEntitiy";
+import CannonEntity from "../ECS/Entities/CannonEntity";
 import EntityUtils from "../ECS/EntityUtils";
 import { Chengjiou, GameStateType, Intensify, Task } from "../Enum";
 import { GameUI } from "../EventName";
@@ -41,6 +41,7 @@ export default class GameUIControl extends UIControl {
     private m_curCrown:cc.Node=null;
     private m_nextCrown:cc.Node=null;
     private crownBuild:cc.Node=null;
+    private m_destroyNode:cc.Node=null;
 
     onLoad () {
         super.onLoad();
@@ -51,6 +52,7 @@ export default class GameUIControl extends UIControl {
         this.m_labGold=this.getChildByUrl("top/glod/btGlod/ui_coin_rect/gold").getComponent(cc.Label);
         this.m_diamond=this.getChildByUrl("top/glod/btDiamond/ui_coin_rect/diamond").getComponent(cc.Label);
         this.m_makeNumberLabel=this.getChildByUrl("bottom/make/num").getComponent(cc.Label);
+        this.m_destroyNode=this.getChildByUrl("bottom/destroy");
 
         this.updateGameUI();
         this.refreshGoldDiamond();
@@ -71,7 +73,7 @@ export default class GameUIControl extends UIControl {
 
     async start () {
         let canvas=cc.find("Canvas");
-        this.m_moveCannonNode=canvas.getChildByName("Game").getChildByName("moveCannon");
+        this.m_moveCannonNode=this.getChildByUrl("moveCannon");
         this.crownBuild=canvas.getChildByName("Game").getChildByName("crownBuild");
 
         var _cannonList = MapDataManager.getInstance().getCurCannonPoint();
@@ -142,7 +144,7 @@ export default class GameUIControl extends UIControl {
         let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
         this.m_selecetCannon = this.getCannonByPosition(nodePos);
         if( this.m_selecetCannon != null ){
-            var cannonEntity:CannonEntitiy = this.m_selecetCannon.cannonEntity;
+            var cannonEntity:CannonEntity = this.m_selecetCannon.cannonEntity;
             if( cannonEntity != null){
                 if( this.m_moveCannon != null ){
                     this.m_moveCannon.removeFromParent();
@@ -150,11 +152,9 @@ export default class GameUIControl extends UIControl {
                 }
                 this.m_moveCannon = cc.instantiate(cannonEntity.baseComponent.gameObject);
                 this.m_moveCannonNode.addChild(this.m_moveCannon);
-                //var cloneCannon = this.m_moveCannon.getComponent('cannon');
-                //this.showCannonRange(cannon);
-                //cannon.node.opacity = 127;
-                //this.showCannonHint(cannon.node._selfData.cannon);
-                //g_bottomUI.setShowDestroy(true);
+                this.m_moveCannon.getChildByName("range").active = true;
+                this.showCannonHint(cannonEntity);
+                this.setShowDestroy(true);
             }else{
                 this.m_selecetCannon = null;
             }
@@ -174,11 +174,11 @@ export default class GameUIControl extends UIControl {
         let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
         var cannon = this.getCannonByPosition(nodePos);
         if( cannon != null ){
-            var cannonEntity = cannon.cannonEntity;
+            var cannonEntity = cannon.cannonEntity as CannonEntity;
             if( cannonEntity != null){
-                //this.showCannonRange(cannon);
+                cannonEntity.baseComponent.gameObject.getChildByName("range").active = true;
             }else{
-                //this.hideCannonRange();
+                this.hideCannonRange();
             }
         }
     }
@@ -187,7 +187,6 @@ export default class GameUIControl extends UIControl {
         var pos = event.getLocation();
         let nodePos=this.m_moveCannonNode.convertToNodeSpaceAR(pos);
         var block = this.getCannonByPosition(nodePos);
-        console.log(block)
         if(block != null){
             if( this.m_moveCannon != null ){
                 this.changeCannon(this.m_selecetCannon,block);
@@ -197,20 +196,18 @@ export default class GameUIControl extends UIControl {
         if( this.m_moveCannon != null ){
             this.m_moveCannon.removeFromParent();
             this.m_moveCannon = null;
-            ///this.hideCannonHint();
+            this.hideCannonHint();
         }
-
         
-        //this.hideCannonRange();
-
-        //g_bottomUI.setShowDestroy(false);
+        this.hideCannonRange();
+        this.setShowDestroy(false);
 
         var pos = event.getLocation();
-        // if( g_bottomUI.isInDestroy(pos)){
-        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
-        //     this.m_selecetCannon.cannonEntity.node.destroy();
-        //     this.m_selecetCannon.cannon = null;
-        // }
+        if( this.isInDestroy(pos)){
+            // this.m_selecetCannon.cannonEntity.node.removeFromParent();
+            // this.m_selecetCannon.cannonEntity.node.destroy();
+            // this.m_selecetCannon.cannonEntity = null;
+        }
     }
     touchCancel(event){
         //this.setAllCannonOpacity();
@@ -219,15 +216,15 @@ export default class GameUIControl extends UIControl {
             this.m_moveCannon = null;
         }
                     
-        //this.hideCannonRange();
-        //g_bottomUI.setShowDestroy(false);
+        this.hideCannonRange();
+        this.setShowDestroy(false);
 
         var pos = event.getLocation();
-        // if( g_bottomUI.isInDestroy(pos)){
-        //     this.m_selecetCannon.cannonEntity.node.removeFromParent();
-        //     this.m_selecetCannon.cannonEntity.node.destroy();
-        //     this.m_selecetCannon.cannon = null;
-        // }
+        if( this.isInDestroy(pos)){
+            // this.m_selecetCannon.cannonEntity.node.removeFromParent();
+            // this.m_selecetCannon.cannonEntity.node.destroy();
+            // this.m_selecetCannon.cannon = null;
+        }
     }
 
     changeCannon(startItem,endItem){
@@ -235,8 +232,8 @@ export default class GameUIControl extends UIControl {
             startItem.pos.y == endItem.pos.y){
                 return;
             }
-        let startEntity:CannonEntitiy=startItem.cannonEntity;
-        let endEntity:CannonEntitiy=endItem.cannonEntity;
+        let startEntity:CannonEntity=startItem.cannonEntity;
+        let endEntity:CannonEntity=endItem.cannonEntity;
         if( startEntity == null ){
             return;
         }
@@ -288,6 +285,52 @@ export default class GameUIControl extends UIControl {
             endItem.cannonEntity = startItem.cannonEntity;
             startItem.cannonEntity = endEntity;
         }
+    }
+
+    showCannonHint(cannon:CannonEntity){
+        for (let i = 0; i < this.m_cannonList.length; i++) {
+            let entity = this.m_cannonList[i].cannonEntity as CannonEntity;
+            if( entity != null ){
+                if( entity.roleComponent.level==cannon.roleComponent.level){
+                    entity.baseComponent.gameObject.getChildByName("ui_mergeRemind").active = true;
+                }
+            }
+            
+        }
+    }
+
+    hideCannonHint(){
+        for (let i = 0; i < this.m_cannonList.length; i++) {
+            let entity = this.m_cannonList[i].cannonEntity as CannonEntity;
+            if( entity != null ){
+                entity.baseComponent.gameObject.getChildByName("ui_mergeRemind").active = false;
+            }
+        }
+    }
+
+    hideCannonRange(){
+        for (let i = 0; i < this.m_cannonList.length; i++) {
+            let cannonEntity = this.m_cannonList[i].cannonEntity as CannonEntity;
+            if( cannonEntity != null ){
+                cannonEntity.baseComponent.gameObject.getChildByName("range").active = false;
+            }    
+        }
+    }
+
+    setShowDestroy(bShow){
+        this.m_destroyNode.active = bShow;        
+    }
+
+    isInDestroy(world_pos){
+        var pos = this.m_destroyNode.convertToNodeSpaceAR(world_pos);
+        if( pos.x < 50 && 
+            pos.x > -50 && 
+            pos.y < 50 && 
+            pos.y > -50){
+                return true;
+            }
+
+        return false;
     }
 
     createCannonData(){

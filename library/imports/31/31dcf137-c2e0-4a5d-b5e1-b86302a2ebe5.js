@@ -70,7 +70,7 @@ var util_1 = require("../../FrameWork/Utils/util");
 var DataManager_1 = require("../data/DataManager");
 var MapDataManager_1 = require("../Manager/MapDataManager");
 var BulletEntity_1 = require("./Entities/BulletEntity");
-var CannonEntitiy_1 = require("./Entities/CannonEntitiy");
+var CannonEntity_1 = require("./Entities/CannonEntity");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var Enum_1 = require("../Enum");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -151,7 +151,7 @@ var ECSFactory = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        entity = new CannonEntitiy_1.default();
+                        entity = new CannonEntity_1.default();
                         return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "cannon", cc.Prefab)];
                     case 1:
                         cannonPrefab = _a.sent();
@@ -186,7 +186,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         delta = cc.delayTime(0.2);
                         scaleTo2 = cc.scaleTo(0.1, 1, 1);
                         seq = cc.sequence(scaleTo1, delta, scaleTo2, cc.callFunc(function () {
-                            entity.unitComponent.state = Enum_1.GameState.Active;
+                            entity.unitComponent.state = Enum_1.UnitState.Active;
                         }.bind(this)));
                         sp = cc.spawn(moveTo, seq);
                         node.runAction(sp);
@@ -194,7 +194,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.transformComponent.x = x;
                         entity.transformComponent.y = y;
                         entity.unitComponent.angle = angle;
-                        entity.unitComponent.state = Enum_1.GameState.None;
+                        entity.unitComponent.state = Enum_1.UnitState.None;
                         entity.roleComponent.level = level;
                         entity.roleComponent.type = lvData.type;
                         entity.attackComponent.atk = lvData.atk;

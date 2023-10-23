@@ -9,7 +9,7 @@ import { GameStateType } from "../Enum";
 import PlayerDataManager from "../Manager/PlayerDataManager";
 import ECSFactory from "./ECSFactory";
 import BulletEntity from "./Entities/BulletEntity";
-import CannonEntitiy from "./Entities/CannonEntitiy";
+import CannonEntity from "./Entities/CannonEntity";
 import MonsterEntity from "./Entities/MonsterEntity";
 import AISystem from "./Systems/AISystem";
 import AnimateSystem from "./Systems/AnimateSystem";
@@ -38,7 +38,7 @@ export default class ECSManager extends cc.Component {
     }
 
     private monsters:Array<MonsterEntity>=[];
-    private cannones:Array<CannonEntitiy>=[];
+    private cannones:Array<CannonEntity>=[];
     private bullets:Array<BulletEntity>=[];
 
     async createMonsterEntity(type,index,list,hp,gold,speed){

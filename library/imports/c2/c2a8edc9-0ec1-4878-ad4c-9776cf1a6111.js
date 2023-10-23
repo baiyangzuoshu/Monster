@@ -4,7 +4,7 @@ cc._RF.push(module, 'c2a8e3JDsFIeK1Ml3bPGmER', 'Enum');
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GameStateType = exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.BulletState = void 0;
+exports.UnitState = exports.GameStateType = exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.BulletState = void 0;
 var BulletState;
 (function (BulletState) {
     BulletState[BulletState["None"] = 0] = "None";
@@ -41,5 +41,10 @@ var GameStateType;
     GameStateType[GameStateType["Playing"] = 2] = "Playing";
     GameStateType[GameStateType["End"] = 3] = "End";
 })(GameStateType = exports.GameStateType || (exports.GameStateType = {}));
+var UnitState;
+(function (UnitState) {
+    UnitState[UnitState["None"] = 0] = "None";
+    UnitState[UnitState["Active"] = 1] = "Active";
+})(UnitState = exports.UnitState || (exports.UnitState = {}));
 
 cc._RF.pop();

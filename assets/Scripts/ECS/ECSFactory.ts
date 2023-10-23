@@ -10,9 +10,9 @@ import { util } from "../../FrameWork/Utils/util";
 import DataManager from "../data/DataManager";
 import MapDataManager from "../Manager/MapDataManager";
 import BulletEntity from "./Entities/BulletEntity";
-import CannonEntitiy from "./Entities/CannonEntitiy";
+import CannonEntity from "./Entities/CannonEntity";
 import MonsterEntity from "./Entities/MonsterEntity";
-import { BulletState, GameState } from "../Enum";
+import { BulletState, UnitState } from "../Enum";
 
 const {ccclass, property} = cc._decorator;
 
@@ -89,7 +89,7 @@ export default class ECSFactory extends cc.Component {
     }
 
     public async createCannonEntity(idx:number,level:number){
-        let entity=new CannonEntitiy();
+        let entity=new CannonEntity();
 
         let cannonPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","cannon",cc.Prefab) as cc.Prefab;
         let node=cc.instantiate(cannonPrefab);
@@ -125,7 +125,7 @@ export default class ECSFactory extends cc.Component {
         var delta = cc.delayTime(0.2);
         var scaleTo2 = cc.scaleTo(0.1,1,1);
         var seq = cc.sequence(scaleTo1,delta,scaleTo2,cc.callFunc(function(){
-            entity.unitComponent.state = GameState.Active;
+            entity.unitComponent.state = UnitState.Active;
         }.bind(this)));
         var sp = cc.spawn(moveTo,seq);
         node.runAction(sp);
@@ -136,7 +136,7 @@ export default class ECSFactory extends cc.Component {
         entity.transformComponent.y=y
 
         entity.unitComponent.angle=angle;
-        entity.unitComponent.state = GameState.None;
+        entity.unitComponent.state = UnitState.None;
 
         entity.roleComponent.level=level;
         entity.roleComponent.type=lvData.type;

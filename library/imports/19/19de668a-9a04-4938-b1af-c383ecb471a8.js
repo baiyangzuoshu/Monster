@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, 'af348Kgab1AjoHXBSwQtT2f', 'CannonEntity');
-// Scripts/ECS/Entities/CannonEntity.ts
+cc._RF.push(module, '19de6aKmgRJOLGvw4PstHGo', 'CannonEntitiy');
+// Scripts/ECS/Entities/CannonEntitiy.ts
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });

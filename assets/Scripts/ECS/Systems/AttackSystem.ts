@@ -9,7 +9,7 @@ import { Interface } from "readline";
 import { util } from "../../../FrameWork/Utils/util";
 import DataManager from "../../data/DataManager";
 import IntensifyDataManager from "../../data/IntensifyDataManager";
-import { GameState, Intensify, SkillBuffer, Task } from "../../Enum";
+import {Intensify, SkillBuffer, Task, UnitState } from "../../Enum";
 import PlayerDataManager from "../../Manager/PlayerDataManager";
 import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
@@ -102,7 +102,7 @@ export default class AttackSystem extends cc.Component {
     }
 
     async onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent,attackComponent:AttackComponent) {
-        if(unitComponent.state != GameState.Active||unitComponent.isDead){
+        if(unitComponent.state != UnitState.Active||unitComponent.isDead){
             return
         }
         

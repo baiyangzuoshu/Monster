@@ -35,5 +35,10 @@ export enum GameStateType{
     End=3
 }
 
+export enum UnitState{
+    None=0,
+    Active=1,
+}
+
 
 

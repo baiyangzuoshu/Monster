@@ -25,16 +25,19 @@
       },
       {
         "__id__": 357
+      },
+      {
+        "__id__": 359
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 359
+        "__id__": 361
       }
     ],
     "_prefab": {
-      "__id__": 360
+      "__id__": 362
     },
     "_opacity": 255,
     "_color": {
@@ -13510,6 +13513,77 @@
       "__id__": 0
     },
     "fileId": "e2AbM2IftOLLaxF+Z5eRNn",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "moveCannon",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 360
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 640,
+      "height": 640
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 1
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -320,
+        307.353,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "8cXqFVSUhAUa+bXzjOZQTx",
     "sync": false
   },
   {
