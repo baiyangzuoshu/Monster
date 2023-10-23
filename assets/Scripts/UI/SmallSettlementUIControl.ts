@@ -10,7 +10,7 @@ import { UIControl } from "../../FrameWork/ui/UIControl";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class SmallSettlementControl extends UIControl {
+export default class SmallSettlementUIControl extends UIControl {
 
     m_faildNode:cc.Node=null;
     m_succeedNode:cc.Node=null;

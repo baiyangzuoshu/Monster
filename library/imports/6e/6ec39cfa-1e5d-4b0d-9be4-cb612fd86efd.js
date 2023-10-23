@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '6ec39z6Hl1LDZvky2Ev2G79', 'SmallSettlementControl');
-// Scripts/UI/SmallSettlementControl.ts
+cc._RF.push(module, '6ec39z6Hl1LDZvky2Ev2G79', 'SmallSettlementUIControl');
+// Scripts/UI/SmallSettlementUIControl.ts
 
 "use strict";
 // Learn TypeScript:
@@ -31,9 +31,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var SmallSettlementControl = /** @class */ (function (_super) {
-    __extends(SmallSettlementControl, _super);
-    function SmallSettlementControl() {
+var SmallSettlementUIControl = /** @class */ (function (_super) {
+    __extends(SmallSettlementUIControl, _super);
+    function SmallSettlementUIControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.m_faildNode = null;
         _this.m_succeedNode = null;
@@ -41,39 +41,39 @@ var SmallSettlementControl = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    SmallSettlementControl.prototype.onLoad = function () {
+    SmallSettlementUIControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
         this.m_faildNode = this.getChildByUrl("ui_lose");
         this.m_succeedNode = this.getChildByUrl("ui_win");
         this.m_labGold = this.getChildByUrl("lab").getComponent(cc.Label);
     };
-    SmallSettlementControl.prototype.showSucceed = function (gold) {
+    SmallSettlementUIControl.prototype.showSucceed = function (gold) {
         this.show();
         this.m_labGold.string = gold.toString();
         this.m_faildNode.active = false;
         this.m_succeedNode.active = true;
     };
-    SmallSettlementControl.prototype.showFaild = function (gold) {
+    SmallSettlementUIControl.prototype.showFaild = function (gold) {
         this.show();
         this.m_labGold.string = gold.toString();
         this.m_faildNode.active = true;
         this.m_succeedNode.active = false;
     };
-    SmallSettlementControl.prototype.show = function () {
+    SmallSettlementUIControl.prototype.show = function () {
         var moveTo = cc.moveTo(0.3, cc.v2(0, 0));
         this.node.setPosition(cc.v2(0, 980));
         this.node.runAction(moveTo);
     };
-    SmallSettlementControl.prototype.hide = function () {
+    SmallSettlementUIControl.prototype.hide = function () {
         var moveTo = cc.moveTo(0.3, cc.v2(0, 980));
         this.node.setPosition(cc.v2(0, 0));
         this.node.runAction(moveTo);
     };
-    SmallSettlementControl = __decorate([
+    SmallSettlementUIControl = __decorate([
         ccclass
-    ], SmallSettlementControl);
-    return SmallSettlementControl;
+    ], SmallSettlementUIControl);
+    return SmallSettlementUIControl;
 }(UIControl_1.UIControl));
-exports.default = SmallSettlementControl;
+exports.default = SmallSettlementUIControl;
 
 cc._RF.pop();

@@ -9,6 +9,8 @@ var GameUI;
 (function (GameUI) {
     GameUI["refreshGoldDiamond"] = "refreshGoldDiamond";
     GameUI["gameOver"] = "gameOver";
+    GameUI["showSucceed"] = "showSucceed";
+    GameUI["showFaild"] = "showFaild";
 })(GameUI = exports.GameUI || (exports.GameUI = {}));
 
 cc._RF.pop();

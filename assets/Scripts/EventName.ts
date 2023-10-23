@@ -1,4 +1,6 @@
 export enum GameUI {
     refreshGoldDiamond="refreshGoldDiamond",
-    gameOver="gameOver"
+    gameOver="gameOver",
+    showSucceed="showSucceed",
+    showFaild="showFaild",
 }

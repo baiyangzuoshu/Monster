@@ -9,6 +9,7 @@ import { EventManager } from "../../FrameWork/manager/EventManager";
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { UIManagerPro } from "../../FrameWork/manager/UIManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
+import DataManager from "../data/DataManager";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
 import CannonEntity from "../ECS/Entities/CannonEntity";
@@ -64,11 +65,15 @@ export default class GameUIControl extends UIControl {
     registerUIEvents(){
         EventManager.getInstance().addEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
         EventManager.getInstance().addEventListener(GameUI.gameOver,this.gameOver,this);
+        EventManager.getInstance().addEventListener(GameUI.showSucceed,this.showSucceed,this);
+        EventManager.getInstance().addEventListener(GameUI.showFaild,this.showFaild,this);
     }
 
     onDestroy():void{
         EventManager.getInstance().removeEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
         EventManager.getInstance().removeEventListener(GameUI.gameOver,this.gameOver,this);
+        EventManager.getInstance().removeEventListener(GameUI.showSucceed,this.showSucceed,this);
+        EventManager.getInstance().removeEventListener(GameUI.showFaild,this.showFaild,this);
     }
 
     async start () {
@@ -98,6 +103,7 @@ export default class GameUIControl extends UIControl {
 
     gameOver(){
         this.moveToNextMap();
+        this.showFaild();
     }
 
     async buildEndPoint(){
@@ -130,10 +136,10 @@ export default class GameUIControl extends UIControl {
     }
 
     moveToNextMap(){
-        var moveTo = cc.moveBy(0.5,cc.v2(-640,0));
+        var moveTo = cc.jumpBy(0.5,cc.v2(110*2,-110),110,1);
         var callFunc = cc.callFunc(function(){
-            this.crownBuild.setPosition(cc.v2(-320,310));
-            this.buildEndPoint();
+            //this.crownBuild.setPosition(cc.v2(-320,310));
+            //this.buildEndPoint();
         }.bind(this));
 
         this.crownBuild.runAction(cc.sequence(moveTo,callFunc));
@@ -382,6 +388,66 @@ export default class GameUIControl extends UIControl {
 
     updateMakeCount(){
         this.m_makeNumberLabel.string = '' + this.m_canMakeCount + '/' + this.m_maxMakeCount;
+    }
+
+    async showSucceed(){
+        var checkPoint = DataManager.getInstance().getCurCheckPoint();
+        PlayerDataManager.getInstance().addGold(checkPoint.succedGold);
+        PlayerDataManager.getInstance().addDiamond(checkPoint.diamond);
+        this.updateGameUI();
+
+        if(DataManager.getInstance().isCurBossAttack()){
+            let delayTime = 6;
+            let view=await UIManagerPro.getInstance().showPrefab("MapUI");
+            view.showSucceed(checkPoint.succedGold,checkPoint.diamond);
+
+
+            this.scheduleOnce(function() {
+                if(DataManager.getInstance().isCurBossAttack()){
+                    UIManagerPro.getInstance().closePrefab("MapUI");
+                }else{
+                    UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+                }
+
+                this.updateGameUI();
+                //g_game.playGame(isBoss);
+            }, delayTime);
+        }else{
+            let delayTime = 2;
+            let view=await UIManagerPro.getInstance().showPrefab("SmallSettlementUI");
+            view.showSucceed(checkPoint.succedGold,checkPoint.diamond);
+
+
+            this.scheduleOnce(function() {
+                if(DataManager.getInstance().isCurBossAttack()){
+                    UIManagerPro.getInstance().closePrefab("MapUI");
+                }else{
+                    UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+                }
+
+                this.updateGameUI();
+                //g_game.playGame(isBoss);
+            }, delayTime);
+        }
+    }
+
+    async showFaild(){
+        let view=await UIManagerPro.getInstance().showPrefab("SmallSettlementUI");
+        if( view.active )return;
+
+        var checkPoint = DataManager.getInstance().getCurCheckPoint();
+        PlayerDataManager.getInstance().addGold(checkPoint.faildGold);
+        this.updateGameUI();
+        
+        view.showFaild(checkPoint.faildGold);
+
+        this.scheduleOnce(function() {
+            DataManager.getInstance().previousCheckPoint();
+            UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+            this.updateGameUI();
+            //g_game.playGame();
+        }, 2);
+
     }
 
     update (dt) {

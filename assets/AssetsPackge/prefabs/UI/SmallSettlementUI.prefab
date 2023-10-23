@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "SmallSettlement",
+    "_name": "SmallSettlementUI",
     "_objFlags": 0,
     "_parent": null,
     "_children": [

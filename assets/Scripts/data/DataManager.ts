@@ -202,7 +202,7 @@ export default class DataManager extends cc.Component {
     }
 
     //上一关
-    private previousCheckPoint () {
+    public previousCheckPoint () {
         var checkPoint = PlayerDataManager.getInstance().getCheckPoint();
         checkPoint.small--;
         if (checkPoint.small < 0) {
@@ -245,7 +245,7 @@ export default class DataManager extends cc.Component {
     }
 
     //获取关卡输赢奖励金币
-    private getCurCheckPoint () {
+    public getCurCheckPoint () {
         var checkPoint = PlayerDataManager.getInstance().getCheckPoint();
         var data = this.getData(checkPoint.big, checkPoint.small);
         return data.checkPointData;
@@ -275,7 +275,7 @@ export default class DataManager extends cc.Component {
     public  subCurMonsterCount () {
         return this.currentMonsterCount--;
     }
-    private  isCurBossAttack(){
+    public  isCurBossAttack(){
         var checkPoint = PlayerDataManager.getInstance().getCheckPoint();
         var data = this.getData(checkPoint.big, checkPoint.small);
 
