@@ -85,9 +85,9 @@ var BossUIControl = /** @class */ (function (_super) {
     BossUIControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
         this.m_anim = this.node.getComponent(cc.Animation);
-        this.m_labLevel = this.getChildByUrl("labLevel").getComponent(cc.Label);
-        this.m_bossName = this.getChildByUrl("bossName").getComponent(cc.Label);
-        this.m_bossSprite = this.getChildByUrl("bossSprite").getComponent(cc.Sprite);
+        this.m_labLevel = this.getChildByUrl("ui_boss_p2/checkPoint").getComponent(cc.Label);
+        this.m_bossName = this.getChildByUrl("ui_boss_p2/name").getComponent(cc.Label);
+        this.m_bossSprite = this.getChildByUrl("0").getComponent(cc.Sprite);
     };
     BossUIControl.prototype.play = function (callFunc) {
         return __awaiter(this, void 0, void 0, function () {

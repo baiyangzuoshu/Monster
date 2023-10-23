@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '5757fItk1VMeYlpsfO+9rI6', 'crownControl');
-// Scripts/UI/crownControl.ts
+cc._RF.push(module, '5757fItk1VMeYlpsfO+9rI6', 'CrownControl');
+// Scripts/UI/CrownControl.ts
 
 "use strict";
 // Learn TypeScript:
@@ -31,9 +31,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var crownControl = /** @class */ (function (_super) {
-    __extends(crownControl, _super);
-    function crownControl() {
+var CrownControl = /** @class */ (function (_super) {
+    __extends(CrownControl, _super);
+    function CrownControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.m_crown = null;
         _this.m_diamond = null;
@@ -41,11 +41,11 @@ var crownControl = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    crownControl.prototype.onLoad = function () {
+    CrownControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
-        this.m_crown = this.getChildByUrl("crown");
-        this.m_diamond = this.getChildByUrl("diamond");
-        this.m_light = this.getChildByUrl("light");
+        this.m_crown = this.getChildByUrl("map_zhongdian_3");
+        this.m_diamond = this.getChildByUrl("map_zhongdian_1");
+        this.m_light = this.getChildByUrl("map_zhongdian_2");
         this.moveUpDown(this.m_crown, 5);
         this.moveUpDown(this.m_diamond, -5);
         this.moveUpDown(this.m_light, -5);
@@ -59,17 +59,17 @@ var crownControl = /** @class */ (function (_super) {
         }.bind(this)));
         this.m_light.runAction(cc.repeatForever(seq2));
     };
-    crownControl.prototype.moveUpDown = function (node, offset) {
+    CrownControl.prototype.moveUpDown = function (node, offset) {
         var pos = node.getPosition();
         var moveUp = cc.moveTo(1, cc.v2(pos.x, pos.y + offset));
         var moveDown = cc.moveTo(1, cc.v2(pos.x, pos.y - offset));
         node.runAction(cc.repeatForever(cc.sequence(moveUp, moveDown)));
     };
-    crownControl = __decorate([
+    CrownControl = __decorate([
         ccclass
-    ], crownControl);
-    return crownControl;
+    ], CrownControl);
+    return CrownControl;
 }(UIControl_1.UIControl));
-exports.default = crownControl;
+exports.default = CrownControl;
 
 cc._RF.pop();

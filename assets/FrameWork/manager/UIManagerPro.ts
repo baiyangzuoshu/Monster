@@ -55,7 +55,7 @@ export class UIManagerPro extends cc.Component {
         return prefab
     }
 
-    public async showPrefab(uiName:string):Promise<number>{
+    public async showPrefab(uiName:string):Promise<any>{
         if(!this._allShowPanel[uiName]){
             this._allShowPanel[uiName]=new Panel()
 
@@ -65,7 +65,7 @@ export class UIManagerPro extends cc.Component {
         let panel=this._allShowPanel[uiName] as Panel
 
         if(panel.open){
-            return -1
+            return null
         }
 
         panel.opening=true
@@ -79,9 +79,9 @@ export class UIManagerPro extends cc.Component {
         
         panel.self=node
 
-        node.addComponent(prefab.data.name+"Control")
+        let ts=node.addComponent(prefab.data.name+"Control")
 
-        return 0
+        return ts
     }
 
     public closePrefab(uiName:string):number{
@@ -134,7 +134,7 @@ export class UIManagerPro extends cc.Component {
                     panel.closeTime-=dt
                 }
                 else{
-                    let prefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","UI/"+uiName,cc.Prefab) as cc.Prefab
+                    let prefab=await this.createPrefab(uiName)
                     let ts=panel.self.getComponent(prefab.data.name+"Control") as any
                     if(ts){
                         ts.cleanUp()

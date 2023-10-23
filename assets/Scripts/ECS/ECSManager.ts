@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { GameStateType } from "../Enum";
+import PlayerDataManager from "../Manager/PlayerDataManager";
 import ECSFactory from "./ECSFactory";
 import BulletEntity from "./Entities/BulletEntity";
 import CannonEntitiy from "./Entities/CannonEntitiy";
@@ -126,6 +128,9 @@ export default class ECSManager extends cc.Component {
     }
 
     protected update(dt: number): void {
+        if(GameStateType.Playing!=PlayerDataManager.getInstance().gameStateType){
+            return;
+        }
         //怪物行走
         this.navSystemMonster(dt);
         //怪物动画

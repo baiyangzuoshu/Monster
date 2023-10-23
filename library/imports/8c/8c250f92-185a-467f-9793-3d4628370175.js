@@ -65,6 +65,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Enum_1 = require("../Enum");
+var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
 var ECSFactory_1 = require("./ECSFactory");
 var AISystem_1 = require("./Systems/AISystem");
 var AnimateSystem_1 = require("./Systems/AnimateSystem");
@@ -193,6 +195,9 @@ var ECSManager = /** @class */ (function (_super) {
         return minMonster;
     };
     ECSManager.prototype.update = function (dt) {
+        if (Enum_1.GameStateType.Playing != PlayerDataManager_1.default.getInstance().gameStateType) {
+            return;
+        }
         //怪物行走
         this.navSystemMonster(dt);
         //怪物动画

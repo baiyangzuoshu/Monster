@@ -41,8 +41,6 @@ export default class GameApp extends cc.Component {
         var blockMapData= MapDataManager.getInstance().getCurBlockData();
         await MapDataManager.getInstance().buildBlockMap(0,blockMapData);
 
-        MapDataManager.getInstance().beginCreateMonster();
-
         await UIManagerPro.getInstance().showPrefab("GameUI");
 
         this.progressBar.progress=1;

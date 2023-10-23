@@ -5,15 +5,20 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../FrameWork/manager/EventManager";
+import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { UIManagerPro } from "../../FrameWork/manager/UIManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
 import CannonEntitiy from "../ECS/Entities/CannonEntitiy";
 import EntityUtils from "../ECS/EntityUtils";
-import { Chengjiou, Intensify, Task } from "../Enum";
+import { Chengjiou, GameStateType, Intensify, Task } from "../Enum";
+import { GameUI } from "../EventName";
 import MapDataManager from "../Manager/MapDataManager";
 import PlayerDataManager from "../Manager/PlayerDataManager";
+import BossUIControl from "./BossUIControl";
+import CrownControl from "./CrownControl";
 
 const {ccclass, property} = cc._decorator;
 
@@ -31,21 +36,43 @@ export default class GameUIControl extends UIControl {
     private m_selecetCannon = null;
     private m_moveCannon = null;
     private m_moveCannonNode:cc.Node=null;
+    private m_labGold:cc.Label=null;
+    private m_diamond:cc.Label=null;
+    private m_curCrown:cc.Node=null;
+    private m_nextCrown:cc.Node=null;
+    private crownBuild:cc.Node=null;
 
     onLoad () {
         super.onLoad();
+        PlayerDataManager.getInstance().gameStateType=GameStateType.None;
+        
         this.m_water=this.getChildByUrl("bottom/make/ui_build_water");
         this.m_hammer=this.getChildByUrl("bottom/make/ui_build_hammer");
+        this.m_labGold=this.getChildByUrl("top/glod/btGlod/ui_coin_rect/gold").getComponent(cc.Label);
+        this.m_diamond=this.getChildByUrl("top/glod/btDiamond/ui_coin_rect/diamond").getComponent(cc.Label);
         this.m_makeNumberLabel=this.getChildByUrl("bottom/make/num").getComponent(cc.Label);
 
         this.updateGameUI();
-
+        this.refreshGoldDiamond();
         this.registerBottomBtn();
+        this.registerUIEvents();
+        this.registerTopBtn();
     }
 
-    start () {
+    registerUIEvents(){
+        EventManager.getInstance().addEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
+        EventManager.getInstance().addEventListener(GameUI.gameOver,this.gameOver,this);
+    }
+
+    onDestroy():void{
+        EventManager.getInstance().removeEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
+        EventManager.getInstance().removeEventListener(GameUI.gameOver,this.gameOver,this);
+    }
+
+    async start () {
         let canvas=cc.find("Canvas");
         this.m_moveCannonNode=canvas.getChildByName("Game").getChildByName("moveCannon");
+        this.crownBuild=canvas.getChildByName("Game").getChildByName("crownBuild");
 
         var _cannonList = MapDataManager.getInstance().getCurCannonPoint();
         for (let i = 0; i < _cannonList.length; i++) {
@@ -57,6 +84,57 @@ export default class GameUIControl extends UIControl {
         this.m_moveCannonNode.on('touchmove',this.touchMove,this);
         this.m_moveCannonNode.on('touchend',this.touchEnd,this);
         this.m_moveCannonNode.on('touchcancel',this.touchCancel,this);
+
+        this.buildEndPoint();
+        
+        let ts=await UIManagerPro.getInstance().showPrefab("BossUI");
+        ts.play(()=>{
+            PlayerDataManager.getInstance().gameStateType=GameStateType.Playing;
+            MapDataManager.getInstance().beginCreateMonster();
+        });
+    }
+
+    gameOver(){
+        this.moveToNextMap();
+    }
+
+    async buildEndPoint(){
+        var list = MapDataManager.getInstance().getCurPahtList();
+        var lastPos = list[list.length-1];
+
+        var pos = cc.v2(0,0);
+        pos.x = lastPos.x * 106 + 106/2;
+        pos.y = -lastPos.y * 106 - 106/2;
+
+        if( this.m_curCrown == null ){
+            let crownPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","crown",cc.Prefab) as cc.Prefab;
+            this.m_curCrown = cc.instantiate(crownPrefab);
+            this.crownBuild.addChild( this.m_curCrown);
+            this.m_curCrown.addComponent(CrownControl);
+        }
+        pos.y += 25;
+        this.m_curCrown.setPosition(pos);
+    }
+
+    async setNextCrownPos(pos){
+        if ( this.m_nextCrown == null ){
+            let crownPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","crown",cc.Prefab) as cc.Prefab;
+            this.m_nextCrown = cc.instantiate(crownPrefab);
+            this.m_nextCrown.addComponent(CrownControl);
+            this.crownBuild.addChild(this.m_nextCrown);
+        }
+        pos.y += 25;
+        this.m_nextCrown.setPosition(pos);
+    }
+
+    moveToNextMap(){
+        var moveTo = cc.moveBy(0.5,cc.v2(-640,0));
+        var callFunc = cc.callFunc(function(){
+            this.crownBuild.setPosition(cc.v2(-320,310));
+            this.buildEndPoint();
+        }.bind(this));
+
+        this.crownBuild.runAction(cc.sequence(moveTo,callFunc));
     }
 
     touchStart(event){
@@ -279,6 +357,14 @@ export default class GameUIControl extends UIControl {
         }
     }
 
+    refreshGoldDiamond(){
+        var gold = PlayerDataManager.getInstance().getGold();
+        var diamond = PlayerDataManager.getInstance().getDiamond();
+        this.m_labGold.string = '' + gold;
+        this.m_diamond.string = '' + diamond;
+        //this.updateCheckPoint();
+    }
+
     updateGameUI(){
         if( !this.m_waterAction ){
             this.m_water.height = 0;
@@ -301,6 +387,12 @@ export default class GameUIControl extends UIControl {
         this.buttonAddClickEvent("bottom/buffer/skill_coin1",this.clickBtnEvent,this);
         this.buttonAddClickEvent("bottom/buffer/skill_coin2",this.clickBtnEvent,this);
         this.buttonAddClickEvent("bottom/buffer/skill_coin3",this.clickBtnEvent,this);
+    }
+
+    registerTopBtn(){
+        this.buttonAddClickEvent("top/glod/btGlod",this.clickBtnEvent,this);
+        this.buttonAddClickEvent("top/glod/btDiamond",this.clickBtnEvent,this);
+        this.buttonAddClickEvent("top/map",this.clickBtnEvent,this);
     }
 
     async clickBtnEvent(btn:cc.Button){
@@ -329,6 +421,15 @@ export default class GameUIControl extends UIControl {
             
             let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,0);
             this.m_cannonList[index].cannonEntity=cannonEntity;
+        }
+        else if("map<Button>"==btn.name){
+            UIManagerPro.getInstance().showPrefab("MapUI");
+        }
+        else if("btGlod<Button>"==btn.name){
+            PlayerDataManager.getInstance().addGold(100);
+        }
+        else if("btDiamond<Button>"==btn.name){
+            PlayerDataManager.getInstance().addDiamond(100);
         }
         else if("bt<Button>"==btn.name){
             UIManagerPro.getInstance().showPrefab("TaskUI");

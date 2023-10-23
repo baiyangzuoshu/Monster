@@ -113,7 +113,6 @@ var GameApp = /** @class */ (function (_super) {
                         return [4 /*yield*/, MapDataManager_1.default.getInstance().buildBlockMap(0, blockMapData)];
                     case 6:
                         _a.sent();
-                        MapDataManager_1.default.getInstance().beginCreateMonster();
                         return [4 /*yield*/, UIManagerPro_1.UIManagerPro.getInstance().showPrefab("GameUI")];
                     case 7:
                         _a.sent();

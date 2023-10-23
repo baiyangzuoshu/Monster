@@ -29,6 +29,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../../FrameWork/manager/EventManager");
+var Enum_1 = require("../../Enum");
+var EventName_1 = require("../../EventName");
+var PlayerDataManager_1 = require("../../Manager/PlayerDataManager");
 var EntityUtils_1 = require("../EntityUtils");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var NavSystem = /** @class */ (function (_super) {
@@ -60,6 +64,8 @@ var NavSystem = /** @class */ (function (_super) {
         }
         navComponent.curIndex++;
         if (navComponent.pathList.length - 1 < navComponent.curIndex) {
+            PlayerDataManager_1.default.getInstance().gameStateType = Enum_1.GameStateType.End;
+            EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.gameOver);
             return;
         }
         var src = cc.v3(transformComponent.x, transformComponent.y, 0);

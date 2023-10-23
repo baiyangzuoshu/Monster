@@ -53,13 +53,15 @@ var MapUIControl = /** @class */ (function (_super) {
     // LIFE-CYCLE CALLBACKS:
     MapUIControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
-        this.m_scrollView = this.getChildByUrl("scrollview").getComponent(cc.ScrollView);
-        this.m_onNode = this.getChildByUrl("scrollview/view/content");
-        this.m_pointNode = this.getChildByUrl("scrollview/view/content/point");
-        this.m_point = this.getChildByUrl("scrollview/view/content/point/point");
-        this.m_curPoint = this.getChildByUrl("scrollview/view/content/point/curPoint");
-        this.m_bossView = this.getChildByUrl("bossView");
+        this.m_scrollView = this.getChildByUrl("map").getComponent(cc.ScrollView);
+        this.m_onNode = this.getChildByUrl("map/view/content");
+        this.m_pointNode = this.getChildByUrl("map/view/content/map_0");
+        this.m_point = this.getChildByUrl("map/view/ui_map_img_2");
+        this.m_curPoint = this.getChildByUrl("map/view/ui_map_location");
+        this.m_bossView = this.getChildByUrl("bossNode");
         this.m_bg = this.getChildByUrl("bg");
+        this.m_labGold = this.getChildByUrl("bossNode/gold/lab_gold").getComponent(cc.Label);
+        this.m_labDiamond = this.getChildByUrl("bossNode/diamond/lab_diamond").getComponent(cc.Label);
         this.m_pointNode.zIndex = 1000;
     };
     MapUIControl.prototype.updatePoint = function () {
@@ -86,6 +88,7 @@ var MapUIControl = /** @class */ (function (_super) {
         node.runAction(cc.repeatForever(seq));
     };
     MapUIControl.prototype.start = function () {
+        this.show();
     };
     MapUIControl.prototype.onClickDel = function () {
         this.m_pointData.pop();
@@ -173,7 +176,7 @@ var MapUIControl = /** @class */ (function (_super) {
             //g_gameUI.updateGameUI();
         }.bind(this)));
         this.node.runAction(cc.sequence(actionList));
-        // this.m_labGold.string = numberToString(gold);
+        this.m_labGold.string = gold + "";
     };
     MapUIControl = __decorate([
         ccclass

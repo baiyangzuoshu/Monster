@@ -5,6 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../../FrameWork/manager/EventManager";
+import { GameStateType } from "../../Enum";
+import { GameUI } from "../../EventName";
+import PlayerDataManager from "../../Manager/PlayerDataManager";
 import BaseComponent from "../Components/BaseComponent";
 import NavComponent from "../Components/NavComponent";
 import TransformComponent from "../Components/TransformComponent";
@@ -43,6 +47,8 @@ export default class NavSystem extends cc.Component {
 
         navComponent.curIndex++;
         if(navComponent.pathList.length-1<navComponent.curIndex){
+            PlayerDataManager.getInstance().gameStateType=GameStateType.End;
+            EventManager.getInstance().emit(GameUI.gameOver);
             return
         }
 

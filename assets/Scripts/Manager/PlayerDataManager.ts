@@ -5,6 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../FrameWork/manager/EventManager";
+import { GameStateType } from "../Enum";
+import { GameUI } from "../EventName";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -26,6 +30,14 @@ export default class PlayerDataManager extends cc.Component {
     }
 
     private userData:any = null;
+    private gameState:GameStateType=GameStateType.None;
+
+    set gameStateType(value:GameStateType){
+        this.gameState=value
+    }
+    get gameStateType():GameStateType{
+        return this.gameState
+    }
 
     save(){
         var str = JSON.stringify(this.userData);
@@ -59,6 +71,8 @@ export default class PlayerDataManager extends cc.Component {
         }
         this.userData.gold -= subNum;
         this.save();
+
+        EventManager.getInstance().emit(GameUI.refreshGoldDiamond);
     }
     addGold(addNum){
         if( this.userData.gold == null ){
@@ -66,6 +80,8 @@ export default class PlayerDataManager extends cc.Component {
         }
         this.userData.gold += addNum;
         this.save();
+    
+        EventManager.getInstance().emit(GameUI.refreshGoldDiamond);
     }
     getDiamond(){
         if( this.userData.diamond == null ){
@@ -83,6 +99,8 @@ export default class PlayerDataManager extends cc.Component {
         }
         this.userData.diamond -= subNum;
         this.save();
+
+        EventManager.getInstance().emit(GameUI.refreshGoldDiamond);
     }
     addDiamond(addNum){
         if( this.userData.diamond == null ){
@@ -90,6 +108,8 @@ export default class PlayerDataManager extends cc.Component {
         }
         this.userData.diamond += addNum;
         this.save();
+
+        EventManager.getInstance().emit(GameUI.refreshGoldDiamond);
     }
     //大关卡
     getBigCheckPointCount(){

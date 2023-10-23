@@ -4,13 +4,7 @@ cc._RF.push(module, 'c2a8e3JDsFIeK1Ml3bPGmER', 'Enum');
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.BulletState = exports.GameState = void 0;
-var GameState;
-(function (GameState) {
-    GameState[GameState["None"] = 0] = "None";
-    GameState[GameState["Active"] = 1] = "Active";
-    GameState[GameState["Dead"] = 2] = "Dead";
-})(GameState = exports.GameState || (exports.GameState = {}));
+exports.GameStateType = exports.Chengjiou = exports.SkillBuffer = exports.Intensify = exports.Task = exports.BulletState = void 0;
 var BulletState;
 (function (BulletState) {
     BulletState[BulletState["None"] = 0] = "None";
@@ -40,5 +34,12 @@ var Chengjiou;
 (function (Chengjiou) {
     Chengjiou[Chengjiou["CHENGJIOU_QIANGHUA_JINENG"] = 3] = "CHENGJIOU_QIANGHUA_JINENG"; //合并防御塔
 })(Chengjiou = exports.Chengjiou || (exports.Chengjiou = {}));
+var GameStateType;
+(function (GameStateType) {
+    GameStateType[GameStateType["None"] = 0] = "None";
+    GameStateType[GameStateType["Start"] = 1] = "Start";
+    GameStateType[GameStateType["Playing"] = 2] = "Playing";
+    GameStateType[GameStateType["End"] = 3] = "End";
+})(GameStateType = exports.GameStateType || (exports.GameStateType = {}));
 
 cc._RF.pop();

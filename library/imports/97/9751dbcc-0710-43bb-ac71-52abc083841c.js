@@ -29,12 +29,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../FrameWork/manager/EventManager");
+var Enum_1 = require("../Enum");
+var EventName_1 = require("../EventName");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerDataManager = /** @class */ (function (_super) {
     __extends(PlayerDataManager, _super);
     function PlayerDataManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.userData = null;
+        _this.gameState = Enum_1.GameStateType.None;
         _this.getTaskByID = function (taskID) {
             if (this.userData.taskData == null) {
                 this.userData.taskData = [];
@@ -75,6 +79,16 @@ var PlayerDataManager = /** @class */ (function (_super) {
             return;
         }
     };
+    Object.defineProperty(PlayerDataManager.prototype, "gameStateType", {
+        get: function () {
+            return this.gameState;
+        },
+        set: function (value) {
+            this.gameState = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     PlayerDataManager.prototype.save = function () {
         var str = JSON.stringify(this.userData);
         cc.sys.localStorage.setItem('userData', str);
@@ -106,6 +120,7 @@ var PlayerDataManager = /** @class */ (function (_super) {
         }
         this.userData.gold -= subNum;
         this.save();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.refreshGoldDiamond);
     };
     PlayerDataManager.prototype.addGold = function (addNum) {
         if (this.userData.gold == null) {
@@ -113,6 +128,7 @@ var PlayerDataManager = /** @class */ (function (_super) {
         }
         this.userData.gold += addNum;
         this.save();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.refreshGoldDiamond);
     };
     PlayerDataManager.prototype.getDiamond = function () {
         if (this.userData.diamond == null) {
@@ -130,6 +146,7 @@ var PlayerDataManager = /** @class */ (function (_super) {
         }
         this.userData.diamond -= subNum;
         this.save();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.refreshGoldDiamond);
     };
     PlayerDataManager.prototype.addDiamond = function (addNum) {
         if (this.userData.diamond == null) {
@@ -137,6 +154,7 @@ var PlayerDataManager = /** @class */ (function (_super) {
         }
         this.userData.diamond += addNum;
         this.save();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.refreshGoldDiamond);
     };
     //大关卡
     PlayerDataManager.prototype.getBigCheckPointCount = function () {

@@ -69,7 +69,9 @@ var EventManager = /** @class */ (function (_super) {
         }
     };
     EventManager.prototype.emit = function (eventName, data) {
+        if (data === void 0) { data = {}; }
         if (!this.eventMap[eventName]) {
+            console.error("emit eventName=", eventName, " not exit");
             return;
         }
         for (var i = 0; i < this.eventMap[eventName].length; i++) {

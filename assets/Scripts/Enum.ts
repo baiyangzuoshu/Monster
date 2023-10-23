@@ -1,8 +1,3 @@
-export enum GameState{
-    None=0,
-    Active=1,
-    Dead=2
-}
 
 export enum BulletState{
     None=0,
@@ -33,7 +28,12 @@ export enum Chengjiou{
     CHENGJIOU_QIANGHUA_JINENG = 3 //合并防御塔
 }
 
-
+export enum GameStateType{
+    None=0,
+    Start=1,
+    Playing=2,
+    End=3
+}
 
 
 

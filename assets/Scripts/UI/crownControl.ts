@@ -10,7 +10,7 @@ import { UIControl } from "../../FrameWork/ui/UIControl";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class crownControl extends UIControl {
+export default class CrownControl extends UIControl {
     m_crown:cc.Node=null;
     m_diamond:cc.Node=null;
     m_light:cc.Node=null;
@@ -19,9 +19,9 @@ export default class crownControl extends UIControl {
     onLoad () {
         super.onLoad();
 
-        this.m_crown=this.getChildByUrl("crown");
-        this.m_diamond=this.getChildByUrl("diamond");
-        this.m_light=this.getChildByUrl("light");
+        this.m_crown=this.getChildByUrl("map_zhongdian_3");
+        this.m_diamond=this.getChildByUrl("map_zhongdian_1");
+        this.m_light=this.getChildByUrl("map_zhongdian_2");
 
         this.moveUpDown(this.m_crown,5);
         this.moveUpDown(this.m_diamond,-5);

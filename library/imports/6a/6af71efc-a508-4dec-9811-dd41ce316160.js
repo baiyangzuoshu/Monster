@@ -65,14 +65,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../FrameWork/manager/EventManager");
+var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
 var UIManagerPro_1 = require("../../FrameWork/manager/UIManagerPro");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
 var ECSManager_1 = require("../ECS/ECSManager");
 var EntityUtils_1 = require("../ECS/EntityUtils");
 var Enum_1 = require("../Enum");
+var EventName_1 = require("../EventName");
 var MapDataManager_1 = require("../Manager/MapDataManager");
 var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
+var CrownControl_1 = require("./CrownControl");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameUIControl = /** @class */ (function (_super) {
     __extends(GameUIControl, _super);
@@ -90,29 +94,126 @@ var GameUIControl = /** @class */ (function (_super) {
         _this.m_selecetCannon = null;
         _this.m_moveCannon = null;
         _this.m_moveCannonNode = null;
+        _this.m_labGold = null;
+        _this.m_diamond = null;
+        _this.m_curCrown = null;
+        _this.m_nextCrown = null;
+        _this.crownBuild = null;
         return _this;
     }
     GameUIControl.prototype.onLoad = function () {
         _super.prototype.onLoad.call(this);
+        PlayerDataManager_1.default.getInstance().gameStateType = Enum_1.GameStateType.None;
         this.m_water = this.getChildByUrl("bottom/make/ui_build_water");
         this.m_hammer = this.getChildByUrl("bottom/make/ui_build_hammer");
+        this.m_labGold = this.getChildByUrl("top/glod/btGlod/ui_coin_rect/gold").getComponent(cc.Label);
+        this.m_diamond = this.getChildByUrl("top/glod/btDiamond/ui_coin_rect/diamond").getComponent(cc.Label);
         this.m_makeNumberLabel = this.getChildByUrl("bottom/make/num").getComponent(cc.Label);
         this.updateGameUI();
+        this.refreshGoldDiamond();
         this.registerBottomBtn();
+        this.registerUIEvents();
+        this.registerTopBtn();
+    };
+    GameUIControl.prototype.registerUIEvents = function () {
+        EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.refreshGoldDiamond, this.refreshGoldDiamond, this);
+        EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.gameOver, this.gameOver, this);
+    };
+    GameUIControl.prototype.onDestroy = function () {
+        EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.refreshGoldDiamond, this.refreshGoldDiamond, this);
+        EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.gameOver, this.gameOver, this);
     };
     GameUIControl.prototype.start = function () {
-        var canvas = cc.find("Canvas");
-        this.m_moveCannonNode = canvas.getChildByName("Game").getChildByName("moveCannon");
-        var _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
-        for (var i = 0; i < _cannonList.length; i++) {
-            this.m_cannonList[i] = this.createCannonData();
-            this.m_cannonList[i].pos = _cannonList[i];
-        }
-        this.m_curZIndex = 100;
-        this.m_moveCannonNode.on('touchstart', this.touchStart, this);
-        this.m_moveCannonNode.on('touchmove', this.touchMove, this);
-        this.m_moveCannonNode.on('touchend', this.touchEnd, this);
-        this.m_moveCannonNode.on('touchcancel', this.touchCancel, this);
+        return __awaiter(this, void 0, void 0, function () {
+            var canvas, _cannonList, i, ts;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        canvas = cc.find("Canvas");
+                        this.m_moveCannonNode = canvas.getChildByName("Game").getChildByName("moveCannon");
+                        this.crownBuild = canvas.getChildByName("Game").getChildByName("crownBuild");
+                        _cannonList = MapDataManager_1.default.getInstance().getCurCannonPoint();
+                        for (i = 0; i < _cannonList.length; i++) {
+                            this.m_cannonList[i] = this.createCannonData();
+                            this.m_cannonList[i].pos = _cannonList[i];
+                        }
+                        this.m_curZIndex = 100;
+                        this.m_moveCannonNode.on('touchstart', this.touchStart, this);
+                        this.m_moveCannonNode.on('touchmove', this.touchMove, this);
+                        this.m_moveCannonNode.on('touchend', this.touchEnd, this);
+                        this.m_moveCannonNode.on('touchcancel', this.touchCancel, this);
+                        this.buildEndPoint();
+                        return [4 /*yield*/, UIManagerPro_1.UIManagerPro.getInstance().showPrefab("BossUI")];
+                    case 1:
+                        ts = _a.sent();
+                        ts.play(function () {
+                            PlayerDataManager_1.default.getInstance().gameStateType = Enum_1.GameStateType.Playing;
+                            MapDataManager_1.default.getInstance().beginCreateMonster();
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameUIControl.prototype.gameOver = function () {
+        this.moveToNextMap();
+    };
+    GameUIControl.prototype.buildEndPoint = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var list, lastPos, pos, crownPrefab;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        list = MapDataManager_1.default.getInstance().getCurPahtList();
+                        lastPos = list[list.length - 1];
+                        pos = cc.v2(0, 0);
+                        pos.x = lastPos.x * 106 + 106 / 2;
+                        pos.y = -lastPos.y * 106 - 106 / 2;
+                        if (!(this.m_curCrown == null)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "crown", cc.Prefab)];
+                    case 1:
+                        crownPrefab = _a.sent();
+                        this.m_curCrown = cc.instantiate(crownPrefab);
+                        this.crownBuild.addChild(this.m_curCrown);
+                        this.m_curCrown.addComponent(CrownControl_1.default);
+                        _a.label = 2;
+                    case 2:
+                        pos.y += 25;
+                        this.m_curCrown.setPosition(pos);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameUIControl.prototype.setNextCrownPos = function (pos) {
+        return __awaiter(this, void 0, void 0, function () {
+            var crownPrefab;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(this.m_nextCrown == null)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "crown", cc.Prefab)];
+                    case 1:
+                        crownPrefab = _a.sent();
+                        this.m_nextCrown = cc.instantiate(crownPrefab);
+                        this.m_nextCrown.addComponent(CrownControl_1.default);
+                        this.crownBuild.addChild(this.m_nextCrown);
+                        _a.label = 2;
+                    case 2:
+                        pos.y += 25;
+                        this.m_nextCrown.setPosition(pos);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameUIControl.prototype.moveToNextMap = function () {
+        var moveTo = cc.moveBy(0.5, cc.v2(-640, 0));
+        var callFunc = cc.callFunc(function () {
+            this.crownBuild.setPosition(cc.v2(-320, 310));
+            this.buildEndPoint();
+        }.bind(this));
+        this.crownBuild.runAction(cc.sequence(moveTo, callFunc));
     };
     GameUIControl.prototype.touchStart = function (event) {
         var pos = event.getLocation();
@@ -314,6 +415,13 @@ var GameUIControl = /** @class */ (function (_super) {
             }
         }
     };
+    GameUIControl.prototype.refreshGoldDiamond = function () {
+        var gold = PlayerDataManager_1.default.getInstance().getGold();
+        var diamond = PlayerDataManager_1.default.getInstance().getDiamond();
+        this.m_labGold.string = '' + gold;
+        this.m_diamond.string = '' + diamond;
+        //this.updateCheckPoint();
+    };
     GameUIControl.prototype.updateGameUI = function () {
         if (!this.m_waterAction) {
             this.m_water.height = 0;
@@ -334,6 +442,11 @@ var GameUIControl = /** @class */ (function (_super) {
         this.buttonAddClickEvent("bottom/buffer/skill_coin1", this.clickBtnEvent, this);
         this.buttonAddClickEvent("bottom/buffer/skill_coin2", this.clickBtnEvent, this);
         this.buttonAddClickEvent("bottom/buffer/skill_coin3", this.clickBtnEvent, this);
+    };
+    GameUIControl.prototype.registerTopBtn = function () {
+        this.buttonAddClickEvent("top/glod/btGlod", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("top/glod/btDiamond", this.clickBtnEvent, this);
+        this.buttonAddClickEvent("top/map", this.clickBtnEvent, this);
     };
     GameUIControl.prototype.clickBtnEvent = function (btn) {
         return __awaiter(this, void 0, void 0, function () {
@@ -367,7 +480,16 @@ var GameUIControl = /** @class */ (function (_super) {
                         this.m_cannonList[index].cannonEntity = cannonEntity;
                         return [3 /*break*/, 3];
                     case 2:
-                        if ("bt<Button>" == btn.name) {
+                        if ("map<Button>" == btn.name) {
+                            UIManagerPro_1.UIManagerPro.getInstance().showPrefab("MapUI");
+                        }
+                        else if ("btGlod<Button>" == btn.name) {
+                            PlayerDataManager_1.default.getInstance().addGold(100);
+                        }
+                        else if ("btDiamond<Button>" == btn.name) {
+                            PlayerDataManager_1.default.getInstance().addDiamond(100);
+                        }
+                        else if ("bt<Button>" == btn.name) {
                             UIManagerPro_1.UIManagerPro.getInstance().showPrefab("TaskUI");
                         }
                         else if ("autoMake<Button>" == btn.name) {

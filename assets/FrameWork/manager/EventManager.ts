@@ -51,11 +51,12 @@ export class EventManager extends cc.Component {
         }
     }
 
-    emit(eventName:string,data:any):void{
+    emit(eventName:string,data:any={}):void{
         if(!this.eventMap[eventName]){
+            console.error("emit eventName=",eventName," not exit")
             return
         }
-
+        
         for(let i=0;i<this.eventMap[eventName].length;i++){
             let node=this.eventMap[eventName][i] as EventNode
             let func=node.func as Function

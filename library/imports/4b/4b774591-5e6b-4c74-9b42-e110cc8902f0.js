@@ -129,7 +129,7 @@ var UIManagerPro = /** @class */ (function (_super) {
     };
     UIManagerPro.prototype.showPrefab = function (uiName) {
         return __awaiter(this, void 0, Promise, function () {
-            var prefab_1, panel, prefab, node;
+            var prefab_1, panel, prefab, node, ts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -143,7 +143,7 @@ var UIManagerPro = /** @class */ (function (_super) {
                     case 2:
                         panel = this._allShowPanel[uiName];
                         if (panel.open) {
-                            return [2 /*return*/, -1];
+                            return [2 /*return*/, null];
                         }
                         panel.opening = true;
                         panel.open = false;
@@ -153,8 +153,8 @@ var UIManagerPro = /** @class */ (function (_super) {
                         node.parent = this._canvas;
                         node.setSiblingIndex(this._localZOrder++);
                         panel.self = node;
-                        node.addComponent(prefab.data.name + "Control");
-                        return [2 /*return*/, 0];
+                        ts = node.addComponent(prefab.data.name + "Control");
+                        return [2 /*return*/, ts];
                 }
             });
         });
@@ -222,7 +222,7 @@ var UIManagerPro = /** @class */ (function (_super) {
                         if (!(panel.closeTime > 0)) return [3 /*break*/, 3];
                         panel.closeTime -= dt;
                         return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "UI/" + uiName, cc.Prefab)];
+                    case 3: return [4 /*yield*/, this.createPrefab(uiName)];
                     case 4:
                         prefab = _c.sent();
                         ts = panel.self.getComponent(prefab.data.name + "Control");
