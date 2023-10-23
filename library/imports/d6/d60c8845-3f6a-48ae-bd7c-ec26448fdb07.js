@@ -8,11 +8,7 @@ var RoleComponent = /** @class */ (function () {
     function RoleComponent() {
         this.index = 0;
         this.type = 0;
-        this.hp = 0;
-        this.gold = 0;
-        this.atk = 0;
         this.level = 0;
-        this.maxHp = 0;
     }
     return RoleComponent;
 }());

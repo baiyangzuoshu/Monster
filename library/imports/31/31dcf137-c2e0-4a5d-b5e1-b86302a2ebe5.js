@@ -133,9 +133,9 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.transformComponent.y = _pathPos[0].y;
                         entity.navComponent.pathList = _pathPos;
                         entity.navComponent.speed = speed;
-                        entity.roleComponent.hp = hp;
-                        entity.roleComponent.maxHp = hp;
-                        entity.roleComponent.gold = gold;
+                        entity.attackComponent.hp = hp;
+                        entity.attackComponent.maxHp = hp;
+                        entity.attackComponent.gold = gold;
                         entity.roleComponent.type = type;
                         entity.roleComponent.index = index;
                         entity.shapeComponent.width = node.width;
@@ -197,7 +197,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.unitComponent.state = Enum_1.GameState.None;
                         entity.roleComponent.level = level;
                         entity.roleComponent.type = lvData.type;
-                        entity.roleComponent.atk = lvData.atk;
+                        entity.attackComponent.atk = lvData.atk;
                         return [2 /*return*/, entity];
                 }
             });
@@ -230,7 +230,7 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.shapeComponent.width = bulletNode.width;
                         entity.shapeComponent.height = bulletNode.height;
                         entity.roleComponent.type = lvData.type;
-                        entity.roleComponent.atk = lvData.atk;
+                        entity.attackComponent.atk = lvData.atk;
                         entity.animateComponent.state = Enum_1.BulletState.Effect;
                         entity.animateComponent.playActionTime = 0.25;
                         return [2 /*return*/, entity];

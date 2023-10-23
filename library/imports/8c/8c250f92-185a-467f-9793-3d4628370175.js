@@ -153,7 +153,7 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.attackSystemUpdate = function (dt) {
         for (var i = 0; i < this.cannones.length; i++) {
-            AttackSystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent);
+            AttackSystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent, this.cannones[i].attackComponent);
         }
     };
     ECSManager.prototype.AISystemBullet = function (dt) {

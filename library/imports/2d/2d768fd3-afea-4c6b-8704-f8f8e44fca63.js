@@ -5,6 +5,7 @@ cc._RF.push(module, '2d768/Tr+pMa4cE+PjkT8pj', 'BulletEntity');
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var AnimateComponent_1 = require("../Components/AnimateComponent");
+var AttackComponent_1 = require("../Components/AttackComponent");
 var BaseComponent_1 = require("../Components/BaseComponent");
 var RoleComponent_1 = require("../Components/RoleComponent");
 var ShapeComponent_1 = require("../Components/ShapeComponent");
@@ -18,6 +19,7 @@ var BulletEntity = /** @class */ (function () {
         this.baseComponent = new BaseComponent_1.default();
         this.shapeComponent = new ShapeComponent_1.default();
         this.animateComponent = new AnimateComponent_1.default();
+        this.attackComponent = new AttackComponent_1.default();
     }
     return BulletEntity;
 }());

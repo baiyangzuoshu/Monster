@@ -11,6 +11,7 @@ import DataManager from "../../data/DataManager";
 import IntensifyDataManager from "../../data/IntensifyDataManager";
 import { GameState, Intensify, SkillBuffer, Task } from "../../Enum";
 import PlayerDataManager from "../../Manager/PlayerDataManager";
+import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import UnitComponent from "../Components/UnitComponent";
@@ -36,7 +37,7 @@ export default class AttackSystem extends cc.Component {
         }
     }
 
-    public attackStartAction(hp:number,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent){
+    public attackStartAction(hp:number,unitComponent:UnitComponent,baseComponent:BaseComponent,attackComponent:AttackComponent){
         if(unitComponent.isDead ){
             return;
         }
@@ -56,8 +57,8 @@ export default class AttackSystem extends cc.Component {
             isDouble = true;
         }
         
-        roleComponent.hp -= hp;
-        if( roleComponent.hp <= 0 ){
+        attackComponent.hp -= hp;
+        if( attackComponent.hp <= 0 ){
             baseComponent.gameObject.stopAllActions();
             let m_HpBar=baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
             m_HpBar.progress = 0;
@@ -66,7 +67,7 @@ export default class AttackSystem extends cc.Component {
             baseComponent.gameObject.opacity = 0;
             var pos = baseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
-            var cale_gold = roleComponent.gold;
+            var cale_gold = attackComponent.gold;
             
             if( cale_gold > 0){
                 var flyEnd = function(gold){
@@ -91,7 +92,7 @@ export default class AttackSystem extends cc.Component {
             
         }else{
             let m_HpBar=baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = roleComponent.hp / roleComponent.maxHp;
+            m_HpBar.progress = attackComponent.hp / attackComponent.maxHp;
         }
         let str="";
         if( isDouble ){
@@ -100,7 +101,7 @@ export default class AttackSystem extends cc.Component {
         //g_hpEffect.createHpEffect(this.node.getPosition(),str);
     }
 
-    async onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent) {
+    async onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent,attackComponent:AttackComponent) {
         if(unitComponent.state != GameState.Active||unitComponent.isDead){
             return
         }
@@ -163,7 +164,7 @@ export default class AttackSystem extends cc.Component {
                     baseComponent.gameObject.getChildByName("gun").angle=angle;
                     unitComponent.angle=angle;
 
-                    this.attackStartAction(roleComponent.atk,unitComponent.attackEntity.unitComponent,unitComponent.attackEntity.baseComponent,unitComponent.attackEntity.roleComponent);
+                    this.attackStartAction(attackComponent.atk,unitComponent.attackEntity.unitComponent,unitComponent.attackEntity.baseComponent,unitComponent.attackEntity.attackComponent);
 
                     unitComponent.m_attackTarget=null;
                     unitComponent.attackEntity=null;

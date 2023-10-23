@@ -1,4 +1,5 @@
 import AnimateComponent from "../Components/AnimateComponent";
+import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import ShapeComponent from "../Components/ShapeComponent";
@@ -12,4 +13,5 @@ export default class BulletEntity{
     public baseComponent:BaseComponent=new BaseComponent();
     public shapeComponent:ShapeComponent=new ShapeComponent();
     public animateComponent:AnimateComponent=new AnimateComponent();
+    public attackComponent:AttackComponent=new AttackComponent();
 }

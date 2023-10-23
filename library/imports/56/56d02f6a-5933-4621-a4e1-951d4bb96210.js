@@ -90,7 +90,7 @@ var AttackSystem = /** @class */ (function (_super) {
             return;
         }
     };
-    AttackSystem.prototype.attackStartAction = function (hp, unitComponent, baseComponent, roleComponent) {
+    AttackSystem.prototype.attackStartAction = function (hp, unitComponent, baseComponent, attackComponent) {
         if (unitComponent.isDead) {
             return;
         }
@@ -108,8 +108,8 @@ var AttackSystem = /** @class */ (function (_super) {
             //hp = hp.toFixed(2);
             isDouble = true;
         }
-        roleComponent.hp -= hp;
-        if (roleComponent.hp <= 0) {
+        attackComponent.hp -= hp;
+        if (attackComponent.hp <= 0) {
             baseComponent.gameObject.stopAllActions();
             var m_HpBar = baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
             m_HpBar.progress = 0;
@@ -117,7 +117,7 @@ var AttackSystem = /** @class */ (function (_super) {
             baseComponent.gameObject.opacity = 0;
             var pos = baseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
-            var cale_gold = roleComponent.gold;
+            var cale_gold = attackComponent.gold;
             if (cale_gold > 0) {
                 var flyEnd = function (gold) {
                     PlayerDataManager_1.default.getInstance().addGold(gold);
@@ -139,7 +139,7 @@ var AttackSystem = /** @class */ (function (_super) {
         }
         else {
             var m_HpBar = baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = roleComponent.hp / roleComponent.maxHp;
+            m_HpBar.progress = attackComponent.hp / attackComponent.maxHp;
         }
         var str = "";
         if (isDouble) {
@@ -147,7 +147,7 @@ var AttackSystem = /** @class */ (function (_super) {
         }
         //g_hpEffect.createHpEffect(this.node.getPosition(),str);
     };
-    AttackSystem.prototype.onUpdate = function (dt, unitComponent, baseComponent, roleComponent) {
+    AttackSystem.prototype.onUpdate = function (dt, unitComponent, baseComponent, roleComponent, attackComponent) {
         return __awaiter(this, void 0, void 0, function () {
             var src, dst, dir, dis, curDis, start, end, angle, moveAngle, worldPos;
             return __generator(this, function (_a) {
@@ -208,7 +208,7 @@ var AttackSystem = /** @class */ (function (_super) {
                         _a.sent();
                         baseComponent.gameObject.getChildByName("gun").angle = angle;
                         unitComponent.angle = angle;
-                        this.attackStartAction(roleComponent.atk, unitComponent.attackEntity.unitComponent, unitComponent.attackEntity.baseComponent, unitComponent.attackEntity.roleComponent);
+                        this.attackStartAction(attackComponent.atk, unitComponent.attackEntity.unitComponent, unitComponent.attackEntity.baseComponent, unitComponent.attackEntity.attackComponent);
                         unitComponent.m_attackTarget = null;
                         unitComponent.attackEntity = null;
                         _a.label = 3;

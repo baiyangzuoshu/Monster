@@ -80,7 +80,7 @@ export default class ECSManager extends cc.Component {
 
     attackSystemUpdate(dt:number){
         for(let i=0;i<this.cannones.length;i++){
-            AttackSystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent);
+            AttackSystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent,this.cannones[i].attackComponent);
         }
     }
 

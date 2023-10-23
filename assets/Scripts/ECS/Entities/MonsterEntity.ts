@@ -1,4 +1,5 @@
 import AnimateComponent from "../Components/AnimateComponent";
+import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
 import NavComponent from "../Components/NavComponent";
 import RoleComponent from "../Components/RoleComponent";
@@ -14,4 +15,5 @@ export default class MonsterEntity  {
     public roleComponent:RoleComponent=new RoleComponent();
     public animateComponent:AnimateComponent=new AnimateComponent();
     public shapeComponent:ShapeComponent=new ShapeComponent();
+    public attackComponent:AttackComponent=new AttackComponent();
 }

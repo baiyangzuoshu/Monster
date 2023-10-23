@@ -5,6 +5,7 @@ cc._RF.push(module, 'd0f1bFnfbdMTJQoWXbWo6p5', 'MonsterEntity');
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var AnimateComponent_1 = require("../Components/AnimateComponent");
+var AttackComponent_1 = require("../Components/AttackComponent");
 var BaseComponent_1 = require("../Components/BaseComponent");
 var NavComponent_1 = require("../Components/NavComponent");
 var RoleComponent_1 = require("../Components/RoleComponent");
@@ -20,6 +21,7 @@ var MonsterEntity = /** @class */ (function () {
         this.roleComponent = new RoleComponent_1.default();
         this.animateComponent = new AnimateComponent_1.default();
         this.shapeComponent = new ShapeComponent_1.default();
+        this.attackComponent = new AttackComponent_1.default();
     }
     return MonsterEntity;
 }());
