@@ -159,22 +159,5 @@ export default class MapDataManager extends cc.Component {
         gold = gold || 0;
 
         await ECSManager.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
-
-        // let enemy = null;
-        // if (this.enemyPool.size() > 0) { // 通过 size 接口判断对象池中是否有空闲的对象
-        //     enemy = this.enemyPool.get();
-        // } else { // 如果没有空闲对象，也就是对象池中备用对象不够时，我们就用 cc.instantiate 重新创建
-        //     enemy = cc.instantiate(this.m_msItemPrefab);
-        // }
-        // enemy.isDead = false;
-        // this.monsterNode.addChild(enemy);
-        // var js = enemy.getComponent('msItem');
-        // js.setImage(type,index);
-        // js.setPath(list);
-        // js.setID(this.m_monsterIndex);
-        // js.setMaxHP(hp);
-        // js.setDeadGold(gold);
-        // this.m_monsterIndex++;
-        // return enemy;
     }
 }

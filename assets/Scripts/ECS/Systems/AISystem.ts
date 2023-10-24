@@ -5,15 +5,13 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
-import utils = require("markdown-it/lib/common/utils");
 import { util } from "../../../FrameWork/Utils/util";
-import { BulletState, SkillBuffer } from "../../Enum";
+import { BulletState } from "../../Enum";
 import AnimateComponent from "../Components/AnimateComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import TransformComponent from "../Components/TransformComponent";
 import UnitComponent from "../Components/UnitComponent";
-import ECSManager from "../ECSManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -35,14 +33,13 @@ export default class AISystem extends cc.Component {
     }
 
     onBulletUpdate(dt:number,unitComponent:UnitComponent,baseComponent:BaseComponent,transformComponent:TransformComponent,roleComponent:RoleComponent,animateComponent:AnimateComponent){
-        if( unitComponent.isDead || unitComponent.m_attackTarget == null ||animateComponent.state!=BulletState.Attack){
+        if( unitComponent.isDead || unitComponent.attackEntity == null ||animateComponent.state!=BulletState.Attack){
             return;
         }
         
         if(6==roleComponent.type||4==roleComponent.type||2==roleComponent.type||0==roleComponent.type){
             var move = 500*dt;
-
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetH = target.height;
             var moveToPos = target.getPosition();
             moveToPos.y += targetH/2;
@@ -58,8 +55,7 @@ export default class AISystem extends cc.Component {
             transformComponent.y=baseComponent.gameObject.y;
         }
         else if(1==roleComponent.type){
-           
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetPos = target.getPosition();
     
             var bulletPos = baseComponent.gameObject.convertToWorldSpaceAR(cc.v2(0,0));
@@ -76,10 +72,8 @@ export default class AISystem extends cc.Component {
             dis = Math.abs(dis);
         }
         else if(3==roleComponent.type){
-            
             var move = 500*dt;
-
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetH = target.height;
             var moveToPos = target.getPosition();
             moveToPos.y += targetH/2;

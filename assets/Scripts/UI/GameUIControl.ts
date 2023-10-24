@@ -9,6 +9,7 @@ import { EventManager } from "../../FrameWork/manager/EventManager";
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { UIManagerPro } from "../../FrameWork/manager/UIManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
+import { util } from "../../FrameWork/Utils/util";
 import DataManager from "../data/DataManager";
 import IntensifyDataManager from "../data/IntensifyDataManager";
 import ECSManager from "../ECS/ECSManager";
@@ -18,7 +19,6 @@ import { Chengjiou, GameStateType, Intensify, SkillBuffer, Task } from "../Enum"
 import { GameUI } from "../EventName";
 import MapDataManager from "../Manager/MapDataManager";
 import PlayerDataManager from "../Manager/PlayerDataManager";
-import BossUIControl from "./BossUIControl";
 import CrownControl from "./CrownControl";
 
 const {ccclass, property} = cc._decorator;
@@ -81,12 +81,13 @@ export default class GameUIControl extends UIControl {
         }
     }
 
-
     registerUIEvents(){
         EventManager.getInstance().addEventListener(GameUI.refreshGoldDiamond,this.refreshGoldDiamond,this);
         EventManager.getInstance().addEventListener(GameUI.gameOver,this.gameOver,this);
         EventManager.getInstance().addEventListener(GameUI.showSucceed,this.showSucceed,this);
         EventManager.getInstance().addEventListener(GameUI.showFaild,this.showFaild,this);
+        EventManager.getInstance().addEventListener(GameUI.updateGameUI,this.updateGameUI,this);
+        EventManager.getInstance().addEventListener(GameUI.createHpEffect,this.createHpEffect,this);
     }
 
     onDestroy():void{
@@ -94,6 +95,8 @@ export default class GameUIControl extends UIControl {
         EventManager.getInstance().removeEventListener(GameUI.gameOver,this.gameOver,this);
         EventManager.getInstance().removeEventListener(GameUI.showSucceed,this.showSucceed,this);
         EventManager.getInstance().removeEventListener(GameUI.showFaild,this.showFaild,this);
+        EventManager.getInstance().removeEventListener(GameUI.updateGameUI,this.updateGameUI,this);
+        EventManager.getInstance().removeEventListener(GameUI.createHpEffect,this.createHpEffect,this);
     }
 
     async start () {
@@ -267,7 +270,7 @@ export default class GameUIControl extends UIControl {
         var playEffect = false;
         if( endEntity != null ){
             if( EntityUtils.getInstance().cannonCompare(startEntity.roleComponent,endEntity.roleComponent)){
-                EntityUtils.getInstance().cannonLevelUp(startEntity.roleComponent,startEntity.baseComponent);
+                EntityUtils.getInstance().cannonLevelUp(startEntity.roleComponent,startEntity.baseComponent,startEntity.attackComponent);
                 endEntity.unitComponent.isDead=true;
                 endEntity.baseComponent.gameObject.destroy();
                 endEntity = null;
@@ -369,7 +372,7 @@ export default class GameUIControl extends UIControl {
     getCannonByPosition(nodePos){
         let x = Math.floor(nodePos.x/106);
         let y = Math.floor((-nodePos.y)/106);
-        console.log(x,y);
+        
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if(this.m_cannonList[i].pos.x == x && this.m_cannonList[i].pos.y == y){
                 return this.m_cannonList[i];
@@ -661,6 +664,50 @@ export default class GameUIControl extends UIControl {
         }
 
         return result;
+    }
+
+    createHpEffect(data){
+        let worldPos=data.worldPos;
+        let str=data.str;
+
+        let canvas=cc.find("Canvas");
+        let m_hpEffectItem=canvas.getChildByName("Game").getChildByName("HpEffectBuild").getChildByName("hpEffect");
+        let HpEffectBuild=canvas.getChildByName("Game").getChildByName("HpEffectBuild");
+        let nodePos=HpEffectBuild.convertToNodeSpaceAR(worldPos);
+        var node = cc.instantiate(m_hpEffectItem);
+        var label = node.getComponent(cc.Label);
+        label.string = str;
+
+        node.active = true;
+        node.opacity = 255;
+        node.setPosition(nodePos);
+        HpEffectBuild.addChild(node);
+        var left = util.randomNum(0,100) > 50;
+        var moveList = [];
+        moveList.push(cc.v2(0,0));
+        var dir = left?1:-1;
+        // if( left ){
+        //     dir = 1;
+        // }else{
+        //     dir = -1;
+        // }
+        var x = util.randomNum(0,50);
+        var y = util.randomNum(50,130);
+        moveList.push(cc.v2(x*dir,y));
+
+        x = util.randomNum(60,100);
+        y = util.randomNum(10,40);
+        moveList.push(cc.v2(x*dir,-y));
+
+        var spline = cc.cardinalSplineBy(0.5,moveList,0);
+        var seq = cc.sequence(
+            cc.delayTime(0.3),
+            cc.fadeTo(0.2,0),
+            cc.callFunc(function(){
+                 
+            }.bind(this)));
+
+        node.runAction(cc.spawn(spline,seq));
     }
 }
 

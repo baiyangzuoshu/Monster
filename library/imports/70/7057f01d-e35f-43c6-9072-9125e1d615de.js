@@ -51,12 +51,12 @@ var AISystem = /** @class */ (function (_super) {
         }
     };
     AISystem.prototype.onBulletUpdate = function (dt, unitComponent, baseComponent, transformComponent, roleComponent, animateComponent) {
-        if (unitComponent.isDead || unitComponent.m_attackTarget == null || animateComponent.state != Enum_1.BulletState.Attack) {
+        if (unitComponent.isDead || unitComponent.attackEntity == null || animateComponent.state != Enum_1.BulletState.Attack) {
             return;
         }
         if (6 == roleComponent.type || 4 == roleComponent.type || 2 == roleComponent.type || 0 == roleComponent.type) {
             var move = 500 * dt;
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetH = target.height;
             var moveToPos = target.getPosition();
             moveToPos.y += targetH / 2;
@@ -69,7 +69,7 @@ var AISystem = /** @class */ (function (_super) {
             transformComponent.y = baseComponent.gameObject.y;
         }
         else if (1 == roleComponent.type) {
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetPos = target.getPosition();
             var bulletPos = baseComponent.gameObject.convertToWorldSpaceAR(cc.v2(0, 0));
             var targetPos = target.convertToWorldSpaceAR(cc.v2(0, 0));
@@ -84,7 +84,7 @@ var AISystem = /** @class */ (function (_super) {
         }
         else if (3 == roleComponent.type) {
             var move = 500 * dt;
-            var target = unitComponent.m_attackTarget;
+            var target = unitComponent.attackEntity.baseComponent.gameObject;
             var targetH = target.height;
             var moveToPos = target.getPosition();
             moveToPos.y += targetH / 2;

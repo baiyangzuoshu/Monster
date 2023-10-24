@@ -30,7 +30,6 @@ export default class IntensifyUIControl extends UIControl {
         for (let i = 0; i < this.m_item.length; i++) {
             this.m_item[i].node.active = false;
         }
-        
 
         var data = IntensifyDataManager.getInstance().getData();
         for (let i = 0; i < data.length; i++) {
@@ -41,7 +40,6 @@ export default class IntensifyUIControl extends UIControl {
             this.m_item[i].setID(i);
             this.m_item[i].updateItem();
         }
-
     }
     
     async createItem(ID){

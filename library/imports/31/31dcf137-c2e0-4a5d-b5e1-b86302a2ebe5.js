@@ -203,7 +203,7 @@ var ECSFactory = /** @class */ (function (_super) {
             });
         });
     };
-    ECSFactory.prototype.createBulletEntity = function (level, worldPos, attackTarget, angle) {
+    ECSFactory.prototype.createBulletEntity = function (level, worldPos, attackEntity, angle) {
         return __awaiter(this, void 0, void 0, function () {
             var entity, lvData, bulletPrefab, bulletNode, nodePos;
             return __generator(this, function (_a) {
@@ -220,13 +220,13 @@ var ECSFactory = /** @class */ (function (_super) {
                         bulletNode.setPosition(nodePos);
                         bulletNode.angle = angle;
                         if (2 == lvData.type) {
-                            bulletNode.getChildByName("bullet").angle = util_1.util.getAngle(nodePos, attackTarget.getPosition());
+                            bulletNode.getChildByName("bullet").angle = util_1.util.getAngle(nodePos, attackEntity.baseComponent.gameObject.getPosition());
                         }
                         entity.baseComponent.entityID = ECSFactory_1.entityID++;
                         entity.baseComponent.gameObject = bulletNode;
                         entity.transformComponent.x = nodePos.x;
                         entity.transformComponent.y = nodePos.y;
-                        entity.unitComponent.m_attackTarget = attackTarget;
+                        entity.unitComponent.attackEntity = attackEntity;
                         entity.shapeComponent.width = bulletNode.width;
                         entity.shapeComponent.height = bulletNode.height;
                         entity.roleComponent.type = lvData.type;

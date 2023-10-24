@@ -5,8 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../FrameWork/manager/EventManager";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import DataManager from "../data/DataManager";
+import { GameUI } from "../EventName";
 import PlayerDataManager from "../Manager/PlayerDataManager";
 
 const {ccclass, property} = cc._decorator;
@@ -149,12 +151,12 @@ export default class MapUIControl extends UIControl {
 
     goldFlyEnd(gold){
         PlayerDataManager.getInstance().addGold(gold);
-        //g_gameUI.updateGameUI();
+        EventManager.getInstance().emit(GameUI.updateGameUI);
     }
 
     diamondFlyEnd(diamond){
         PlayerDataManager.getInstance().addDiamond(diamond);
-        //g_gameUI.updateGameUI();
+        EventManager.getInstance().emit(GameUI.updateGameUI);
     }
 
     showSucceed(gold:number,diamond:number){
@@ -182,7 +184,7 @@ export default class MapUIControl extends UIControl {
         actionList.push(cc.callFunc(function(){
             PlayerDataManager.getInstance().setGold(gold);
             PlayerDataManager.getInstance().setDiamond(diamond);
-            //g_gameUI.updateGameUI();
+            EventManager.getInstance().emit(GameUI.updateGameUI);
         }.bind(this)))
         this.node.runAction(cc.sequence(actionList));
         this.m_labGold.string = gold+"";

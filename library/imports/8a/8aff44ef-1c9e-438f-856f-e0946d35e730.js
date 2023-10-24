@@ -65,9 +65,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../FrameWork/manager/EventManager");
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
+var EventName_1 = require("../EventName");
 var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var IntensifyItemControl = /** @class */ (function (_super) {
@@ -118,7 +120,7 @@ var IntensifyItemControl = /** @class */ (function (_super) {
         }
         PlayerDataManager_1.default.getInstance().subDiamond(needDiamond);
         PlayerDataManager_1.default.getInstance().addInternsifLevel(this.m_ID);
-        //g_gameUI.updateGameUI();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
         this.updateItem();
     };
     IntensifyItemControl.prototype.updateItem = function () {

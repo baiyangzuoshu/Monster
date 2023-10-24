@@ -5,11 +5,13 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
-import { Interface } from "readline";
+import { EventManager } from "../../../FrameWork/manager/EventManager";
+import { UIManagerPro } from "../../../FrameWork/manager/UIManagerPro";
 import { util } from "../../../FrameWork/Utils/util";
 import DataManager from "../../data/DataManager";
 import IntensifyDataManager from "../../data/IntensifyDataManager";
-import {Intensify, SkillBuffer, Task, UnitState } from "../../Enum";
+import {Intensify, Task, UnitState } from "../../Enum";
+import { GameUI } from "../../EventName";
 import PlayerDataManager from "../../Manager/PlayerDataManager";
 import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
@@ -37,8 +39,8 @@ export default class AttackSystem extends cc.Component {
         }
     }
 
-    public attackStartAction(hp:number,unitComponent:UnitComponent,baseComponent:BaseComponent,attackComponent:AttackComponent){
-        if(unitComponent.isDead ){
+    public attackStartAction(hp:number,bulletUnitComponent:UnitComponent,monsterUnitComponent:UnitComponent,monsterBaseComponent:BaseComponent,monsterAttackComponent:AttackComponent){
+        if(monsterUnitComponent.isDead ){
             return;
         }
         if( hp == null ){
@@ -53,26 +55,29 @@ export default class AttackSystem extends cc.Component {
             var double = IntensifyDataManager.getInstance().getValue(Intensify.INTENSIFY_BAOJI,lv);
             hp = hp*2+hp*(double/100);
             hp = hp+hp*(double/100);
-            //hp = hp.toFixed(2);
+            hp = Math.floor(hp);
             isDouble = true;
         }
         
-        attackComponent.hp -= hp;
-        if( attackComponent.hp <= 0 ){
-            baseComponent.gameObject.stopAllActions();
-            let m_HpBar=baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+        monsterAttackComponent.hp -= hp;
+        if( monsterAttackComponent.hp <= 0 ){
+            monsterBaseComponent.gameObject.stopAllActions();
+            let m_HpBar=monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
             m_HpBar.progress = 0;
 
-            unitComponent.isDead = true;
-            baseComponent.gameObject.opacity = 0;
-            var pos = baseComponent.gameObject.getPosition();
+            monsterUnitComponent.isDead = true;
+            monsterBaseComponent.gameObject.opacity = 0;
+
+            bulletUnitComponent.attackEntity = null;
+
+            var pos = monsterBaseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
-            var cale_gold = attackComponent.gold;
+            var cale_gold = monsterAttackComponent.gold;
             
             if( cale_gold > 0){
                 var flyEnd = function(gold){
                     PlayerDataManager.getInstance().addGold(gold);
-                    //g_gameUI.updateGameUI();
+                    EventManager.getInstance().emit(GameUI.updateGameUI);
                 }
                 //g_coinFly.createCoinToTip(this.node,flyEnd.bind(this),cale_gold);
             }
@@ -81,44 +86,46 @@ export default class AttackSystem extends cc.Component {
             //杀死最后一个怪物
             if( DataManager.getInstance().getCurMonsterCount() <= 0 ){
                 //显示结算框
-                //g_gameUI.showSucceed();
+                EventManager.getInstance().emit(GameUI.showSucceed);
                 // //2面以后关闭结算框,进行下一局
-                // this.scheduleOnce(function() {
-                //     g_GlobalData.hideSmallSettlement();
-                // }, 2);
+                this.scheduleOnce(function() {
+                    UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+                }, 2);
             }
             
             PlayerDataManager.getInstance().addTaskCount(Task.TASK_JIDAO_DIREN);
             
         }else{
-            let m_HpBar=baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = attackComponent.hp / attackComponent.maxHp;
+            let m_HpBar=monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+            m_HpBar.progress = monsterAttackComponent.hp / monsterAttackComponent.maxHp;
         }
         let str="";
         if( isDouble ){
             str = '暴击'+hp;
         }
         //g_hpEffect.createHpEffect(this.node.getPosition(),str);
+        let worldPos=monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0,0,0));
+        EventManager.getInstance().emit(GameUI.createHpEffect,{worldPos:worldPos,str:str});
     }
 
-    async onUpdate(dt,unitComponent:UnitComponent,baseComponent:BaseComponent,roleComponent:RoleComponent,attackComponent:AttackComponent) {
-        if(unitComponent.state != UnitState.Active||unitComponent.isDead){
+    async onUpdate(dt,cannonUnitComponent:UnitComponent,cannonBaseComponent:BaseComponent,cannonRoleComponent:RoleComponent,cannonAttackComponent:AttackComponent) {
+        if(cannonUnitComponent.state != UnitState.Active||cannonUnitComponent.isDead){
             return
         }
         
-        if( unitComponent.m_attackTarget == null){
-            unitComponent.attackEntity = ECSManager.getInstance().calcNearDistance(baseComponent.gameObject);
-            if(unitComponent.attackEntity){
-                unitComponent.m_attackTarget=unitComponent.attackEntity.baseComponent.gameObject;
-            }
+        if( cannonUnitComponent.attackEntity == null){
+            cannonUnitComponent.attackEntity = ECSManager.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
         }
-        if( unitComponent.m_attackTarget != null){
-            if( unitComponent.isDead ){
-                unitComponent.m_attackTarget=null;
+
+        if( cannonUnitComponent.attackEntity != null){
+            if( cannonUnitComponent.isDead ){
+                cannonUnitComponent.attackEntity=null;
                 return;
             }
-            let src=cc.v3(unitComponent.m_attackTarget.getPosition().x,unitComponent.m_attackTarget.getPosition().y,0)
-            let dst=cc.v3(baseComponent.gameObject.x,baseComponent.gameObject.y,0)
+            var end = cannonUnitComponent.attackEntity.baseComponent.gameObject.getPosition();
+
+            let src=cc.v3(end.x,end.y,0)
+            let dst=cc.v3(cannonBaseComponent.gameObject.x,cannonBaseComponent.gameObject.y,0)
             let dir=cc.v3()
             cc.Vec3.subtract(dir,src,dst)
             var dis = dir.len();
@@ -126,48 +133,47 @@ export default class AttackSystem extends cc.Component {
             var curDis = 230;
             Math.abs(dis);
             if(dis > curDis ){
-                unitComponent.m_attackTarget=null;
+                cannonUnitComponent.attackEntity=null;
                 return;
             }
-            var start = baseComponent.gameObject.getPosition();
-            var end = unitComponent.m_attackTarget.getPosition();
+            var start = cannonBaseComponent.gameObject.getPosition();
+            
             var angle = util.getAngle(start,end);
             angle += 360;
             angle -= 90;
 
-            unitComponent.fireTime-=dt;
+            cannonUnitComponent.fireTime-=dt;
 
-            if( unitComponent.fireTime>0 ){
-                unitComponent.angle=angle;
-                baseComponent.gameObject.getChildByName("gun").angle=unitComponent.angle;
+            if( cannonUnitComponent.fireTime>0 ){
+                cannonUnitComponent.angle=angle;
+                cannonBaseComponent.gameObject.getChildByName("gun").angle=cannonUnitComponent.angle;
             }else{
                 var moveAngle = 300*dt;
-                if( unitComponent.angle > angle || 
-                    angle - unitComponent.angle > 180 ){
+                if( cannonUnitComponent.angle > angle || 
+                    angle - cannonUnitComponent.angle > 180 ){
                     moveAngle = -moveAngle;
                 }
 
-                unitComponent.angle += moveAngle;
-                baseComponent.gameObject.getChildByName("gun").angle=unitComponent.angle;
+                cannonUnitComponent.angle += moveAngle;
+                cannonBaseComponent.gameObject.getChildByName("gun").angle=cannonUnitComponent.angle;
 
-                if( unitComponent.angle < 0 ) {
-                    unitComponent.angle += 360;
-                    baseComponent.gameObject.getChildByName("gun").angle=unitComponent.angle;
+                if( cannonUnitComponent.angle < 0 ) {
+                    cannonUnitComponent.angle += 360;
+                    cannonBaseComponent.gameObject.getChildByName("gun").angle=cannonUnitComponent.angle;
                 }
 
-                if( Math.abs(unitComponent.angle - angle) < Math.abs(moveAngle) ){
-                    unitComponent.fireTime = 1.0;
+                if( Math.abs(cannonUnitComponent.angle - angle) < Math.abs(moveAngle) ){
+                    cannonUnitComponent.fireTime = 1.0;
                     
-                    let worldPos=baseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
-                    await ECSManager.getInstance().createBulletEntity(roleComponent.level,worldPos,unitComponent.m_attackTarget,unitComponent.angle);
+                    let worldPos=cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
+                    let bulletEntity=await ECSManager.getInstance().createBulletEntity(cannonRoleComponent.level,worldPos,cannonUnitComponent.attackEntity,cannonUnitComponent.angle);
 
-                    baseComponent.gameObject.getChildByName("gun").angle=angle;
-                    unitComponent.angle=angle;
+                    cannonBaseComponent.gameObject.getChildByName("gun").angle=angle;
+                    cannonUnitComponent.angle=angle;
 
-                    this.attackStartAction(attackComponent.atk,unitComponent.attackEntity.unitComponent,unitComponent.attackEntity.baseComponent,unitComponent.attackEntity.attackComponent);
-
-                    unitComponent.m_attackTarget=null;
-                    unitComponent.attackEntity=null;
+                    this.attackStartAction(cannonAttackComponent.atk,bulletEntity.unitComponent,cannonUnitComponent.attackEntity.unitComponent,cannonUnitComponent.attackEntity.baseComponent,cannonUnitComponent.attackEntity.attackComponent);
+                    
+                    cannonUnitComponent.attackEntity = null;
                 }
             }
         }

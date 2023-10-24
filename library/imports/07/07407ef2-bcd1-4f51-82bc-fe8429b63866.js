@@ -29,8 +29,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../FrameWork/manager/EventManager");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var DataManager_1 = require("../data/DataManager");
+var EventName_1 = require("../EventName");
 var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var MapUIControl = /** @class */ (function (_super) {
@@ -143,11 +145,11 @@ var MapUIControl = /** @class */ (function (_super) {
     };
     MapUIControl.prototype.goldFlyEnd = function (gold) {
         PlayerDataManager_1.default.getInstance().addGold(gold);
-        //g_gameUI.updateGameUI();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
     };
     MapUIControl.prototype.diamondFlyEnd = function (diamond) {
         PlayerDataManager_1.default.getInstance().addDiamond(diamond);
-        //g_gameUI.updateGameUI();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
     };
     MapUIControl.prototype.showSucceed = function (gold, diamond) {
         this.m_labGold.string = '' + gold.toString();
@@ -173,7 +175,7 @@ var MapUIControl = /** @class */ (function (_super) {
         actionList.push(cc.callFunc(function () {
             PlayerDataManager_1.default.getInstance().setGold(gold);
             PlayerDataManager_1.default.getInstance().setDiamond(diamond);
-            //g_gameUI.updateGameUI();
+            EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
         }.bind(this)));
         this.node.runAction(cc.sequence(actionList));
         this.m_labGold.string = gold + "";

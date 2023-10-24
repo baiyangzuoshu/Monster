@@ -146,7 +146,7 @@ export default class ECSFactory extends cc.Component {
         return entity
     }
 
-    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackTarget:cc.Node,angle:number){
+    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackEntity:MonsterEntity,angle:number){
         let entity=new BulletEntity();
 
         var lvData = DataManager.getInstance().cannonUpLevel[level];
@@ -158,7 +158,7 @@ export default class ECSFactory extends cc.Component {
         bulletNode.setPosition(nodePos);
         bulletNode.angle=angle;
         if(2==lvData.type){
-            bulletNode.getChildByName("bullet").angle = util.getAngle(nodePos, attackTarget.getPosition());
+            bulletNode.getChildByName("bullet").angle = util.getAngle(nodePos, attackEntity.baseComponent.gameObject.getPosition());
         }
 
         entity.baseComponent.entityID=ECSFactory.entityID++;
@@ -167,7 +167,7 @@ export default class ECSFactory extends cc.Component {
         entity.transformComponent.x=nodePos.x;
         entity.transformComponent.y=nodePos.y;
 
-        entity.unitComponent.m_attackTarget=attackTarget;
+        entity.unitComponent.attackEntity=attackEntity;
 
         entity.shapeComponent.width=bulletNode.width;
         entity.shapeComponent.height=bulletNode.height;

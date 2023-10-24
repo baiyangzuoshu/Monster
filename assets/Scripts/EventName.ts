@@ -3,4 +3,6 @@ export enum GameUI {
     gameOver="gameOver",
     showSucceed="showSucceed",
     showFaild="showFaild",
+    updateGameUI="updateGameUI",
+    createHpEffect="createHpEffect",
 }

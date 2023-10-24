@@ -29,8 +29,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../FrameWork/manager/EventManager");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
 var TaskDataManager_1 = require("../data/TaskDataManager");
+var EventName_1 = require("../EventName");
 var PlayerDataManager_1 = require("../Manager/PlayerDataManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TaskItemControl = /** @class */ (function (_super) {
@@ -93,11 +95,11 @@ var TaskItemControl = /** @class */ (function (_super) {
     };
     TaskItemControl.prototype.goldFlyEnd = function (gold) {
         PlayerDataManager_1.default.getInstance().addGold(gold);
-        //g_gameUI.updateGameUI();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
     };
     TaskItemControl.prototype.diamondFlyEnd = function (diamond) {
         PlayerDataManager_1.default.getInstance().addDiamond(diamond);
-        //g_gameUI.updateGameUI();
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
     };
     TaskItemControl.prototype.onClickGet = function () {
         var curTaskData = PlayerDataManager_1.default.getInstance().getTaskByID(this.m_taskID);
@@ -130,7 +132,7 @@ var TaskItemControl = /** @class */ (function (_super) {
             else {
                 PlayerDataManager_1.default.getInstance().setDiamond(award);
             }
-            //g_gameUI.updateGameUI();
+            EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
         }.bind(this)));
         this.node.runAction(cc.sequence(actionList));
         PlayerDataManager_1.default.getInstance().nextTask(this.m_taskID);

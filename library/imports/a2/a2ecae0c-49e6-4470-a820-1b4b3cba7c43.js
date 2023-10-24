@@ -11,6 +11,8 @@ var GameUI;
     GameUI["gameOver"] = "gameOver";
     GameUI["showSucceed"] = "showSucceed";
     GameUI["showFaild"] = "showFaild";
+    GameUI["updateGameUI"] = "updateGameUI";
+    GameUI["createHpEffect"] = "createHpEffect";
 })(GameUI = exports.GameUI || (exports.GameUI = {}));
 
 cc._RF.pop();

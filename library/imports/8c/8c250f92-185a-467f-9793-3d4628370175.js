@@ -124,12 +124,12 @@ var ECSManager = /** @class */ (function (_super) {
             });
         });
     };
-    ECSManager.prototype.createBulletEntity = function (level, worldPos, attackTarget, angle) {
+    ECSManager.prototype.createBulletEntity = function (level, worldPos, attackEntity, angle) {
         return __awaiter(this, void 0, void 0, function () {
             var entity;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createBulletEntity(level, worldPos, attackTarget, angle)];
+                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createBulletEntity(level, worldPos, attackEntity, angle)];
                     case 1:
                         entity = _a.sent();
                         this.bullets.push(entity);
@@ -154,9 +154,26 @@ var ECSManager = /** @class */ (function (_super) {
         }
     };
     ECSManager.prototype.attackSystemUpdate = function (dt) {
-        for (var i = 0; i < this.cannones.length; i++) {
-            AttackSystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent, this.cannones[i].attackComponent);
-        }
+        return __awaiter(this, void 0, void 0, function () {
+            var i;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        i = 0;
+                        _a.label = 1;
+                    case 1:
+                        if (!(i < this.cannones.length)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, AttackSystem_1.default.getInstance().onUpdate(dt, this.cannones[i].unitComponent, this.cannones[i].baseComponent, this.cannones[i].roleComponent, this.cannones[i].attackComponent)];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        i++;
+                        return [3 /*break*/, 1];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
     };
     ECSManager.prototype.AISystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
@@ -165,10 +182,27 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.collectHitSystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
-            var hitPos = cc.v2(this.bullets[i].unitComponent.m_attackTarget.x, this.bullets[i].unitComponent.m_attackTarget.y);
+            if (null == this.bullets[i].unitComponent.attackEntity)
+                continue;
+            var hitPos = cc.v2(this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.x, this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.y);
             var isHit = CollectHitSystem_1.default.getInstance().onUpdate(dt, hitPos, this.bullets[i].shapeComponent, this.bullets[i].transformComponent, this.bullets[i].unitComponent);
             if (isHit) {
                 this.bullets[i].unitComponent.isDead = true;
+            }
+        }
+    };
+    ECSManager.prototype.cleanDeadMonster = function () {
+        for (var i = 0; i < this.monsters.length; i++) {
+            if (this.monsters[i].unitComponent.isDead) {
+                this.monsters[i].baseComponent.gameObject.destroy();
+                this.monsters.splice(i, 1);
+                i--;
+            }
+        }
+    };
+    ECSManager.prototype.cleanDeadBullet = function () {
+        for (var i = 0; i < this.bullets.length; i++) {
+            if (this.bullets[i].unitComponent.isDead) {
                 this.bullets[i].baseComponent.gameObject.destroy();
                 this.bullets.splice(i, 1);
                 i--;
@@ -195,21 +229,36 @@ var ECSManager = /** @class */ (function (_super) {
         return minMonster;
     };
     ECSManager.prototype.update = function (dt) {
-        if (Enum_1.GameStateType.Playing != PlayerDataManager_1.default.getInstance().gameStateType) {
-            return;
-        }
-        //怪物行走
-        this.navSystemMonster(dt);
-        //怪物动画
-        this.animateSystemMonster(dt);
-        //子弹动画
-        this.animateSystemBullet(dt);
-        //AI
-        this.AISystemBullet(dt);
-        //碰撞检测
-        this.collectHitSystemBullet(dt);
-        //
-        this.attackSystemUpdate(dt);
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (Enum_1.GameStateType.Playing != PlayerDataManager_1.default.getInstance().gameStateType) {
+                            return [2 /*return*/];
+                        }
+                        //怪物行走
+                        this.navSystemMonster(dt);
+                        //怪物动画
+                        this.animateSystemMonster(dt);
+                        //攻击
+                        return [4 /*yield*/, this.attackSystemUpdate(dt)];
+                    case 1:
+                        //攻击
+                        _a.sent();
+                        //子弹动画
+                        this.animateSystemBullet(dt);
+                        //AI
+                        this.AISystemBullet(dt);
+                        //碰撞检测
+                        this.collectHitSystemBullet(dt);
+                        //清理死亡怪物
+                        this.cleanDeadMonster();
+                        //清理死亡子弹
+                        this.cleanDeadBullet();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     var ECSManager_1;
     ECSManager._instance = null;

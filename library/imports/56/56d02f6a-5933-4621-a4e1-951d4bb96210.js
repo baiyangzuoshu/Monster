@@ -65,10 +65,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var EventManager_1 = require("../../../FrameWork/manager/EventManager");
+var UIManagerPro_1 = require("../../../FrameWork/manager/UIManagerPro");
 var util_1 = require("../../../FrameWork/Utils/util");
 var DataManager_1 = require("../../data/DataManager");
 var IntensifyDataManager_1 = require("../../data/IntensifyDataManager");
 var Enum_1 = require("../../Enum");
+var EventName_1 = require("../../EventName");
 var PlayerDataManager_1 = require("../../Manager/PlayerDataManager");
 var ECSManager_1 = require("../ECSManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -90,8 +93,8 @@ var AttackSystem = /** @class */ (function (_super) {
             return;
         }
     };
-    AttackSystem.prototype.attackStartAction = function (hp, unitComponent, baseComponent, attackComponent) {
-        if (unitComponent.isDead) {
+    AttackSystem.prototype.attackStartAction = function (hp, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
+        if (monsterUnitComponent.isDead) {
             return;
         }
         if (hp == null) {
@@ -105,23 +108,24 @@ var AttackSystem = /** @class */ (function (_super) {
             var double = IntensifyDataManager_1.default.getInstance().getValue(Enum_1.Intensify.INTENSIFY_BAOJI, lv);
             hp = hp * 2 + hp * (double / 100);
             hp = hp + hp * (double / 100);
-            //hp = hp.toFixed(2);
+            hp = Math.floor(hp);
             isDouble = true;
         }
-        attackComponent.hp -= hp;
-        if (attackComponent.hp <= 0) {
-            baseComponent.gameObject.stopAllActions();
-            var m_HpBar = baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+        monsterAttackComponent.hp -= hp;
+        if (monsterAttackComponent.hp <= 0) {
+            monsterBaseComponent.gameObject.stopAllActions();
+            var m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
             m_HpBar.progress = 0;
-            unitComponent.isDead = true;
-            baseComponent.gameObject.opacity = 0;
-            var pos = baseComponent.gameObject.getPosition();
+            monsterUnitComponent.isDead = true;
+            monsterBaseComponent.gameObject.opacity = 0;
+            bulletUnitComponent.attackEntity = null;
+            var pos = monsterBaseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
-            var cale_gold = attackComponent.gold;
+            var cale_gold = monsterAttackComponent.gold;
             if (cale_gold > 0) {
                 var flyEnd = function (gold) {
                     PlayerDataManager_1.default.getInstance().addGold(gold);
-                    //g_gameUI.updateGameUI();
+                    EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
                 };
                 //g_coinFly.createCoinToTip(this.node,flyEnd.bind(this),cale_gold);
             }
@@ -129,88 +133,86 @@ var AttackSystem = /** @class */ (function (_super) {
             //杀死最后一个怪物
             if (DataManager_1.default.getInstance().getCurMonsterCount() <= 0) {
                 //显示结算框
-                //g_gameUI.showSucceed();
+                EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.showSucceed);
                 // //2面以后关闭结算框,进行下一局
-                // this.scheduleOnce(function() {
-                //     g_GlobalData.hideSmallSettlement();
-                // }, 2);
+                this.scheduleOnce(function () {
+                    UIManagerPro_1.UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+                }, 2);
             }
             PlayerDataManager_1.default.getInstance().addTaskCount(Enum_1.Task.TASK_JIDAO_DIREN);
         }
         else {
-            var m_HpBar = baseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = attackComponent.hp / attackComponent.maxHp;
+            var m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+            m_HpBar.progress = monsterAttackComponent.hp / monsterAttackComponent.maxHp;
         }
         var str = "";
         if (isDouble) {
             str = '暴击' + hp;
         }
         //g_hpEffect.createHpEffect(this.node.getPosition(),str);
+        var worldPos = monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0, 0, 0));
+        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.createHpEffect, { worldPos: worldPos, str: str });
     };
-    AttackSystem.prototype.onUpdate = function (dt, unitComponent, baseComponent, roleComponent, attackComponent) {
+    AttackSystem.prototype.onUpdate = function (dt, cannonUnitComponent, cannonBaseComponent, cannonRoleComponent, cannonAttackComponent) {
         return __awaiter(this, void 0, void 0, function () {
-            var src, dst, dir, dis, curDis, start, end, angle, moveAngle, worldPos;
+            var end, src, dst, dir, dis, curDis, start, angle, moveAngle, worldPos, bulletEntity;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (unitComponent.state != Enum_1.UnitState.Active || unitComponent.isDead) {
+                        if (cannonUnitComponent.state != Enum_1.UnitState.Active || cannonUnitComponent.isDead) {
                             return [2 /*return*/];
                         }
-                        if (unitComponent.m_attackTarget == null) {
-                            unitComponent.attackEntity = ECSManager_1.default.getInstance().calcNearDistance(baseComponent.gameObject);
-                            if (unitComponent.attackEntity) {
-                                unitComponent.m_attackTarget = unitComponent.attackEntity.baseComponent.gameObject;
-                            }
+                        if (cannonUnitComponent.attackEntity == null) {
+                            cannonUnitComponent.attackEntity = ECSManager_1.default.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
                         }
-                        if (!(unitComponent.m_attackTarget != null)) return [3 /*break*/, 3];
-                        if (unitComponent.isDead) {
-                            unitComponent.m_attackTarget = null;
+                        if (!(cannonUnitComponent.attackEntity != null)) return [3 /*break*/, 3];
+                        if (cannonUnitComponent.isDead) {
+                            cannonUnitComponent.attackEntity = null;
                             return [2 /*return*/];
                         }
-                        src = cc.v3(unitComponent.m_attackTarget.getPosition().x, unitComponent.m_attackTarget.getPosition().y, 0);
-                        dst = cc.v3(baseComponent.gameObject.x, baseComponent.gameObject.y, 0);
+                        end = cannonUnitComponent.attackEntity.baseComponent.gameObject.getPosition();
+                        src = cc.v3(end.x, end.y, 0);
+                        dst = cc.v3(cannonBaseComponent.gameObject.x, cannonBaseComponent.gameObject.y, 0);
                         dir = cc.v3();
                         cc.Vec3.subtract(dir, src, dst);
                         dis = dir.len();
                         curDis = 230;
                         Math.abs(dis);
                         if (dis > curDis) {
-                            unitComponent.m_attackTarget = null;
+                            cannonUnitComponent.attackEntity = null;
                             return [2 /*return*/];
                         }
-                        start = baseComponent.gameObject.getPosition();
-                        end = unitComponent.m_attackTarget.getPosition();
+                        start = cannonBaseComponent.gameObject.getPosition();
                         angle = util_1.util.getAngle(start, end);
                         angle += 360;
                         angle -= 90;
-                        unitComponent.fireTime -= dt;
-                        if (!(unitComponent.fireTime > 0)) return [3 /*break*/, 1];
-                        unitComponent.angle = angle;
-                        baseComponent.gameObject.getChildByName("gun").angle = unitComponent.angle;
+                        cannonUnitComponent.fireTime -= dt;
+                        if (!(cannonUnitComponent.fireTime > 0)) return [3 /*break*/, 1];
+                        cannonUnitComponent.angle = angle;
+                        cannonBaseComponent.gameObject.getChildByName("gun").angle = cannonUnitComponent.angle;
                         return [3 /*break*/, 3];
                     case 1:
                         moveAngle = 300 * dt;
-                        if (unitComponent.angle > angle ||
-                            angle - unitComponent.angle > 180) {
+                        if (cannonUnitComponent.angle > angle ||
+                            angle - cannonUnitComponent.angle > 180) {
                             moveAngle = -moveAngle;
                         }
-                        unitComponent.angle += moveAngle;
-                        baseComponent.gameObject.getChildByName("gun").angle = unitComponent.angle;
-                        if (unitComponent.angle < 0) {
-                            unitComponent.angle += 360;
-                            baseComponent.gameObject.getChildByName("gun").angle = unitComponent.angle;
+                        cannonUnitComponent.angle += moveAngle;
+                        cannonBaseComponent.gameObject.getChildByName("gun").angle = cannonUnitComponent.angle;
+                        if (cannonUnitComponent.angle < 0) {
+                            cannonUnitComponent.angle += 360;
+                            cannonBaseComponent.gameObject.getChildByName("gun").angle = cannonUnitComponent.angle;
                         }
-                        if (!(Math.abs(unitComponent.angle - angle) < Math.abs(moveAngle))) return [3 /*break*/, 3];
-                        unitComponent.fireTime = 1.0;
-                        worldPos = baseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0, 0, 0));
-                        return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(roleComponent.level, worldPos, unitComponent.m_attackTarget, unitComponent.angle)];
+                        if (!(Math.abs(cannonUnitComponent.angle - angle) < Math.abs(moveAngle))) return [3 /*break*/, 3];
+                        cannonUnitComponent.fireTime = 1.0;
+                        worldPos = cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0, 0, 0));
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(cannonRoleComponent.level, worldPos, cannonUnitComponent.attackEntity, cannonUnitComponent.angle)];
                     case 2:
-                        _a.sent();
-                        baseComponent.gameObject.getChildByName("gun").angle = angle;
-                        unitComponent.angle = angle;
-                        this.attackStartAction(attackComponent.atk, unitComponent.attackEntity.unitComponent, unitComponent.attackEntity.baseComponent, unitComponent.attackEntity.attackComponent);
-                        unitComponent.m_attackTarget = null;
-                        unitComponent.attackEntity = null;
+                        bulletEntity = _a.sent();
+                        cannonBaseComponent.gameObject.getChildByName("gun").angle = angle;
+                        cannonUnitComponent.angle = angle;
+                        this.attackStartAction(cannonAttackComponent.atk, bulletEntity.unitComponent, cannonUnitComponent.attackEntity.unitComponent, cannonUnitComponent.attackEntity.baseComponent, cannonUnitComponent.attackEntity.attackComponent);
+                        cannonUnitComponent.attackEntity = null;
                         _a.label = 3;
                     case 3: return [2 /*return*/];
                 }

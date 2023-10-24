@@ -100,7 +100,7 @@ var EntityUtils = /** @class */ (function (_super) {
     EntityUtils.prototype.cannonCompare = function (roleComponent1, roleComponent2) {
         return roleComponent1.level == roleComponent2.level;
     };
-    EntityUtils.prototype.cannonLevelUp = function (roleComponent, baseComponent) {
+    EntityUtils.prototype.cannonLevelUp = function (roleComponent, baseComponent, attackComponent) {
         return __awaiter(this, void 0, void 0, function () {
             var level, lvData, index, name, padSpriteAtlas, frame, gunPrefab, gunNode, angle;
             return __generator(this, function (_a) {
@@ -126,7 +126,7 @@ var EntityUtils = /** @class */ (function (_super) {
                         angle = util_1.util.randomNum(0, 360);
                         baseComponent.gameObject.getChildByName("gun").angle = angle;
                         roleComponent.type = lvData.type;
-                        roleComponent.atk = lvData.atk;
+                        attackComponent.atk = lvData.atk;
                         return [2 /*return*/];
                 }
             });

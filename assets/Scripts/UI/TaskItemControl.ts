@@ -5,8 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../FrameWork/manager/EventManager";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import TaskDataManager from "../data/TaskDataManager";
+import { GameUI } from "../EventName";
 import PlayerDataManager from "../Manager/PlayerDataManager";
 
 const {ccclass, property} = cc._decorator;
@@ -76,12 +78,12 @@ export default class TaskItemControl extends UIControl {
 
     goldFlyEnd(gold){
         PlayerDataManager.getInstance().addGold(gold);
-        //g_gameUI.updateGameUI();
+        EventManager.getInstance().emit(GameUI.updateGameUI);
     }
 
     diamondFlyEnd(diamond){
         PlayerDataManager.getInstance().addDiamond(diamond);
-        //g_gameUI.updateGameUI();
+        EventManager.getInstance().emit(GameUI.updateGameUI);
     }
     
     onClickGet(){
@@ -115,7 +117,7 @@ export default class TaskItemControl extends UIControl {
             }else{
                 PlayerDataManager.getInstance().setDiamond(award);
             }
-            //g_gameUI.updateGameUI();
+            EventManager.getInstance().emit(GameUI.updateGameUI);
         }.bind(this)))
         this.node.runAction(cc.sequence(actionList));
 

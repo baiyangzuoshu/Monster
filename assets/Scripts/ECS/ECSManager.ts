@@ -55,8 +55,8 @@ export default class ECSManager extends cc.Component {
         return entity
     }
 
-    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackTarget:cc.Node,angle:number){
-        let entity=await ECSFactory.getInstance().createBulletEntity(level,worldPos,attackTarget,angle);
+    public async createBulletEntity(level:number,worldPos:cc.Vec3,attackEntity:MonsterEntity,angle:number){
+        let entity=await ECSFactory.getInstance().createBulletEntity(level,worldPos,attackEntity,angle);
         this.bullets.push(entity);
 
         return entity
@@ -80,9 +80,9 @@ export default class ECSManager extends cc.Component {
         }
     }
 
-    attackSystemUpdate(dt:number){
+    async attackSystemUpdate(dt:number){
         for(let i=0;i<this.cannones.length;i++){
-            AttackSystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent,this.cannones[i].attackComponent);
+            await AttackSystem.getInstance().onUpdate(dt,this.cannones[i].unitComponent,this.cannones[i].baseComponent,this.cannones[i].roleComponent,this.cannones[i].attackComponent);
         }
     }
 
@@ -94,10 +94,29 @@ export default class ECSManager extends cc.Component {
 
     collectHitSystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            let hitPos=cc.v2(this.bullets[i].unitComponent.m_attackTarget.x,this.bullets[i].unitComponent.m_attackTarget.y);
+            if(null==this.bullets[i].unitComponent.attackEntity)continue;
+
+            let hitPos=cc.v2(this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.x,this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.y);
             let isHit=CollectHitSystem.getInstance().onUpdate(dt,hitPos,this.bullets[i].shapeComponent,this.bullets[i].transformComponent,this.bullets[i].unitComponent);
             if(isHit){
                 this.bullets[i].unitComponent.isDead=true;
+            }
+        }
+    }
+
+    cleanDeadMonster(){
+        for(let i=0;i<this.monsters.length;i++){
+            if(this.monsters[i].unitComponent.isDead){
+                this.monsters[i].baseComponent.gameObject.destroy();
+                this.monsters.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    cleanDeadBullet(){
+        for(let i=0;i<this.bullets.length;i++){
+            if(this.bullets[i].unitComponent.isDead){
                 this.bullets[i].baseComponent.gameObject.destroy();
                 this.bullets.splice(i,1);
                 i--;
@@ -127,7 +146,7 @@ export default class ECSManager extends cc.Component {
         return minMonster;
     }
 
-    protected update(dt: number): void {
+    protected async update(dt: number): Promise<void> {
         if(GameStateType.Playing!=PlayerDataManager.getInstance().gameStateType){
             return;
         }
@@ -135,13 +154,17 @@ export default class ECSManager extends cc.Component {
         this.navSystemMonster(dt);
         //怪物动画
         this.animateSystemMonster(dt);
+        //攻击
+        await this.attackSystemUpdate(dt);
         //子弹动画
         this.animateSystemBullet(dt);
         //AI
         this.AISystemBullet(dt);
         //碰撞检测
         this.collectHitSystemBullet(dt);
-        //
-        this.attackSystemUpdate(dt);
+        //清理死亡怪物
+        this.cleanDeadMonster();
+        //清理死亡子弹
+        this.cleanDeadBullet();
     }
 }

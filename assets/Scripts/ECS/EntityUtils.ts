@@ -8,6 +8,7 @@
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { util } from "../../FrameWork/Utils/util";
 import DataManager from "../data/DataManager";
+import AttackComponent from "./Components/AttackComponent";
 import BaseComponent from "./Components/BaseComponent";
 import RoleComponent from "./Components/RoleComponent";
 
@@ -45,7 +46,7 @@ export default class EntityUtils extends cc.Component {
         return roleComponent1.level==roleComponent2.level;
     }
 
-    public  async cannonLevelUp(roleComponent:RoleComponent,baseComponent:BaseComponent){
+    public  async cannonLevelUp(roleComponent:RoleComponent,baseComponent:BaseComponent,attackComponent:AttackComponent){
         roleComponent.level++;
         var level = roleComponent.level;
 
@@ -67,6 +68,7 @@ export default class EntityUtils extends cc.Component {
 
 
         roleComponent.type=lvData.type;
-        roleComponent.atk=lvData.atk;
+
+        attackComponent.atk=lvData.atk;
     }
 }

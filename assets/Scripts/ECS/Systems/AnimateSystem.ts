@@ -78,4 +78,6 @@ export default class AnimateSystem extends cc.Component {
         bullet.active = false;
         effectAnimate.play('fire');
     }
+
+    
 }

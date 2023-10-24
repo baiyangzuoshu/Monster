@@ -5,9 +5,11 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { EventManager } from "../../FrameWork/manager/EventManager";
 import { ResManagerPro } from "../../FrameWork/manager/ResManagerPro";
 import { UIControl } from "../../FrameWork/ui/UIControl";
 import IntensifyDataManager from "../data/IntensifyDataManager";
+import { GameUI } from "../EventName";
 import PlayerDataManager from "../Manager/PlayerDataManager";
 
 const {ccclass, property} = cc._decorator;
@@ -63,7 +65,7 @@ export default class IntensifyItemControl extends UIControl {
         PlayerDataManager.getInstance().subDiamond(needDiamond);
         PlayerDataManager.getInstance().addInternsifLevel(this.m_ID);
         
-        //g_gameUI.updateGameUI();
+        EventManager.getInstance().emit(GameUI.updateGameUI);
         this.updateItem();
     }
 

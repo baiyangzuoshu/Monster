@@ -69,6 +69,7 @@ var EventManager_1 = require("../../FrameWork/manager/EventManager");
 var ResManagerPro_1 = require("../../FrameWork/manager/ResManagerPro");
 var UIManagerPro_1 = require("../../FrameWork/manager/UIManagerPro");
 var UIControl_1 = require("../../FrameWork/ui/UIControl");
+var util_1 = require("../../FrameWork/Utils/util");
 var DataManager_1 = require("../data/DataManager");
 var IntensifyDataManager_1 = require("../data/IntensifyDataManager");
 var ECSManager_1 = require("../ECS/ECSManager");
@@ -140,12 +141,16 @@ var GameUIControl = /** @class */ (function (_super) {
         EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.gameOver, this.gameOver, this);
         EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.showSucceed, this.showSucceed, this);
         EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.showFaild, this.showFaild, this);
+        EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.updateGameUI, this.updateGameUI, this);
+        EventManager_1.EventManager.getInstance().addEventListener(EventName_1.GameUI.createHpEffect, this.createHpEffect, this);
     };
     GameUIControl.prototype.onDestroy = function () {
         EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.refreshGoldDiamond, this.refreshGoldDiamond, this);
         EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.gameOver, this.gameOver, this);
         EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.showSucceed, this.showSucceed, this);
         EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.showFaild, this.showFaild, this);
+        EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.updateGameUI, this.updateGameUI, this);
+        EventManager_1.EventManager.getInstance().removeEventListener(EventName_1.GameUI.createHpEffect, this.createHpEffect, this);
     };
     GameUIControl.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -336,7 +341,7 @@ var GameUIControl = /** @class */ (function (_super) {
         var playEffect = false;
         if (endEntity != null) {
             if (EntityUtils_1.default.getInstance().cannonCompare(startEntity.roleComponent, endEntity.roleComponent)) {
-                EntityUtils_1.default.getInstance().cannonLevelUp(startEntity.roleComponent, startEntity.baseComponent);
+                EntityUtils_1.default.getInstance().cannonLevelUp(startEntity.roleComponent, startEntity.baseComponent, startEntity.attackComponent);
                 endEntity.unitComponent.isDead = true;
                 endEntity.baseComponent.gameObject.destroy();
                 endEntity = null;
@@ -424,7 +429,6 @@ var GameUIControl = /** @class */ (function (_super) {
     GameUIControl.prototype.getCannonByPosition = function (nodePos) {
         var x = Math.floor(nodePos.x / 106);
         var y = Math.floor((-nodePos.y) / 106);
-        console.log(x, y);
         for (var i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].pos.x == x && this.m_cannonList[i].pos.y == y) {
                 return this.m_cannonList[i];
@@ -710,6 +714,40 @@ var GameUIControl = /** @class */ (function (_super) {
             result = "00:" + result;
         }
         return result;
+    };
+    GameUIControl.prototype.createHpEffect = function (data) {
+        var worldPos = data.worldPos;
+        var str = data.str;
+        var canvas = cc.find("Canvas");
+        var m_hpEffectItem = canvas.getChildByName("Game").getChildByName("HpEffectBuild").getChildByName("hpEffect");
+        var HpEffectBuild = canvas.getChildByName("Game").getChildByName("HpEffectBuild");
+        var nodePos = HpEffectBuild.convertToNodeSpaceAR(worldPos);
+        var node = cc.instantiate(m_hpEffectItem);
+        var label = node.getComponent(cc.Label);
+        label.string = str;
+        node.active = true;
+        node.opacity = 255;
+        node.setPosition(nodePos);
+        HpEffectBuild.addChild(node);
+        var left = util_1.util.randomNum(0, 100) > 50;
+        var moveList = [];
+        moveList.push(cc.v2(0, 0));
+        var dir = left ? 1 : -1;
+        // if( left ){
+        //     dir = 1;
+        // }else{
+        //     dir = -1;
+        // }
+        var x = util_1.util.randomNum(0, 50);
+        var y = util_1.util.randomNum(50, 130);
+        moveList.push(cc.v2(x * dir, y));
+        x = util_1.util.randomNum(60, 100);
+        y = util_1.util.randomNum(10, 40);
+        moveList.push(cc.v2(x * dir, -y));
+        var spline = cc.cardinalSplineBy(0.5, moveList, 0);
+        var seq = cc.sequence(cc.delayTime(0.3), cc.fadeTo(0.2, 0), cc.callFunc(function () {
+        }.bind(this)));
+        node.runAction(cc.spawn(spline, seq));
     };
     GameUIControl = __decorate([
         ccclass
