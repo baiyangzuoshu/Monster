@@ -1284,11 +1284,6 @@
     "meta": 1698126710179,
     "relativePath": "model\\primitives.fbx"
   },
-  "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
-    "asset": 1698126911255,
-    "meta": 1698127042351,
-    "relativePath": "Scripts\\ECS\\Systems\\CollectHitSystem.ts"
-  },
   "598f6593-2b7a-47ec-beeb-29f01b71e860": {
     "asset": 1698139209213,
     "meta": 1698139257584,
@@ -1329,11 +1324,6 @@
     "meta": 1698139765418,
     "relativePath": "Scripts\\UI\\TaskItemControl.ts"
   },
-  "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1698140770956,
-    "meta": 1698140868430,
-    "relativePath": "Scripts\\ECS\\ECSManager.ts"
-  },
   "7057f01d-e35f-43c6-9072-9125e1d615de": {
     "asset": 1698140760706,
     "meta": 1698140868449,
@@ -1344,9 +1334,19 @@
     "meta": 1698140868465,
     "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
   },
+  "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
+    "asset": 1698143768597,
+    "meta": 1698143811544,
+    "relativePath": "Scripts\\ECS\\Systems\\CollectHitSystem.ts"
+  },
   "56d02f6a-5933-4621-a4e1-951d4bb96210": {
-    "asset": 1698141102697,
-    "meta": 1698141104645,
+    "asset": 1698149741263,
+    "meta": 1698149840156,
     "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
+  },
+  "8c250f92-185a-467f-9793-3d4628370175": {
+    "asset": 1698150198294,
+    "meta": 1698150391336,
+    "relativePath": "Scripts\\ECS\\ECSManager.ts"
   }
 }

@@ -17,6 +17,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+var AttackSystem_1 = require("./AttackSystem");
 var CollectHitSystem = /** @class */ (function (_super) {
     __extends(CollectHitSystem, _super);
     function CollectHitSystem() {
@@ -34,12 +35,10 @@ var CollectHitSystem = /** @class */ (function (_super) {
             return;
         }
     };
-    CollectHitSystem.prototype.onUpdate = function (dt, hitPos, shapeComponent, transformComponent, unitComponent) {
-        if (unitComponent.isDead) {
-            return;
-        }
-        var rect = new cc.Rect(transformComponent.x - shapeComponent.width / 2, transformComponent.y - shapeComponent.height / 2, shapeComponent.width, shapeComponent.height);
+    CollectHitSystem.prototype.onUpdate = function (atk, hitPos, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
+        var rect = new cc.Rect(bulletTransformComponent.x - bulletShapeComponent.width / 2, bulletTransformComponent.y - bulletShapeComponent.height / 2, bulletShapeComponent.width, bulletShapeComponent.height);
         if (rect.contains(hitPos)) {
+            AttackSystem_1.default.getInstance().attackStartAction(atk, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
             return true;
         }
         return false;

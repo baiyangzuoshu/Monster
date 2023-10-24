@@ -182,19 +182,30 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.collectHitSystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
-            if (null == this.bullets[i].unitComponent.attackEntity)
+            var bullet = this.bullets[i];
+            var bulletTransformComponent = bullet.transformComponent;
+            var bulletUnitComponent = bullet.unitComponent;
+            var bulletShapeComponent = bullet.shapeComponent;
+            var monsterEntity = bulletUnitComponent.attackEntity;
+            if (bulletUnitComponent.isDead)
                 continue;
-            var hitPos = cc.v2(this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.x, this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.y);
-            var isHit = CollectHitSystem_1.default.getInstance().onUpdate(dt, hitPos, this.bullets[i].shapeComponent, this.bullets[i].transformComponent, this.bullets[i].unitComponent);
+            if (null == monsterEntity)
+                continue;
+            var monsterUnitComponent = monsterEntity.unitComponent;
+            var monsterBaseComponent = monsterEntity.baseComponent;
+            var monsterAttackComponent = monsterEntity.attackComponent;
+            var atk = bullet.attackComponent.atk;
+            var hitPos = cc.v2(monsterEntity.baseComponent.gameObject.x, monsterEntity.baseComponent.gameObject.y);
+            var isHit = CollectHitSystem_1.default.getInstance().onUpdate(atk, hitPos, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
             if (isHit) {
-                this.bullets[i].unitComponent.isDead = true;
+                bulletUnitComponent.isDead = true;
             }
         }
     };
     ECSManager.prototype.cleanDeadMonster = function () {
         for (var i = 0; i < this.monsters.length; i++) {
             if (this.monsters[i].unitComponent.isDead) {
-                this.monsters[i].baseComponent.gameObject.destroy();
+                //this.monsters[i].baseComponent.gameObject.destroy();
                 this.monsters.splice(i, 1);
                 i--;
             }

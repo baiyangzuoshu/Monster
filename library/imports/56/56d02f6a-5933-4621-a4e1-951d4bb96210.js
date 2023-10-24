@@ -97,10 +97,6 @@ var AttackSystem = /** @class */ (function (_super) {
         if (monsterUnitComponent.isDead) {
             return;
         }
-        if (hp == null) {
-            cc.log('攻击力未定义');
-            return;
-        }
         var rand = util_1.util.randomNum(0, 1000);
         var isDouble = false;
         if (rand <= 500) {
@@ -155,7 +151,7 @@ var AttackSystem = /** @class */ (function (_super) {
     };
     AttackSystem.prototype.onUpdate = function (dt, cannonUnitComponent, cannonBaseComponent, cannonRoleComponent, cannonAttackComponent) {
         return __awaiter(this, void 0, void 0, function () {
-            var end, src, dst, dir, dis, curDis, start, angle, moveAngle, worldPos, bulletEntity;
+            var end, src, dst, dir, dis, curDis, start, angle, moveAngle, worldPos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -208,10 +204,9 @@ var AttackSystem = /** @class */ (function (_super) {
                         worldPos = cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0, 0, 0));
                         return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(cannonRoleComponent.level, worldPos, cannonUnitComponent.attackEntity, cannonUnitComponent.angle)];
                     case 2:
-                        bulletEntity = _a.sent();
+                        _a.sent();
                         cannonBaseComponent.gameObject.getChildByName("gun").angle = angle;
                         cannonUnitComponent.angle = angle;
-                        this.attackStartAction(cannonAttackComponent.atk, bulletEntity.unitComponent, cannonUnitComponent.attackEntity.unitComponent, cannonUnitComponent.attackEntity.baseComponent, cannonUnitComponent.attackEntity.attackComponent);
                         cannonUnitComponent.attackEntity = null;
                         _a.label = 3;
                     case 3: return [2 /*return*/];

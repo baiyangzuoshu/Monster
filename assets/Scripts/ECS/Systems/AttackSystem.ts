@@ -43,11 +43,6 @@ export default class AttackSystem extends cc.Component {
         if(monsterUnitComponent.isDead ){
             return;
         }
-        if( hp == null ){
-            cc.log('攻击力未定义');
-            return;
-        }
-       
         var rand = util.randomNum(0,1000);
         var isDouble = false;
         if( rand <= 500){
@@ -58,7 +53,6 @@ export default class AttackSystem extends cc.Component {
             hp = Math.floor(hp);
             isDouble = true;
         }
-        
         monsterAttackComponent.hp -= hp;
         if( monsterAttackComponent.hp <= 0 ){
             monsterBaseComponent.gameObject.stopAllActions();
@@ -81,7 +75,6 @@ export default class AttackSystem extends cc.Component {
                 }
                 //g_coinFly.createCoinToTip(this.node,flyEnd.bind(this),cale_gold);
             }
-
             DataManager.getInstance().subCurMonsterCount();
             //杀死最后一个怪物
             if( DataManager.getInstance().getCurMonsterCount() <= 0 ){
@@ -123,7 +116,6 @@ export default class AttackSystem extends cc.Component {
                 return;
             }
             var end = cannonUnitComponent.attackEntity.baseComponent.gameObject.getPosition();
-
             let src=cc.v3(end.x,end.y,0)
             let dst=cc.v3(cannonBaseComponent.gameObject.x,cannonBaseComponent.gameObject.y,0)
             let dir=cc.v3()
@@ -166,12 +158,10 @@ export default class AttackSystem extends cc.Component {
                     cannonUnitComponent.fireTime = 1.0;
                     
                     let worldPos=cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
-                    let bulletEntity=await ECSManager.getInstance().createBulletEntity(cannonRoleComponent.level,worldPos,cannonUnitComponent.attackEntity,cannonUnitComponent.angle);
+                    await ECSManager.getInstance().createBulletEntity(cannonRoleComponent.level,worldPos,cannonUnitComponent.attackEntity,cannonUnitComponent.angle);
 
                     cannonBaseComponent.gameObject.getChildByName("gun").angle=angle;
                     cannonUnitComponent.angle=angle;
-
-                    this.attackStartAction(cannonAttackComponent.atk,bulletEntity.unitComponent,cannonUnitComponent.attackEntity.unitComponent,cannonUnitComponent.attackEntity.baseComponent,cannonUnitComponent.attackEntity.attackComponent);
                     
                     cannonUnitComponent.attackEntity = null;
                 }

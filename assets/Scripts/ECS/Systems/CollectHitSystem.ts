@@ -1,6 +1,9 @@
+import AttackComponent from "../Components/AttackComponent"
+import BaseComponent from "../Components/BaseComponent"
 import ShapeComponent from "../Components/ShapeComponent"
 import TransformComponent from "../Components/TransformComponent"
 import UnitComponent from "../Components/UnitComponent"
+import AttackSystem from "./AttackSystem"
 
 export default class CollectHitSystem extends cc.Component {
 
@@ -19,13 +22,12 @@ export default class CollectHitSystem extends cc.Component {
         }
     }
 
-    onUpdate (dt:number,hitPos:cc.Vec2,shapeComponent:ShapeComponent,transformComponent:TransformComponent,unitComponent:UnitComponent) {
-        if(unitComponent.isDead){
-            return;
-        }
+    onUpdate (atk:number,hitPos:cc.Vec2,bulletShapeComponent:ShapeComponent,bulletTransformComponent:TransformComponent,bulletUnitComponent:UnitComponent,
+        monsterUnitComponent:UnitComponent,monsterBaseComponent:BaseComponent,monsterAttackComponent:AttackComponent) {
 
-        let rect=new cc.Rect(transformComponent.x-shapeComponent.width/2,transformComponent.y-shapeComponent.height/2,shapeComponent.width,shapeComponent.height);
+        let rect=new cc.Rect(bulletTransformComponent.x-bulletShapeComponent.width/2,bulletTransformComponent.y-bulletShapeComponent.height/2,bulletShapeComponent.width,bulletShapeComponent.height);
         if(rect.contains(hitPos)){
+            AttackSystem.getInstance().attackStartAction(atk,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
             return true;
         }
 

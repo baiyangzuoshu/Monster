@@ -94,12 +94,24 @@ export default class ECSManager extends cc.Component {
 
     collectHitSystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            if(null==this.bullets[i].unitComponent.attackEntity)continue;
+            let bullet=this.bullets[i];
+            let bulletTransformComponent=bullet.transformComponent;
+            let bulletUnitComponent=bullet.unitComponent;
+            let bulletShapeComponent=bullet.shapeComponent;
+            let monsterEntity=bulletUnitComponent.attackEntity;
 
-            let hitPos=cc.v2(this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.x,this.bullets[i].unitComponent.attackEntity.baseComponent.gameObject.y);
-            let isHit=CollectHitSystem.getInstance().onUpdate(dt,hitPos,this.bullets[i].shapeComponent,this.bullets[i].transformComponent,this.bullets[i].unitComponent);
+            if(bulletUnitComponent.isDead)continue;
+            if(null==monsterEntity)continue;
+
+            let monsterUnitComponent=monsterEntity.unitComponent;
+            let monsterBaseComponent=monsterEntity.baseComponent;
+            let monsterAttackComponent=monsterEntity.attackComponent;
+            let atk=bullet.attackComponent.atk;
+
+            let hitPos=cc.v2(monsterEntity.baseComponent.gameObject.x,monsterEntity.baseComponent.gameObject.y);
+            let isHit=CollectHitSystem.getInstance().onUpdate(atk,hitPos,bulletShapeComponent,bulletTransformComponent,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
             if(isHit){
-                this.bullets[i].unitComponent.isDead=true;
+                bulletUnitComponent.isDead=true;
             }
         }
     }
@@ -107,7 +119,7 @@ export default class ECSManager extends cc.Component {
     cleanDeadMonster(){
         for(let i=0;i<this.monsters.length;i++){
             if(this.monsters[i].unitComponent.isDead){
-                this.monsters[i].baseComponent.gameObject.destroy();
+                //this.monsters[i].baseComponent.gameObject.destroy();
                 this.monsters.splice(i,1);
                 i--;
             }
