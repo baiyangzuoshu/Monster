@@ -138,6 +138,14 @@ var ECSManager = /** @class */ (function (_super) {
             });
         });
     };
+    ECSManager.prototype.getMonsterById = function (entityID) {
+        for (var i = 0; i < this.monsters.length; i++) {
+            if (entityID == this.monsters[i].baseComponent.entityID) {
+                return this.monsters[i];
+            }
+        }
+        return null;
+    };
     ECSManager.prototype.navSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
@@ -177,7 +185,9 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.AISystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
-            AISystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent, this.bullets[i].roleComponent, this.bullets[i].animateComponent);
+            var monsterID = this.bullets[i].unitComponent.monsterID;
+            var monsterEntity = this.getMonsterById(monsterID);
+            AISystem_1.default.getInstance().onBulletUpdate(dt, monsterEntity, this.bullets[i].unitComponent, this.bullets[i].baseComponent, this.bullets[i].transformComponent, this.bullets[i].roleComponent, this.bullets[i].animateComponent);
         }
     };
     ECSManager.prototype.collectHitSystemBullet = function (dt) {
@@ -186,7 +196,8 @@ var ECSManager = /** @class */ (function (_super) {
             var bulletTransformComponent = bullet.transformComponent;
             var bulletUnitComponent = bullet.unitComponent;
             var bulletShapeComponent = bullet.shapeComponent;
-            var monsterEntity = bulletUnitComponent.attackEntity;
+            var monsterID = bullet.unitComponent.monsterID;
+            var monsterEntity = this.getMonsterById(monsterID);
             if (bulletUnitComponent.isDead)
                 continue;
             if (null == monsterEntity)
@@ -205,7 +216,7 @@ var ECSManager = /** @class */ (function (_super) {
     ECSManager.prototype.cleanDeadMonster = function () {
         for (var i = 0; i < this.monsters.length; i++) {
             if (this.monsters[i].unitComponent.isDead) {
-                //this.monsters[i].baseComponent.gameObject.destroy();
+                this.monsters[i].baseComponent.gameObject.destroy();
                 this.monsters.splice(i, 1);
                 i--;
             }

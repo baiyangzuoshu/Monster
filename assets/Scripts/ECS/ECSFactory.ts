@@ -167,7 +167,7 @@ export default class ECSFactory extends cc.Component {
         entity.transformComponent.x=nodePos.x;
         entity.transformComponent.y=nodePos.y;
 
-        entity.unitComponent.attackEntity=attackEntity;
+        entity.unitComponent.monsterID=attackEntity.baseComponent.entityID;
 
         entity.shapeComponent.width=bulletNode.width;
         entity.shapeComponent.height=bulletNode.height;

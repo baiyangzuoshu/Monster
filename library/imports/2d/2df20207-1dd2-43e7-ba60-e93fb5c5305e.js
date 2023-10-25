@@ -36,7 +36,7 @@ var CollectHitSystem = /** @class */ (function (_super) {
         }
     };
     CollectHitSystem.prototype.onUpdate = function (atk, hitPos, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
-        var rect = new cc.Rect(bulletTransformComponent.x - bulletShapeComponent.width / 2, bulletTransformComponent.y - bulletShapeComponent.height / 2, bulletShapeComponent.width, bulletShapeComponent.height);
+        var rect = new cc.Rect(bulletTransformComponent.x - 0, bulletTransformComponent.y - bulletShapeComponent.height / 2, bulletShapeComponent.width, bulletShapeComponent.height);
         if (rect.contains(hitPos)) {
             AttackSystem_1.default.getInstance().attackStartAction(atk, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
             return true;

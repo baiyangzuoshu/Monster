@@ -8,7 +8,7 @@ var Enum_1 = require("../../Enum");
 var UnitComponent = /** @class */ (function () {
     function UnitComponent() {
         this.angle = 0;
-        this.attackEntity = null;
+        this.monsterID = 0;
         this.isDead = false;
         this.fireTime = 0;
         this.state = Enum_1.UnitState.None;

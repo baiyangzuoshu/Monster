@@ -62,6 +62,16 @@ export default class ECSManager extends cc.Component {
         return entity
     }
 
+    public getMonsterById(entityID:number):MonsterEntity{
+        for(let i=0;i<this.monsters.length;i++){
+            if(entityID==this.monsters[i].baseComponent.entityID){
+                return this.monsters[i];
+            }
+        }
+
+        return null;
+    }
+
     navSystemMonster(dt:number){
         for(let i=0;i<this.monsters.length;i++){
             NavSystem.getInstance().onUpdate(dt,this.monsters[i].navComponent,this.monsters[i].baseComponent,this.monsters[i].transformComponent);
@@ -88,7 +98,9 @@ export default class ECSManager extends cc.Component {
 
     AISystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            AISystem.getInstance().onBulletUpdate(dt,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent,this.bullets[i].roleComponent,this.bullets[i].animateComponent);
+            let monsterID=this.bullets[i].unitComponent.monsterID;
+            let monsterEntity=this.getMonsterById(monsterID);
+            AISystem.getInstance().onBulletUpdate(dt,monsterEntity,this.bullets[i].unitComponent,this.bullets[i].baseComponent,this.bullets[i].transformComponent,this.bullets[i].roleComponent,this.bullets[i].animateComponent);
         }
     }
 
@@ -98,7 +110,8 @@ export default class ECSManager extends cc.Component {
             let bulletTransformComponent=bullet.transformComponent;
             let bulletUnitComponent=bullet.unitComponent;
             let bulletShapeComponent=bullet.shapeComponent;
-            let monsterEntity=bulletUnitComponent.attackEntity;
+            let monsterID=bullet.unitComponent.monsterID;
+            let monsterEntity=this.getMonsterById(monsterID);
 
             if(bulletUnitComponent.isDead)continue;
             if(null==monsterEntity)continue;
@@ -119,7 +132,7 @@ export default class ECSManager extends cc.Component {
     cleanDeadMonster(){
         for(let i=0;i<this.monsters.length;i++){
             if(this.monsters[i].unitComponent.isDead){
-                //this.monsters[i].baseComponent.gameObject.destroy();
+                this.monsters[i].baseComponent.gameObject.destroy();
                 this.monsters.splice(i,1);
                 i--;
             }

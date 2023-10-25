@@ -25,7 +25,7 @@ export default class CollectHitSystem extends cc.Component {
     onUpdate (atk:number,hitPos:cc.Vec2,bulletShapeComponent:ShapeComponent,bulletTransformComponent:TransformComponent,bulletUnitComponent:UnitComponent,
         monsterUnitComponent:UnitComponent,monsterBaseComponent:BaseComponent,monsterAttackComponent:AttackComponent) {
 
-        let rect=new cc.Rect(bulletTransformComponent.x-bulletShapeComponent.width/2,bulletTransformComponent.y-bulletShapeComponent.height/2,bulletShapeComponent.width,bulletShapeComponent.height);
+        let rect=new cc.Rect(bulletTransformComponent.x-0,bulletTransformComponent.y-bulletShapeComponent.height/2,bulletShapeComponent.width,bulletShapeComponent.height);
         if(rect.contains(hitPos)){
             AttackSystem.getInstance().attackStartAction(atk,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
             return true;

@@ -18,6 +18,7 @@ import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import UnitComponent from "../Components/UnitComponent";
 import ECSManager from "../ECSManager";
+import MonsterEntity from "../Entities/MonsterEntity";
 
 const {ccclass, property} = cc._decorator;
 
@@ -62,7 +63,7 @@ export default class AttackSystem extends cc.Component {
             monsterUnitComponent.isDead = true;
             monsterBaseComponent.gameObject.opacity = 0;
 
-            bulletUnitComponent.attackEntity = null;
+            bulletUnitComponent.monsterID = 0;
 
             var pos = monsterBaseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
@@ -105,17 +106,17 @@ export default class AttackSystem extends cc.Component {
         if(cannonUnitComponent.state != UnitState.Active||cannonUnitComponent.isDead){
             return
         }
-        
-        if( cannonUnitComponent.attackEntity == null){
-            cannonUnitComponent.attackEntity = ECSManager.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
+        let attackEntity:MonsterEntity=null;
+        if( cannonUnitComponent.monsterID == 0){
+            attackEntity = ECSManager.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
         }
 
-        if( cannonUnitComponent.attackEntity != null){
+        if( attackEntity != null){
             if( cannonUnitComponent.isDead ){
-                cannonUnitComponent.attackEntity=null;
+                cannonUnitComponent.monsterID=0;
                 return;
             }
-            var end = cannonUnitComponent.attackEntity.baseComponent.gameObject.getPosition();
+            var end = attackEntity.baseComponent.gameObject.getPosition();
             let src=cc.v3(end.x,end.y,0)
             let dst=cc.v3(cannonBaseComponent.gameObject.x,cannonBaseComponent.gameObject.y,0)
             let dir=cc.v3()
@@ -125,7 +126,7 @@ export default class AttackSystem extends cc.Component {
             var curDis = 230;
             Math.abs(dis);
             if(dis > curDis ){
-                cannonUnitComponent.attackEntity=null;
+                cannonUnitComponent.monsterID=0;
                 return;
             }
             var start = cannonBaseComponent.gameObject.getPosition();
@@ -158,12 +159,12 @@ export default class AttackSystem extends cc.Component {
                     cannonUnitComponent.fireTime = 1.0;
                     
                     let worldPos=cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0,0,0));
-                    await ECSManager.getInstance().createBulletEntity(cannonRoleComponent.level,worldPos,cannonUnitComponent.attackEntity,cannonUnitComponent.angle);
+                    await ECSManager.getInstance().createBulletEntity(cannonRoleComponent.level,worldPos,attackEntity,cannonUnitComponent.angle);
 
                     cannonBaseComponent.gameObject.getChildByName("gun").angle=angle;
                     cannonUnitComponent.angle=angle;
                     
-                    cannonUnitComponent.attackEntity = null;
+                    cannonUnitComponent.monsterID = 0;
                 }
             }
         }

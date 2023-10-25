@@ -1284,16 +1284,6 @@
     "meta": 1698126710179,
     "relativePath": "model\\primitives.fbx"
   },
-  "598f6593-2b7a-47ec-beeb-29f01b71e860": {
-    "asset": 1698139209213,
-    "meta": 1698139257584,
-    "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
-  },
-  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
-    "asset": 1698139545530,
-    "meta": 1698139765116,
-    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
-  },
   "19b048ab-831f-4277-b5ea-42a711c2217b": {
     "asset": 1698139587506,
     "meta": 1698139765246,
@@ -1324,29 +1314,39 @@
     "meta": 1698139765418,
     "relativePath": "Scripts\\UI\\TaskItemControl.ts"
   },
-  "7057f01d-e35f-43c6-9072-9125e1d615de": {
-    "asset": 1698140760706,
-    "meta": 1698140868449,
-    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
-  },
   "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
     "asset": 1698140755604,
     "meta": 1698140868465,
     "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
   },
   "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
-    "asset": 1698143768597,
-    "meta": 1698143811544,
+    "asset": 1698150628041,
+    "meta": 1698150631395,
     "relativePath": "Scripts\\ECS\\Systems\\CollectHitSystem.ts"
   },
-  "56d02f6a-5933-4621-a4e1-951d4bb96210": {
-    "asset": 1698149741263,
-    "meta": 1698149840156,
-    "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
+  "598f6593-2b7a-47ec-beeb-29f01b71e860": {
+    "asset": 1698213804269,
+    "meta": 1698214095416,
+    "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
+  },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1698214053045,
+    "meta": 1698214095473,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "7057f01d-e35f-43c6-9072-9125e1d615de": {
+    "asset": 1698213930580,
+    "meta": 1698214095543,
+    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
   },
   "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1698150198294,
-    "meta": 1698150391336,
+    "asset": 1698214120283,
+    "meta": 1698214130149,
     "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "56d02f6a-5933-4621-a4e1-951d4bb96210": {
+    "asset": 1698214354308,
+    "meta": 1698214358717,
+    "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
   }
 }

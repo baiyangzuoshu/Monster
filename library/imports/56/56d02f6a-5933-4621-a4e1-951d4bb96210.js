@@ -114,7 +114,7 @@ var AttackSystem = /** @class */ (function (_super) {
             m_HpBar.progress = 0;
             monsterUnitComponent.isDead = true;
             monsterBaseComponent.gameObject.opacity = 0;
-            bulletUnitComponent.attackEntity = null;
+            bulletUnitComponent.monsterID = 0;
             var pos = monsterBaseComponent.gameObject.getPosition();
             //g_effectBuild.createDeadEffect(pos);
             var cale_gold = monsterAttackComponent.gold;
@@ -151,22 +151,23 @@ var AttackSystem = /** @class */ (function (_super) {
     };
     AttackSystem.prototype.onUpdate = function (dt, cannonUnitComponent, cannonBaseComponent, cannonRoleComponent, cannonAttackComponent) {
         return __awaiter(this, void 0, void 0, function () {
-            var end, src, dst, dir, dis, curDis, start, angle, moveAngle, worldPos;
+            var attackEntity, end, src, dst, dir, dis, curDis, start, angle, moveAngle, worldPos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (cannonUnitComponent.state != Enum_1.UnitState.Active || cannonUnitComponent.isDead) {
                             return [2 /*return*/];
                         }
-                        if (cannonUnitComponent.attackEntity == null) {
-                            cannonUnitComponent.attackEntity = ECSManager_1.default.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
+                        attackEntity = null;
+                        if (cannonUnitComponent.monsterID == 0) {
+                            attackEntity = ECSManager_1.default.getInstance().calcNearDistance(cannonBaseComponent.gameObject);
                         }
-                        if (!(cannonUnitComponent.attackEntity != null)) return [3 /*break*/, 3];
+                        if (!(attackEntity != null)) return [3 /*break*/, 3];
                         if (cannonUnitComponent.isDead) {
-                            cannonUnitComponent.attackEntity = null;
+                            cannonUnitComponent.monsterID = 0;
                             return [2 /*return*/];
                         }
-                        end = cannonUnitComponent.attackEntity.baseComponent.gameObject.getPosition();
+                        end = attackEntity.baseComponent.gameObject.getPosition();
                         src = cc.v3(end.x, end.y, 0);
                         dst = cc.v3(cannonBaseComponent.gameObject.x, cannonBaseComponent.gameObject.y, 0);
                         dir = cc.v3();
@@ -175,7 +176,7 @@ var AttackSystem = /** @class */ (function (_super) {
                         curDis = 230;
                         Math.abs(dis);
                         if (dis > curDis) {
-                            cannonUnitComponent.attackEntity = null;
+                            cannonUnitComponent.monsterID = 0;
                             return [2 /*return*/];
                         }
                         start = cannonBaseComponent.gameObject.getPosition();
@@ -202,12 +203,12 @@ var AttackSystem = /** @class */ (function (_super) {
                         if (!(Math.abs(cannonUnitComponent.angle - angle) < Math.abs(moveAngle))) return [3 /*break*/, 3];
                         cannonUnitComponent.fireTime = 1.0;
                         worldPos = cannonBaseComponent.gameObject.getChildByName("gun").convertToWorldSpaceAR(cc.v3(0, 0, 0));
-                        return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(cannonRoleComponent.level, worldPos, cannonUnitComponent.attackEntity, cannonUnitComponent.angle)];
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createBulletEntity(cannonRoleComponent.level, worldPos, attackEntity, cannonUnitComponent.angle)];
                     case 2:
                         _a.sent();
                         cannonBaseComponent.gameObject.getChildByName("gun").angle = angle;
                         cannonUnitComponent.angle = angle;
-                        cannonUnitComponent.attackEntity = null;
+                        cannonUnitComponent.monsterID = 0;
                         _a.label = 3;
                     case 3: return [2 /*return*/];
                 }
