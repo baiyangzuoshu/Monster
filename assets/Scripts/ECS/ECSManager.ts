@@ -10,6 +10,7 @@ import PlayerDataManager from "../Manager/PlayerDataManager";
 import ECSFactory from "./ECSFactory";
 import BulletEntity from "./Entities/BulletEntity";
 import CannonEntity from "./Entities/CannonEntity";
+import EffectEntity from "./Entities/EffectEntity";
 import MonsterEntity from "./Entities/MonsterEntity";
 import AISystem from "./Systems/AISystem";
 import AnimateSystem from "./Systems/AnimateSystem";
@@ -40,6 +41,7 @@ export default class ECSManager extends cc.Component {
     private monsters:Array<MonsterEntity>=[];
     private cannones:Array<CannonEntity>=[];
     private bullets:Array<BulletEntity>=[];
+    private effect:Array<EffectEntity>=[];
 
     async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
@@ -58,6 +60,13 @@ export default class ECSManager extends cc.Component {
     public async createBulletEntity(level:number,worldPos:cc.Vec3,attackEntity:MonsterEntity,angle:number){
         let entity=await ECSFactory.getInstance().createBulletEntity(level,worldPos,attackEntity,angle);
         this.bullets.push(entity);
+
+        return entity
+    }
+
+    public async createEffectEntity(worldPos:cc.Vec3){
+        let entity=await ECSFactory.getInstance().createEffectEntity(worldPos);
+        this.effect.push(entity);
 
         return entity
     }
@@ -87,6 +96,12 @@ export default class ECSManager extends cc.Component {
     animateSystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
             AnimateSystem.getInstance().onBulletUpdate(dt,this.bullets[i].baseComponent,this.bullets[i].animateComponent);
+        }
+    }
+
+    animateSystemEffect(dt:number){
+        for(let i=0;i<this.effect.length;i++){
+            AnimateSystem.getInstance().onEffectUpdate(dt,this.effect[i].baseComponent,this.effect[i].animateComponent,this.effect[i].unitComponent);
         }
     }
 
@@ -149,6 +164,16 @@ export default class ECSManager extends cc.Component {
         }
     }
 
+    cleanDeadEffect(){
+        for(let i=0;i<this.effect.length;i++){
+            if(this.effect[i].unitComponent.isDead){
+                this.effect[i].baseComponent.gameObject.destroy();
+                this.effect.splice(i,1);
+                i--;
+            }
+        }
+    }
+
     calcNearDistance(cannon):MonsterEntity{
         var minDis = 9999;
         var minMonster:MonsterEntity = null;
@@ -187,9 +212,13 @@ export default class ECSManager extends cc.Component {
         this.AISystemBullet(dt);
         //碰撞检测
         this.collectHitSystemBullet(dt);
+        //特效动画
+        this.animateSystemEffect(dt);
         //清理死亡怪物
         this.cleanDeadMonster();
         //清理死亡子弹
         this.cleanDeadBullet();
+        //清理死亡特效
+        this.cleanDeadEffect();
     }
 }

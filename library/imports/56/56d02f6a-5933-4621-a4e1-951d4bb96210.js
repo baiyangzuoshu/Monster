@@ -94,60 +94,71 @@ var AttackSystem = /** @class */ (function (_super) {
         }
     };
     AttackSystem.prototype.attackStartAction = function (hp, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
-        if (monsterUnitComponent.isDead) {
-            return;
-        }
-        var rand = util_1.util.randomNum(0, 1000);
-        var isDouble = false;
-        if (rand <= 500) {
-            var lv = PlayerDataManager_1.default.getInstance().getInternsifLevel(Enum_1.Intensify.INTENSIFY_BAOJI);
-            var double = IntensifyDataManager_1.default.getInstance().getValue(Enum_1.Intensify.INTENSIFY_BAOJI, lv);
-            hp = hp * 2 + hp * (double / 100);
-            hp = hp + hp * (double / 100);
-            hp = Math.floor(hp);
-            isDouble = true;
-        }
-        monsterAttackComponent.hp -= hp;
-        if (monsterAttackComponent.hp <= 0) {
-            monsterBaseComponent.gameObject.stopAllActions();
-            var m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = 0;
-            monsterUnitComponent.isDead = true;
-            monsterBaseComponent.gameObject.opacity = 0;
-            bulletUnitComponent.monsterID = 0;
-            var pos = monsterBaseComponent.gameObject.getPosition();
-            //g_effectBuild.createDeadEffect(pos);
-            var cale_gold = monsterAttackComponent.gold;
-            if (cale_gold > 0) {
-                var flyEnd = function (gold) {
-                    PlayerDataManager_1.default.getInstance().addGold(gold);
-                    EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
-                };
-                //g_coinFly.createCoinToTip(this.node,flyEnd.bind(this),cale_gold);
-            }
-            DataManager_1.default.getInstance().subCurMonsterCount();
-            //杀死最后一个怪物
-            if (DataManager_1.default.getInstance().getCurMonsterCount() <= 0) {
-                //显示结算框
-                EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.showSucceed);
-                // //2面以后关闭结算框,进行下一局
-                this.scheduleOnce(function () {
-                    UIManagerPro_1.UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
-                }, 2);
-            }
-            PlayerDataManager_1.default.getInstance().addTaskCount(Enum_1.Task.TASK_JIDAO_DIREN);
-        }
-        else {
-            var m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
-            m_HpBar.progress = monsterAttackComponent.hp / monsterAttackComponent.maxHp;
-        }
-        var str = "";
-        if (isDouble) {
-            str = '暴击' + hp;
-        }
-        //g_hpEffect.createHpEffect(this.node.getPosition(),str);
-        var worldPos = monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0, 0, 0));
-        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.createHpEffect, { worldPos: worldPos, str: str });
+        return __awaiter(this, void 0, void 0, function () {
+            var rand, isDouble, lv, double, m_HpBar, pos, cale_gold, flyEnd, m_HpBar, str, worldPos;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (monsterUnitComponent.isDead) {
+                            return [2 /*return*/];
+                        }
+                        rand = util_1.util.randomNum(0, 1000);
+                        isDouble = false;
+                        if (rand <= 500) {
+                            lv = PlayerDataManager_1.default.getInstance().getInternsifLevel(Enum_1.Intensify.INTENSIFY_BAOJI);
+                            double = IntensifyDataManager_1.default.getInstance().getValue(Enum_1.Intensify.INTENSIFY_BAOJI, lv);
+                            hp = hp * 2 + hp * (double / 100);
+                            hp = hp + hp * (double / 100);
+                            hp = Math.floor(hp);
+                            isDouble = true;
+                        }
+                        monsterAttackComponent.hp -= hp;
+                        if (!(monsterAttackComponent.hp <= 0)) return [3 /*break*/, 2];
+                        monsterBaseComponent.gameObject.stopAllActions();
+                        m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+                        m_HpBar.progress = 0;
+                        monsterUnitComponent.isDead = true;
+                        monsterBaseComponent.gameObject.opacity = 0;
+                        bulletUnitComponent.monsterID = 0;
+                        pos = monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0, 0, 0));
+                        return [4 /*yield*/, ECSManager_1.default.getInstance().createEffectEntity(pos)];
+                    case 1:
+                        _a.sent();
+                        cale_gold = monsterAttackComponent.gold;
+                        if (cale_gold > 0) {
+                            flyEnd = function (gold) {
+                                PlayerDataManager_1.default.getInstance().addGold(gold);
+                                EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.updateGameUI);
+                            };
+                            //g_coinFly.createCoinToTip(this.node,flyEnd.bind(this),cale_gold);
+                        }
+                        DataManager_1.default.getInstance().subCurMonsterCount();
+                        //杀死最后一个怪物
+                        if (DataManager_1.default.getInstance().getCurMonsterCount() <= 0) {
+                            //显示结算框
+                            EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.showSucceed);
+                            // //2面以后关闭结算框,进行下一局
+                            this.scheduleOnce(function () {
+                                UIManagerPro_1.UIManagerPro.getInstance().closePrefab("SmallSettlementUI");
+                            }, 2);
+                        }
+                        PlayerDataManager_1.default.getInstance().addTaskCount(Enum_1.Task.TASK_JIDAO_DIREN);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        m_HpBar = monsterBaseComponent.gameObject.getChildByName("item").getChildByName("hp").getChildByName("bar").getComponent(cc.ProgressBar);
+                        m_HpBar.progress = monsterAttackComponent.hp / monsterAttackComponent.maxHp;
+                        _a.label = 3;
+                    case 3:
+                        str = "";
+                        if (isDouble) {
+                            str = '暴击' + hp;
+                        }
+                        worldPos = monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0, 0, 0));
+                        EventManager_1.EventManager.getInstance().emit(EventName_1.GameUI.createHpEffect, { worldPos: worldPos, str: str });
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     AttackSystem.prototype.onUpdate = function (dt, cannonUnitComponent, cannonBaseComponent, cannonRoleComponent, cannonAttackComponent) {
         return __awaiter(this, void 0, void 0, function () {

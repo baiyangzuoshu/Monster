@@ -40,7 +40,7 @@ export default class AttackSystem extends cc.Component {
         }
     }
 
-    public attackStartAction(hp:number,bulletUnitComponent:UnitComponent,monsterUnitComponent:UnitComponent,monsterBaseComponent:BaseComponent,monsterAttackComponent:AttackComponent){
+    public async attackStartAction(hp:number,bulletUnitComponent:UnitComponent,monsterUnitComponent:UnitComponent,monsterBaseComponent:BaseComponent,monsterAttackComponent:AttackComponent){
         if(monsterUnitComponent.isDead ){
             return;
         }
@@ -65,8 +65,9 @@ export default class AttackSystem extends cc.Component {
 
             bulletUnitComponent.monsterID = 0;
 
-            var pos = monsterBaseComponent.gameObject.getPosition();
-            //g_effectBuild.createDeadEffect(pos);
+            var pos = monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0,0,0));
+            await ECSManager.getInstance().createEffectEntity(pos);
+            
             var cale_gold = monsterAttackComponent.gold;
             
             if( cale_gold > 0){

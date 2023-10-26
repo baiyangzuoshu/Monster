@@ -81,6 +81,7 @@ var ECSManager = /** @class */ (function (_super) {
         _this.monsters = [];
         _this.cannones = [];
         _this.bullets = [];
+        _this.effect = [];
         return _this;
     }
     ECSManager_1 = ECSManager;
@@ -138,6 +139,20 @@ var ECSManager = /** @class */ (function (_super) {
             });
         });
     };
+    ECSManager.prototype.createEffectEntity = function (worldPos) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, ECSFactory_1.default.getInstance().createEffectEntity(worldPos)];
+                    case 1:
+                        entity = _a.sent();
+                        this.effect.push(entity);
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
+    };
     ECSManager.prototype.getMonsterById = function (entityID) {
         for (var i = 0; i < this.monsters.length; i++) {
             if (entityID == this.monsters[i].baseComponent.entityID) {
@@ -159,6 +174,11 @@ var ECSManager = /** @class */ (function (_super) {
     ECSManager.prototype.animateSystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
             AnimateSystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].baseComponent, this.bullets[i].animateComponent);
+        }
+    };
+    ECSManager.prototype.animateSystemEffect = function (dt) {
+        for (var i = 0; i < this.effect.length; i++) {
+            AnimateSystem_1.default.getInstance().onEffectUpdate(dt, this.effect[i].baseComponent, this.effect[i].animateComponent, this.effect[i].unitComponent);
         }
     };
     ECSManager.prototype.attackSystemUpdate = function (dt) {
@@ -231,6 +251,15 @@ var ECSManager = /** @class */ (function (_super) {
             }
         }
     };
+    ECSManager.prototype.cleanDeadEffect = function () {
+        for (var i = 0; i < this.effect.length; i++) {
+            if (this.effect[i].unitComponent.isDead) {
+                this.effect[i].baseComponent.gameObject.destroy();
+                this.effect.splice(i, 1);
+                i--;
+            }
+        }
+    };
     ECSManager.prototype.calcNearDistance = function (cannon) {
         var minDis = 9999;
         var minMonster = null;
@@ -273,10 +302,14 @@ var ECSManager = /** @class */ (function (_super) {
                         this.AISystemBullet(dt);
                         //碰撞检测
                         this.collectHitSystemBullet(dt);
+                        //特效动画
+                        this.animateSystemEffect(dt);
                         //清理死亡怪物
                         this.cleanDeadMonster();
                         //清理死亡子弹
                         this.cleanDeadBullet();
+                        //清理死亡特效
+                        this.cleanDeadEffect();
                         return [2 /*return*/];
                 }
             });

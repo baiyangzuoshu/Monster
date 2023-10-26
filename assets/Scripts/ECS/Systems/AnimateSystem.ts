@@ -5,10 +5,11 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
-import { BulletState } from "../../Enum";
+import { BulletState, UnitState } from "../../Enum";
 import AnimateComponent from "../Components/AnimateComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
+import UnitComponent from "../Components/UnitComponent";
 
 const {ccclass, property} = cc._decorator;
 
@@ -79,5 +80,22 @@ export default class AnimateSystem extends cc.Component {
         effectAnimate.play('fire');
     }
 
-    
+    onEffectUpdate(dt:number,baseComponent:BaseComponent,animateComponent:AnimateComponent,unitComponent:UnitComponent){
+        if(unitComponent.isDead){
+            return;
+        }
+
+        animateComponent.playActionTime-=dt;
+
+        if(animateComponent.playActionTime<0){
+            unitComponent.isDead=true;
+            return;
+        }
+
+        if(unitComponent.state==UnitState.None){
+            var anim = baseComponent.gameObject.getComponent(cc.Animation);
+            anim.play('deadEffect');
+            unitComponent.state=UnitState.Active;
+        }
+    }
 }

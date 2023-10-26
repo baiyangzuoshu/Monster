@@ -89,6 +89,21 @@ var AnimateSystem = /** @class */ (function (_super) {
         bullet.active = false;
         effectAnimate.play('fire');
     };
+    AnimateSystem.prototype.onEffectUpdate = function (dt, baseComponent, animateComponent, unitComponent) {
+        if (unitComponent.isDead) {
+            return;
+        }
+        animateComponent.playActionTime -= dt;
+        if (animateComponent.playActionTime < 0) {
+            unitComponent.isDead = true;
+            return;
+        }
+        if (unitComponent.state == Enum_1.UnitState.None) {
+            var anim = baseComponent.gameObject.getComponent(cc.Animation);
+            anim.play('deadEffect');
+            unitComponent.state = Enum_1.UnitState.Active;
+        }
+    };
     var AnimateSystem_1;
     AnimateSystem._instance = null;
     AnimateSystem = AnimateSystem_1 = __decorate([

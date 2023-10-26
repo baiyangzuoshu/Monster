@@ -13,6 +13,7 @@ import BulletEntity from "./Entities/BulletEntity";
 import CannonEntity from "./Entities/CannonEntity";
 import MonsterEntity from "./Entities/MonsterEntity";
 import { BulletState, UnitState } from "../Enum";
+import EffectEntity from "./Entities/EffectEntity";
 
 const {ccclass, property} = cc._decorator;
 
@@ -37,11 +38,13 @@ export default class ECSFactory extends cc.Component {
         this.monsterNode=canvas.getChildByName("Game").getChildByName("monsterNode");
         this.moveCannon=canvas.getChildByName("Game").getChildByName("moveCannon");
         this.bulletBuild=canvas.getChildByName("Game").getChildByName("bulletBuild");
+        this.effectBuild=canvas.getChildByName("Game").getChildByName("effectBuild");
     }
 
     private monsterNode:cc.Node=null;
     private moveCannon:cc.Node=null;
     private bulletBuild:cc.Node=null;
+    private effectBuild:cc.Node=null;
     private static entityID:number=0;
 
     public async createMonsterEntity(type:number,index:number,list,hp,gold,speed){
@@ -178,6 +181,26 @@ export default class ECSFactory extends cc.Component {
 
         entity.animateComponent.state=BulletState.Effect;
         entity.animateComponent.playActionTime=0.25;
+
+        return entity;
+    }
+
+    public async createEffectEntity(worldPos:cc.Vec3){
+        let entity=new EffectEntity();
+
+        let effectPrefab=await ResManagerPro.Instance.IE_GetAsset("prefabs","deadEffect",cc.Prefab) as cc.Prefab;
+        let effectNode=cc.instantiate(effectPrefab);
+        this.effectBuild.addChild(effectNode);
+        let nodePos=this.effectBuild.convertToNodeSpaceAR(worldPos);
+        effectNode.setPosition(nodePos);
+
+        entity.baseComponent.entityID=ECSFactory.entityID++;
+        entity.baseComponent.gameObject=effectNode;
+
+        entity.transformComponent.x=nodePos.x;
+        entity.transformComponent.y=nodePos.y;
+
+        entity.animateComponent.playActionTime=1.5;
 
         return entity;
     }

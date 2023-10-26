@@ -63,7 +63,7 @@
               },
               {
                 "width": 1290,
-                "height": 267.859375,
+                "height": 267.84375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -86,7 +86,8 @@
         "timeline",
         "game-window"
       ]
-    }
+    },
+    " common-asset-worker-worker": {}
   },
   "panels": {
     "project-settings": {

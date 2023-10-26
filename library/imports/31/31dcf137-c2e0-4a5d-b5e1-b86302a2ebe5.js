@@ -73,6 +73,7 @@ var BulletEntity_1 = require("./Entities/BulletEntity");
 var CannonEntity_1 = require("./Entities/CannonEntity");
 var MonsterEntity_1 = require("./Entities/MonsterEntity");
 var Enum_1 = require("../Enum");
+var EffectEntity_1 = require("./Entities/EffectEntity");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ECSFactory = /** @class */ (function (_super) {
     __extends(ECSFactory, _super);
@@ -81,6 +82,7 @@ var ECSFactory = /** @class */ (function (_super) {
         _this.monsterNode = null;
         _this.moveCannon = null;
         _this.bulletBuild = null;
+        _this.effectBuild = null;
         return _this;
     }
     ECSFactory_1 = ECSFactory;
@@ -99,6 +101,7 @@ var ECSFactory = /** @class */ (function (_super) {
         this.monsterNode = canvas.getChildByName("Game").getChildByName("monsterNode");
         this.moveCannon = canvas.getChildByName("Game").getChildByName("moveCannon");
         this.bulletBuild = canvas.getChildByName("Game").getChildByName("bulletBuild");
+        this.effectBuild = canvas.getChildByName("Game").getChildByName("effectBuild");
     };
     ECSFactory.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
         return __awaiter(this, void 0, void 0, function () {
@@ -233,6 +236,30 @@ var ECSFactory = /** @class */ (function (_super) {
                         entity.attackComponent.atk = lvData.atk;
                         entity.animateComponent.state = Enum_1.BulletState.Effect;
                         entity.animateComponent.playActionTime = 0.25;
+                        return [2 /*return*/, entity];
+                }
+            });
+        });
+    };
+    ECSFactory.prototype.createEffectEntity = function (worldPos) {
+        return __awaiter(this, void 0, void 0, function () {
+            var entity, effectPrefab, effectNode, nodePos;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        entity = new EffectEntity_1.default();
+                        return [4 /*yield*/, ResManagerPro_1.ResManagerPro.Instance.IE_GetAsset("prefabs", "deadEffect", cc.Prefab)];
+                    case 1:
+                        effectPrefab = _a.sent();
+                        effectNode = cc.instantiate(effectPrefab);
+                        this.effectBuild.addChild(effectNode);
+                        nodePos = this.effectBuild.convertToNodeSpaceAR(worldPos);
+                        effectNode.setPosition(nodePos);
+                        entity.baseComponent.entityID = ECSFactory_1.entityID++;
+                        entity.baseComponent.gameObject = effectNode;
+                        entity.transformComponent.x = nodePos.x;
+                        entity.transformComponent.y = nodePos.y;
+                        entity.animateComponent.playActionTime = 1.5;
                         return [2 /*return*/, entity];
                 }
             });
