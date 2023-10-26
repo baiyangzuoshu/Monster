@@ -43,7 +43,7 @@ export default class ECSManager extends cc.Component {
     private bullets:Array<BulletEntity>=[];
     private effect:Array<EffectEntity>=[];
 
-    async createMonsterEntity(type,index,list,hp,gold,speed){
+    public async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
         this.monsters.push(entity);
 
@@ -129,7 +129,10 @@ export default class ECSManager extends cc.Component {
             let monsterEntity=this.getMonsterById(monsterID);
 
             if(bulletUnitComponent.isDead)continue;
-            if(null==monsterEntity)continue;
+            if(null==monsterEntity){
+                bulletUnitComponent.isDead=true;
+                continue;
+            }
 
             let monsterUnitComponent=monsterEntity.unitComponent;
             let monsterBaseComponent=monsterEntity.baseComponent;

@@ -98,7 +98,6 @@ export default class AttackSystem extends cc.Component {
         if( isDouble ){
             str = '暴击'+hp;
         }
-        //g_hpEffect.createHpEffect(this.node.getPosition(),str);
         let worldPos=monsterBaseComponent.gameObject.convertToWorldSpaceAR(cc.v3(0,0,0));
         EventManager.getInstance().emit(GameUI.createHpEffect,{worldPos:worldPos,str:str});
     }

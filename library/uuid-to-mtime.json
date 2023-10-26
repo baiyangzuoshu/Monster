@@ -584,16 +584,6 @@
     "meta": 1697888781091,
     "relativePath": "Scripts\\data"
   },
-  "3d9d354d-9cd9-4097-94af-14e8c4c36b28": {
-    "asset": 1573126650013,
-    "meta": 1697534353584,
-    "relativePath": "Scripts\\data\\intensifyData.js"
-  },
-  "70c03f8a-28e2-4acc-8af0-9a4f1ccc8227": {
-    "asset": 1572757842834,
-    "meta": 1697534353604,
-    "relativePath": "Scripts\\data\\taskData.js"
-  },
   "99512388-6480-4345-9d93-a488194ecc5c": {
     "asset": 1697535869437,
     "meta": 1697536080879,
@@ -753,11 +743,6 @@
     "asset": 1698056614440,
     "meta": 1698056698553,
     "relativePath": "Scripts\\ECS\\Entities\\CannonEntity.ts"
-  },
-  "19de668a-9a04-4938-b1af-c383ecb471a8": {
-    "asset": 1698056637383,
-    "meta": 1698056698631,
-    "relativePath": "Scripts\\ECS\\Entities\\CannonEntitiy.ts"
   },
   "2c4f32f4-0432-4718-9386-f19650f43428": {
     "asset": 1698063886652,
@@ -1334,16 +1319,6 @@
     "meta": 1698278916359,
     "relativePath": "Scripts\\ECS\\Entities\\EffectEntity.ts"
   },
-  "56d02f6a-5933-4621-a4e1-951d4bb96210": {
-    "asset": 1698279239877,
-    "meta": 1698279287280,
-    "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
-  },
-  "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1698279313327,
-    "meta": 1698279329020,
-    "relativePath": "Scripts\\ECS\\ECSManager.ts"
-  },
   "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
     "asset": 1698279326547,
     "meta": 1698279329029,
@@ -1358,5 +1333,15 @@
     "asset": 1698279586352,
     "meta": 1698279588537,
     "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
+  },
+  "56d02f6a-5933-4621-a4e1-951d4bb96210": {
+    "asset": 1698288873780,
+    "meta": 1698288899915,
+    "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
+  },
+  "8c250f92-185a-467f-9793-3d4628370175": {
+    "asset": 1698291859028,
+    "meta": 1698291861573,
+    "relativePath": "Scripts\\ECS\\ECSManager.ts"
   }
 }

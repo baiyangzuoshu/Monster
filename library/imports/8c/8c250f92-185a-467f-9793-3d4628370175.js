@@ -220,8 +220,10 @@ var ECSManager = /** @class */ (function (_super) {
             var monsterEntity = this.getMonsterById(monsterID);
             if (bulletUnitComponent.isDead)
                 continue;
-            if (null == monsterEntity)
+            if (null == monsterEntity) {
+                bulletUnitComponent.isDead = true;
                 continue;
+            }
             var monsterUnitComponent = monsterEntity.unitComponent;
             var monsterBaseComponent = monsterEntity.baseComponent;
             var monsterAttackComponent = monsterEntity.attackComponent;
