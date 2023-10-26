@@ -42,7 +42,7 @@ export default class ECSManager extends cc.Component {
     private cannones:Array<CannonEntity>=[];
     private bullets:Array<BulletEntity>=[];
     private effect:Array<EffectEntity>=[];
-
+    //创建怪物
     public async createMonsterEntity(type,index,list,hp,gold,speed){
         let entity=await ECSFactory.getInstance().createMonsterEntity(type,index,list,hp,gold,speed);
         this.monsters.push(entity);
@@ -80,7 +80,7 @@ export default class ECSManager extends cc.Component {
 
         return null;
     }
-
+    //导航系统
     navSystemMonster(dt:number){
         for(let i=0;i<this.monsters.length;i++){
             NavSystem.getInstance().onUpdate(dt,this.monsters[i].navComponent,this.monsters[i].baseComponent,this.monsters[i].transformComponent);
@@ -95,7 +95,7 @@ export default class ECSManager extends cc.Component {
 
     animateSystemBullet(dt:number){
         for(let i=0;i<this.bullets.length;i++){
-            AnimateSystem.getInstance().onBulletUpdate(dt,this.bullets[i].baseComponent,this.bullets[i].animateComponent);
+            AnimateSystem.getInstance().onBulletUpdate(dt,this.bullets[i].attackComponent,this.bullets[i].baseComponent,this.bullets[i].animateComponent,this.bullets[i].unitComponent,this.bullets[i].roleComponent);
         }
     }
 
@@ -125,6 +125,7 @@ export default class ECSManager extends cc.Component {
             let bulletTransformComponent=bullet.transformComponent;
             let bulletUnitComponent=bullet.unitComponent;
             let bulletShapeComponent=bullet.shapeComponent;
+            let bulletRoleComponent=bullet.roleComponent;
             let monsterID=bullet.unitComponent.monsterID;
             let monsterEntity=this.getMonsterById(monsterID);
 
@@ -140,13 +141,13 @@ export default class ECSManager extends cc.Component {
             let atk=bullet.attackComponent.atk;
 
             let hitPos=cc.v2(monsterEntity.baseComponent.gameObject.x,monsterEntity.baseComponent.gameObject.y);
-            let isHit=CollectHitSystem.getInstance().onUpdate(atk,hitPos,bulletShapeComponent,bulletTransformComponent,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
+            let isHit=CollectHitSystem.getInstance().onUpdate(atk,hitPos,bulletRoleComponent,bulletShapeComponent,bulletTransformComponent,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
             if(isHit){
                 bulletUnitComponent.isDead=true;
             }
         }
     }
-
+    //清除死亡的怪物
     cleanDeadMonster(){
         for(let i=0;i<this.monsters.length;i++){
             if(this.monsters[i].unitComponent.isDead){
@@ -176,7 +177,7 @@ export default class ECSManager extends cc.Component {
             }
         }
     }
-
+    //计算最近的怪物
     calcNearDistance(cannon):MonsterEntity{
         var minDis = 9999;
         var minMonster:MonsterEntity = null;
@@ -198,7 +199,7 @@ export default class ECSManager extends cc.Component {
         //cc.log(minDis);
         return minMonster;
     }
-
+    //更新
     protected async update(dt: number): Promise<void> {
         if(GameStateType.Playing!=PlayerDataManager.getInstance().gameStateType){
             return;

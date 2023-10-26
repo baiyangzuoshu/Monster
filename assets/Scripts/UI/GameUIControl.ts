@@ -555,7 +555,7 @@ export default class GameUIControl extends UIControl {
             
             this.subMakeNumber();
             
-            let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,0);
+            let cannonEntity=await ECSManager.getInstance().createCannonEntity(index,16);
             this.m_cannonList[index].cannonEntity=cannonEntity;
         }
         else if("map<Button>"==btn.name){

@@ -69,6 +69,14 @@ var AISystem = /** @class */ (function (_super) {
             transformComponent.y = baseComponent.gameObject.y;
         }
         else if (1 == roleComponent.type) {
+            var m_anim_1 = [];
+            var m_widths_1 = [];
+            var m_heights_1 = [];
+            for (var i = 0; i < 3; i++) {
+                m_anim_1[i] = baseComponent.gameObject.getChildByName("bullet").getChildByName(i.toString()).getComponent(cc.Animation);
+                m_widths_1[i] = m_anim_1[i].node.width;
+                m_heights_1[i] = m_anim_1[i].node.height;
+            }
             var target = monsterEntity.baseComponent.gameObject;
             var targetPos = target.getPosition();
             var bulletPos = baseComponent.gameObject.convertToWorldSpaceAR(cc.v2(0, 0));
@@ -81,6 +89,21 @@ var AISystem = /** @class */ (function (_super) {
             cc.Vec3.subtract(dir, cc.v3(targetPos.x, targetPos.y), cc.v3(bulletPos.x, bulletPos.y));
             var dis = dir.len();
             dis = Math.abs(dis);
+            var showEffect = function (index, dis) {
+                for (var i = 0; i < m_anim_1.length; i++) {
+                    m_anim_1[i].node.active = false;
+                }
+                m_anim_1[index].node.active = true;
+                var pro = dis / m_widths_1[index];
+                m_anim_1[index].node.width = m_widths_1[index] * pro;
+                m_anim_1[index].node.height = m_heights_1[index] * pro;
+            };
+            if (dis > 130) {
+                showEffect(1, dis);
+            }
+            else {
+                showEffect(0, dis);
+            }
         }
         else if (3 == roleComponent.type) {
             var move = 500 * dt;

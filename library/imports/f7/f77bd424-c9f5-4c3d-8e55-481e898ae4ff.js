@@ -30,6 +30,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Enum_1 = require("../../Enum");
+var ECSManager_1 = require("../ECSManager");
+var AttackSystem_1 = require("./AttackSystem");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var AnimateSystem = /** @class */ (function (_super) {
     __extends(AnimateSystem, _super);
@@ -69,21 +71,39 @@ var AnimateSystem = /** @class */ (function (_super) {
             baseComponent.gameObject.runAction(seqJump);
         }
     };
-    AnimateSystem.prototype.onBulletUpdate = function (dt, baseComponent, animateComponent) {
-        if (Enum_1.BulletState.Effect != animateComponent.state) {
+    AnimateSystem.prototype.onBulletUpdate = function (dt, bulletAttackComponent, bulletBaseComponent, bulletAnimateComponent, bulletUnitComponent, bulletRoleComponent) {
+        if (Enum_1.BulletState.Effect != bulletAnimateComponent.state) {
             return;
         }
-        animateComponent.playActionTime -= dt;
-        if (animateComponent.playActionTime < 0) {
-            animateComponent.state = Enum_1.BulletState.Attack;
-            var bullet_1 = baseComponent.gameObject.getChildByName('bullet');
-            var effect_1 = baseComponent.gameObject.getChildByName('effect');
+        bulletAnimateComponent.playActionTime -= dt;
+        if (bulletAnimateComponent.playActionTime < 0) {
+            bulletAnimateComponent.state = Enum_1.BulletState.Attack;
+            bulletUnitComponent.state = Enum_1.UnitState.Active;
+            var bullet_1 = bulletBaseComponent.gameObject.getChildByName('bullet');
+            var effect_1 = bulletBaseComponent.gameObject.getChildByName('effect');
             effect_1.active = false;
             bullet_1.active = true;
+            if (1 == bulletRoleComponent.type) { //闪电炮
+                cc.tween(bullet_1)
+                    .delay(0.1)
+                    .call(function () {
+                    bulletUnitComponent.isDead = true;
+                    var monsterEntity = ECSManager_1.default.getInstance().getMonsterById(bulletUnitComponent.monsterID);
+                    if (null == monsterEntity) {
+                        return;
+                    }
+                    var monsterUnitComponent = monsterEntity.unitComponent;
+                    var monsterBaseComponent = monsterEntity.baseComponent;
+                    var monsterAttackComponent = monsterEntity.attackComponent;
+                    var atk = bulletAttackComponent.atk;
+                    AttackSystem_1.default.getInstance().attackStartAction(atk, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
+                })
+                    .start();
+            }
             return;
         }
-        var effect = baseComponent.gameObject.getChildByName('effect');
-        var bullet = baseComponent.gameObject.getChildByName('bullet');
+        var effect = bulletBaseComponent.gameObject.getChildByName('effect');
+        var bullet = bulletBaseComponent.gameObject.getChildByName('bullet');
         var effectAnimate = effect.getComponent(cc.Animation);
         effect.active = true;
         bullet.active = false;

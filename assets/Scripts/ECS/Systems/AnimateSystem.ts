@@ -7,9 +7,12 @@
 
 import { BulletState, UnitState } from "../../Enum";
 import AnimateComponent from "../Components/AnimateComponent";
+import AttackComponent from "../Components/AttackComponent";
 import BaseComponent from "../Components/BaseComponent";
 import RoleComponent from "../Components/RoleComponent";
 import UnitComponent from "../Components/UnitComponent";
+import ECSManager from "../ECSManager";
+import AttackSystem from "./AttackSystem";
 
 const {ccclass, property} = cc._decorator;
 
@@ -56,24 +59,45 @@ export default class AnimateSystem extends cc.Component {
         }
     }
 
-    onBulletUpdate(dt:number,baseComponent:BaseComponent,animateComponent:AnimateComponent){
-        if(BulletState.Effect!=animateComponent.state){
+    onBulletUpdate(dt:number,bulletAttackComponent:AttackComponent,bulletBaseComponent:BaseComponent,bulletAnimateComponent:AnimateComponent,bulletUnitComponent:UnitComponent,bulletRoleComponent:RoleComponent){
+        if(BulletState.Effect!=bulletAnimateComponent.state){
             return;
         }
 
-        animateComponent.playActionTime-=dt;
+        bulletAnimateComponent.playActionTime-=dt;
 
-        if(animateComponent.playActionTime<0){
-            animateComponent.state=BulletState.Attack;
-            let bullet = baseComponent.gameObject.getChildByName('bullet');
-            let effect =baseComponent.gameObject.getChildByName('effect');
+        if(bulletAnimateComponent.playActionTime<0){
+            bulletAnimateComponent.state=BulletState.Attack;
+            bulletUnitComponent.state=UnitState.Active;
+            let bullet = bulletBaseComponent.gameObject.getChildByName('bullet');
+            let effect =bulletBaseComponent.gameObject.getChildByName('effect');
             effect.active = false;
             bullet.active = true;
+            if(1==bulletRoleComponent.type){//闪电炮
+                cc.tween(bullet)
+                .delay(0.1)
+                .call(()=>{
+                    bulletUnitComponent.isDead=true;
+                    let monsterEntity=ECSManager.getInstance().getMonsterById(bulletUnitComponent.monsterID);
+
+                    if(null==monsterEntity){
+                        return;
+                    }
+
+                    let monsterUnitComponent=monsterEntity.unitComponent;
+                    let monsterBaseComponent=monsterEntity.baseComponent;
+                    let monsterAttackComponent=monsterEntity.attackComponent;
+                    let atk=bulletAttackComponent.atk;
+                    AttackSystem.getInstance().attackStartAction(atk,bulletUnitComponent,monsterUnitComponent,monsterBaseComponent,monsterAttackComponent);
+                })
+                .start();
+            }
+            
             return;
         }
         
-        let effect = baseComponent.gameObject.getChildByName('effect');
-        let bullet = baseComponent.gameObject.getChildByName('bullet');
+        let effect = bulletBaseComponent.gameObject.getChildByName('effect');
+        let bullet = bulletBaseComponent.gameObject.getChildByName('bullet');
         let effectAnimate = effect.getComponent(cc.Animation);
         effect.active = true;
         bullet.active = false;

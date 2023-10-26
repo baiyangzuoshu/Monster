@@ -56,6 +56,15 @@ export default class AISystem extends cc.Component {
             transformComponent.y=baseComponent.gameObject.y;
         }
         else if(1==roleComponent.type){
+            let m_anim:Array<cc.Animation>=[]
+            let m_widths:Array<number>=[]
+            let m_heights:Array<number>=[]
+            for(let i=0;i<3;i++){
+                m_anim[i]=baseComponent.gameObject.getChildByName("bullet").getChildByName(i.toString()).getComponent(cc.Animation)
+                m_widths[i] = m_anim[i].node.width;
+                m_heights[i] = m_anim[i].node.height;
+            }
+            
             var target = monsterEntity.baseComponent.gameObject;
             var targetPos = target.getPosition();
     
@@ -71,6 +80,24 @@ export default class AISystem extends cc.Component {
             var dis = dir.len();
     
             dis = Math.abs(dis);
+
+            let  showEffect=function(index,dis) {
+                for (let i = 0; i < m_anim.length; i++) {
+                    m_anim[i].node.active = false;
+                }
+                m_anim[index].node.active = true;
+        
+                var pro = dis/m_widths[index];
+        
+                m_anim[index].node.width = m_widths[index]*pro;
+                m_anim[index].node.height = m_heights[index]*pro;
+            }
+
+            if( dis > 130 ){
+                showEffect(1,dis);
+            }else{
+                showEffect(0,dis);
+            }
         }
         else if(3==roleComponent.type){
             var move = 500*dt;

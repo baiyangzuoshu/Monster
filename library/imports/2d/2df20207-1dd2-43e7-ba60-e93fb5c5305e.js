@@ -35,8 +35,10 @@ var CollectHitSystem = /** @class */ (function (_super) {
             return;
         }
     };
-    CollectHitSystem.prototype.onUpdate = function (atk, hitPos, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
-        var rect = new cc.Rect(bulletTransformComponent.x - 0, bulletTransformComponent.y - bulletShapeComponent.height / 2, bulletShapeComponent.width, bulletShapeComponent.height);
+    CollectHitSystem.prototype.onUpdate = function (atk, hitPos, bulletRoleComponent, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent) {
+        var x = bulletTransformComponent.x - 0;
+        var y = bulletTransformComponent.y - bulletShapeComponent.height / 2;
+        var rect = new cc.Rect(x, y, bulletShapeComponent.width, bulletShapeComponent.height);
         if (rect.contains(hitPos)) {
             AttackSystem_1.default.getInstance().attackStartAction(atk, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
             return true;

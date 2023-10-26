@@ -10,8 +10,8 @@
     "relativePath": "FrameWork"
   },
   "9d80f005-fed2-473e-9876-e160c53b2b88": {
-    "asset": 1697546026511,
-    "meta": 1697888781089,
+    "asset": 1698292209096,
+    "meta": 1698302795708,
     "relativePath": "Scripts"
   },
   "cf6f0b88-c177-4e01-8e27-49481e5624bf": {
@@ -25,13 +25,13 @@
     "relativePath": "FrameWork\\Lib"
   },
   "a0e25f88-12f1-4085-a63a-b3d7682b87cf": {
-    "asset": 1697890815369,
-    "meta": 1697892748781,
+    "asset": 1698064260527,
+    "meta": 1698302795711,
     "relativePath": "Scripts\\UI"
   },
   "bf824772-4645-42fc-bf84-972eb0ed9d53": {
-    "asset": 1697787310688,
-    "meta": 1697888781090,
+    "asset": 1698278104481,
+    "meta": 1698302795709,
     "relativePath": "AssetsPackge\\prefabs"
   },
   "9404b06f-37dc-452d-9bd1-816db48bedc9": {
@@ -275,8 +275,8 @@
     "relativePath": "AssetsPackge\\clip\\gun\\3\\fire.anim"
   },
   "84741a1f-ba31-48ec-9b3f-aa19dfe12ff0": {
-    "asset": 1697890491668,
-    "meta": 1697892748781,
+    "asset": 1698064845715,
+    "meta": 1698302795712,
     "relativePath": "AssetsPackge\\prefabs\\UI"
   },
   "6750ee3b-5694-4bc3-883e-010c9d66f342": {
@@ -565,8 +565,8 @@
     "relativePath": "Scripts\\ECS"
   },
   "3f97ec4b-7c16-4a8a-aeb7-2924d9ee6c8a": {
-    "asset": 1697782024685,
-    "meta": 1697888781095,
+    "asset": 1698290525528,
+    "meta": 1698302795823,
     "relativePath": "Scripts\\ECS\\Entities"
   },
   "8852d52c-b819-4771-84bd-c0c4966edfc0": {
@@ -575,13 +575,13 @@
     "relativePath": "Scripts\\ECS\\Systems"
   },
   "afd5a7f8-38d3-459f-8e61-167d94e07ec6": {
-    "asset": 1697805358577,
-    "meta": 1697888781095,
+    "asset": 1698047512513,
+    "meta": 1698302795713,
     "relativePath": "Scripts\\ECS\\Components"
   },
   "fa30124b-537d-42ec-9caf-22f335c0466d": {
-    "asset": 1697731908408,
-    "meta": 1697888781091,
+    "asset": 1698290565066,
+    "meta": 1698302795711,
     "relativePath": "Scripts\\data"
   },
   "99512388-6480-4345-9d93-a488194ecc5c": {
@@ -651,8 +651,8 @@
   },
   "57934dbd-030f-43e0-9bae-1c5c4747e414": {
     "asset": 1697809364362,
-    "meta": 1697810065999,
-    "relativePath": "Scripts\\GameLanch .ts"
+    "meta": 1698292209110,
+    "relativePath": "Scripts\\GameLanch.ts"
   },
   "b0fc922b-421c-44e1-b9ab-99f64c46a100": {
     "asset": 1697810808102,
@@ -774,11 +774,6 @@
     "meta": 1698139765246,
     "relativePath": "Scripts\\Manager\\MapDataManager.ts"
   },
-  "6af71efc-a508-4dec-9811-dd41ce316160": {
-    "asset": 1698139411520,
-    "meta": 1698139765339,
-    "relativePath": "Scripts\\UI\\GameUIControl.ts"
-  },
   "8aff44ef-1c9e-438f-856f-e0946d35e730": {
     "asset": 1698139684108,
     "meta": 1698139765360,
@@ -803,11 +798,6 @@
     "asset": 1698213804269,
     "meta": 1698214095416,
     "relativePath": "Scripts\\ECS\\Components\\UnitComponent.ts"
-  },
-  "7057f01d-e35f-43c6-9072-9125e1d615de": {
-    "asset": 1698213930580,
-    "meta": 1698214095543,
-    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
   },
   "9836134e-b892-4283-b6b2-78b5acf3ed45": {
     "asset": 1685959570623,
@@ -1319,29 +1309,39 @@
     "meta": 1698278916359,
     "relativePath": "Scripts\\ECS\\Entities\\EffectEntity.ts"
   },
-  "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
-    "asset": 1698279326547,
-    "meta": 1698279329029,
-    "relativePath": "Scripts\\ECS\\Systems\\CollectHitSystem.ts"
-  },
-  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
-    "asset": 1698279401213,
-    "meta": 1698279557707,
-    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
-  },
-  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
-    "asset": 1698279586352,
-    "meta": 1698279588537,
-    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
-  },
   "56d02f6a-5933-4621-a4e1-951d4bb96210": {
     "asset": 1698288873780,
     "meta": 1698288899915,
     "relativePath": "Scripts\\ECS\\Systems\\AttackSystem.ts"
   },
+  "31dcf137-c2e0-4a5d-b5e1-b86302a2ebe5": {
+    "asset": 1698302119275,
+    "meta": 1698302795822,
+    "relativePath": "Scripts\\ECS\\ECSFactory.ts"
+  },
+  "7057f01d-e35f-43c6-9072-9125e1d615de": {
+    "asset": 1698301002729,
+    "meta": 1698301124453,
+    "relativePath": "Scripts\\ECS\\Systems\\AISystem.ts"
+  },
+  "2df20207-1dd2-43e7-ba60-e93fb5c5305e": {
+    "asset": 1698301802664,
+    "meta": 1698301993840,
+    "relativePath": "Scripts\\ECS\\Systems\\CollectHitSystem.ts"
+  },
   "8c250f92-185a-467f-9793-3d4628370175": {
-    "asset": 1698291859028,
-    "meta": 1698291861573,
+    "asset": 1698303423852,
+    "meta": 1698303444623,
     "relativePath": "Scripts\\ECS\\ECSManager.ts"
+  },
+  "f77bd424-c9f5-4c3d-8e55-481e898ae4ff": {
+    "asset": 1698303538932,
+    "meta": 1698303540334,
+    "relativePath": "Scripts\\ECS\\Systems\\AnimateSystem.ts"
+  },
+  "6af71efc-a508-4dec-9811-dd41ce316160": {
+    "asset": 1698303698295,
+    "meta": 1698303699598,
+    "relativePath": "Scripts\\UI\\GameUIControl.ts"
   }
 }

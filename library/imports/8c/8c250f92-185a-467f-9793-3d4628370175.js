@@ -97,6 +97,7 @@ var ECSManager = /** @class */ (function (_super) {
             return;
         }
     };
+    //创建怪物
     ECSManager.prototype.createMonsterEntity = function (type, index, list, hp, gold, speed) {
         return __awaiter(this, void 0, void 0, function () {
             var entity;
@@ -161,6 +162,7 @@ var ECSManager = /** @class */ (function (_super) {
         }
         return null;
     };
+    //导航系统
     ECSManager.prototype.navSystemMonster = function (dt) {
         for (var i = 0; i < this.monsters.length; i++) {
             NavSystem_1.default.getInstance().onUpdate(dt, this.monsters[i].navComponent, this.monsters[i].baseComponent, this.monsters[i].transformComponent);
@@ -173,7 +175,7 @@ var ECSManager = /** @class */ (function (_super) {
     };
     ECSManager.prototype.animateSystemBullet = function (dt) {
         for (var i = 0; i < this.bullets.length; i++) {
-            AnimateSystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].baseComponent, this.bullets[i].animateComponent);
+            AnimateSystem_1.default.getInstance().onBulletUpdate(dt, this.bullets[i].attackComponent, this.bullets[i].baseComponent, this.bullets[i].animateComponent, this.bullets[i].unitComponent, this.bullets[i].roleComponent);
         }
     };
     ECSManager.prototype.animateSystemEffect = function (dt) {
@@ -216,6 +218,7 @@ var ECSManager = /** @class */ (function (_super) {
             var bulletTransformComponent = bullet.transformComponent;
             var bulletUnitComponent = bullet.unitComponent;
             var bulletShapeComponent = bullet.shapeComponent;
+            var bulletRoleComponent = bullet.roleComponent;
             var monsterID = bullet.unitComponent.monsterID;
             var monsterEntity = this.getMonsterById(monsterID);
             if (bulletUnitComponent.isDead)
@@ -229,12 +232,13 @@ var ECSManager = /** @class */ (function (_super) {
             var monsterAttackComponent = monsterEntity.attackComponent;
             var atk = bullet.attackComponent.atk;
             var hitPos = cc.v2(monsterEntity.baseComponent.gameObject.x, monsterEntity.baseComponent.gameObject.y);
-            var isHit = CollectHitSystem_1.default.getInstance().onUpdate(atk, hitPos, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
+            var isHit = CollectHitSystem_1.default.getInstance().onUpdate(atk, hitPos, bulletRoleComponent, bulletShapeComponent, bulletTransformComponent, bulletUnitComponent, monsterUnitComponent, monsterBaseComponent, monsterAttackComponent);
             if (isHit) {
                 bulletUnitComponent.isDead = true;
             }
         }
     };
+    //清除死亡的怪物
     ECSManager.prototype.cleanDeadMonster = function () {
         for (var i = 0; i < this.monsters.length; i++) {
             if (this.monsters[i].unitComponent.isDead) {
@@ -262,6 +266,7 @@ var ECSManager = /** @class */ (function (_super) {
             }
         }
     };
+    //计算最近的怪物
     ECSManager.prototype.calcNearDistance = function (cannon) {
         var minDis = 9999;
         var minMonster = null;
@@ -281,6 +286,7 @@ var ECSManager = /** @class */ (function (_super) {
         //cc.log(minDis);
         return minMonster;
     };
+    //更新
     ECSManager.prototype.update = function (dt) {
         return __awaiter(this, void 0, Promise, function () {
             return __generator(this, function (_a) {
