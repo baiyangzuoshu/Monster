@@ -14,8 +14,8 @@ interface TaskData {
     getData(): TaskDataItem[];
 }
 
-const g_taskData: TaskData = {
-    data: [
+class TaskDataManager implements TaskData {
+    data: TaskDataItem[] = [
         {
             title: '[合成]合成防御塔{0}次',
             max: [1, 5, 10, 20, 30, 60, 120, 150, 200, 280, 400],
@@ -40,14 +40,14 @@ const g_taskData: TaskData = {
             award: [10, 50, 110, 200, 300, 600, 1200, 1500, 2000, 2800, 4000],
             taskType: 1,
         },
-    ],
+    ];
 
     getTaskDataByID(taskID: number): TaskDataItem | null {
-        if (taskID >= this.data.length) {
+        if (taskID < 0 || taskID >= this.data.length) {
             return null;
         }
         return this.data[taskID];
-    },
+    }
 
     getAward(taskID: number, index: number): number | null {
         const taskData = this.getTaskDataByID(taskID);
@@ -55,11 +55,11 @@ const g_taskData: TaskData = {
             return null;
         }
         const award = taskData.award;
-        if (index >= award.length) {
-            index = award.length - 1;
+        if (index < 0 || index >= award.length) {
+            return null;
         }
         return award[index];
-    },
+    }
 
     getTitle(taskID: number, index: number): string | null {
         const taskData = this.getTaskDataByID(taskID);
@@ -67,27 +67,27 @@ const g_taskData: TaskData = {
             return null;
         }
         const title = taskData.title;
-        if (index >= taskData.max.length) {
-            index = taskData.max.length - 1;
+        if (index < 0 || index >= taskData.max.length) {
+            return null;
         }
         return title.replace('{0}', taskData.max[index].toString());
-    },
+    }
 
     getMaxCount(taskID: number, maxIndex: number): number | null {
         const taskData = this.getTaskDataByID(taskID);
         if (taskData == null) {
             return null;
         }
-        if (maxIndex >= taskData.max.length) {
-            maxIndex = taskData.max.length - 1;
+        if (maxIndex < 0 || maxIndex >= taskData.max.length) {
+            return null;
         }
         return taskData.max[maxIndex];
-    },
+    }
 
     getData(): TaskDataItem[] {
         return this.data;
     }
-};
+}
 
-// 将 g_taskData 导出以便在其他文件中使用
-export { g_taskData, TaskData, TaskDataItem };
+// 将 TaskDataManager 实例化为单例并导出
+export const g_taskData = new TaskDataManager();

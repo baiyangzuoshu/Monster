@@ -1,7 +1,6 @@
-import { _decorator, Component, Node, v2, instantiate, cardinalSplineTo, callFunc, sequence, scaleTo, fadeIn, fadeOut, spawn } from 'cc';
+import { _decorator, Component, Node, UITransform, Vec3, v3, v2, instantiate, tween, Tween, Color, Sprite } from 'cc';
+import { getAngle, randomNum } from './utlis';
 const { ccclass, property } = _decorator;
-
-import { randomNum, getAngle } from './utils';  // 假设randomNum和getAngle是你定义的实用函数
 
 @ccclass('DiamondFly')
 export class DiamondFly extends Component {
@@ -22,9 +21,9 @@ export class DiamondFly extends Component {
 
     createDiamondToTip(targetNode: Node, endCallBack: Function, diamond: number, parent: Node) {
         const node = instantiate(this.m_itemDiamond);
-        node.setScale(v2(0, 0));
+        node.setScale(v3(0, 0, 0));
 
-        let startPos: cc.Vec2;
+        let startPos: Vec3;
         if (targetNode == null) {
             startPos = node.getPosition();
         } else {
@@ -46,8 +45,7 @@ export class DiamondFly extends Component {
             parent.addChild(node);
         }
 
-        const moveList: cc.Vec2[] = [];
-
+        const moveList: Vec3[] = [];
         moveList.push(startPos);
 
         const endPos = this.node.getComponent(UITransform).convertToNodeSpaceAR(targetWorldPos);
@@ -60,42 +58,56 @@ export class DiamondFly extends Component {
         const x = Math.cos(adjustedAngle * (Math.PI / 180)) * dis;
         const y = Math.sin(adjustedAngle * (Math.PI / 180)) * dis;
 
-        moveList.push(v2(startPos.x + x, startPos.y + y));
+        moveList.push(v3(startPos.x + x, startPos.y + y, 0));
         moveList.push(endPos);
 
-        const spline = cardinalSplineTo(1, moveList, 0);
+        // 使用 tween 实现动画效果
+        const diamondTween = tween(node)
+            .to(0.2, { scale: v3(1, 1, 1) })
+            .then(this.createSplineTween(node, moveList, 1))
+            .call(() => {
+                if (!this.m_targetDiamond['scaleToBig']) {
+                    this.m_targetDiamond['scaleToBig'] = true;
+                    tween(this.m_targetDiamond)
+                        .to(0.1, { scale: v3(1.5, 1.5, 1.5) })
+                        .to(0.1, { scale: v3(1, 1, 1) })
+                        .call(() => {
+                            this.m_targetDiamond['scaleToBig'] = false;
+                        })
+                        .start();
 
-        const callBack = callFunc(() => {
-            if (!this.m_targetDiamond.scaleToBig) {
-                this.m_targetDiamond.scaleToBig = true;
-                const seq = sequence(
-                    scaleTo(0.1, 1.5, 1.5),
-                    scaleTo(0.1, 1, 1),
-                    callFunc(() => {
-                        this.m_targetDiamond.scaleToBig = false;
-                    })
-                );
-                this.m_targetDiamond.runAction(seq);
+                    // 获取渲染组件并调整透明度
+                    const sprite = this.m_targetDiamondLight.getComponent(Sprite);
+                    if (sprite) {
+                        sprite.color = new Color(255, 255, 255, 0);  // 设置透明度为0
+                        tween(sprite)
+                            .to(0.1, { color: new Color(255, 255, 255, 255) })  // 淡入
+                            .to(0.1, { color: new Color(255, 255, 255, 0) })  // 淡出
+                            .start();
+                    }
+                }
 
-                this.m_targetDiamondLight.opacity = 0;
-                const seqLight = sequence(
-                    fadeIn(0.1),
-                    fadeOut(0.1)
-                );
-                this.m_targetDiamondLight.runAction(seqLight);
-            }
+                if (endCallBack != null) {
+                    endCallBack(diamond);
+                }
+                node.destroy();
+            })
+            .start();
+    }
 
-            if (endCallBack != null) {
-                endCallBack(diamond);
-            }
-            node.destroy();
-        });
+    createSplineTween(node: Node, points: Vec3[], duration: number): Tween<Node> {
+        let totalLength = 0;
+        for (let i = 1; i < points.length; i++) {
+            totalLength += Vec3.distance(points[i - 1], points[i]);
+        }
 
-        const seq = sequence(spline, callBack);
-        const scaleToBig = scaleTo(0.2, 1, 1);
-        const scaleToSmall = scaleTo(0.8, 0.3, 0.3);
-        const sp = spawn(seq, sequence(scaleToBig, scaleToSmall));
+        const tweens: Tween<Node>[] = [];
+        for (let i = 1; i < points.length; i++) {
+            const segmentLength = Vec3.distance(points[i - 1], points[i]);
+            const segmentDuration = duration * (segmentLength / totalLength);
+            tweens.push(tween(node).to(segmentDuration, { position: points[i] }));
+        }
 
-        node.runAction(sp);
+        return tweens.reduce((prev, curr) => prev.then(curr));
     }
 }

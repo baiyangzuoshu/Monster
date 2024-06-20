@@ -46,216 +46,231 @@ interface DataManager {
     addInternsifLevel(ID: number): number;
 }
 
-function createDataManager(): DataManager {
-    const obj: DataManager = {
-        userData: {},
+class DataManagerImpl implements DataManager {
+    userData: UserData = {};
 
-        save() {
-            const str = JSON.stringify(this.userData);
-            cc.sys.localStorage.setItem('userData', str);
-        },
+    private static instance: DataManagerImpl;
 
-        load() {
-            const str = cc.sys.localStorage.getItem('userData');
-            if (str == null || str === '') {
-                this.userData = {};
-                return;
-            }
-            this.userData = JSON.parse(str);
-        },
+    private constructor() {
+        this.load();
+    }
 
-        del() {
-            cc.sys.localStorage.removeItem('userData');
-        },
-
-        getGold() {
-            if (this.userData.gold == null) {
-                this.userData.gold = 0;
-            }
-            return this.userData.gold;
-        },
-
-        setGold(gold) {
-            this.userData.gold = gold;
-            this.save();
-        },
-
-        subGold(subNum) {
-            if (this.userData.gold == null) {
-                this.userData.gold = 0;
-            }
-            this.userData.gold -= subNum;
-            this.save();
-        },
-
-        addGold(addNum) {
-            if (this.userData.gold == null) {
-                this.userData.gold = 0;
-            }
-            this.userData.gold += addNum;
-            this.save();
-        },
-
-        getDiamond() {
-            if (this.userData.diamond == null) {
-                this.userData.diamond = 30;
-            }
-            return this.userData.diamond;
-        },
-
-        setDiamond(diamond) {
-            this.userData.diamond = diamond;
-            this.save();
-        },
-
-        subDiamond(subNum) {
-            if (this.userData.diamond == null) {
-                this.userData.diamond = 0;
-            }
-            this.userData.diamond -= subNum;
-            this.save();
-        },
-
-        addDiamond(addNum) {
-            if (this.userData.diamond == null) {
-                this.userData.diamond = 0;
-            }
-            this.userData.diamond += addNum;
-            this.save();
-        },
-
-        getBigCheckPointCount() {
-            if (this.userData.bigCheckPointCount == null) {
-                this.userData.bigCheckPointCount = 0;
-            }
-            return this.userData.bigCheckPointCount;
-        },
-
-        setBigCheckPointCount(big) {
-            this.userData.bigCheckPointCount = big;
-        },
-
-        addBigCheckPointCount() {
-            if (this.userData.bigCheckPointCount == null) {
-                this.userData.bigCheckPointCount = 0;
-            }
-            this.save();
-            return this.userData.bigCheckPointCount++;
-        },
-
-        subBigCheckPointCount() {
-            if (this.userData.bigCheckPointCount == null) {
-                this.userData.bigCheckPointCount = 0;
-            }
-            if (this.userData.bigCheckPointCount === 0) {
-                return 0;
-            }
-            this.save();
-            return this.userData.bigCheckPointCount--;
-        },
-
-        getSmallCheckPointCount() {
-            if (this.userData.smallCheckPointCount == null) {
-                this.userData.smallCheckPointCount = 0;
-            }
-            return this.userData.smallCheckPointCount;
-        },
-
-        setSmallCheckPointCount(small) {
-            this.userData.smallCheckPointCount = small;
-        },
-
-        addSmallCheckPointCount() {
-            if (this.userData.smallCheckPointCount == null) {
-                this.userData.smallCheckPointCount = 0;
-            }
-            this.save();
-            return this.userData.smallCheckPointCount++;
-        },
-
-        subSmallCheckPointCount() {
-            if (this.userData.smallCheckPointCount == null) {
-                this.userData.smallCheckPointCount = 0;
-            }
-            if (this.userData.smallCheckPointCount === 0) {
-                return 0;
-            }
-            this.save();
-            return this.userData.smallCheckPointCount--;
-        },
-
-        getCheckPoint() {
-            const checkPoint: CheckPoint = {
-                big: this.getBigCheckPointCount(),
-                small: this.getSmallCheckPointCount(),
-            };
-            return checkPoint;
-        },
-
-        getTaskByID(taskID) {
-            if (this.userData.taskData == null) {
-                this.userData.taskData = [];
-            }
-            if (this.userData.taskData[taskID] == null) {
-                this.userData.taskData[taskID] = {};
-            }
-            if (this.userData.taskData[taskID].curCount == null) {
-                this.userData.taskData[taskID].curCount = 0;
-            }
-
-            if (this.userData.taskData[taskID].maxIndex == null) {
-                this.userData.taskData[taskID].maxIndex = 0;
-            }
-            return this.userData.taskData[taskID];
-        },
-
-        addTaskCount(taskID) {
-            const item = this.getTaskByID(taskID);
-            if (item == null) {
-                return false;
-            }
-            this.userData.taskData[taskID].curCount++;
-            this.save();
-            return this.userData.taskData[taskID].curCount;
-        },
-
-        nextTask(taskID) {
-            const item = this.getTaskByID(taskID);
-            if (item == null) {
-                return false;
-            }
-            this.userData.taskData[taskID].curCount = 0;
-            this.userData.taskData[taskID].maxIndex++;
-            this.save();
-            return this.userData.taskData[taskID].curCount;
-        },
-
-        getInternsifLevel(ID) {
-            if (this.userData.internsifLevel == null) {
-                this.userData.internsifLevel = [];
-            }
-            if (this.userData.internsifLevel[ID] == null) {
-                this.userData.internsifLevel[ID] = 0;
-            }
-
-            return this.userData.internsifLevel[ID];
-        },
-
-        addInternsifLevel(ID) {
-            if (this.userData.internsifLevel == null) {
-                this.userData.internsifLevel = [];
-            }
-            if (this.userData.internsifLevel[ID] == null) {
-                this.userData.internsifLevel[ID] = 0;
-            }
-
-            this.userData.internsifLevel[ID]++;
-            this.save();
-            return this.userData.internsifLevel[ID];
+    static getInstance(): DataManagerImpl {
+        if (!DataManagerImpl.instance) {
+            DataManagerImpl.instance = new DataManagerImpl();
         }
-    };
+        return DataManagerImpl.instance;
+    }
 
-    return obj;
+    save() {
+        const str = JSON.stringify(this.userData);
+        localStorage.setItem('userData', str);
+    }
+
+    load() {
+        const str = localStorage.getItem('userData');
+        if (str == null || str === '') {
+            this.userData = {};
+            return;
+        }
+        this.userData = JSON.parse(str);
+    }
+
+    del() {
+        localStorage.removeItem('userData');
+    }
+
+    getGold() {
+        if (this.userData.gold == null) {
+            this.userData.gold = 0;
+        }
+        return this.userData.gold;
+    }
+
+    setGold(gold: number) {
+        this.userData.gold = gold;
+        this.save();
+    }
+
+    subGold(subNum: number) {
+        if (this.userData.gold == null) {
+            this.userData.gold = 0;
+        }
+        this.userData.gold -= subNum;
+        this.save();
+    }
+
+    addGold(addNum: number) {
+        if (this.userData.gold == null) {
+            this.userData.gold = 0;
+        }
+        this.userData.gold += addNum;
+        this.save();
+    }
+
+    getDiamond() {
+        if (this.userData.diamond == null) {
+            this.userData.diamond = 30;
+        }
+        return this.userData.diamond;
+    }
+
+    setDiamond(diamond: number) {
+        this.userData.diamond = diamond;
+        this.save();
+    }
+
+    subDiamond(subNum: number) {
+        if (this.userData.diamond == null) {
+            this.userData.diamond = 0;
+        }
+        this.userData.diamond -= subNum;
+        this.save();
+    }
+
+    addDiamond(addNum: number) {
+        if (this.userData.diamond == null) {
+            this.userData.diamond = 0;
+        }
+        this.userData.diamond += addNum;
+        this.save();
+    }
+
+    getBigCheckPointCount() {
+        if (this.userData.bigCheckPointCount == null) {
+            this.userData.bigCheckPointCount = 0;
+        }
+        return this.userData.bigCheckPointCount;
+    }
+
+    setBigCheckPointCount(big: number) {
+        this.userData.bigCheckPointCount = big;
+        this.save();
+    }
+
+    addBigCheckPointCount() {
+        if (this.userData.bigCheckPointCount == null) {
+            this.userData.bigCheckPointCount = 0;
+        }
+        this.userData.bigCheckPointCount++;
+        this.save();
+        return this.userData.bigCheckPointCount;
+    }
+
+    subBigCheckPointCount() {
+        if (this.userData.bigCheckPointCount == null) {
+            this.userData.bigCheckPointCount = 0;
+        }
+        if (this.userData.bigCheckPointCount === 0) {
+            return 0;
+        }
+        this.userData.bigCheckPointCount--;
+        this.save();
+        return this.userData.bigCheckPointCount;
+    }
+
+    getSmallCheckPointCount() {
+        if (this.userData.smallCheckPointCount == null) {
+            this.userData.smallCheckPointCount = 0;
+        }
+        return this.userData.smallCheckPointCount;
+    }
+
+    setSmallCheckPointCount(small: number) {
+        this.userData.smallCheckPointCount = small;
+        this.save();
+    }
+
+    addSmallCheckPointCount() {
+        if (this.userData.smallCheckPointCount == null) {
+            this.userData.smallCheckPointCount = 0;
+        }
+        this.userData.smallCheckPointCount++;
+        this.save();
+        return this.userData.smallCheckPointCount;
+    }
+
+    subSmallCheckPointCount() {
+        if (this.userData.smallCheckPointCount == null) {
+            this.userData.smallCheckPointCount = 0;
+        }
+        if (this.userData.smallCheckPointCount === 0) {
+            return 0;
+        }
+        this.userData.smallCheckPointCount--;
+        this.save();
+        return this.userData.smallCheckPointCount;
+    }
+
+    getCheckPoint() {
+        const checkPoint: CheckPoint = {
+            big: this.getBigCheckPointCount(),
+            small: this.getSmallCheckPointCount(),
+        };
+        return checkPoint;
+    }
+
+    getTaskByID(taskID: number) {
+        if (this.userData.taskData == null) {
+            this.userData.taskData = {};
+        }
+        if (this.userData.taskData[taskID] == null) {
+            this.userData.taskData[taskID] = {};
+        }
+        if (this.userData.taskData[taskID].curCount == null) {
+            this.userData.taskData[taskID].curCount = 0;
+        }
+
+        if (this.userData.taskData[taskID].maxIndex == null) {
+            this.userData.taskData[taskID].maxIndex = 0;
+        }
+        return this.userData.taskData[taskID];
+    }
+
+    addTaskCount(taskID: number) {
+        const item = this.getTaskByID(taskID);
+        if (item == null) {
+            return false;
+        }
+        this.userData.taskData[taskID].curCount++;
+        this.save();
+        return this.userData.taskData[taskID].curCount;
+    }
+
+    nextTask(taskID: number) {
+        const item = this.getTaskByID(taskID);
+        if (item == null) {
+            return false;
+        }
+        this.userData.taskData[taskID].curCount = 0;
+        this.userData.taskData[taskID].maxIndex++;
+        this.save();
+        return this.userData.taskData[taskID].curCount;
+    }
+
+    getInternsifLevel(ID: number) {
+        if (this.userData.internsifLevel == null) {
+            this.userData.internsifLevel = [];
+        }
+        if (this.userData.internsifLevel[ID] == null) {
+            this.userData.internsifLevel[ID] = 0;
+        }
+
+        return this.userData.internsifLevel[ID];
+    }
+
+    addInternsifLevel(ID: number) {
+        if (this.userData.internsifLevel == null) {
+            this.userData.internsifLevel = [];
+        }
+        if (this.userData.internsifLevel[ID] == null) {
+            this.userData.internsifLevel[ID] = 0;
+        }
+
+        this.userData.internsifLevel[ID]++;
+        this.save();
+        return this.userData.internsifLevel[ID];
+    }
 }
 
-export { createDataManager, DataManager };
+export const DataManager = DataManagerImpl.getInstance();

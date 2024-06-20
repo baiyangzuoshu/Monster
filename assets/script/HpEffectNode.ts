@@ -1,5 +1,10 @@
-import { _decorator, Component, Node, NodePool, Label, Vec2, v2, cardinalSplineBy, delayTime, fadeTo, callFunc, sequence, spawn } from 'cc';
+import { Vec3 } from 'cc';
+import { _decorator, Component, Node, NodePool, Label, Vec2, v2, tween, Tween, instantiate, UIOpacity } from 'cc';
 const { ccclass, property } = _decorator;
+
+function randomNum(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 @ccclass('HpEffect')
 export class HpEffect extends Component {
@@ -7,7 +12,7 @@ export class HpEffect extends Component {
     @property(Node)
     m_hpEffectItem: Node = null;
 
-    private hpEffectPool: NodePool = new NodePool();
+    private hpEffectPool: NodePool = new NodePool(Node);
 
     onLoad() {
         // @ts-ignore
@@ -15,27 +20,38 @@ export class HpEffect extends Component {
     }
 
     start() {
-
+        // 初始化
     }
 
     createHpEffect(pos: Vec2, str: string) {
         let node: Node;
-        if (this.hpEffectPool.size() > 0) { 
+        if (this.hpEffectPool.size() > 0) {
             node = this.hpEffectPool.get();
         } else {
             node = instantiate(this.m_hpEffectItem);
         }
         const label = node.getComponent(Label);
-        label.string = str;
+        if (label) {
+            label.string = str;
+        }
 
         node.active = true;
-        node.opacity = 255;
-        node.setPosition(pos);
+        node.setPosition(pos.x, pos.y, 0);
+
+        // Add UIOpacity component if not already present
+        let uiOpacity = node.getComponent(UIOpacity);
+        if (!uiOpacity) {
+            uiOpacity = node.addComponent(UIOpacity);
+        }
+        uiOpacity.opacity = 255;
+
         this.node.addChild(node);
+
         const left = randomNum(0, 100) > 50;
+        const dir = left ? 1 : -1;
+
         const moveList: Vec2[] = [];
         moveList.push(v2(0, 0));
-        const dir = left ? 1 : -1;
 
         let x = randomNum(0, 50);
         let y = randomNum(50, 130);
@@ -45,15 +61,34 @@ export class HpEffect extends Component {
         y = randomNum(10, 40);
         moveList.push(v2(x * dir, -y));
 
-        const spline = cardinalSplineBy(0.5, moveList, 0);
-        const seq = sequence(
-            delayTime(0.3),
-            fadeTo(0.2, 0),
-            callFunc(() => {
-                this.hpEffectPool.put(node); 
-            })
-        );
+        const splinePoints = moveList.map(point => new Vec2(point.x, point.y));
+        const duration = 0.5;
 
-        node.runAction(spawn(spline, seq));
+        const moveTween = this.createSplineTween(node, splinePoints, duration);
+        const fadeTween = tween(uiOpacity)
+            .delay(0.3)
+            .to(0.2, { opacity: 0 })
+            .call(() => {
+                this.hpEffectPool.put(node);
+            });
+
+        moveTween.start();
+        fadeTween.start();
+    }
+
+    createSplineTween(node: Node, points: Vec2[], duration: number): Tween<Node> {
+        const totalLength = points.reduce((acc, point, index) => {
+            if (index === 0) return acc;
+            return acc + Vec2.distance(points[index - 1], point);
+        }, 0);
+
+        const tweens: Tween<Node>[] = [];
+        for (let i = 1; i < points.length; i++) {
+            const segmentLength = Vec2.distance(points[i - 1], points[i]);
+            const segmentDuration = duration * (segmentLength / totalLength);
+            tweens.push(tween(node).to(segmentDuration, { position: new Vec3(points[i].x, points[i].y) }));
+        }
+
+        return tweens.reduce((prev, curr) => prev.then(curr));
     }
 }

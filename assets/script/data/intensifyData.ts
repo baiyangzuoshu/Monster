@@ -16,8 +16,8 @@ interface IntensifyData {
     getDiamond(ID: number, index: number): number | null;
 }
 
-const g_intensifyData: IntensifyData = {
-    data: [
+class IntensifyDataManager implements IntensifyData {
+    data: IntensifyDataItem[] = [
         {
             title: '补给站容量扩充',
             value: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
@@ -32,51 +32,45 @@ const g_intensifyData: IntensifyData = {
             icon: 'ui_g_crit',
             showPer: true,
         },
-    ],
+    ];
 
     getData(): IntensifyDataItem[] {
         return this.data;
-    },
+    }
 
     getIntensifyDataByID(ID: number): IntensifyDataItem | null {
-        if (ID >= this.data.length) {
+        if (ID < 0 || ID >= this.data.length) {
             return null;
         }
         return this.data[ID];
-    },
+    }
 
     getTitle(ID: number): string | null {
         const data = this.getIntensifyDataByID(ID);
-        if (data == null) {
-            return null;
-        }
-        return data.title;
-    },
+        return data ? data.title : null;
+    }
 
     getIcon(ID: number): string | null {
         const data = this.getIntensifyDataByID(ID);
-        if (data == null) {
-            return null;
-        }
-        return data.icon;
-    },
+        return data ? data.icon : null;
+    }
 
     getValue(ID: number, index: number): number | null {
         const data = this.getIntensifyDataByID(ID);
-        if (data == null || index >= data.value.length) {
+        if (!data || index < 0 || index >= data.value.length) {
             return null;
         }
         return data.value[index];
-    },
+    }
 
     getDiamond(ID: number, index: number): number | null {
         const data = this.getIntensifyDataByID(ID);
-        if (data == null || index >= data.diamond.length) {
+        if (!data || index < 0 || index >= data.diamond.length) {
             return null;
         }
         return data.diamond[index];
     }
-};
+}
 
-// 将 g_intensifyData 导出以便在其他文件中使用
-export { g_intensifyData, IntensifyData, IntensifyDataItem };
+// 将 IntensifyDataManager 实例化为单例并导出
+export const g_intensifyData = new IntensifyDataManager();
