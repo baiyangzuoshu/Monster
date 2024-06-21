@@ -1,49 +1,83 @@
-{
-  "__type__": "cc.AnimationClip",
-  "_name": "bullet1",
-  "_objFlags": 0,
-  "_native": "",
-  "_duration": 1,
-  "sample": 5,
-  "speed": 2,
-  "wrapMode": 2,
-  "curveData": {
-    "comps": {
-      "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "a05a1b96-3c74-4266-b723-82d7b79742ee"
-            }
-          },
-          {
-            "frame": 0.2,
-            "value": {
-              "__uuid__": "01afafae-2f35-4642-a3af-559cf5a9d882"
-            }
-          },
-          {
-            "frame": 0.4,
-            "value": {
-              "__uuid__": "ce1e621a-b6de-4560-b847-9f4a615ef35f"
-            }
-          },
-          {
-            "frame": 0.6,
-            "value": {
-              "__uuid__": "435deb4c-7035-4b24-b68c-89a4bdd1ec8e"
-            }
-          },
-          {
-            "frame": 0.8,
-            "value": {
-              "__uuid__": "1fadff0f-0669-4f01-a58b-96d314863d47"
-            }
-          }
-        ]
+[
+  {
+    "__type__": "cc.AnimationClip",
+    "_name": "bullet1",
+    "_objFlags": 0,
+    "_native": "",
+    "sample": 5,
+    "speed": 2,
+    "wrapMode": 2,
+    "_duration": 1,
+    "_hash": 0,
+    "_tracks": [
+      {
+        "__id__": 1
       }
+    ],
+    "_events": [],
+    "_exoticAnimation": null
+  },
+  {
+    "__type__": "cc.animation.ObjectTrack",
+    "_binding": {
+      "__type__": "cc.animation.TrackBinding",
+      "path": {
+        "__id__": 2
+      }
+    },
+    "_channel": {
+      "__id__": 4
     }
   },
-  "events": []
-}
+  {
+    "__type__": "cc.animation.TrackPath",
+    "_paths": [
+      {
+        "__id__": 3
+      },
+      "spriteFrame"
+    ]
+  },
+  {
+    "__type__": "cc.animation.ComponentPath",
+    "component": "cc.Sprite"
+  },
+  {
+    "__type__": "cc.animation.Channel",
+    "_curve": {
+      "__id__": 5
+    }
+  },
+  {
+    "__type__": "cc.ObjectCurve",
+    "_times": [
+      0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "_values": [
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@b5123",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@7ecf8",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@4e611",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@79c60",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@06114",
+        "__expectedType__": "cc.Asset"
+      }
+    ]
+  }
+]

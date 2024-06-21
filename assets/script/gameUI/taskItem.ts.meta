@@ -1,9 +1,11 @@
 {
   "ver": "4.0.24",
-  "importer": "typescript",
+  "importer": "javascript",
   "imported": true,
-  "uuid": "2ff53428-cd5f-4b02-9659-b0a6cfe7511a",
+  "uuid": "921702ce-b1fa-48b1-94a6-1055f4af4b46",
   "files": [],
   "subMetas": {},
-  "userData": {}
+  "userData": {
+    "simulateGlobals": []
+  }
 }

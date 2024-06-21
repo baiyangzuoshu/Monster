@@ -1,55 +1,89 @@
-{
-  "__type__": "cc.AnimationClip",
-  "_name": "fire",
-  "_objFlags": 0,
-  "_native": "",
-  "_duration": 1,
-  "sample": 5,
-  "speed": 2,
-  "wrapMode": 2,
-  "curveData": {
-    "comps": {
-      "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "b3b922be-d875-40db-94f2-825d752699ad"
-            }
-          },
-          {
-            "frame": 0.2,
-            "value": {
-              "__uuid__": "6d10e5e0-187b-4c47-b822-dcfa89851545"
-            }
-          },
-          {
-            "frame": 0.4,
-            "value": {
-              "__uuid__": "49407920-5d60-41b6-9055-c5c5449611df"
-            }
-          },
-          {
-            "frame": 0.6,
-            "value": {
-              "__uuid__": "d736871a-d375-4342-ad1a-581c5de4598b"
-            }
-          },
-          {
-            "frame": 0.8,
-            "value": {
-              "__uuid__": "46c2f48a-8b0a-4b52-a75e-a04dec58c642"
-            }
-          }
-        ]
+[
+  {
+    "__type__": "cc.AnimationClip",
+    "_name": "fire",
+    "_objFlags": 0,
+    "_native": "",
+    "sample": 5,
+    "speed": 2,
+    "wrapMode": 2,
+    "_duration": 1,
+    "_hash": 0,
+    "_tracks": [
+      {
+        "__id__": 1
       }
+    ],
+    "_events": [
+      {
+        "frame": 0.8,
+        "func": "end",
+        "params": []
+      }
+    ],
+    "_exoticAnimation": null
+  },
+  {
+    "__type__": "cc.animation.ObjectTrack",
+    "_binding": {
+      "__type__": "cc.animation.TrackBinding",
+      "path": {
+        "__id__": 2
+      }
+    },
+    "_channel": {
+      "__id__": 4
     }
   },
-  "events": [
-    {
-      "frame": 0.8,
-      "func": "end",
-      "params": []
+  {
+    "__type__": "cc.animation.TrackPath",
+    "_paths": [
+      {
+        "__id__": 3
+      },
+      "spriteFrame"
+    ]
+  },
+  {
+    "__type__": "cc.animation.ComponentPath",
+    "component": "cc.Sprite"
+  },
+  {
+    "__type__": "cc.animation.Channel",
+    "_curve": {
+      "__id__": 5
     }
-  ]
-}
+  },
+  {
+    "__type__": "cc.ObjectCurve",
+    "_times": [
+      0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "_values": [
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@1a2c4",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@04de2",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@c1559",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@da0b3",
+        "__expectedType__": "cc.Asset"
+      },
+      {
+        "__uuid__": "a1b134b7-2391-4674-bf5c-03f9978c757d@074dc",
+        "__expectedType__": "cc.Asset"
+      }
+    ]
+  }
+]
