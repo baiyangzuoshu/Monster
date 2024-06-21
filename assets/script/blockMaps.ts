@@ -1,8 +1,13 @@
-import { _decorator, Component, Node, SpriteAtlas, Sprite, Vec2, v2, moveBy, callFunc, sequence } from 'cc';
+import { _decorator, Component, Node, SpriteAtlas, Sprite, Vec2, v2, director, tween } from 'cc';
+import { GameManager } from './game';
+import { v3 } from 'cc';
+import { CrownManager } from './crownBuild';
+import { PhysicsSystem2D } from 'cc';
+import { EPhysics2DDrawFlags } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('BlockMap')
-export class BlockMap extends Component {
+@ccclass('BlockManager')
+export class BlockManager extends Component {
 
     @property([SpriteAtlas])
     m_imageAtlas: SpriteAtlas[] = [];
@@ -10,17 +15,31 @@ export class BlockMap extends Component {
     @property([Sprite])
     m_imageBG: Sprite[] = [];
 
+    private static _instance: BlockManager = null;
     private startPos: Vec2[] = [];
     private m_mapBlockItem: Sprite[][][] = [];
 
-    onLoad() {
-        window['g_blockMap'] = this;
-        cc.director.getCollisionManager().enabled = true;
+    public static get instance(): BlockManager {
+        return this._instance;
+    }
 
+    onLoad() {
+        BlockManager._instance = this;
+        //
+        PhysicsSystem2D.instance.enable = true;
+
+        PhysicsSystem2D.instance.debugDrawFlags = EPhysics2DDrawFlags.Aabb |
+        EPhysics2DDrawFlags.Pair |
+        EPhysics2DDrawFlags.CenterOfMass |
+        EPhysics2DDrawFlags.Joint |
+        EPhysics2DDrawFlags.Shape;
+
+        PhysicsSystem2D.instance.debugDrawFlags = EPhysics2DDrawFlags.None;
+        //end
         this.startPos.push(v2(0, 0));
         this.startPos.push(v2(640, 0));
 
-        const blockMapData = g_game.getCurBlockData();
+        const blockMapData = GameManager.instance.getCurBlockData();
         this.buildBlockMap(0, blockMapData);
     }
 
@@ -68,15 +87,17 @@ export class BlockMap extends Component {
     }
 
     moveToNextMap(data: number[][]) {
-        const moveTo = moveBy(0.5, v2(-640, 0));
-        const callFuncAction = callFunc(() => {
-            this.node.setPosition(v2(-320, 310));
-            this.buildBlockMap(0, data);
-        });
-
-        this.node.runAction(sequence(moveTo, callFuncAction));
-        g_crown.moveToNextMap();
+        tween(this.node)
+            .by(0.5, { position: v3(-640, 0) })
+            .call(() => {
+                this.node.setPosition(v3(-320, 310));
+                this.buildBlockMap(0, data);
+            })
+            .start();
+        
+        
+        CrownManager.instance.moveToNextMap();
     }
 }
 
-export default BlockMap;
+export default BlockManager;

@@ -1,9 +1,11 @@
 import { _decorator, Component, Node, Vec2, Vec3 } from 'cc';
-import { BulletBase } from './bulletBase';
+import BulletBase from '../bulletBase';
+import { UITransform } from 'cc';
+import { getAngle, getDistance } from '../../../script/utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('Bullet')
-export class Bullet extends BulletBase {
+@ccclass('bullet_0')
+export class bullet_0 extends BulletBase {
 
     @property(Node)
     m_bullet: Node = null;
@@ -29,7 +31,7 @@ export class Bullet extends BulletBase {
         const target = bullet['_attackTarget'];
         const targetPos = target.getPosition();
 
-        const bulletPos = bullet.convertToWorldSpaceAR(new Vec3(0, 0, 0));
+        const bulletPos = bullet.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
         const worldTargetPos = target.convertToWorldSpaceAR(new Vec3(0, 0, 0));
 
         const targetH = target.height;
@@ -46,21 +48,8 @@ export class Bullet extends BulletBase {
             dis = 90;
         }
 
-        this.m_bullet.width = dis;
+        this.m_bullet.getComponent(UITransform).width = dis;
     }
 }
 
-export default Bullet;
 
-function getAngle(startPos: Vec3, endPos: Vec3): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}
-
-function getDistance(startPos: Vec3, endPos: Vec3): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    return Math.sqrt(dx * dx + dy * dy);
-}

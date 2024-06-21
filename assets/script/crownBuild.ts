@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, Vec3, tween } from 'cc';
+import { GameManager } from './game';
 const { ccclass, property } = _decorator;
 
 @ccclass('CrownManager')
@@ -7,11 +8,16 @@ export class CrownManager extends Component {
     @property(Prefab)
     m_crown: Prefab = null;
 
+    private static _instance: CrownManager = null;
     private m_curCrown: Node = null;
     private m_nextCrown: Node = null;
 
+    public static get instance(): CrownManager {
+        return this._instance;
+    }
+
     onLoad() {
-        window['g_crown'] = this;
+        CrownManager._instance = this;
         this.buildEndPoint();
     }
 
@@ -20,7 +26,7 @@ export class CrownManager extends Component {
     }
 
     buildEndPoint() {
-        const list = g_game.getCurPahtList();
+        const list = GameManager.instance.getCurPahtList();
         const lastPos = list[list.length - 1];
 
         const pos = new Vec2(0, 0);
@@ -52,7 +58,7 @@ export class CrownManager extends Component {
         this.m_nextCrown.setPosition(new Vec3(pos.x, pos.y, 0));
     }
 
-    moveToNextMap(data: any) {
+    moveToNextMap() {
         const moveTo = { position: new Vec3(-640, 0, 0) };
         const callFunc = () => {
             this.node.setPosition(new Vec3(-320, 310, 0));

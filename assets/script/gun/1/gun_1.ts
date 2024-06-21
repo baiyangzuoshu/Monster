@@ -1,9 +1,13 @@
-import { _decorator, Component, Node, Animation, instantiate, callFunc, delayTime, sequence, repeatForever, v2 } from 'cc';
-import { GunBase } from './gunBase';
+import { _decorator, Component, Node, Animation, instantiate,Vec3, Tween, tween, Vec2 } from 'cc';
+import GunBase from '../gunBase';
+import { GameManager } from '../../../script/game';
+import BulletManager from '../../../script/bulletBuild';
+import { UITransform } from 'cc';
+import { bullet_1 } from './bullet_1';
 const { ccclass, property } = _decorator;
 
-@ccclass('Gun')
-export class Gun extends GunBase {
+@ccclass('gun_1')
+export class gun_1 extends GunBase {
 
     @property(Node)
     m_bulletNode: Node = null;
@@ -13,24 +17,24 @@ export class Gun extends GunBase {
 
     private m_bullet: Node = null;
     private m_effect: Animation = null;
-    private m_fireAction: any = null;
+    private m_fireAction: Tween<Node> = null;
     private m_target: any = null;
     private m_effectEnd: boolean = false;
 
     onLoad() {
         this.m_fire = false;
         this.m_bullet = instantiate(this.m_bulletNode);
-        g_bulletBuild.node.addChild(this.m_bullet);
+        BulletManager.instance.node.addChild(this.m_bullet);
 
         const effectNode = this.node.getChildByName('effect');
         if (effectNode) {
             this.m_effect = effectNode.getComponent(Animation);
-            this.m_effect.on('finished', this.onEffectEnd, this);
+            this.m_effect.on(Animation.EventType.FINISHED, this.onEffectEnd, this);
         }
 
-        const seq = sequence(
-            callFunc(() => {
-                if (!g_game.isGameStart()) {
+        this.m_fireAction = tween(this.node)
+            .call(() => {
+                if (!GameManager.instance.isGameStart()) {
                     this.endFire();
                     return;
                 }
@@ -44,24 +48,23 @@ export class Gun extends GunBase {
                         js.subHP(this.m_ATK);
                     }
                 }
-            }),
-            delayTime(0.25),
-            callFunc(() => {
+            })
+            .to(0.25, { position: new Vec3(0, -15, 0) })
+            .call(() => {
                 this.hideBullet();
-            }),
-            delayTime(0.5),
-            callFunc(() => {
+            })
+            .to(0.25, { position: new Vec3(0, 0, 0) })
+            .call(() => {
                 if (this.m_effectEnd) {
-                    this.hideBullet();
-                    this.node.stopAction(this.m_fireAction);
+                    //this.node.stopAllActions();
                     this.m_fire = false;
                     if (this.m_endCallBack != null) {
                         this.m_endCallBack(this.m_type);
                     }
                 }
             })
-        );
-        this.m_fireAction = repeatForever(seq);
+            .union()
+            .repeatForever();
     }
 
     start() {
@@ -72,7 +75,7 @@ export class Gun extends GunBase {
         this.m_fire = true;
         this.m_effectEnd = false;
         if (this.m_effect != null) {
-            this.node.runAction(this.m_fireAction);
+            this.m_fireAction.start();
         }
         this.m_target = target;
         this.m_bullet['_attackTarget'] = this.m_target;
@@ -86,11 +89,11 @@ export class Gun extends GunBase {
         this.m_bullet.active = true;
         this.m_effect.node.active = true;
 
-        const world_pos = this.node.convertToWorldSpaceAR(v2(0, 0));
-        const pos = g_bulletBuild.node.convertToNodeSpaceAR(world_pos);
+        const world_pos = this.node.getWorldPosition();
+        const pos = BulletManager.instance.node.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
         this.m_bullet.setPosition(pos);
 
-        const js = this.m_bullet.getComponent('bullet_1');
+        const js = this.m_bullet.getComponent(bullet_1);
         js.setATK(this.m_ATK);
         js.updateBullet();
     }
@@ -106,7 +109,7 @@ export class Gun extends GunBase {
         boom.active = true;
         const boomAnim = boom.getComponent(Animation);
         boomAnim.play('boom');
-        boomAnim.on('finished', () => {
+        boomAnim.on(Animation.EventType.FINISHED, () => {
             boom.removeFromParent();
         });
     }
@@ -128,5 +131,3 @@ export class Gun extends GunBase {
         this.m_effect.node.active = false;
     }
 }
-
-export default Gun;

@@ -1,8 +1,8 @@
-import { _decorator, Component, Node, instantiate, v2, Vec2, Vec3, tween, Tween, easing, Label } from 'cc';
+import { _decorator, Component, Node, instantiate, Vec3, UITransform, tween, Tween, Label, Color, Sprite } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('CoinFly')
-export class CoinFly extends Component {
+@ccclass('CoinFlyManager')
+export class CoinFlyManager extends Component {
 
     @property(Node)
     m_itemCoin: Node = null;
@@ -13,15 +13,25 @@ export class CoinFly extends Component {
     @property(Node)
     m_targetCoinLight: Node = null;
 
+    private static _instance: CoinFlyManager;
+
+    static get instance() {
+        return this._instance;
+    }
+
     onLoad() {
-        window['g_coinFly'] = this;
+        if (CoinFlyManager._instance) {
+            this.destroy();
+            return;
+        }
+        CoinFlyManager._instance = this;
     }
 
     start() {
         // Initialization code here
     }
 
-    createCoinToTip(targetNode: Node, endCallBack: Function, gold: number, parent: Node) {
+    createCoinToTip(targetNode: Node, endCallBack: Function, gold: number, parent: Node = null) {
         const node = instantiate(this.m_itemCoin);
         node.setScale(new Vec3(0, 0, 0));
 
@@ -29,11 +39,12 @@ export class CoinFly extends Component {
         if (targetNode == null) {
             startPos = node.getPosition();
         } else {
-            startPos = targetNode.convertToWorldSpaceAR(new Vec3(0, 0, 0));
-            startPos = this.node.convertToNodeSpaceAR(startPos);
+            startPos = targetNode.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
+            startPos = this.node.getComponent(UITransform).convertToNodeSpaceAR(startPos);
         }
 
-        const targetWorldPos = this.m_targetCoin.convertToWorldSpaceAR(new Vec3(0, 0, 0));
+        const targetWorldPos = this.m_targetCoin.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
+        const endPos = this.node.getComponent(UITransform).convertToNodeSpaceAR(targetWorldPos);
 
         let left = -1;
         if (randomNum(0, 100) > 50) {
@@ -47,62 +58,48 @@ export class CoinFly extends Component {
             parent.addChild(node);
         }
 
-        const moveList: Vec3[] = [];
-        moveList.push(startPos);
-
-        const endPos = this.node.convertToNodeSpaceAR(targetWorldPos);
-        let angle = getAngle(startPos, endPos);
-
+        const angle = getAngle(startPos, endPos);
         const offset = randomNum(25, 65);
-        if (left == -1) {
-            angle += offset;
-        } else {
-            angle -= offset;
-        }
+        const adjustedAngle = left === -1 ? angle + offset : angle - offset;
         const dis = randomNum(120, 180);
 
-        const x = Math.cos(angle * (Math.PI / 180)) * dis;
-        const y = Math.sin(angle * (Math.PI / 180)) * dis;
+        const x = Math.cos(adjustedAngle * (Math.PI / 180)) * dis;
+        const y = Math.sin(adjustedAngle * (Math.PI / 180)) * dis;
 
-        moveList.push(new Vec3(startPos.x + x, startPos.y + y, startPos.z));
-        moveList.push(endPos);
+        const midPos = new Vec3(startPos.x + x, startPos.y + y, 0);
 
-        const spline = tween(node).to(1, { position: moveList }, { easing: 'cubicOut' });
+        const coinTween = tween(node)
+            .to(0.2, { scale: new Vec3(1, 1, 1) })
+            .to(0.5, { position: midPos }, { easing: 'cubicOut' })
+            .to(0.5, { position: endPos }, { easing: 'cubicIn' })
+            .call(() => {
+                if (!this.m_targetCoin['scaleToBig']) {
+                    this.m_targetCoin['scaleToBig'] = true;
+                    tween(this.m_targetCoin)
+                        .to(0.1, { scale: new Vec3(1.5, 1.5, 1.5) }, { easing: 'quadOut' })
+                        .to(0.1, { scale: new Vec3(1, 1, 1) }, { easing: 'quadIn' })
+                        .call(() => {
+                            this.m_targetCoin['scaleToBig'] = false;
+                        })
+                        .start();
 
-        const callBack = () => {
-            if (!this.m_targetCoin['scaleToBig']) {
-                this.m_targetCoin['scaleToBig'] = true;
-                const seq = tween(this.m_targetCoin)
-                    .to(0.1, { scale: new Vec3(1.5, 1.5, 1.5) }, { easing: 'quadOut' })
-                    .to(0.1, { scale: new Vec3(1, 1, 1) }, { easing: 'quadIn' })
-                    .call(() => {
-                        this.m_targetCoin['scaleToBig'] = false;
-                    })
-                    .start();
+                    const sprite = this.m_targetCoinLight.getComponent(Sprite);
+                    if (sprite) {
+                        sprite.color = new Color(255, 255, 255, 0);
+                        tween(sprite)
+                            .to(0.1, { color: new Color(255, 255, 255, 255) })
+                            .to(0.1, { color: new Color(255, 255, 255, 0) })
+                            .start();
+                    }
+                }
 
-                this.m_targetCoinLight.opacity = 0;
-                tween(this.m_targetCoinLight)
-                    .to(0.1, { opacity: 255 }, { easing: 'quadOut' })
-                    .to(0.1, { opacity: 0 }, { easing: 'quadIn' })
-                    .start();
-            }
+                if (endCallBack != null) {
+                    endCallBack(gold);
+                }
+                node.destroy();
+            });
 
-            if (endCallBack != null) {
-                endCallBack(gold);
-            }
-            node.destroy();
-        };
-
-        const seq = tween(node)
-            .sequence(spline, tween().call(callBack))
-            .start();
-
-        tween(node)
-            .parallel(
-                tween().sequence(tween().to(0.2, { scale: new Vec3(1, 1, 1) }), tween().to(0.8, { scale: new Vec3(0.3, 0.3, 0.3) })),
-                seq
-            )
-            .start();
+        coinTween.start();
     }
 
     // update (dt) {},

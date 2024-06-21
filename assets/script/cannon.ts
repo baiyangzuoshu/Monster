@@ -1,8 +1,16 @@
-import { _decorator, Component, Node, Label, SpriteAtlas, Sprite, Prefab, instantiate, v2, Vec2, scaleTo, fadeOut, sequence, callFunc, delayTime, scheduleOnce } from 'cc';
+import { _decorator, Component, Node, Label, SpriteAtlas, Sprite, Prefab, instantiate, v2, Vec2, tween, Tween } from 'cc';
+import { GameManager } from './game';
+import { BUFFER_QUANPINGGONGJI } from './define';
+import { Vec3 } from 'cc';
+import { v3 } from 'cc';
+import { MonsterBuild } from './monsterBuild';
+import { SkillManager } from './gameUI/skillBuffer';
+import { g_GlobalData } from './data/data';
+import GunBase from './gun/gunBase';
 const { ccclass, property } = _decorator;
 
-@ccclass('GunComponent')
-export class GunComponent extends Component {
+@ccclass('Cannon')
+export class Cannon extends Component {
 
     @property(Label)
     m_labLevel: Label = null;
@@ -28,6 +36,8 @@ export class GunComponent extends Component {
     @property([Prefab])
     m_gunPrefab: Prefab[] = [];
 
+    private static _instance: Cannon = null;
+
     private m_levelData: number = -1;
     private m_type: number = 0;
     private m_bFire: boolean = false;
@@ -36,7 +46,13 @@ export class GunComponent extends Component {
     private m_gunSprite: Node = null;
     private m_attackTarget: any = null;
 
+    public static get instance(): Cannon {
+        return this._instance;
+    }
+
     onLoad() {
+        Cannon._instance = this;
+
         this.m_levelData = -1;
         this.m_type = 0;
         this.m_bFire = false;
@@ -63,15 +79,14 @@ export class GunComponent extends Component {
     effectAction() {
         const self = instantiate(this.node);
         this.node.addChild(self);
-        self.setPosition(v2(0, 0));
-        const scale = scaleTo(0.1, 4, 4);
-        const fade = fadeOut(0.1);
-        const sp = cc.spawn(scale, fade);
-        const seq = sequence(delayTime(0.1), sp, callFunc(() => {
-            self.removeFromParent();
-            self.destroy();
-        }));
-        self.runAction(seq);
+        self.setPosition(v3(0, 0));
+        tween(self)
+            .to(0.1, { scale: v3(4, 4,0) })
+            .call(() => {
+                self.removeFromParent();
+                self.destroy();
+            })
+            .start();
     }
 
     setLevel(lv: number) {
@@ -81,7 +96,7 @@ export class GunComponent extends Component {
             if (this.m_gunSprite == null) {
                 this.createGun(lv);
             } else {
-                const js = this.m_gunSprite.getComponent('gun_' + this.m_type);
+                const js = this.m_gunSprite.getComponent(GunBase);
                 if (!js.isFire()) {
                     this.m_gunSprite.removeFromParent();
                     this.m_gunSprite = null;
@@ -107,7 +122,7 @@ export class GunComponent extends Component {
         this.m_levelData = curlevel;
 
         this.m_gunSprite = instantiate(this.m_gunPrefab[type]);
-        const js = this.m_gunSprite.getComponent('gun_' + type);
+        const js = this.m_gunSprite.getComponent(GunBase);
         js.setATK(ATK);
         js.setFireEndCallBack((level: number) => {
             if (level != this.m_levelData) {
@@ -179,7 +194,7 @@ export class GunComponent extends Component {
     }
 
     beginFire() {
-        if (!g_game.isGameStart()) {
+        if (!GameManager.instance.isGameStart()) {
             return;
         }
 
@@ -187,7 +202,7 @@ export class GunComponent extends Component {
             this.scheduleOnce(this.beginFire.bind(this), 0.2);
             return;
         }
-        const component = this.m_gunSprite.getComponent('gun_' + this.m_type);
+        const component = this.m_gunSprite.getComponent(GunBase);
 
         if (component != null && component.isFire()) {
             this.scheduleOnce(this.beginFire.bind(this), 0.2);
@@ -203,7 +218,7 @@ export class GunComponent extends Component {
             return;
         }
 
-        const component = this.m_gunSprite.getComponent('gun_' + this.m_type);
+        const component = this.m_gunSprite.getComponent(GunBase);
 
         if (component != null && component.endFire != null) {
             component.endFire();
@@ -214,7 +229,7 @@ export class GunComponent extends Component {
         if (!this.m_isCanLockEnemy) return;
 
         if (this.m_attackTarget == null) {
-            const target = g_monsterBuild.calcNearDistance(this.node);
+            const target = MonsterBuild.instance.calcNearDistance(this.node);
             this.setTarget(target);
         }
         if (this.m_attackTarget != null) {
@@ -222,9 +237,9 @@ export class GunComponent extends Component {
                 this.setTarget(null);
                 return;
             }
-            const dis = getDistance(this.m_attackTarget.getPosition(), this.node.getPosition());
+            const dis = getDistance(this.m_attackTarget.getPosition(), v2(this.node.getPosition().x, this.node.getPosition().y));
             let curDis = 230;
-            if (g_bufferState[BUFFER_QUANPINGGONGJI]) {
+            if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
                 curDis *= 10;
             }
             if (Math.abs(dis) > curDis) {
@@ -233,7 +248,7 @@ export class GunComponent extends Component {
             }
             const start = this.node.getPosition();
             const end = this.m_attackTarget.getPosition();
-            let angle = getAngle(start, end);
+            let angle = getAngle(v2(start.x,start.y), end);
             angle += 360;
             angle -= 90;
             if (this.m_bFire) {
@@ -255,9 +270,9 @@ export class GunComponent extends Component {
     }
 }
 
-export default GunComponent;
+export default Cannon;
 
-function getDistance(pos1: Vec2, pos2: Vec2): number {
+function getDistance(pos1: Vec3, pos2: Vec2): number {
     const dx = pos1.x - pos2.x;
     const dy = pos1.y - pos2.y;
     return Math.sqrt(dx * dx + dy * dy);

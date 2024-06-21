@@ -1,8 +1,10 @@
-import { _decorator, Component, Node, Sprite, Label, Integer } from 'cc';
+import { _decorator, Component, Node, Sprite, Label } from 'cc';
+import { MonsterBuild } from '../monsterBuild';
+import { BUFFER_GUAIWUJIANSHU } from '../define';
 const { ccclass, property } = _decorator;
 
-@ccclass('Skill')
-export class Skill extends Component {
+@ccclass('SkillManager')
+export class SkillManager extends Component {
 
     @property(Node)
     m_lock: Node = null;
@@ -13,24 +15,33 @@ export class Skill extends Component {
     @property(Label)
     m_time: Label = null;
 
-    @property(Integer)
+    @property(Number)
     m_bufferType: number = 0;
 
+    private static _instance: SkillManager;
     private m_timeData: number = 0;
     private m_maxTime: number = 60;
 
-    onLoad() {
-        this.m_lock.active = false;
-        this.m_cd.node.active = false;
-        this.m_time.node.active = false;
+    public bufferState:any=[];
+    static get instance() {
+        return this._instance;
+    }
 
-        this.m_timeData = 0;
-        this.m_maxTime = 60;
-        window['g_bufferState'] = [];
+    onLoad() {
+        if (SkillManager._instance) {
+            this.destroy();
+            return;
+        }
+        SkillManager._instance = this;
+        this.bufferState = [];
     }
 
     start() {
-        // Initialization code here
+        this.m_lock.active = false;
+        this.m_cd.node.active = false;
+        this.m_time.node.active = false;
+        this.m_timeData = 0;
+        this.m_maxTime = 60;
     }
 
     onClickSkill() {
@@ -42,50 +53,44 @@ export class Skill extends Component {
         this.m_timeData = this.m_maxTime;
         this.m_time.string = this.formatSeconds(this.m_timeData);
 
-        window['g_bufferState'][this.m_bufferType] = true;
+        this.bufferState[this.m_bufferType] = true;
 
         if (this.m_bufferType === BUFFER_GUAIWUJIANSHU) {
-            g_monsterBuild.setAllSlow(true);
+            MonsterBuild.instance.setAllSlow(true);
         }
     }
 
     update(dt: number) {
         if (this.m_timeData === 0) return;
 
-        if (this.m_timeData > 0) {
-            this.m_timeData -= dt;
+        this.m_timeData -= dt;
+        if (this.m_timeData <= 0) {
+            this.resetSkill();
+        } else {
+            this.m_time.string = this.formatSeconds(this.m_timeData);
+            this.m_cd.fillRange = this.m_timeData / this.m_maxTime;
         }
-        if (this.m_timeData < 0) {
-            this.m_timeData = 0;
-            this.m_cd.node.active = false;
-            this.m_time.node.active = false;
-            window['g_bufferState'][this.m_bufferType] = false;
-
-            if (this.m_bufferType === BUFFER_GUAIWUJIANSHU) {
-                g_monsterBuild.setAllSlow(false);
-            }
-            return;
-        }
-        this.m_time.string = this.formatSeconds(this.m_timeData);
-        const per = this.m_timeData / this.m_maxTime;
-        this.m_cd.fillRange = per;
     }
 
-    formatSeconds(value: number): string {
-        let theTime = parseInt(value.toString()); // 秒
-        let middle = 0; // 分
+    private resetSkill() {
+        this.m_timeData = 0;
+        this.m_cd.node.active = false;
+        this.m_time.node.active = false;
+        this.bufferState[this.m_bufferType] = false;
 
-        if (theTime > 60) {
-            middle = parseInt((theTime / 60).toString());
-            theTime = parseInt((theTime % 60).toString());
+        if (this.m_bufferType === BUFFER_GUAIWUJIANSHU) {
+            MonsterBuild.instance.setAllSlow(false);
         }
-        let result = "" + parseInt(theTime.toString());
-        if (middle > 0) {
-            result = "" + parseInt(middle.toString()) + ":" + result;
-        } else {
-            result = "00:" + result;
-        }
+    }
 
-        return result;
+    private formatSeconds(value: number): string {
+        const theTime = Math.floor(value); // 秒
+        const minutes = Math.floor(theTime / 60); // 分
+        const seconds = theTime % 60; // 剩余的秒
+
+        const minutesStr = minutes > 9 ? minutes.toString() : '0' + minutes;
+        const secondsStr = seconds > 9 ? seconds.toString() : '0' + seconds;
+
+        return `${minutesStr}:${secondsStr}`;
     }
 }

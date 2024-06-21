@@ -1,8 +1,10 @@
 import { _decorator, Component, Label, Sprite, SpriteAtlas, Animation, Node } from 'cc';
+import { g_GlobalData } from '../data/data';
+import { DataManager } from '../data/dataManager';
 const { ccclass, property } = _decorator;
 
-@ccclass('BossView')
-export class BossView extends Component {
+@ccclass('BossViewManager')
+export class BossViewManager extends Component {
 
     @property(Label)
     m_labLevel: Label = null;
@@ -19,10 +21,19 @@ export class BossView extends Component {
     private m_anim: Animation = null;
     private m_callBack: Function | null = null;
 
+    private static _instance: BossViewManager;
+
+    static get instance() {
+        return this._instance;
+    }
+
     onLoad() {
-        window['g_bossView'] = this;
+        if (BossViewManager._instance) {
+            this.destroy();
+            return;
+        }
+        BossViewManager._instance = this;
         this.m_anim = this.node.getComponent(Animation);
-        // this.m_anim.on('finished', this.end, this);
     }
 
     start() {
@@ -31,7 +42,7 @@ export class BossView extends Component {
 
     play(callFunc: Function) {
         // 设置关卡
-        const checkPoint = g_dataManager.getCheckPoint();
+        const checkPoint = DataManager.getCheckPoint();
         this.m_labLevel.string = `${checkPoint.big + 1}-${checkPoint.small + 1}`;
 
         let id = 0;

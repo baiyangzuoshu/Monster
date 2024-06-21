@@ -1,8 +1,12 @@
 import { _decorator, Component, Node, Label } from 'cc';
+import { GameUIManager } from './gameUI';
+import { g_GlobalData } from '../data/data';
+import { DataManager } from '../data/dataManager';
+import { numberToString } from '../utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('TopUI')
-export class TopUI extends Component {
+@ccclass('TopUIManager')
+export class TopUIManager extends Component {
 
     @property(Label)
     m_labGold: Label = null;
@@ -13,8 +17,20 @@ export class TopUI extends Component {
     @property(Label)
     m_labCheckPoint: Label = null;
 
+    private static _instance: TopUIManager;
+
+    static get instance() {
+        return this._instance;
+    }
+
     onLoad() {
-        window['g_topUI'] = this;
+        if (TopUIManager._instance) {
+            this.destroy();
+            return;
+        }
+        TopUIManager._instance = this;
+        // @ts-ignore
+        
     }
 
     start() {
@@ -22,15 +38,15 @@ export class TopUI extends Component {
     }
 
     updateGameUI() {
-        const gold = g_dataManager.getGold();
-        const diamond = g_dataManager.getDiamond();
+        const gold = DataManager.getGold();
+        const diamond = DataManager.getDiamond();
         this.m_labGold.string = numberToString(gold);
         this.m_diamond.string = numberToString(diamond);
         this.updateCheckPoint();
     }
 
     updateCheckPoint() {
-        const checkPoint = g_dataManager.getCheckPoint();
+        const checkPoint = DataManager.getCheckPoint();
         const data = g_GlobalData.getData(checkPoint.big, checkPoint.small);
         this.m_labCheckPoint.string = '关卡';
         this.m_labCheckPoint.string += `${checkPoint.big + 1}-`;
@@ -41,7 +57,7 @@ export class TopUI extends Component {
     }
 
     onClickMap() {
-        g_gameUI.changeMapViewActive();
+        GameUIManager.instance.changeMapViewActive();
     }
 
     // update(dt: number) {

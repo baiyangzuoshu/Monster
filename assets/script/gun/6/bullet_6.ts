@@ -1,18 +1,20 @@
-import { _decorator, Component, Node, Animation, Vec2, v2, sequence, callFunc, delayTime } from 'cc';
-import { BulletBase } from './bulletBase';
+import { _decorator, Component, Node, Animation, Vec2, tween, v3 } from 'cc';
+import BulletBase from '../bulletBase';
+import { getAngle } from '../../../script/utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('Bullet')
-export class Bullet extends BulletBase {
+@ccclass('bullet_6')
+export class bullet_6 extends BulletBase {
 
     private m_showHpEffect: boolean | null = null;
+    private isDead: boolean = false;
 
     start() {
         // Initialization code here
     }
 
     onCollisionEnter(other: any, self: any) {
-        if (!this.node['isDead']) {
+        if (!this.isDead) {
             if (other.node['_monsterID'] != this.node['_attackTarget']['_monsterID']) {
                 return;
             }
@@ -26,23 +28,22 @@ export class Bullet extends BulletBase {
 
             const anim = this.node.getComponent(Animation);
             if (anim != null) {
-                this.node['isDead'] = true;
+                this.isDead = true;
                 anim.play('boom');
-                const seq = sequence(
-                    delayTime(0.5),
-                    callFunc(() => {
+                tween(this.node)
+                    .delay(0.5)
+                    .call(() => {
                         this.node.removeFromParent();
                         this.node.destroy();
                     })
-                );
-                this.node.runAction(seq);
+                    .start();
             }
         }
     }
 
     update(dt: number) {
         const bullet = this.node;
-        if (bullet['isDead']) {
+        if (this.isDead) {
             return;
         }
         if (bullet['_attackTarget'] == null) return;
@@ -62,11 +63,4 @@ export class Bullet extends BulletBase {
     }
 }
 
-export default Bullet;
 
-function getAngle(startPos: Vec2, endPos: Vec2): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}

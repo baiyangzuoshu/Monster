@@ -1,4 +1,11 @@
-import { _decorator, Component, Node, ScrollView, Label, instantiate, v2, sequence, scaleTo, spawn, moveBy, delayTime, callFunc } from 'cc';
+import { _decorator, Component, Node, ScrollView, Label, instantiate, v2, Vec3, Vec2, tween, Tween, UITransform } from 'cc';
+import { CoinFlyManager } from '../coinFly';
+import { DataManager } from '../data/dataManager';
+import { numberToString } from '../utlis';
+import DiamondFlyManager from '../diamondFly';
+import { GameUIManager } from './gameUI';
+import { g_GlobalData } from '../data/data';
+import { v3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('MapView')
@@ -35,44 +42,43 @@ export class MapView extends Component {
     private m_curtPos: { x: number, y: number } = { x: 0, y: 0 };
 
     onLoad() {
-        this.m_pointNode.zIndex = 1000;
+        this.m_pointNode.setSiblingIndex(1000);
     }
 
     updatePoint() {
-        while (this.m_pointNode.children.length) {
-            const point = this.m_pointNode.children[0];
-            point.removeFromParent();
-            point.destroy();
-        }
+        this.m_pointNode.removeAllChildren();
+
         for (let i = 0; i < this.m_pointData.length; i++) {
             const pos = this.m_pointData[i];
             const node = instantiate(this.m_point);
             this.m_pointNode.addChild(node);
             node.active = true;
-            node.setPosition(pos.x, pos.y);
+            node.setPosition(new Vec3(pos.x, pos.y, 0));
         }
+
         const node = instantiate(this.m_curPoint);
         this.m_pointNode.addChild(node);
         node.active = true;
-        node.setPosition(this.m_curtPos.x, this.m_curtPos.y);
+        node.setPosition(new Vec3(this.m_curtPos.x, this.m_curtPos.y, 0));
         this.curPointRunAction(node);
     }
 
     curPointRunAction(node: Node) {
-        const seq = sequence(
-            scaleTo(0.1, 1.2, 0.8),
-            spawn(
-                moveBy(0.2, v2(0, 30)),
-                scaleTo(0.2, 1, 1),
-            ),
-            spawn(
-                moveBy(0.2, v2(0, -30)),
-                scaleTo(0.2, 1.2, 0.8),
-            ),
-            scaleTo(0.1, 1, 1),
-        );
-
-        node.runAction(seq.repeatForever());
+        const action = tween(node)
+            .sequence(
+                tween().to(0.1, { scale: new Vec3(1.2, 0.8, 1) }),
+                tween().parallel(
+                    tween().by(0.2, { position: v3(0, 30, 0) }),
+                    tween().to(0.2, { scale: new Vec3(1, 1, 1) })
+                ),
+                tween().parallel(
+                    tween().by(0.2, { position: v3(0, -30, 0) }),
+                    tween().to(0.2, { scale: new Vec3(1.2, 0.8, 1) })
+                ),
+                tween().to(0.1, { scale: new Vec3(1, 1, 1) })
+            )
+            .repeatForever();
+        action.start();
     }
 
     start() {
@@ -85,11 +91,7 @@ export class MapView extends Component {
     }
 
     onOut() {
-        const obj = [];
-        for (let i = 0; i < this.m_pointData.length; i++) {
-            const pos = this.m_pointData[i];
-            obj.push({ x: Math.floor(pos.x), y: Math.floor(pos.y) });
-        }
+        const obj = this.m_pointData.map(pos => ({ x: Math.floor(pos.x), y: Math.floor(pos.y) }));
         console.log(JSON.stringify(obj));
     }
 
@@ -99,7 +101,7 @@ export class MapView extends Component {
         this.node.active = true;
 
         this.m_pointData = [];
-        const checkPoint = g_dataManager.getCheckPoint();
+        const checkPoint = DataManager.getCheckPoint();
         this.m_curtPos = g_GlobalData.checkPointNodePos[0];
 
         if (checkPoint.big > 1) {
@@ -115,8 +117,8 @@ export class MapView extends Component {
         if (value < 0) {
             value = 0;
         }
-        const pre = value / this.m_onNode.width;
-        this.m_scrollView.scrollTo(pre);
+        const pre = value / this.m_onNode.getComponent(UITransform).width;
+        this.m_scrollView.scrollToPercentHorizontal(pre, 1, false);
     }
 
     hide() {
@@ -139,13 +141,13 @@ export class MapView extends Component {
     }
 
     goldFlyEnd(gold: number) {
-        g_dataManager.addGold(gold);
-        g_gameUI.updateGameUI();
+        DataManager.addGold(gold);
+        GameUIManager.instance.updateGameUI();
     }
 
     diamondFlyEnd(diamond: number) {
-        g_dataManager.addDiamond(diamond);
-        g_gameUI.updateGameUI();
+        DataManager.addDiamond(diamond);
+        GameUIManager.instance.updateGameUI();
     }
 
     showSucceed(gold: number, diamond: number) {
@@ -157,24 +159,25 @@ export class MapView extends Component {
         const createFly = () => {
             if (gold > 0) {
                 const addGold = Math.floor(gold / count);
-                g_coinFly.createCoinToTip(this.m_labGold.node, this.goldFlyEnd.bind(this), addGold);
+                CoinFlyManager.instance.createCoinToTip(this.m_labGold.node, this.goldFlyEnd.bind(this), addGold);
             }
             if (diamond > 0) {
                 const addDiamond = Math.floor(diamond / count);
-                g_diamondFly.createDiamondToTip(this.m_labDiamond.node, this.diamondFlyEnd.bind(this), addDiamond);
+                DiamondFlyManager.instance.createDiamondToTip(this.m_labDiamond.node, this.diamondFlyEnd.bind(this), addDiamond);
             }
-        }
-        const actionList = [];
-        actionList.push(delayTime(1));
-        for (let i = 0; i < count; i++) {
-            actionList.push(delayTime(0.01));
-            actionList.push(callFunc(createFly.bind(this)));
-        }
-        actionList.push(callFunc(() => {
-            g_dataManager.setGold(gold);
-            g_dataManager.setDiamond(diamond);
-            g_gameUI.updateGameUI();
-        }));
-        this.node.runAction(sequence(...actionList));
+        };
+
+        let i = 0;
+        const flyInterval = setInterval(() => {
+            if (i < count) {
+                createFly();
+                i++;
+            } else {
+                clearInterval(flyInterval);
+                DataManager.setGold(gold);
+                DataManager.setDiamond(diamond);
+                GameUIManager.instance.updateGameUI();
+            }
+        }, 10);
     }
 }

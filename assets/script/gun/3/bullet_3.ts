@@ -1,9 +1,10 @@
-import { _decorator, Component, Node, Sprite, Animation, Vec2, v2, sequence, callFunc, delayTime } from 'cc';
-import { BulletBase } from './bulletBase';
+import { _decorator, Component, Node, Sprite, Animation, Tween, tween, Vec2, v2, SpriteFrame } from 'cc';
+import BulletBase from '../bulletBase';
+import { getAngle } from '../../../script/utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('Bullet')
-export class Bullet extends BulletBase {
+@ccclass('bullet_3')
+export class bullet_3 extends BulletBase {
 
     @property(Sprite)
     m_cannon: Sprite = null;
@@ -36,17 +37,16 @@ export class Bullet extends BulletBase {
             if (anim != null) {
                 this.isDead = true;
                 anim.play('boom');
-                const seq = sequence(
-                    callFunc(() => {
+                tween(this.node)
+                    .call(() => {
                         this.m_effect.active = false;
-                    }),
-                    delayTime(0.5),
-                    callFunc(() => {
+                    })
+                    .delay(0.5)
+                    .call(() => {
                         this.node.removeFromParent();
                         this.node.destroy();
                     })
-                );
-                this.node.runAction(seq);
+                    .start();
             }
         }
     }
@@ -74,8 +74,7 @@ export class Bullet extends BulletBase {
 
         bullet.angle = angle - 90;
 
-        bullet.x += x;
-        bullet.y += y;
+        bullet.setPosition(bullet.position.x + x, bullet.position.y + y);
     }
 
     setFrame(frame: SpriteFrame) {
@@ -83,11 +82,4 @@ export class Bullet extends BulletBase {
     }
 }
 
-export default Bullet;
 
-function getAngle(startPos: Vec2, endPos: Vec2): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}

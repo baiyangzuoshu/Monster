@@ -1,4 +1,7 @@
 import { _decorator, Component, Label, Sprite, Button } from 'cc';
+import { g_intensifyData } from '../data/intensifyData';
+import { GameUIManager } from './gameUI';
+import { DataManager } from '../data/dataManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('IntensifyItem')
@@ -33,21 +36,21 @@ export class IntensifyItem extends Component {
         const data = g_intensifyData.getIntensifyDataByID(this.m_ID);
         if (data == null) return;
 
-        const title = g_intensifyData.getTitle(this.m_ID, 0);
+        const title = g_intensifyData.getTitle(this.m_ID);
         this.setTitle(title);
 
         const iconName = g_intensifyData.getIcon(this.m_ID);
-        const frame = g_gameUI.m_gameUIAtlas.getSpriteFrame(iconName);
+        const frame = GameUIManager.instance.m_gameUIAtlas.getSpriteFrame(iconName);
         this.m_icon.spriteFrame = frame;
 
-        let lv = g_dataManager.getInternsifLevel(this.m_ID);
+        let lv = DataManager.getInternsifLevel(this.m_ID);
         if (lv >= data.value.length) {
             lv = data.value.length - 1;
             this.m_upLevelButton.interactable = false;
         }
 
         const needDiamond = g_intensifyData.getDiamond(this.m_ID, lv);
-        const haveDiamond = g_dataManager.getDiamond();
+        const haveDiamond = DataManager.getDiamond();
         if (haveDiamond < needDiamond) {
             this.m_upLevelButton.interactable = false;
         }
@@ -70,7 +73,7 @@ export class IntensifyItem extends Component {
         }
     }
 
-    setID(ID: number) {
+    public setID(ID: number) {
         this.m_ID = ID;
     }
 
@@ -82,7 +85,7 @@ export class IntensifyItem extends Component {
         const data = g_intensifyData.getIntensifyDataByID(this.m_ID);
         if (data == null) return;
 
-        let lv = g_dataManager.getInternsifLevel(this.m_ID);
+        let lv = DataManager.getInternsifLevel(this.m_ID);
         if (lv >= data.value.length) {
             lv = data.value.length - 1;
             this.m_upLevelButton.interactable = false;
@@ -90,16 +93,16 @@ export class IntensifyItem extends Component {
         }
 
         const needDiamond = g_intensifyData.getDiamond(this.m_ID, lv);
-        const haveDiamond = g_dataManager.getDiamond();
+        const haveDiamond = DataManager.getDiamond();
         if (haveDiamond < needDiamond) {
             this.m_upLevelButton.interactable = false;
             return;
         }
 
-        g_dataManager.subDiamond(needDiamond);
-        g_dataManager.addInternsifLevel(this.m_ID);
+        DataManager.subDiamond(needDiamond);
+        DataManager.addInternsifLevel(this.m_ID);
 
-        g_gameUI.updateGameUI();
+        GameUIManager.instance.updateGameUI();
         this.updateItem();
     }
 

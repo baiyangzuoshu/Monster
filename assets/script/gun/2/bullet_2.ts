@@ -1,9 +1,11 @@
-import { _decorator, Component, Node, Animation, Vec2, v2, sequence, delayTime, callFunc } from 'cc';
-import { BulletBase } from './bulletBase';
+import { _decorator, Component, Node, Animation, Vec2, v2, Tween, tween } from 'cc';
+import BulletBase from '../bulletBase';
+import { v3 } from 'cc';
+import { getAngle } from '../../../script/utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('Bullet')
-export class Bullet extends BulletBase {
+@ccclass('bullet_2')
+export class bullet_2 extends BulletBase {
 
     private m_showHpEffect: boolean | null = null;
 
@@ -31,18 +33,17 @@ export class Bullet extends BulletBase {
             if (anim != null) {
                 this.node['isDead'] = true;
                 anim.play('boom');
-                const seq = sequence(
-                    delayTime(0.01),
-                    callFunc(() => {
-                        this.node.setScale(v2(1, 1));
-                    }),
-                    delayTime(0.5),
-                    callFunc(() => {
+                tween(this.node)
+                    .delay(0.01)
+                    .call(() => {
+                        this.node.setScale(v3(1, 1));
+                    })
+                    .delay(0.5)
+                    .call(() => {
                         this.node.removeFromParent();
                         this.node.destroy();
                     })
-                );
-                this.node.runAction(seq);
+                    .start();
             }
         }
     }
@@ -71,11 +72,5 @@ export class Bullet extends BulletBase {
     }
 }
 
-export default Bullet;
 
-function getAngle(startPos: Vec2, endPos: Vec2): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}
+

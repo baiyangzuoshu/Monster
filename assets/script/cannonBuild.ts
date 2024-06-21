@@ -1,8 +1,14 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, Vec3, UITransform, v2, Color, EventTouch, Tween, tween, Label } from 'cc';
+import { GameManager } from './game';
+import { BottomUIManager } from './gameUI/bottom';
+import { DataManager } from './data/dataManager';
+import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';
+import { v3 } from 'cc';
+import Cannon from './cannon';
 const { ccclass, property } = _decorator;
 
-@ccclass('CannonBuild')
-export class CannonBuild extends Component {
+@ccclass('CannonManager')
+export class CannonManager extends Component {
 
     @property(Prefab)
     m_cannonPrefab: Prefab = null;
@@ -10,23 +16,31 @@ export class CannonBuild extends Component {
     @property(Node)
     m_moveCannonNode: Node = null;
 
+    private static _instance: CannonManager = null;
+
     private m_curZIndex: number = 100;
     private m_touchNode: Node = null;
     private m_cannonList: any[] = [];
     private m_selecetCannon: any = null;
     private m_moveCannon: Node = null;
 
+    public static get instance(): CannonManager {
+        return this._instance;
+    }
+
     onLoad() {
+        CannonManager._instance = this;
+
         this.m_curZIndex = 100;
         this.m_touchNode = new Node();
         this.node.addChild(this.m_touchNode);
-        this.m_touchNode.getComponent(UITransform).anchorY = 1;
+        const uiTransform = this.m_touchNode.addComponent(UITransform);
+        uiTransform.anchorY = 1;
         this.m_touchNode.setPosition(new Vec3(320, 361));
-        this.m_touchNode.getComponent(UITransform).setContentSize(640, 1200);
+        uiTransform.setContentSize(640, 1200);
 
-        window['g_cannonBuild'] = this;
         this.m_cannonList = [];
-        const _cannonList = g_game.getCurCannonPoint();
+        const _cannonList = GameManager.instance.getCurCannonPoint();
         for (let i = 0; i < _cannonList.length; i++) {
             this.m_cannonList[i] = this.createCannonData();
             this.m_cannonList[i].pos = _cannonList[i];
@@ -60,7 +74,7 @@ export class CannonBuild extends Component {
                 this.showCannonRange(cannon);
                 cannon.node.opacity = 127;
                 this.showCannonHint(cannon.node['_selfData'].cannon);
-                g_bottomUI.setShowDestroy(true);
+                BottomUIManager.instance.setShowDestroy(true);
             } else {
                 this.m_selecetCannon = null;
             }
@@ -105,9 +119,9 @@ export class CannonBuild extends Component {
         }
 
         this.hideCannonRange();
-        g_bottomUI.setShowDestroy(false);
+        BottomUIManager.instance.setShowDestroy(false);
 
-        if (g_bottomUI.isInDestroy(worldPos)) {
+        if (BottomUIManager.instance.isInDestroy(worldPos)) {
             this.m_selecetCannon.cannon.node.removeFromParent();
             this.m_selecetCannon.cannon.node.destroy();
             this.m_selecetCannon.cannon = null;
@@ -122,10 +136,10 @@ export class CannonBuild extends Component {
         }
 
         this.hideCannonRange();
-        g_bottomUI.setShowDestroy(false);
+        BottomUIManager.instance.setShowDestroy(false);
 
         const worldPos = event.getLocation();
-        if (g_bottomUI.isInDestroy(worldPos)) {
+        if (BottomUIManager.instance.isInDestroy(worldPos)) {
             this.m_selecetCannon.cannon.node.removeFromParent();
             this.m_selecetCannon.cannon.node.destroy();
             this.m_selecetCannon.cannon = null;
@@ -135,8 +149,8 @@ export class CannonBuild extends Component {
     showCannonRange(cannon: any) {
         this.hideCannonRange();
         cannon.showRange();
-        cannon.node.zIndex = this.m_curZIndex;
-        this.m_moveCannon.zIndex = this.m_curZIndex + 1;
+        cannon.node.setSiblingIndex(this.m_curZIndex);
+        this.m_moveCannon.setSiblingIndex(this.m_curZIndex + 1);
         this.m_curZIndex++;
     }
 
@@ -182,8 +196,8 @@ export class CannonBuild extends Component {
                 endItem.cannon = null;
                 playEffect = true;
 
-                g_dataManager.addTaskCount(TASK_HEBING_FANGYUTA);
-                g_dataManager.addTaskCount(CHENGJIOU_QIANGHUA_JINENG);
+                DataManager.addTaskCount(TASK_HEBING_FANGYUTA);
+                DataManager.addTaskCount(CHENGJIOU_QIANGHUA_JINENG);
             }
         }
 
@@ -265,10 +279,9 @@ export class CannonBuild extends Component {
         const pos = this.m_cannonList[index].pos;
         cannon['_selfData'] = this.m_cannonList[index];
 
-        const startPos = v2(317, -952);
-        cannon.setPosition(startPos);
+        cannon.setPosition(v3(317, -952));
 
-        const cannonComp = cannon.getComponent('cannon');
+        const cannonComp = cannon.getComponent(Cannon);
         cannonComp.setRot(randomNum(0, 360));
         level = level ? level : 0;
         cannonComp.createGun(level);
@@ -276,19 +289,20 @@ export class CannonBuild extends Component {
 
         const x = pos.x * 106 + 106 / 2;
         const y = -pos.y * 106 - 106 / 2;
-        const endPos = v2(x, y);
 
-        const moveTo = new Tween().to(0.5, { position: endPos });
-        const scaleTo1 = new Tween().to(0.2, { scale: new Vec3(4, 4) });
-        const delta = new Tween().delay(0.2);
-        const scaleTo2 = new Tween().to(0.1, { scale: new Vec3(1, 1) });
-        const seq = new Tween().sequence(scaleTo1, delta, scaleTo2, new Tween().call(() => {
-            cannonComp.effectAction();
-            cannonComp.openLockEnemy();
-            cannonComp.setFlying(false);
-        }));
-
-        new Tween(cannon.node).parallel(moveTo, seq).start();
+        tween(cannon)
+            .to(0.5, { position: v3(x,y) })
+            .parallel(
+                tween(cannon).to(0.2, { scale: new Vec3(4, 4) }),
+                tween(cannon).delay(0.2),
+                tween(cannon).to(0.1, { scale: new Vec3(1, 1) })
+            )
+            .call(() => {
+                cannonComp.effectAction();
+                cannonComp.openLockEnemy();
+                cannonComp.setFlying(false);
+            })
+            .start();
     }
 
     clearAllCannon() {
@@ -309,14 +323,14 @@ export class CannonBuild extends Component {
     }
 
     createEndItemBlock() {
-        const _cannonList = g_game.getCurCannonPoint();
+        const _cannonList = GameManager.instance.getCurCannonPoint();
         for (let i = 0; i < _cannonList.length; i++) {
             const pos = _cannonList[i];
 
             const block = new Node();
             this.node.addChild(block);
             block.setPosition(new Vec3(pos.x * 106 + 106 / 2, -pos.y * 106 - 106 / 2));
-            block.getComponent(UITransform).setContentSize(106, 106);
+            block.addComponent(UITransform).setContentSize(106, 106);
             this.m_cannonList[i].block = block;
             this.m_cannonList[i].block['_selfData'] = this.m_cannonList[i];
         }
@@ -378,9 +392,9 @@ export class CannonBuild extends Component {
             }
             rand = rand / 100;
             const acList = [];
-            acList.push(new Tween().to(0.35 + rand, { scale: new Vec3(1.8, 1.8) }).easing(Tween.Easing.quadIn));
-            acList.push(new Tween().to(0.35 - rand, { scale: new Vec3(1, 1) }).easing(Tween.Easing.quadOut));
-            new Tween(cannon).sequence(...acList).start();
+            acList.push(tween(cannon).to(0.35 + rand, { scale: new Vec3(1.8, 1.8) }));
+            acList.push(tween(cannon).to(0.35 - rand, { scale: new Vec3(1, 1) }));
+            tween(cannon).sequence(...acList).start();
         }
     }
 }

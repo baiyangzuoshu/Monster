@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, instantiate, Animation, Label, v2, Vec3, sequence, scaleTo, fadeOut, callFunc } from 'cc';
+import { _decorator, Component, Node, instantiate, Animation, Label, Vec3, tween, v3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('EffectBuild')
@@ -10,7 +10,14 @@ export class EffectBuild extends Component {
     @property(Node)
     m_deadHp: Node = null;
 
+    private static _instance: EffectBuild = null;
+
+    public static get instance(): EffectBuild {
+        return this._instance;
+    }
+
     onLoad() {
+        EffectBuild._instance = this;
         // @ts-ignore
         window.g_effectBuild = this;
     }
@@ -22,7 +29,7 @@ export class EffectBuild extends Component {
         effect.setPosition(pos);
 
         const anim = effect.getComponent(Animation);
-        anim.on('finished', () => {
+        anim.on(Animation.EventType.FINISHED, () => {
             effect.removeFromParent();
             effect.destroy();
         });
@@ -38,15 +45,15 @@ export class EffectBuild extends Component {
         const hpLabel = hp.getComponent(Label);
         hpLabel.string = number;
 
-        const seq = sequence(
-            scaleTo(0.1, 1.3, 1.3),
-            scaleTo(0.1, 1, 1),
-            fadeOut(0.5),
-            callFunc(() => {
+        tween(hp)
+            .to(0.1, { scale: v3(1.3, 1.3, 1) })
+            .to(0.1, { scale: v3(1, 1, 1) })
+            .call(() => {
                 hp.removeFromParent();
                 hp.destroy();
             })
-        );
-        hp.runAction(seq);
+            .start();
     }
 }
+
+export default EffectBuild;

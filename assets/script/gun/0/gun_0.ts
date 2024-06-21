@@ -1,63 +1,59 @@
-import { _decorator, Component, Node, Animation, instantiate, callFunc, delayTime, sequence, repeatForever, v2 } from 'cc';
-import { GunBase } from './gunBase';
+import { _decorator, Component, Node, Animation, instantiate, v3, tween, Vec3, CCObject } from 'cc';
+import GunBase from '../gunBase';
+import { GameManager } from '../../../script/game';
+import BulletManager from '../../../script/bulletBuild';
+import { getAngle } from '../../../script/utlis';
+import { bullet_6 } from '../6/bullet_6';
+import { Tween } from 'cc';
+
 const { ccclass, property } = _decorator;
 
-@ccclass('Gun')
-export class Gun extends GunBase {
+@ccclass('gun_0')
+export class gun_0 extends GunBase {
 
     @property(Node)
-    m_bulletNode: Node = null;
+    m_bullet: Node = null;
 
-    private m_bullet: Node = null;
     private m_effect: Animation = null;
-    private m_fireAction: any = null;
-    private m_target: any = null;
     private m_effectEnd: boolean = false;
+    private m_fireAction: Tween<Node> = null;
+    private m_target: any = null;
 
     onLoad() {
         this.m_fire = false;
-        this.m_bullet = instantiate(this.m_bulletNode);
-        g_bulletBuild.node.addChild(this.m_bullet);
 
-        const effectNode = this.node.getChildByName('effect');
-        if (effectNode) {
-            this.m_effect = effectNode.getComponent(Animation);
-            this.m_effect.on('finished', this.onEffectEnd, this);
+        this.m_effect = this.node.getChildByName('effect')?.getComponent(Animation) || null;
+
+        if (this.m_effect) {
+            this.m_effect.on(Animation.EventType.FINISHED, this.onEffectEnd, this);
         }
 
-        const seq = sequence(
-            callFunc(() => {
-                if (!g_game.isGameStart()) {
+        const seq = tween(this.node)
+            .call(() => {
+                if (!GameManager.instance.isGameStart()) {
                     this.endFire();
                     return;
                 }
-                if (!this.m_effectEnd) {
-                    this.showBullet();
+                if (!this.m_effectEnd && this.m_effect) {
+                    this.m_effect.node.active = true;
                     this.m_effect.play('fire');
-
-                    const js = this.m_target.getComponent('msItem');
-                    if (js != null) {
-                        js.subHP(this.m_ATK);
-                    }
                 }
-            }),
-            delayTime(0.25),
-            callFunc(() => {
-                this.hideBullet();
-            }),
-            delayTime(0.5),
-            callFunc(() => {
+            })
+            .by(0.25, { position: new Vec3(0, -15, 0) })
+            .call(() => {
+                this.createBullet();
+            })
+            .by(0.25, { position: new Vec3(0, 15, 0) })
+            .call(() => {
                 if (this.m_effectEnd) {
-                    this.hideBullet();
-                    this.node.stopAction(this.m_fireAction);
                     this.m_fire = false;
                     if (this.m_endCallBack != null) {
                         this.m_endCallBack(this.m_type);
                     }
                 }
-            })
-        );
-        this.m_fireAction = repeatForever(seq);
+            });
+
+        this.m_fireAction = seq.repeatForever().start();
     }
 
     start() {
@@ -67,26 +63,34 @@ export class Gun extends GunBase {
     fire(target: any) {
         this.m_fire = true;
         this.m_effectEnd = false;
-        this.node.runAction(this.m_fireAction);
-
+        if (this.m_effect) {
+            this.m_fireAction.start();
+        }
         this.m_target = target;
-        this.m_bullet['_attackTarget'] = this.m_target;
     }
 
     endFire() {
-        this.m_effectEnd = true;
+        if (this.m_effect) {
+            this.m_effectEnd = true;
+        }
     }
 
-    showBullet() {
-        this.m_bullet.active = true;
-
-        const world_pos = this.node.convertToWorldSpaceAR(v2(0, 0));
-        const pos = g_bulletBuild.node.convertToNodeSpaceAR(world_pos);
-        this.m_bullet.setPosition(pos);
-
-        const js = this.m_bullet.getComponent('bullet_0');
+    createBullet() {
+        const bullet = instantiate(this.m_bullet);
+        bullet['isDead'] = false;
+        bullet.active = true;
+        bullet['_attackTarget'] = this.m_target;
+        BulletManager.instance.node.addChild(bullet);
+        
+        const pos = this.node.getWorldPosition();
+        bullet.setWorldPosition(pos);
+        
+        bullet.angle = getAngle(pos, this.m_target.getWorldPosition());
+        
+        const js = bullet.getComponent(bullet_6);
         js.setATK(this.m_ATK);
-        js.updateBullet();
+
+        bullet.setWorldPosition(pos);
     }
 
     hideBullet() {
@@ -94,12 +98,8 @@ export class Gun extends GunBase {
     }
 
     onEffectEnd() {
-        this.m_effect.node.active = false;
+        if (this.m_effect) {
+            this.m_effect.node.active = false;
+        }
     }
-
-    // update(dt: number) {
-    //     // Update code here
-    // }
 }
-
-export default Gun;

@@ -1,4 +1,6 @@
 import { _decorator, Component, Node, instantiate } from 'cc';
+import { g_taskData } from '../data/taskData';
+import { TaskItem } from './taskItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('TaskView')
@@ -14,7 +16,6 @@ export class TaskView extends Component {
     private m_selectId: number = 0;
 
     onLoad() {
-        window['g_taskView'] = this;
         this.m_cloneItem.active = false;
         this.m_item = [];
         this.m_selectId = 0;
@@ -56,8 +57,9 @@ export class TaskView extends Component {
         let item = instantiate(this.m_cloneItem);
         this.m_content.addChild(item);
         item.active = true;
-        item = item.getComponent('taskItem');
-        item.setTaskID(taskID);
+        
+        let ts = item.getComponent(TaskItem);
+        ts.setTaskID(taskID);
         return item;
     }
 

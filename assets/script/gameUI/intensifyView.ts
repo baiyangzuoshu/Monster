@@ -1,4 +1,6 @@
 import { _decorator, Component, Node, instantiate } from 'cc';
+import { g_intensifyData } from '../data/intensifyData';
+import { IntensifyItem } from './intensifyItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('IntensifyView')
@@ -13,7 +15,6 @@ export class IntensifyView extends Component {
     private m_item: any[] = [];
 
     onLoad() {
-        window['g_intensifyView'] = this;
         this.m_cloneItem.active = false;
         this.updateData();
     }
@@ -51,8 +52,9 @@ export class IntensifyView extends Component {
         let item = instantiate(this.m_cloneItem);
         this.m_content.addChild(item);
         item.active = true;
-        item = item.getComponent('intensifyItem');
-        item.setID(ID);
+
+        let ts = item.getComponent(IntensifyItem);
+        ts.setID(ID);
         return item;
     }
 

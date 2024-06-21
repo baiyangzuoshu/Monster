@@ -1,5 +1,5 @@
-import { Vec3 } from 'cc';
-import { _decorator, Component, Node, NodePool, Label, Vec2, v2, tween, Tween, instantiate, UIOpacity } from 'cc';
+import { Tween } from 'cc';
+import { _decorator, Component, Node, NodePool, Label, Vec2, v2, tween, instantiate, UIOpacity, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 function randomNum(min: number, max: number): number {
@@ -12,15 +12,16 @@ export class HpEffect extends Component {
     @property(Node)
     m_hpEffectItem: Node = null;
 
-    private hpEffectPool: NodePool = new NodePool(Node);
+    private hpEffectPool: NodePool = new NodePool();
+    private static _instance: HpEffect = null;
 
-    onLoad() {
-        // @ts-ignore
-        window.g_hpEffect = this;
+    public static get instance(): HpEffect {
+        return this._instance;
     }
 
-    start() {
-        // 初始化
+    onLoad() {
+        HpEffect._instance = this;
+        // @ts-ignore
     }
 
     createHpEffect(pos: Vec2, str: string) {
@@ -86,9 +87,11 @@ export class HpEffect extends Component {
         for (let i = 1; i < points.length; i++) {
             const segmentLength = Vec2.distance(points[i - 1], points[i]);
             const segmentDuration = duration * (segmentLength / totalLength);
-            tweens.push(tween(node).to(segmentDuration, { position: new Vec3(points[i].x, points[i].y) }));
+            tweens.push(tween(node).to(segmentDuration, { position: new Vec3(points[i].x, points[i].y, 0) }));
         }
 
         return tweens.reduce((prev, curr) => prev.then(curr));
     }
 }
+
+export default HpEffect;

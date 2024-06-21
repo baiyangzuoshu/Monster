@@ -1,4 +1,12 @@
-import { _decorator, Component, Node, Prefab, instantiate, NodePool, director, Vec3 } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, NodePool, Vec3, tween, Tween } from 'cc';
+import { BUFFER_QUANPINGGONGJI } from './define';
+import { getDistance } from './utlis';
+import { GameManager } from './game';
+import { g_GlobalData } from './data/data';
+import { SkillManager } from './gameUI/skillBuffer';
+import { GameUIManager } from './gameUI/gameUI';
+import { MonsterItem } from './msItem';
+import { UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterBuild')
@@ -10,25 +18,29 @@ export class MonsterBuild extends Component {
     private m_currentLevel: number = 0;
     private m_monsterIndex: number = 0;
     private enemyPool: NodePool = new NodePool();
+    private static _instance: MonsterBuild = null;
+
+    public static get instance(): MonsterBuild {
+        return this._instance;
+    }
 
     onLoad() {
-        window['g_monsterBuild'] = this;
+        MonsterBuild._instance = this;
 
         this.schedule(() => {
             this.sortMonsterList();
         }, 0.5);
 
-        g_game.playGame();
+        GameManager.instance.playGame();
     }
 
     start() {
-
+        // Initialization code here
     }
 
-    // 设置所有怪物结束时的移动速度，加快速度
     setGameEndSpeed() {
         for (let i = 0; i < this.node.children.length; i++) {
-            const msItem = this.node.children[i].getComponent('msItem');
+            const msItem = this.node.children[i].getComponent(MonsterItem);
             if (msItem.isDead()) continue;
             if (!msItem.m_diamond.active) {
                 let speed = msItem.getSpeed();
@@ -41,7 +53,7 @@ export class MonsterBuild extends Component {
 
     setAllSlow(bSlow: boolean) {
         for (let i = 0; i < this.node.children.length; i++) {
-            const msItem = this.node.children[i].getComponent('msItem');
+            const msItem = this.node.children[i].getComponent(MonsterItem);
             if (msItem.isDead()) continue;
             if (!msItem.m_diamond.active) {
                 msItem.setSlow(bSlow);
@@ -51,7 +63,7 @@ export class MonsterBuild extends Component {
 
     begin() {
         if (g_GlobalData.isCurBossAttack()) {
-            g_gameUI.playBossViewAnim(this.beginCreate.bind(this));
+            GameUIManager.instance.playBossViewAnim(this.beginCreate.bind(this));
             return;
         }
         this.beginCreate();
@@ -59,32 +71,29 @@ export class MonsterBuild extends Component {
 
     beginCreate() {
         let index = 0;
-        const list = g_game.getCurPahtList();
+        const list = GameManager.instance.getCurPahtList();
         const levelData = g_GlobalData.getCurMonsterData();
         g_GlobalData.setCurMonsterCount(levelData.length);
-        const actionList = [];
+
+        let seq = tween(this.node);
+        
         for (let i = 0; i < levelData.length; i++) {
             const offset = Math.random();
-            const seq = cc.sequence(
-                cc.delayTime(0.2 + offset),
-                cc.callFunc(() => {
-                    if (index >= levelData.length) {
-                        return;
-                    }
-                    const speed = levelData[index].speed;
-                    const node = this.createMonsterByData(levelData[index], list);
-                    const js = node.getComponent('msItem');
-                    js.go(speed);
-                    if (g_bufferState[BUFFER_GUAIWUJIANSHU]) {
-                        js.setSlow(true);
-                    }
-                    index++;
-                })
-            );
-            actionList.push(seq);
+            seq = seq.delay(0.2 + offset).call(() => {
+                if (index >= levelData.length) {
+                    return;
+                }
+                const speed = levelData[index].speed;
+                const node = this.createMonsterByData(levelData[index], list);
+                const js = node.getComponent(MonsterItem);
+                js.go(speed);
+                if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
+                    js.setSlow(true);
+                }
+                index++;
+            });
         }
-        const seqList = cc.sequence(...actionList);
-        this.node.runAction(seqList);
+        seq.start();
     }
 
     destroyMonster() {
@@ -96,7 +105,7 @@ export class MonsterBuild extends Component {
     }
 
     createTest() {
-        const list = g_game.getCurPahtList();
+        const list = GameManager.instance.getCurPahtList();
         const type = randomNum(0, 2);
         const counts = [10, 15, 18];
         const index = randomNum(0, counts[type]);
@@ -104,7 +113,7 @@ export class MonsterBuild extends Component {
         const hp = 1000000;
         const gold = 1000;
         const node = this.createMonster(type, index, list, hp, gold);
-        const js = node.getComponent('msItem');
+        const js = node.getComponent(MonsterItem);
         js.go(100);
         g_GlobalData.addCurMonsterCount();
     }
@@ -117,9 +126,6 @@ export class MonsterBuild extends Component {
         return this.createMonster(type, id, list, hp, gold);
     }
 
-    // type 0: 小怪物 1: 中型怪物 2: boss
-    // index: 怪物图片名
-    // 起始点
     createMonster(type: number, index: number, list: any, hp: number, gold: number = 0) {
         let enemy: Node;
         if (this.enemyPool.size() > 0) {
@@ -129,7 +135,7 @@ export class MonsterBuild extends Component {
         }
         enemy['isDead'] = false;
         this.node.addChild(enemy);
-        const js = enemy.getComponent('msItem');
+        const js = enemy.getComponent(MonsterItem);
         js.setImage(type, index);
         js.setPath(list);
         js.setID(this.m_monsterIndex);
@@ -149,16 +155,16 @@ export class MonsterBuild extends Component {
         }
 
         this.node.children.sort((a, b) => {
-            if (a.y - b.y > 0.001) {
+            if (a.position.y - b.position.y > 0.001) {
                 return -1;
-            } else if (a.y === b.y) {
+            } else if (a.position.y === b.position.y) {
                 return 0;
             }
             return 1;
         });
 
         for (let i = 0; i < this.node.children.length; i++) {
-            this.node.children[i].zIndex = i;
+            this.node.children[i].setSiblingIndex(i);
         }
     }
 
@@ -166,7 +172,7 @@ export class MonsterBuild extends Component {
         let minDis = 9999;
         let minMonster = null;
         let curDis = 230;
-        if (g_bufferState[BUFFER_QUANPINGGONGJI]) {
+        if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
             curDis *= 10;
         }
         for (let i = 0; i < this.node.children.length; i++) {
@@ -179,4 +185,8 @@ export class MonsterBuild extends Component {
         }
         return minMonster;
     }
-});
+}
+
+function randomNum(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

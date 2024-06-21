@@ -1,9 +1,11 @@
-import { _decorator, Component, Node, Animation, Vec3, v2 } from 'cc';
-import { BulletBase } from './bulletBase';
+import { _decorator, Component, Node, Animation, Vec3 } from 'cc';
+import BulletBase from '../bulletBase';
+import { UITransform } from 'cc';
+import { getAngle, getDistance } from '../../../script/utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('Bullet')
-export class Bullet extends BulletBase {
+@ccclass('bullet_1')
+export class bullet_1 extends BulletBase {
 
     @property([Animation])
     m_anim: Animation[] = [];
@@ -15,8 +17,8 @@ export class Bullet extends BulletBase {
         this.m_widths = [];
         this.m_heights = [];
         for (let i = 0; i < this.m_anim.length; i++) {
-            this.m_widths[i] = this.m_anim[i].node.width;
-            this.m_heights[i] = this.m_anim[i].node.height;
+            this.m_widths[i] = this.m_anim[i].node.getComponent(UITransform).width;
+            this.m_heights[i] = this.m_anim[i].node.getComponent(UITransform).height;
         }
     }
 
@@ -34,10 +36,10 @@ export class Bullet extends BulletBase {
             return;
         }
         const target = bullet['_attackTarget'];
-        const targetPos = target.getPosition();
+        const targetPos = target.getWorldPosition();
 
-        const bulletPos = bullet.convertToWorldSpaceAR(v2(0, 0));
-        const worldTargetPos = target.convertToWorldSpaceAR(v2(0, 0));
+        const bulletPos = bullet.getWorldPosition();
+        const worldTargetPos = target.getWorldPosition();
 
         const targetH = target.height;
         worldTargetPos.y += targetH / 2;
@@ -60,22 +62,7 @@ export class Bullet extends BulletBase {
         this.m_anim[index].node.active = true;
 
         const pro = dis / this.m_widths[index];
-        this.m_anim[index].node.width = this.m_widths[index] * pro;
-        this.m_anim[index].node.height = this.m_heights[index] * pro;
+        this.m_anim[index].node.setScale(pro, pro, 1);
     }
 }
 
-function getAngle(startPos: Vec3, endPos: Vec3): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}
-
-function getDistance(startPos: Vec3, endPos: Vec3): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    return Math.sqrt(dx * dx + dy * dy);
-}
-
-export default Bullet;

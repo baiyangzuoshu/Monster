@@ -2,8 +2,8 @@ import { _decorator, Component, Node, UITransform, Vec3, v3, v2, instantiate, tw
 import { getAngle, randomNum } from './utlis';
 const { ccclass, property } = _decorator;
 
-@ccclass('DiamondFly')
-export class DiamondFly extends Component {
+@ccclass('DiamondFlyManager')
+export class DiamondFlyManager extends Component {
 
     @property(Node)
     m_itemDiamond: Node = null;
@@ -14,12 +14,25 @@ export class DiamondFly extends Component {
     @property(Node)
     m_targetDiamondLight: Node = null;
 
-    onLoad() {
-        // @ts-ignore
-        window.g_diamondFly = this;
+    private static _instance: DiamondFlyManager;
+
+    static get instance() {
+        return this._instance;
     }
 
-    createDiamondToTip(targetNode: Node, endCallBack: Function, diamond: number, parent: Node) {
+    onLoad() {
+        if (DiamondFlyManager._instance) {
+            this.destroy();
+            return;
+        }
+        DiamondFlyManager._instance = this;
+    }
+
+    start() {
+        // Initialization code here
+    }
+
+    createDiamondToTip(targetNode: Node, endCallBack: Function, diamond: number, parent: Node=null) {
         const node = instantiate(this.m_itemDiamond);
         node.setScale(v3(0, 0, 0));
 
@@ -111,3 +124,5 @@ export class DiamondFly extends Component {
         return tweens.reduce((prev, curr) => prev.then(curr));
     }
 }
+
+export default DiamondFlyManager;

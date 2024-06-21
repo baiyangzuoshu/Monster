@@ -1,9 +1,16 @@
-import { _decorator, Component, Node, Animation, NodePool, instantiate, v2, sequence, callFunc, delayTime, repeatForever } from 'cc';
-import { GunBase } from './gunBase';
+import { _decorator, Component, Node, Animation, NodePool, instantiate, v2, tween, Tween } from 'cc';
+import GunBase from '../gunBase';
+import { Vec3 } from 'cc';
+import { GameManager } from '../../../script/game';
+import BulletManager from '../../../script/bulletBuild';
+import { UITransform } from 'cc';
+import { v3 } from 'cc';
+import { getAngle } from '../../../script/utlis';
+import { bullet_4 } from './bullet_4';
 const { ccclass, property } = _decorator;
 
-@ccclass('Gun')
-export class Gun extends GunBase {
+@ccclass('gun_4')
+export class gun_4 extends GunBase {
 
     @property(Node)
     m_bullet: Node = null;
@@ -11,9 +18,8 @@ export class Gun extends GunBase {
     private m_bulletPool: NodePool = new NodePool();
     private m_effect: Animation = null;
     private m_effectEnd: boolean = false;
-    private m_fire: boolean = false;
-    private m_fireAction: any;
     private m_target: any;
+    private m_fireTween: Tween<Node> | null = null;
 
     onLoad() {
         const effectNode = this.node.getChildByName('effect');
@@ -22,9 +28,17 @@ export class Gun extends GunBase {
             this.m_effect.node.active = false;
         }
 
-        const seq = sequence(
-            callFunc(() => {
-                if (!g_game.isGameStart()) {
+        this.createFireAction();
+    }
+
+    start() {
+        // Initialization code here
+    }
+
+    createFireAction() {
+        this.m_fireTween = tween(this.node)
+            .call(() => {
+                if (!GameManager.instance.isGameStart()) {
                     this.endFire();
                     return;
                 }
@@ -32,34 +46,28 @@ export class Gun extends GunBase {
                     // this.m_effect.node.active = true;
                     // this.m_effect.play('fire');
                 }
-            }),
-            delayTime(0.25),
-            callFunc(() => {
+            })
+            .delay(0.25)
+            .call(() => {
                 this.createBullet();
-            }),
-            delayTime(0.25),
-            callFunc(() => {
+            })
+            .delay(0.25)
+            .call(() => {
                 if (this.m_effectEnd) {
-                    this.node.stopAction(this.m_fireAction);
                     this.m_fire = false;
                     if (this.m_endCallBack != null) {
                         this.m_endCallBack(this.m_type);
                     }
                 }
             })
-        );
-        this.m_fireAction = repeatForever(seq);
-    }
-
-    start() {
-        // Initialization code here
+            .repeatForever();
     }
 
     fire(target: any) {
         this.m_fire = true;
         if (this.m_effect != null) {
             this.m_effectEnd = false;
-            this.node.runAction(this.m_fireAction);
+            this.m_fireTween?.start();
         }
         this.m_target = target;
     }
@@ -67,6 +75,7 @@ export class Gun extends GunBase {
     endFire() {
         if (this.m_effect != null) {
             this.m_effectEnd = true;
+            this.m_fireTween?.stop();
         }
     }
 
@@ -75,16 +84,16 @@ export class Gun extends GunBase {
         bullet['isDead'] = false;
         bullet.active = true;
         bullet['_attackTarget'] = this.m_target;
-        g_bulletBuild.node.addChild(bullet);
+        BulletManager.instance.node.addChild(bullet);
 
-        let pos = this.node.convertToWorldSpaceAR(v2(0, 0));
-        pos = g_bulletBuild.node.convertToNodeSpaceAR(pos);
+        let pos = this.node.getComponent(UITransform).convertToWorldSpaceAR(v3(0, 0));
+        pos = BulletManager.instance.node.getComponent(UITransform).convertToNodeSpaceAR(pos);
 
         bullet.angle = getAngle(pos, this.m_target.getPosition());
 
         bullet.setPosition(pos);
 
-        const js = bullet.getComponent('bullet_4');
+        const js = bullet.getComponent(bullet_4);
         js.setATK(this.m_ATK);
     }
 
@@ -102,11 +111,3 @@ export class Gun extends GunBase {
     }
 }
 
-export default Gun;
-
-function getAngle(startPos: Vec2, endPos: Vec2): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}

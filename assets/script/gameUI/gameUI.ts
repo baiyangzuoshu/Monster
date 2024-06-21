@@ -1,8 +1,13 @@
 import { _decorator, Component, Node, Prefab, instantiate, SpriteAtlas } from 'cc';
+import { GameManager } from '../game';
+import { g_GlobalData } from '../data/data';
+import { DataManager } from '../data/dataManager';
+import { TopUIManager } from './topUI';
+import { BottomUIManager } from './bottom';
 const { ccclass, property } = _decorator;
 
-@ccclass('GameUI')
-export class GameUI extends Component {
+@ccclass('GameUIManager')
+export class GameUIManager extends Component {
 
     @property(Prefab)
     m_smallSettlementPrefab: Prefab = null;
@@ -23,9 +28,20 @@ export class GameUI extends Component {
     private m_bossView: any = null;
     private m_mapView: any = null;
 
+    private static _instance: GameUIManager;
+
+    static get instance() {
+        return this._instance;
+    }
+
     onLoad() {
-        window['g_gameUI'] = this;
-        this.m_coinFlyNode.zIndex = 1000;
+        if (GameUIManager._instance) {
+            this.destroy();
+            return;
+        }
+        GameUIManager._instance = this;
+    
+        this.m_coinFlyNode.setSiblingIndex(1000);
     }
 
     start() {
@@ -33,8 +49,8 @@ export class GameUI extends Component {
     }
 
     updateGameUI() {
-        g_bottomUI.updateGameUI();
-        g_topUI.updateGameUI();
+        BottomUIManager.instance.updateGameUI();
+        TopUIManager.instance.updateGameUI();
     }
 
     createSmallSettlement() {
@@ -63,9 +79,9 @@ export class GameUI extends Component {
         }
 
         const checkPoint = g_GlobalData.getCurCheckPoint();
-        g_dataManager.addGold(checkPoint.succedGold);
-        g_dataManager.addDiamond(checkPoint.diamond);
-        g_gameUI.updateGameUI();
+        DataManager.addGold(checkPoint.succedGold);
+        DataManager.addDiamond(checkPoint.diamond);
+        this.updateGameUI();
         view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
 
         this.scheduleOnce(() => {
@@ -79,7 +95,7 @@ export class GameUI extends Component {
             }
 
             this.updateGameUI();
-            g_game.playGame(isBoss);
+            GameManager.instance.playGame(isBoss);
         }, delayTime);
     }
 
@@ -88,8 +104,8 @@ export class GameUI extends Component {
         if (view.node.active) return;
 
         const checkPoint = g_GlobalData.getCurCheckPoint();
-        g_dataManager.addGold(checkPoint.faildGold);
-        g_gameUI.updateGameUI();
+        DataManager.addGold(checkPoint.faildGold);
+        this.updateGameUI();
 
         view.showFaild(checkPoint.faildGold);
 
@@ -97,7 +113,7 @@ export class GameUI extends Component {
             g_GlobalData.previousCheckPoint();
             this.hideSmallSettlement();
             this.updateGameUI();
-            g_game.playGame();
+            GameManager.instance.playGame();
         }, 2);
     }
 

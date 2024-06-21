@@ -1,4 +1,9 @@
-import { _decorator, Component, Node, Label, ProgressBar, Button, v2, moveTo, runAction, delayTime, callFunc, sequence } from 'cc';
+import { _decorator, Component, Node, Label, ProgressBar, Button, tween, Vec3, UITransform } from 'cc';
+import { CoinFlyManager } from '../coinFly';
+import { DataManager } from '../data/dataManager';
+import { g_taskData } from '../data/taskData';
+import DiamondFlyManager from '../diamondFly';
+import { GameUIManager } from './gameUI';
 const { ccclass, property } = _decorator;
 
 @ccclass('TaskItem')
@@ -42,7 +47,7 @@ export class TaskItem extends Component {
         if (this.m_taskID >= data.length) {
             return;
         }
-        const curTaskData = g_dataManager.getTaskByID(this.m_taskID);
+        const curTaskData = DataManager.getTaskByID(this.m_taskID);
         const title = g_taskData.getTitle(this.m_taskID, curTaskData.maxIndex);
         this.m_title.string = title;
 
@@ -70,17 +75,17 @@ export class TaskItem extends Component {
     }
 
     goldFlyEnd(gold: number) {
-        g_dataManager.addGold(gold);
-        g_gameUI.updateGameUI();
+        DataManager.addGold(gold);
+        GameUIManager.instance.updateGameUI();
     }
 
     diamondFlyEnd(diamond: number) {
-        g_dataManager.addDiamond(diamond);
-        g_gameUI.updateGameUI();
+        DataManager.addDiamond(diamond);
+        GameUIManager.instance.updateGameUI();
     }
 
     onClickGet() {
-        const curTaskData = g_dataManager.getTaskByID(this.m_taskID);
+        const curTaskData = DataManager.getTaskByID(this.m_taskID);
         const award = g_taskData.getAward(this.m_taskID, curTaskData.maxIndex);
         const taskData = g_taskData.getTaskDataByID(this.m_taskID);
         let count = 50;
@@ -88,34 +93,31 @@ export class TaskItem extends Component {
         const createFly = () => {
             if (taskData.taskType == 0) {
                 const value = Math.floor(award / count);
-                g_coinFly.createCoinToTip(this.m_awardCoin, this.goldFlyEnd.bind(this), value, g_gameUI.m_coinFlyNode);
+                CoinFlyManager.instance.createCoinToTip(this.m_awardCoin, this.goldFlyEnd.bind(this), value, GameUIManager.instance.m_coinFlyNode);
             }
             if (taskData.taskType == 1) {
                 const value = Math.floor(award / count);
-                g_diamondFly.createDiamondToTip(this.m_awardCoin, this.diamondFlyEnd.bind(this), value, g_gameUI.m_coinFlyNode);
+                DiamondFlyManager.instance.createDiamondToTip(this.m_awardCoin, this.diamondFlyEnd.bind(this), value, GameUIManager.instance.m_coinFlyNode);
             }
         };
 
-        const actionList = [];
-        if (award < count) {
-            count = award;
-        }
-        for (let i = 0; i < count; i++) {
-            actionList.push(delayTime(0.01));
-            actionList.push(callFunc(createFly.bind(this)));
-        }
-        actionList.push(callFunc(() => {
-            if (taskData.taskType == 0) {
-                g_dataManager.setGold(award);
+        let i = 0;
+        const flyInterval = setInterval(() => {
+            if (i < count) {
+                createFly();
+                i++;
             } else {
-                g_dataManager.setDiamond(award);
+                clearInterval(flyInterval);
+                if (taskData.taskType == 0) {
+                    DataManager.setGold(award);
+                } else {
+                    DataManager.setDiamond(award);
+                }
+                GameUIManager.instance.updateGameUI();
             }
-            g_gameUI.updateGameUI();
-        }));
+        }, 10);
 
-        this.node.runAction(sequence(...actionList));
-
-        g_dataManager.nextTask(this.m_taskID);
+        DataManager.nextTask(this.m_taskID);
         this.updateItem();
     }
 

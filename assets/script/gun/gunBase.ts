@@ -3,10 +3,10 @@ const { ccclass, property } = _decorator;
 
 @ccclass('GunBase')
 export class GunBase extends Component {
-    private m_fire: boolean = false;
-    private m_type: number = 0;
-    private m_endCallBack: Function | null = null;
-    private m_ATK: number = 0;
+    public m_fire: boolean = false;
+    public m_type: number = 0;
+    public m_endCallBack: Function | null = null;
+    public m_ATK: number = 0;
 
     ctor() {
         this.m_fire = false;
@@ -30,6 +30,14 @@ export class GunBase extends Component {
 
     setATK(ATK: number) {
         this.m_ATK = ATK;
+    }
+
+    fire(target: any) {
+        
+    }
+
+    endFire() {
+        
     }
 
     // update(dt: number) {
