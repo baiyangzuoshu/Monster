@@ -75,7 +75,7 @@ export class BlockManager extends Component {
                 }
                 const startX=x + 106 / 2 + this.startPos[index].x;
                 const startY=-y - 106 / 2 + this.startPos[index].y
-                block.setPosition(startX-320, startY+330);
+                block.setPosition(startX, startY);
 
                 const com = block.getComponent(Sprite) || block.addComponent(Sprite);
                 com['_selfIndex'] = v2(i, j);

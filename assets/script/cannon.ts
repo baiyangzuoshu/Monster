@@ -39,7 +39,7 @@ export class Cannon extends Component {
 
     private static _instance: Cannon = null;
 
-    private m_levelData: number = -1;
+    public m_levelData: number = -1;
     private m_type: number = 0;
     private m_bFire: boolean = false;
     private m_isCanLockEnemy: boolean = false;

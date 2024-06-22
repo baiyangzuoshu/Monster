@@ -5,6 +5,7 @@ import { DataManager } from './data/dataManager';
 import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';
 import { v3 } from 'cc';
 import { Cannon } from './cannon';
+import { randomNum } from './utlis';
 const { ccclass, property } = _decorator;
 
 @ccclass('CannonManager')
@@ -36,7 +37,7 @@ export class CannonManager extends Component {
         this.node.addChild(this.m_touchNode);
         const uiTransform = this.m_touchNode.addComponent(UITransform);
         uiTransform.anchorY = 1;
-        this.m_touchNode.setPosition(new Vec3(320, 361));
+        this.m_touchNode.setPosition(new Vec3(0, 0));
         uiTransform.setContentSize(640, 1200);
 
         this.m_cannonList = [];
@@ -58,8 +59,8 @@ export class CannonManager extends Component {
     }
 
     onTouchStart(event: EventTouch) {
-        const pos = event.getLocation();
-        this.m_selecetCannon = this.getCannonByPosition(pos);
+        const worldPos = event.getLocation();
+        this.m_selecetCannon = this.getCannonByPosition(v3(worldPos.x,worldPos.y));
         if (this.m_selecetCannon != null) {
             const cannon = this.m_selecetCannon.cannon;
             if (cannon != null) {
@@ -67,13 +68,13 @@ export class CannonManager extends Component {
                     this.m_moveCannon.removeFromParent();
                     this.m_moveCannon = null;
                 }
-                this.m_moveCannon = instantiate(cannon.node);
-                this.m_moveCannon['_selfData'] = cannon.node['_selfData'];
+                this.m_moveCannon = instantiate(cannon);
+                this.m_moveCannon['_selfData'] = cannon['_selfData'];
                 this.m_moveCannonNode.addChild(this.m_moveCannon);
-                const cloneCannon = this.m_moveCannon.getComponent('cannon');
+                const cloneCannon = this.m_moveCannon.getComponent(Cannon);
                 this.showCannonRange(cannon);
-                cannon.node.opacity = 127;
-                this.showCannonHint(cannon.node['_selfData'].cannon);
+                cannon.opacity = 127;
+                this.showCannonHint(cannon['_selfData'].cannon);
                 BottomUIManager.instance.setShowDestroy(true);
             } else {
                 this.m_selecetCannon = null;
@@ -91,7 +92,7 @@ export class CannonManager extends Component {
         this.m_moveCannon.setPosition(pos);
 
         const worldPos = event.getLocation();
-        const cannon = this.getCannonByPosition(worldPos);
+        const cannon = this.getCannonByPosition(v3(worldPos.x,worldPos.y));
         if (cannon != null) {
             const cannonComp = cannon.cannon;
             if (cannonComp != null) {
@@ -105,11 +106,14 @@ export class CannonManager extends Component {
     onTouchEnd(event: EventTouch) {
         this.setAllCannonOpacity();
         const worldPos = event.getLocation();
-        const block = this.getBlockByPos(worldPos);
+        const block = this.getBlockByPos(v3(worldPos.x,worldPos.y));
         if (block != null) {
             if (this.m_moveCannon != null) {
                 this.changeCannon(this.m_moveCannon['_selfData'], block['_selfData']);
             }
+        }
+        else{
+            console.log('not in block');
         }
 
         if (this.m_moveCannon != null) {
@@ -122,8 +126,8 @@ export class CannonManager extends Component {
         BottomUIManager.instance.setShowDestroy(false);
 
         if (BottomUIManager.instance.isInDestroy(worldPos)) {
-            this.m_selecetCannon.cannon.node.removeFromParent();
-            this.m_selecetCannon.cannon.node.destroy();
+            this.m_selecetCannon.cannon.removeFromParent();
+            this.m_selecetCannon.cannon.destroy();
             this.m_selecetCannon.cannon = null;
         }
     }
@@ -140,16 +144,16 @@ export class CannonManager extends Component {
 
         const worldPos = event.getLocation();
         if (BottomUIManager.instance.isInDestroy(worldPos)) {
-            this.m_selecetCannon.cannon.node.removeFromParent();
-            this.m_selecetCannon.cannon.node.destroy();
+            this.m_selecetCannon.cannon.removeFromParent();
+            this.m_selecetCannon.cannon.destroy();
             this.m_selecetCannon.cannon = null;
         }
     }
 
     showCannonRange(cannon: any) {
         this.hideCannonRange();
-        cannon.showRange();
-        cannon.node.setSiblingIndex(this.m_curZIndex);
+        cannon.getComponent(Cannon).showRange();
+        cannon.setSiblingIndex(this.m_curZIndex);
         this.m_moveCannon.setSiblingIndex(this.m_curZIndex + 1);
         this.m_curZIndex++;
     }
@@ -157,7 +161,7 @@ export class CannonManager extends Component {
     hideCannonRange() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.hideRange();
+                this.m_cannonList[i].cannon.getComponent(Cannon).hideRange();
             }
         }
     }
@@ -165,7 +169,7 @@ export class CannonManager extends Component {
     showCannonHint(cannon: any) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                if (this.m_cannonList[i].cannon.compare(cannon)) {
+                if (this.m_cannonList[i].cannon.getComponent(Cannon).compare(cannon)) {
                     this.m_cannonList[i].cannon.showHint();
                 }
             }
@@ -175,7 +179,7 @@ export class CannonManager extends Component {
     hideCannonHint() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.hideHint();
+                this.m_cannonList[i].cannon.getComponent(Cannon).hideHint();
             }
         }
     }
@@ -190,9 +194,9 @@ export class CannonManager extends Component {
 
         let playEffect = false;
         if (endItem.cannon != null) {
-            if (startItem.cannon.compare(endItem.cannon)) {
-                startItem.cannon.levelUp();
-                endItem.cannon.node.destroy();
+            if (startItem.cannon.getComponent(Cannon).compare(endItem.cannon)) {
+                startItem.cannon.getComponent(Cannon).levelUp();
+                endItem.cannon.destroy();
                 endItem.cannon = null;
                 playEffect = true;
 
@@ -202,35 +206,36 @@ export class CannonManager extends Component {
         }
 
         if (endItem.cannon == null) {
-            startItem.cannon.node.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
+            startItem.cannon.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
             endItem.cannon = startItem.cannon;
-            endItem.cannon.node['_selfData'] = endItem;
+            endItem.cannon['_selfData'] = endItem;
             startItem.cannon = null;
             if (playEffect) {
-                endItem.cannon.effectAction();
+                endItem.cannon.getComponent(Cannon).effectAction();
             }
         } else {
-            startItem.cannon.node.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
-            endItem.cannon.node.setPosition(new Vec3(startItem.pos.x * 106 + 106 / 2, -startItem.pos.y * 106 - 106 / 2));
+            startItem.cannon.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
+            endItem.cannon.setPosition(new Vec3(startItem.pos.x * 106 + 106 / 2, -startItem.pos.y * 106 - 106 / 2));
             const cannon = endItem.cannon;
             endItem.cannon = startItem.cannon;
-            endItem.cannon.node['_selfData'] = endItem;
+            endItem.cannon['_selfData'] = endItem;
             startItem.cannon = cannon;
-            startItem.cannon.node['_selfData'] = startItem;
+            startItem.cannon['_selfData'] = startItem;
         }
     }
 
     setAllCannonOpacity() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.node.opacity = 255;
+                this.m_cannonList[i].cannon.opacity = 255;
             }
         }
     }
 
-    getBlockByPos(world_pos: Vec2) {
+    getBlockByPos(world_pos: Vec3) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             const pos = this.m_cannonList[i].block.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
+            console.log(world_pos, pos);
             if (pos.x < 106 / 2 && pos.x > -106 / 2 && pos.y < 106 / 2 && pos.y > -106 / 2) {
                 return this.m_cannonList[i].block;
             }
@@ -238,10 +243,11 @@ export class CannonManager extends Component {
         return null;
     }
 
-    getCannonByPosition(world_pos: Vec2) {
+    getCannonByPosition(world_pos: Vec3) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                const pos = this.m_cannonList[i].cannon.node.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
+                const uiTransform=this.m_cannonList[i].cannon.getComponent(UITransform) as UITransform
+                const pos = uiTransform.convertToNodeSpaceAR(world_pos);
                 if (pos.x < 106 / 2 && pos.x > -106 / 2 && pos.y < 106 / 2 && pos.y > -106 / 2) {
                     return this.m_cannonList[i];
                 }
@@ -285,7 +291,7 @@ export class CannonManager extends Component {
         ts.setRot(randomNum(0, 360));
         level = level ? level : 0;
         ts.createGun(level);
-        this.m_cannonList[index].cannon = ts;
+        this.m_cannonList[index].cannon = cannon;
 
         const x = pos.x * 106 + 106 / 2;
         const y = -pos.y * 106 - 106 / 2;
@@ -306,7 +312,7 @@ export class CannonManager extends Component {
     clearAllCannon() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.node.removeFromParent();
+                this.m_cannonList[i].cannon.removeFromParent();
                 this.m_cannonList[i].cannon = null;
             }
         }
@@ -315,7 +321,7 @@ export class CannonManager extends Component {
     clearAllCannonTarget() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.setTarget(null);
+                this.m_cannonList[i].cannon.getComponent(Cannon).setTarget(null);
             }
         }
     }
@@ -326,9 +332,11 @@ export class CannonManager extends Component {
             const pos = _cannonList[i];
 
             const block = new Node();
+            block.addComponent(UITransform);
             this.node.addChild(block);
+
             block.setPosition(new Vec3(pos.x * 106 + 106 / 2, -pos.y * 106 - 106 / 2));
-            block.addComponent(UITransform).setContentSize(106, 106);
+
             this.m_cannonList[i].block = block;
             this.m_cannonList[i].block['_selfData'] = this.m_cannonList[i];
         }
@@ -337,7 +345,7 @@ export class CannonManager extends Component {
     testTarget(target: any) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.setTarget(target);
+                this.m_cannonList[i].cannon.getComponent(Cannon).setTarget(target);
             }
         }
     }
@@ -348,7 +356,7 @@ export class CannonManager extends Component {
         let minLevel = 9999;
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon == null) continue;
-            const level = this.m_cannonList[i].cannon.m_levelData;
+            const level = this.m_cannonList[i].cannon.getComponent(Cannon).m_levelData;
             if (count[level] == null) {
                 count[level] = 1;
             } else {
@@ -383,7 +391,7 @@ export class CannonManager extends Component {
     jumpNextMap() {
         for (let j = 0; j < this.m_cannonList.length; j++) {
             if (this.m_cannonList[j].cannon == null) continue;
-            const cannon = this.m_cannonList[j].cannon.node;
+            const cannon = this.m_cannonList[j].cannon;
             let rand = randomNum(0, 20);
             if (randomNum(0, 100) > 50) {
                 rand *= -1;
@@ -397,13 +405,3 @@ export class CannonManager extends Component {
     }
 }
 
-function randomNum(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getAngle(start: Vec2, end: Vec2): number {
-    const dx = end.x - start.x;
-    const dy = end.y - start.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}
