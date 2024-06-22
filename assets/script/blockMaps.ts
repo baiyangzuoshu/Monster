@@ -73,7 +73,9 @@ export class BlockManager extends Component {
                 } else {
                     block = this.m_mapBlockItem[index][j][i].node;
                 }
-                block.setPosition(x + 106 / 2 + this.startPos[index].x, -y - 106 / 2 + this.startPos[index].y);
+                const startX=x + 106 / 2 + this.startPos[index].x;
+                const startY=-y - 106 / 2 + this.startPos[index].y
+                block.setPosition(startX-320, startY+330);
 
                 const com = block.getComponent(Sprite) || block.addComponent(Sprite);
                 com['_selfIndex'] = v2(i, j);

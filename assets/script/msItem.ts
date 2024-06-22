@@ -122,7 +122,10 @@ export class MonsterItem extends Component {
         if (end) {
             this.updateDir(start, end);
         }
-
+        else{
+            return;
+        }
+        
         const dis = start.subtract(end).length();
         const time = dis / this.m_speed;
 

@@ -4,6 +4,8 @@ import { g_GlobalData } from '../data/data';
 import { DataManager } from '../data/dataManager';
 import { TopUIManager } from './topUI';
 import { BottomUIManager } from './bottom';
+import { BossViewManager } from './bossView';
+import { Settlement } from './smallSettlement';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameUIManager')
@@ -25,7 +27,7 @@ export class GameUIManager extends Component {
     m_gameUIAtlas: SpriteAtlas = null;
 
     private m_smallSettlement: any = null;
-    private m_bossView: any = null;
+    private m_bossView: BossViewManager = null;
     private m_mapView: any = null;
 
     private static _instance: GameUIManager;
@@ -57,7 +59,7 @@ export class GameUIManager extends Component {
         if (this.m_smallSettlement == null) {
             this.m_smallSettlement = instantiate(this.m_smallSettlementPrefab);
             this.node.addChild(this.m_smallSettlement);
-            this.m_smallSettlement = this.m_smallSettlement.getComponent('smallSettlement');
+            this.m_smallSettlement = this.m_smallSettlement.getComponent(Settlement);
         }
         return this.m_smallSettlement;
     }
@@ -101,7 +103,7 @@ export class GameUIManager extends Component {
 
     showFaild() {
         const view = this.createSmallSettlement();
-        if (view.node.active) return;
+        //if (view.node.active) return;
 
         const checkPoint = g_GlobalData.getCurCheckPoint();
         DataManager.addGold(checkPoint.faildGold);
@@ -124,9 +126,9 @@ export class GameUIManager extends Component {
 
     playBossViewAnim(callFunc: Function) {
         if (this.m_bossView == null) {
-            this.m_bossView = instantiate(this.m_bossViewPrefab);
-            this.node.addChild(this.m_bossView);
-            this.m_bossView = this.m_bossView.getComponent('bossView');
+            let bossNode = instantiate(this.m_bossViewPrefab);
+            this.node.addChild(bossNode);
+            this.m_bossView = bossNode.getComponent(BossViewManager);
         }
         this.m_bossView.play(callFunc);
     }

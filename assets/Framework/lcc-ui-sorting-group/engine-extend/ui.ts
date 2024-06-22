@@ -217,7 +217,6 @@ UI.prototype.walk = function(node: Node, level = 0, sortingPriority = 0, sorting
         render.postUpdateAssembler(this);
         if (stencilEnterLevel
         && (StencilManager.sharedManager!.getMaskStackSize() > 0)) {
-            console.log("222222222222222222222222222");
             this.flushRendererCache();
 
             this.autoMergeBatches(this._currComponent!);

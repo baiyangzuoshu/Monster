@@ -1,4 +1,6 @@
-import { _decorator, Component, Node, Label, v2, moveTo, runAction } from 'cc';
+import { _decorator, Component, Node, Label, v2, tween } from 'cc';
+import { numberToString } from '../utlis';
+import { v3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Settlement')
@@ -32,15 +34,17 @@ export class Settlement extends Component {
     }
 
     show() {
-        const moveToAction = moveTo(0.3, v2(0, 0));
-        this.node.setPosition(v2(0, 980));
-        this.node.runAction(moveToAction);
+        this.node.setPosition(v3(0, 980));
+        tween(this.node)
+            .to(0.3, { position: v3(0, 0) })
+            .start();
     }
 
     hide() {
-        const moveToAction = moveTo(0.3, v2(0, 980));
-        this.node.setPosition(v2(0, 0));
-        this.node.runAction(moveToAction);
+        this.node.setPosition(v3(0, 0));
+        tween(this.node)
+            .to(0.3, { position: v3(0, 980) })
+            .start();
     }
 
     // update(dt: number) {
