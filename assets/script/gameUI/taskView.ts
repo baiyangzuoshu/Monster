@@ -60,7 +60,7 @@ export class TaskView extends Component {
         
         let ts = item.getComponent(TaskItem);
         ts.setTaskID(taskID);
-        return item;
+        return ts;
     }
 
     onChangeClick(target: Node, data: string) {

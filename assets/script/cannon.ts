@@ -7,6 +7,7 @@ import { MonsterBuild } from './monsterBuild';
 import { SkillManager } from './gameUI/skillBuffer';
 import { g_GlobalData } from './data/data';
 import GunBase from './gun/gunBase';
+import { getAngle, getDistance } from './utlis';
 const { ccclass, property } = _decorator;
 
 @ccclass('Cannon')
@@ -21,11 +22,11 @@ export class Cannon extends Component {
     @property(Node)
     m_padNode: Node = null;
 
-    @property([SpriteAtlas])
-    m_gunAtlas: SpriteAtlas[] = [];
+    @property(SpriteAtlas)
+    m_gunAtlas: SpriteAtlas = null;
 
-    @property([SpriteAtlas])
-    m_padAtlas: SpriteAtlas[] = [];
+    @property(SpriteAtlas)
+    m_padAtlas: SpriteAtlas =null;
 
     @property(Node)
     m_hintNode: Node = null;
@@ -82,10 +83,7 @@ export class Cannon extends Component {
         self.setPosition(v3(0, 0));
         tween(self)
             .to(0.1, { scale: v3(4, 4,0) })
-            .call(() => {
-                self.removeFromParent();
-                self.destroy();
-            })
+            .destroySelf()
             .start();
     }
 
@@ -145,12 +143,12 @@ export class Cannon extends Component {
 
         this.m_type = type;
         const name = '' + type + '_' + level;
-        const frame = this.m_gunAtlas[0].getSpriteFrame(name);
+        const frame = this.m_gunAtlas.getSpriteFrame(name);
         this.m_gunSprite.getComponent(Sprite).spriteFrame = frame;
 
         const index = Math.floor(level / 3);
         const padName = '' + type + '_' + index;
-        const padFrame = this.m_padAtlas[0].getSpriteFrame(padName);
+        const padFrame = this.m_padAtlas.getSpriteFrame(padName);
         this.m_padNode.getComponent(Sprite).spriteFrame = padFrame;
 
         this.m_labLevel.string = '' + (this.m_levelData + 1);
@@ -237,7 +235,7 @@ export class Cannon extends Component {
                 this.setTarget(null);
                 return;
             }
-            const dis = getDistance(this.m_attackTarget.getPosition(), v2(this.node.getPosition().x, this.node.getPosition().y));
+            const dis = getDistance(this.m_attackTarget.getPosition(), v3(this.node.getPosition().x, this.node.getPosition().y));
             let curDis = 230;
             if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
                 curDis *= 10;
@@ -248,7 +246,7 @@ export class Cannon extends Component {
             }
             const start = this.node.getPosition();
             const end = this.m_attackTarget.getPosition();
-            let angle = getAngle(v2(start.x,start.y), end);
+            let angle = getAngle(v3(start.x,start.y), end);
             angle += 360;
             angle -= 90;
             if (this.m_bFire) {
@@ -270,17 +268,4 @@ export class Cannon extends Component {
     }
 }
 
-export default Cannon;
 
-function getDistance(pos1: Vec3, pos2: Vec2): number {
-    const dx = pos1.x - pos2.x;
-    const dy = pos1.y - pos2.y;
-    return Math.sqrt(dx * dx + dy * dy);
-}
-
-function getAngle(startPos: Vec2, endPos: Vec2): number {
-    const dx = endPos.x - startPos.x;
-    const dy = endPos.y - startPos.y;
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return angle;
-}

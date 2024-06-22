@@ -4,7 +4,7 @@ import { BottomUIManager } from './gameUI/bottom';
 import { DataManager } from './data/dataManager';
 import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';
 import { v3 } from 'cc';
-import Cannon from './cannon';
+import { Cannon } from './cannon';
 const { ccclass, property } = _decorator;
 
 @ccclass('CannonManager')
@@ -281,26 +281,24 @@ export class CannonManager extends Component {
 
         cannon.setPosition(v3(317, -952));
 
-        const cannonComp = cannon.getComponent(Cannon);
-        cannonComp.setRot(randomNum(0, 360));
+        const ts = cannon.getComponent(Cannon) as Cannon;
+        ts.setRot(randomNum(0, 360));
         level = level ? level : 0;
-        cannonComp.createGun(level);
-        this.m_cannonList[index].cannon = cannonComp;
+        ts.createGun(level);
+        this.m_cannonList[index].cannon = ts;
 
         const x = pos.x * 106 + 106 / 2;
         const y = -pos.y * 106 - 106 / 2;
 
         tween(cannon)
             .to(0.5, { position: v3(x,y) })
-            .parallel(
-                tween(cannon).to(0.2, { scale: new Vec3(4, 4) }),
-                tween(cannon).delay(0.2),
-                tween(cannon).to(0.1, { scale: new Vec3(1, 1) })
-            )
+            .to(0.2, { scale: new Vec3(4, 4) })
+            .delay(0.2)
+            .to(0.1, { scale: new Vec3(1, 1) })
             .call(() => {
-                cannonComp.effectAction();
-                cannonComp.openLockEnemy();
-                cannonComp.setFlying(false);
+                ts.effectAction();
+                ts.openLockEnemy();
+                ts.setFlying(false);
             })
             .start();
     }

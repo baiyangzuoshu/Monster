@@ -6,6 +6,7 @@ import { DataManager } from '../data/dataManager';
 import { INTENSIFY_KUORONG } from '../define';
 import { g_intensifyData } from '../data/intensifyData';
 import { v3 } from 'cc';
+import { TaskView } from './taskView';
 
 const { ccclass, property } = _decorator;
 
@@ -145,7 +146,7 @@ export class BottomUIManager extends Component {
         if (this.m_taskView == null) {
             this.m_taskView = instantiate(this.m_taskViewPrefab);
             GameUIManager.instance.node.addChild(this.m_taskView);
-            this.m_taskView = this.m_taskView.getComponent('taskView');
+            this.m_taskView = this.m_taskView.getComponent(TaskView);
         }
         this.m_taskView.show();
     }
