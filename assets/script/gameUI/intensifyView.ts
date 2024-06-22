@@ -55,7 +55,7 @@ export class IntensifyView extends Component {
 
         let ts = item.getComponent(IntensifyItem);
         ts.setID(ID);
-        return item;
+        return ts;
     }
 
     // update(dt: number) {

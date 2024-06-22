@@ -6855,7 +6855,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -61.589,
       "z": 0
     },
     "_lrot": {
@@ -18539,7 +18539,10 @@
       "__uuid__": "ba7d75be-e95b-484a-a2bf-582788dee226",
       "__expectedType__": "cc.Prefab"
     },
-    "m_mapViewPrefab": null,
+    "m_mapViewPrefab": {
+      "__uuid__": "4ed4a799-c5fb-452f-ac87-496ef80e5929",
+      "__expectedType__": "cc.Prefab"
+    },
     "m_coinFlyNode": {
       "__id__": 548
     },

@@ -230,7 +230,7 @@ export class CannonManager extends Component {
 
     getBlockByPos(world_pos: Vec2) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
-            const pos = this.m_cannonList[i].block.convertToNodeSpaceAR(world_pos);
+            const pos = this.m_cannonList[i].block.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
             if (pos.x < 106 / 2 && pos.x > -106 / 2 && pos.y < 106 / 2 && pos.y > -106 / 2) {
                 return this.m_cannonList[i].block;
             }
@@ -241,7 +241,7 @@ export class CannonManager extends Component {
     getCannonByPosition(world_pos: Vec2) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                const pos = this.m_cannonList[i].cannon.node.convertToNodeSpaceAR(world_pos);
+                const pos = this.m_cannonList[i].cannon.node.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
                 if (pos.x < 106 / 2 && pos.x > -106 / 2 && pos.y < 106 / 2 && pos.y > -106 / 2) {
                     return this.m_cannonList[i];
                 }

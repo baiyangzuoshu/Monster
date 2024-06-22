@@ -6,6 +6,7 @@ import { TopUIManager } from './topUI';
 import { BottomUIManager } from './bottom';
 import { BossViewManager } from './bossView';
 import { Settlement } from './smallSettlement';
+import { MapView } from './mapView';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameUIManager')
@@ -137,7 +138,7 @@ export class GameUIManager extends Component {
         if (this.m_mapView == null) {
             this.m_mapView = instantiate(this.m_mapViewPrefab);
             this.node.addChild(this.m_mapView);
-            this.m_mapView = this.m_mapView.getComponent('mapView');
+            this.m_mapView = this.m_mapView.getComponent(MapView);
         }
         this.m_mapView.show();
     }

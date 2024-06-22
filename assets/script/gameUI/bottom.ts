@@ -7,6 +7,7 @@ import { INTENSIFY_KUORONG } from '../define';
 import { g_intensifyData } from '../data/intensifyData';
 import { v3 } from 'cc';
 import { TaskView } from './taskView';
+import { IntensifyView } from './intensifyView';
 
 const { ccclass, property } = _decorator;
 
@@ -155,7 +156,7 @@ export class BottomUIManager extends Component {
         if (this.m_intensifyView == null) {
             this.m_intensifyView = instantiate(this.m_intensifyViewPrefab);
             GameUIManager.instance.node.addChild(this.m_intensifyView);
-            this.m_intensifyView = this.m_intensifyView.getComponent('intensifyView');
+            this.m_intensifyView = this.m_intensifyView.getComponent(IntensifyView);
         }
         this.m_intensifyView.show();
     }

@@ -1,6 +1,7 @@
 import { _decorator, Component, Node, Animation, Vec2, tween, v3 } from 'cc';
 import BulletBase from '../bulletBase';
 import { getAngle } from '../../../script/utlis';
+import { UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('bullet_6')
@@ -46,12 +47,12 @@ export class bullet_6 extends BulletBase {
         if (this.isDead) {
             return;
         }
-        if (bullet['_attackTarget'] == null) return;
+        const target = bullet['_attackTarget'];
+        if (target == null) return;
 
         const move = 500 * dt;
 
-        const target = bullet['_attackTarget'];
-        const targetH = target.height;
+        const targetH = target.getComponent(UITransform).height;
         const moveToPos = target.getPosition();
         moveToPos.y += targetH / 2;
         const angle = getAngle(bullet.getPosition(), moveToPos);
