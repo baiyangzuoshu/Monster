@@ -3,7 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('BulletBase')
 export class BulletBase extends Component {
-    private m_ATK: number = 0;
+    public m_ATK: number = 0;
 
     ctor() {
         this.m_ATK = 0;

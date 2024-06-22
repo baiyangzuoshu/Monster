@@ -1,6 +1,9 @@
 import { _decorator, Component, Node, Sprite, Animation, Tween, tween, Vec2, v2, SpriteFrame } from 'cc';
 import BulletBase from '../bulletBase';
 import { getAngle } from '../../../script/utlis';
+import { Collider2D } from 'cc';
+import { Contact2DType } from 'cc';
+import { MonsterItem } from '../../../script/msItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('bullet_3')
@@ -17,6 +20,10 @@ export class bullet_3 extends BulletBase {
 
     onLoad() {
         this.isDead = false;
+        let collider = this.getComponent(Collider2D);
+        if (collider) {
+            collider.on(Contact2DType.BEGIN_CONTACT, this.onCollisionEnter, this);
+        }
     }
 
     onCollisionEnter(other: any, self: any) {
@@ -26,7 +33,7 @@ export class bullet_3 extends BulletBase {
             }
 
             if (this.m_showHpEffect == null) {
-                const js = other.node.parent.getComponent('msItem');
+                const js = other.node.parent.getComponent(MonsterItem);
                 if (js != null) {
                     js.subHP(this.node['m_ATK']);
                 }

@@ -88,6 +88,7 @@ export class gun_6 extends GunBase {
         bullet.angle = getAngle(pos, this.m_target.getPosition());
 
         const js = bullet.getComponent(bullet_6);
+        console.log("createBullet atk=",this.m_ATK);
         js.setATK(this.m_ATK);
 
         bullet.setPosition(pos);

@@ -2,27 +2,38 @@ import { _decorator, Component, Node, Animation, Vec2, tween, v3 } from 'cc';
 import BulletBase from '../bulletBase';
 import { getAngle } from '../../../script/utlis';
 import { UITransform } from 'cc';
+import { Collider2D } from 'cc';
+import { Contact2DType } from 'cc';
+import { MonsterItem } from '../../../script/msItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('bullet_6')
 export class bullet_6 extends BulletBase {
 
-    private m_showHpEffect: boolean | null = null;
+    private m_showHpEffect: boolean  = false;
     private isDead: boolean = false;
 
     start() {
         // Initialization code here
+        // 注册单个碰撞体的回调函数
+        let collider = this.getComponent(Collider2D);
+        if (collider) {
+            collider.on(Contact2DType.BEGIN_CONTACT, this.onCollisionEnter, this);
+        }
     }
 
-    onCollisionEnter(other: any, self: any) {
+    onCollisionEnter(self: Collider2D, other: Collider2D) {
         if (!this.isDead) {
             if (other.node['_monsterID'] != this.node['_attackTarget']['_monsterID']) {
                 return;
             }
-            if (this.m_showHpEffect == null) {
-                const js = other.node.parent.getComponent('msItem');
+            if (this.m_showHpEffect == false) {
+                const js = other.node.parent.getComponent(MonsterItem);
                 if (js != null) {
-                    js.subHP(this.node['m_ATK']);
+                    js.subHP(this.m_ATK);
+                }
+                else{
+                    console.log("ts not found");
                 }
                 this.m_showHpEffect = true;
             }
@@ -33,10 +44,7 @@ export class bullet_6 extends BulletBase {
                 anim.play('boom');
                 tween(this.node)
                     .delay(0.5)
-                    .call(() => {
-                        this.node.removeFromParent();
-                        this.node.destroy();
-                    })
+                    .destroySelf()
                     .start();
             }
         }

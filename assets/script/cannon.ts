@@ -115,12 +115,12 @@ export class Cannon extends Component {
         const type = lvData.type;
         const level = lvData.level;
         const ATK = lvData.atk;
-
+        console.log("createGun",type,level,ATK);
         this.m_type = type;
         this.m_levelData = curlevel;
 
         this.m_gunSprite = instantiate(this.m_gunPrefab[type]);
-        const js = this.m_gunSprite.getComponent(GunBase);
+        const js = this.m_gunSprite.getComponent('gun_' + type) as GunBase;
         js.setATK(ATK);
         js.setFireEndCallBack((level: number) => {
             if (level != this.m_levelData) {

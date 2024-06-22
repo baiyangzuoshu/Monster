@@ -28,5 +28,22 @@
   },
   "script": {
     "importMap": "project://import-map.json"
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "bullet"
+      },
+      {
+        "index": 2,
+        "name": "monster"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 4,
+      "2": 2
+    }
   }
 }
