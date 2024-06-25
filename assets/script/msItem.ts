@@ -50,10 +50,11 @@ export class MonsterItem extends Component {
     private _pathPos: Vec3[] = [];
     private m_type: number = 0;
     private m_index: number = 0;
+    private m_isDead: boolean = false;
 
     onLoad() {
         this.m_curMoveIndex = 0;
-        this.node['isDead'] = false;
+        this.m_isDead = false;
     }
 
     start() {
@@ -61,7 +62,7 @@ export class MonsterItem extends Component {
     }
 
     isDead(): boolean {
-        return this.node['isDead'];
+        return this.m_isDead;
     }
 
     setImage(type: number, index: number) {
@@ -166,7 +167,7 @@ export class MonsterItem extends Component {
             .call(() => {
                 this.m_diamond.active = false;
                 this.node.active = false;
-                this.node['isDead'] = true;
+                this.m_isDead = true;
                 g_GlobalData.subCurMonsterCount();
                 if (g_GlobalData.getCurMonsterCount() <= 0) {
                     GameUIManager.instance.showFaild();
@@ -271,7 +272,7 @@ export class MonsterItem extends Component {
     }
 
     subHP(hp: number) {
-        if (!GameManager.instance.isGameStart() || this.node['isDead']) {
+        if (!GameManager.instance.isGameStart() || this.m_isDead) {
             return;
         }
         if (hp == null) {
@@ -295,7 +296,7 @@ export class MonsterItem extends Component {
         if (this.m_Hp <= 0) {
             //this.node.stopAllActions();
             this.m_HpBar.progress = 0;
-            this.node['isDead'] = true;
+            this.m_isDead = true;
             this.node.active = false;
             const pos = this.node.getPosition();
             EffectBuild.instance.createDeadEffect(pos);

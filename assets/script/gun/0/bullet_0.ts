@@ -24,17 +24,17 @@ export class bullet_0 extends BulletBase {
 
     updateBullet() {
         const bullet = this.node;
-        if (bullet['isDead'] || bullet['_attackTarget'] == null) {
+        if (this.isDead || this._attackTarget == null) {
             return;
         }
 
-        const target = bullet['_attackTarget'];
+        const target = this._attackTarget;
         const targetPos = target.getPosition();
 
         const bulletPos = bullet.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
-        const worldTargetPos = target.convertToWorldSpaceAR(new Vec3(0, 0, 0));
+        const worldTargetPos = target.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
 
-        const targetH = target.height;
+        const targetH = target.getComponent(UITransform).height;
         worldTargetPos.y += targetH / 2;
         const angle = getAngle(bulletPos, worldTargetPos);
         this.node.angle = angle;

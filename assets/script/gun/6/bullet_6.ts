@@ -11,7 +11,6 @@ const { ccclass, property } = _decorator;
 export class bullet_6 extends BulletBase {
 
     private m_showHpEffect: boolean  = false;
-    private isDead: boolean = false;
 
     start() {
         // Initialization code here
@@ -24,7 +23,7 @@ export class bullet_6 extends BulletBase {
 
     onCollisionEnter(self: Collider2D, other: Collider2D) {
         if (!this.isDead) {
-            if (other.node['_monsterID'] != this.node['_attackTarget']['_monsterID']) {
+            if (other.node['_monsterID'] != this._attackTarget['_monsterID']) {
                 return;
             }
             if (this.m_showHpEffect == false) {
@@ -55,7 +54,7 @@ export class bullet_6 extends BulletBase {
         if (this.isDead) {
             return;
         }
-        const target = bullet['_attackTarget'];
+        const target = this._attackTarget;
         if (target == null) return;
 
         const move = 500 * dt;

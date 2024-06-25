@@ -6,13 +6,13 @@ import { getAngle } from '../../../script/utlis';
 import { Collider2D } from 'cc';
 import { Contact2DType } from 'cc';
 import { MonsterItem } from '../../../script/msItem';
+import { UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('bullet_4')
 export class bullet_4 extends BulletBase {
 
     private m_showHpEffect: boolean | null = null;
-    private isDead: boolean = false;
 
     start() {
         // Initialization code here
@@ -24,10 +24,10 @@ export class bullet_4 extends BulletBase {
 
     onCollisionEnter(other: any, self: any) {
         if (!this.isDead) {
-            if (this.node['_attackTarget'] == null) {
+            if (this._attackTarget == null) {
                 return;
             }
-            if (other.node['_monsterID'] != this.node['_attackTarget']['_monsterID']) {
+            if (other.node['_monsterID'] != this._attackTarget['_monsterID']) {
                 return;
             }
             if (this.m_showHpEffect == null) {
@@ -62,12 +62,12 @@ export class bullet_4 extends BulletBase {
         if (this.isDead) {
             return;
         }
-        if (bullet['_attackTarget'] == null) return;
+        if (this._attackTarget == null) return;
 
         const move = 500 * dt;
 
-        const target = bullet['_attackTarget'];
-        const targetH = target.height;
+        const target = this._attackTarget;
+        const targetH = target.getComponent(UITransform).height;
         const moveToPos = target.getPosition();
         moveToPos.y += targetH / 2;
         const angle = getAngle(bullet.getPosition(), moveToPos);

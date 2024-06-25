@@ -77,9 +77,7 @@ export class gun_6 extends GunBase {
 
     createBullet() {
         const bullet = instantiate(this.m_bullet);
-        bullet['isDead'] = false;
         bullet.active = true;
-        bullet['_attackTarget'] = this.m_target;
         BulletManager.instance.node.addChild(bullet);
 
         let pos = this.node.getComponent(UITransform).convertToWorldSpaceAR(v3(0, 0));
@@ -88,10 +86,12 @@ export class gun_6 extends GunBase {
         bullet.angle = getAngle(pos, this.m_target.getPosition());
 
         const js = bullet.getComponent(bullet_6);
-        console.log("createBullet atk=",this.m_ATK);
         js.setATK(this.m_ATK);
+        js.isDead = false;
+        js._attackTarget = this.m_target;
 
         bullet.setPosition(pos);
+
     }
 
     update(dt: number) {

@@ -32,16 +32,16 @@ export class bullet_1 extends BulletBase {
 
     updateBullet() {
         const bullet = this.node;
-        if (bullet['isDead']) {
+        if (this.isDead) {
             return;
         }
-        const target = bullet['_attackTarget'];
+        const target = this._attackTarget;
         const targetPos = target.getWorldPosition();
 
         const bulletPos = bullet.getWorldPosition();
         const worldTargetPos = target.getWorldPosition();
 
-        const targetH = target.height;
+        const targetH = target.getComponent(UITransform).height;
         worldTargetPos.y += targetH / 2;
         const angle = getAngle(bulletPos, worldTargetPos);
         this.node.angle = angle;

@@ -4,7 +4,8 @@ const { ccclass, property } = _decorator;
 @ccclass('BulletBase')
 export class BulletBase extends Component {
     public m_ATK: number = 0;
-
+    public _attackTarget: Node = null;
+    public isDead: boolean = false;
     ctor() {
         this.m_ATK = 0;
     }

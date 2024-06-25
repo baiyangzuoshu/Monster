@@ -8,6 +8,7 @@ import { SkillManager } from './gameUI/skillBuffer';
 import { g_GlobalData } from './data/data';
 import GunBase from './gun/gunBase';
 import { getAngle, getDistance } from './utlis';
+import { MonsterItem } from './msItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('Cannon')
@@ -45,7 +46,7 @@ export class Cannon extends Component {
     private m_isCanLockEnemy: boolean = false;
     private m_isFlying: boolean = true;
     private m_gunSprite: Node = null;
-    private m_attackTarget: any = null;
+    private m_attackTarget: Node = null;
 
     public static get instance(): Cannon {
         return this._instance;
@@ -123,6 +124,7 @@ export class Cannon extends Component {
         const js = this.m_gunSprite.getComponent('gun_' + type) as GunBase;
         js.setATK(ATK);
         js.setFireEndCallBack((level: number) => {
+            console.log("fire end call back", level, this.m_levelData);
             if (level != this.m_levelData) {
                 this.m_gunSprite.removeFromParent();
                 this.m_gunSprite = null;
@@ -179,7 +181,7 @@ export class Cannon extends Component {
         this.m_rangeNode.active = false;
     }
 
-    setTarget(target: any) {
+    setTarget(target: Node) {
         if (this.m_attackTarget != null && target == null) {
             this.endFire();
         }
@@ -206,7 +208,7 @@ export class Cannon extends Component {
             this.scheduleOnce(this.beginFire.bind(this), 0.2);
             return;
         }
-        if (component != null && component.fire != null && this.m_attackTarget != null && !this.m_attackTarget.isDead) {
+        if (component != null && component.fire != null && this.m_attackTarget != null && !this.m_attackTarget.getComponent(MonsterItem).isDead()) {
             component.fire(this.m_attackTarget);
         }
     }
@@ -231,7 +233,7 @@ export class Cannon extends Component {
             this.setTarget(target);
         }
         if (this.m_attackTarget != null) {
-            if (this.m_attackTarget.isDead) {
+            if (this.m_attackTarget.getComponent(MonsterItem).isDead()) {
                 this.setTarget(null);
                 return;
             }

@@ -133,7 +133,7 @@ export class MonsterBuild extends Component {
         } else {
             enemy = instantiate(this.m_msItemPrefab);
         }
-        enemy['isDead'] = false;
+     
         this.node.addChild(enemy);
         const js = enemy.getComponent(MonsterItem);
         js.setImage(type, index);
@@ -170,13 +170,13 @@ export class MonsterBuild extends Component {
 
     calcNearDistance(cannon: Node) {
         let minDis = 9999;
-        let minMonster = null;
+        let minMonster:Node = null;
         let curDis = 230;
         if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
             curDis *= 10;
         }
         for (let i = 0; i < this.node.children.length; i++) {
-            if (this.node.children[i]['isDead']) continue;
+            if (this.node.children[i].getComponent(MonsterItem).isDead()) continue;
             const dis = getDistance(this.node.children[i].getPosition(), cannon.getPosition());
             if (dis < curDis && dis < Math.abs(minDis)) {
                 minDis = dis;

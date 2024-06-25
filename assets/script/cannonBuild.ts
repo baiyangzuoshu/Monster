@@ -185,7 +185,7 @@ export class CannonManager extends Component {
         }
     }
 
-    changeCannon(startItem: any, endItem: any) {
+    changeCannon(startItem: CannonBlock, endItem: CannonBlock) {
         if (startItem.pos.x == endItem.pos.x && startItem.pos.y == endItem.pos.y) {
             return;
         }
@@ -195,7 +195,7 @@ export class CannonManager extends Component {
 
         let playEffect = false;
         if (endItem.cannon != null) {
-            if (startItem.cannon.getComponent(Cannon).compare(endItem.cannon)) {
+            if (startItem.cannon.getComponent(Cannon).compare(endItem.cannon.getComponent(Cannon))) {
                 startItem.cannon.getComponent(Cannon).levelUp();
                 endItem.cannon.destroy();
                 endItem.cannon = null;

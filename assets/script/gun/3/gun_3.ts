@@ -47,9 +47,7 @@ export class gun_3 extends GunBase {
 
         js.setFrame(this.node.getComponent(Sprite).spriteFrame);
 
-        bullet['isDead'] = false;
         bullet.active = true;
-        bullet['_attackTarget'] = this.m_target;
         BulletManager.instance.node.addChild(bullet);
 
         let pos = this.node.getComponent(UITransform).convertToWorldSpaceAR(v3(0, 0));
@@ -59,6 +57,8 @@ export class gun_3 extends GunBase {
         bullet.setPosition(pos);
 
         js.setATK(this.m_ATK);
+        js.isDead = false;
+        js._attackTarget = this.m_target;
     }
 
     runFireAction() {

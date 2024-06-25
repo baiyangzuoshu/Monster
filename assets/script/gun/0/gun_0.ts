@@ -3,8 +3,8 @@ import GunBase from '../gunBase';
 import { GameManager } from '../../../script/game';
 import BulletManager from '../../../script/bulletBuild';
 import { getAngle } from '../../../script/utlis';
-import { bullet_6 } from '../6/bullet_6';
 import { Tween } from 'cc';
+import { bullet_0 } from './bullet_0';
 
 const { ccclass, property } = _decorator;
 
@@ -77,9 +77,7 @@ export class gun_0 extends GunBase {
 
     createBullet() {
         const bullet = instantiate(this.m_bullet);
-        bullet['isDead'] = false;
         bullet.active = true;
-        bullet['_attackTarget'] = this.m_target;
         BulletManager.instance.node.addChild(bullet);
         
         const pos = this.node.getWorldPosition();
@@ -87,8 +85,10 @@ export class gun_0 extends GunBase {
         
         bullet.angle = getAngle(pos, this.m_target.getWorldPosition());
         
-        const js = bullet.getComponent(bullet_6);
+        const js = bullet.getComponent(bullet_0);
         js.setATK(this.m_ATK);
+        js.isDead=false;
+        js._attackTarget=this.m_target;
 
         bullet.setWorldPosition(pos);
     }
