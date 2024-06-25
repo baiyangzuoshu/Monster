@@ -154,7 +154,7 @@ export class Cannon extends Component {
         this.m_labLevel.string = '' + (this.m_levelData + 1);
     }
 
-    compare(cannon: any): boolean {
+    compare(cannon: Cannon): boolean {
         return this.m_levelData === cannon.m_levelData;
     }
 

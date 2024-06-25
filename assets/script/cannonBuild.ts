@@ -6,8 +6,15 @@ import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';
 import { v3 } from 'cc';
 import { Cannon } from './cannon';
 import { randomNum } from './utlis';
+import { UIOpacity } from 'cc';
 const { ccclass, property } = _decorator;
-
+class CannonBlock{
+    pos:Vec3
+    cannon:Node
+    block:Node
+}
+const offsetX=0;
+const offsetY=0;
 @ccclass('CannonManager')
 export class CannonManager extends Component {
 
@@ -16,12 +23,13 @@ export class CannonManager extends Component {
 
     @property(Node)
     m_moveCannonNode: Node = null;
+    @property(Prefab)
+    m_blockPrefab: Prefab = null;
 
     private static _instance: CannonManager = null;
 
     private m_curZIndex: number = 100;
-    private m_touchNode: Node = null;
-    private m_cannonList: any[] = [];
+    private m_cannonList: CannonBlock[] = [];
     private m_selecetCannon: any = null;
     private m_moveCannon: Node = null;
 
@@ -33,13 +41,6 @@ export class CannonManager extends Component {
         CannonManager._instance = this;
 
         this.m_curZIndex = 100;
-        this.m_touchNode = new Node();
-        this.node.addChild(this.m_touchNode);
-        const uiTransform = this.m_touchNode.addComponent(UITransform);
-        uiTransform.anchorY = 1;
-        this.m_touchNode.setPosition(new Vec3(0, 0));
-        uiTransform.setContentSize(640, 1200);
-
         this.m_cannonList = [];
         const _cannonList = GameManager.instance.getCurCannonPoint();
         for (let i = 0; i < _cannonList.length; i++) {
@@ -48,10 +49,10 @@ export class CannonManager extends Component {
         }
         this.createEndItemBlock();
 
-        this.m_touchNode.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
-        this.m_touchNode.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        this.m_touchNode.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.m_touchNode.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
+        this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
+        this.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     }
 
     start() {
@@ -59,7 +60,7 @@ export class CannonManager extends Component {
     }
 
     onTouchStart(event: EventTouch) {
-        const worldPos = event.getLocation();
+        const worldPos = event.getUILocation();
         this.m_selecetCannon = this.getCannonByPosition(v3(worldPos.x,worldPos.y));
         if (this.m_selecetCannon != null) {
             const cannon = this.m_selecetCannon.cannon;
@@ -91,7 +92,7 @@ export class CannonManager extends Component {
         pos.y += delta.y;
         this.m_moveCannon.setPosition(pos);
 
-        const worldPos = event.getLocation();
+        const worldPos = event.getUILocation();
         const cannon = this.getCannonByPosition(v3(worldPos.x,worldPos.y));
         if (cannon != null) {
             const cannonComp = cannon.cannon;
@@ -105,11 +106,11 @@ export class CannonManager extends Component {
 
     onTouchEnd(event: EventTouch) {
         this.setAllCannonOpacity();
-        const worldPos = event.getLocation();
-        const block = this.getBlockByPos(v3(worldPos.x,worldPos.y));
-        if (block != null) {
+        const worldPos = event.getUILocation();
+        const cannonBlock = this.getBlockByPos(v3(worldPos.x,worldPos.y));
+        if (cannonBlock != null) {
             if (this.m_moveCannon != null) {
-                this.changeCannon(this.m_moveCannon['_selfData'], block['_selfData']);
+                this.changeCannon(this.m_moveCannon['_selfData'], cannonBlock['_selfData']);
             }
         }
         else{
@@ -142,7 +143,7 @@ export class CannonManager extends Component {
         this.hideCannonRange();
         BottomUIManager.instance.setShowDestroy(false);
 
-        const worldPos = event.getLocation();
+        const worldPos = event.getUILocation();
         if (BottomUIManager.instance.isInDestroy(worldPos)) {
             this.m_selecetCannon.cannon.removeFromParent();
             this.m_selecetCannon.cannon.destroy();
@@ -150,7 +151,7 @@ export class CannonManager extends Component {
         }
     }
 
-    showCannonRange(cannon: any) {
+    showCannonRange(cannon: Node) {
         this.hideCannonRange();
         cannon.getComponent(Cannon).showRange();
         cannon.setSiblingIndex(this.m_curZIndex);
@@ -166,11 +167,11 @@ export class CannonManager extends Component {
         }
     }
 
-    showCannonHint(cannon: any) {
+    showCannonHint(cannon: Node) {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                if (this.m_cannonList[i].cannon.getComponent(Cannon).compare(cannon)) {
-                    this.m_cannonList[i].cannon.showHint();
+                if (this.m_cannonList[i].cannon.getComponent(Cannon).compare(cannon.getComponent(Cannon))) {
+                    this.m_cannonList[i].cannon.getComponent(Cannon).showHint();
                 }
             }
         }
@@ -206,7 +207,7 @@ export class CannonManager extends Component {
         }
 
         if (endItem.cannon == null) {
-            startItem.cannon.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
+            startItem.cannon.setPosition(new Vec3(offsetX+endItem.pos.x * 106 + 106 / 2, offsetY-endItem.pos.y * 106 - 106 / 2));
             endItem.cannon = startItem.cannon;
             endItem.cannon['_selfData'] = endItem;
             startItem.cannon = null;
@@ -214,8 +215,8 @@ export class CannonManager extends Component {
                 endItem.cannon.getComponent(Cannon).effectAction();
             }
         } else {
-            startItem.cannon.setPosition(new Vec3(endItem.pos.x * 106 + 106 / 2, -endItem.pos.y * 106 - 106 / 2));
-            endItem.cannon.setPosition(new Vec3(startItem.pos.x * 106 + 106 / 2, -startItem.pos.y * 106 - 106 / 2));
+            startItem.cannon.setPosition(new Vec3(offsetX+endItem.pos.x * 106 + 106 / 2, offsetY-endItem.pos.y * 106 - 106 / 2));
+            endItem.cannon.setPosition(new Vec3(offsetX+startItem.pos.x * 106 + 106 / 2, offsetY-startItem.pos.y * 106 - 106 / 2));
             const cannon = endItem.cannon;
             endItem.cannon = startItem.cannon;
             endItem.cannon['_selfData'] = endItem;
@@ -227,15 +228,15 @@ export class CannonManager extends Component {
     setAllCannonOpacity() {
         for (let i = 0; i < this.m_cannonList.length; i++) {
             if (this.m_cannonList[i].cannon != null) {
-                this.m_cannonList[i].cannon.opacity = 255;
+                this.m_cannonList[i].cannon.getComponent(UIOpacity).opacity = 255;
             }
         }
     }
 
     getBlockByPos(world_pos: Vec3) {
+        const pos2=this.node.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
         for (let i = 0; i < this.m_cannonList.length; i++) {
             const pos = this.m_cannonList[i].block.getComponent(UITransform).convertToNodeSpaceAR(world_pos);
-            console.log(world_pos, pos);
             if (pos.x < 106 / 2 && pos.x > -106 / 2 && pos.y < 106 / 2 && pos.y > -106 / 2) {
                 return this.m_cannonList[i].block;
             }
@@ -257,9 +258,10 @@ export class CannonManager extends Component {
     }
 
     createCannonData() {
-        const obj: any = {};
-        obj.pos = v2(0, 0);
+        const obj: CannonBlock = new CannonBlock;
+        obj.pos = v3(0, 0,0);
         obj.cannon = null;
+        obj.block = null;
         return obj;
     }
 
@@ -331,11 +333,10 @@ export class CannonManager extends Component {
         for (let i = 0; i < _cannonList.length; i++) {
             const pos = _cannonList[i];
 
-            const block = new Node();
-            block.addComponent(UITransform);
+            const block = instantiate(this.m_blockPrefab);
             this.node.addChild(block);
 
-            block.setPosition(new Vec3(pos.x * 106 + 106 / 2, -pos.y * 106 - 106 / 2));
+            block.setPosition(new Vec3(offsetX+pos.x * 106 + 106 / 2, offsetY-pos.y * 106 - 106 / 2));
 
             this.m_cannonList[i].block = block;
             this.m_cannonList[i].block['_selfData'] = this.m_cannonList[i];
@@ -378,7 +379,7 @@ export class CannonManager extends Component {
 
                 if (cannon1 == cannon2) continue;
 
-                if (cannon1.compare(cannon2)) {
+                if (cannon1.getComponent(Cannon).compare(cannon2.getComponent(Cannon))) {
                     this.changeCannon(this.m_cannonList[minIndex], this.m_cannonList[j]);
                     return true;
                 }
