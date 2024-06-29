@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, Vec3, UITransform, v2, Color, EventTouch, Tween, tween, Label } from 'cc';
-import { GameManager } from './game';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
+
 import { BottomUIManager } from './gameUI/bottom';
 import { DataManager } from './data/dataManager';
 import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';

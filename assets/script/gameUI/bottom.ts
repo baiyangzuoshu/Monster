@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Label, Prefab, instantiate, tween, Vec3, UITransform, Vec2 } from 'cc';
-import { GameManager } from '../game';
+import { GameManager } from '../../Game/Scripts/Manager/GameManager';
+
 import { CannonManager } from '../cannonBuild';
 import { GameUIManager } from './gameUI';
 import { DataManager } from '../data/dataManager';

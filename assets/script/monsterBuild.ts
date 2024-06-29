@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, Prefab, instantiate, NodePool, Vec3, tween, Tween } from 'cc';
 import { BUFFER_QUANPINGGONGJI } from './define';
 import { getDistance } from './utlis';
-import { GameManager } from './game';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
+
 import { g_GlobalData } from './data/data';
 import { SkillManager } from './gameUI/skillBuffer';
 import { GameUIManager } from './gameUI/gameUI';

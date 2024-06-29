@@ -10,7 +10,7 @@ import { ExcelManager } from '../../Framework/Scripts/Managers/ExcelManager';
 import { PoolManager } from '../../Framework/Scripts/Managers/PoolManager';
 import { WsNetMgr } from '../../Framework/Scripts/Managers/WsNetMgr';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
-import { GameManager } from '../../script/game';
+import { GameManager } from '../../Game/Scripts/Manager/GameManager';
 
 
 const { ccclass, property } = _decorator;

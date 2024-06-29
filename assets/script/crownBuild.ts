@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, Vec3, tween } from 'cc';
-import { GameManager } from './game';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
+
 const { ccclass, property } = _decorator;
 
 @ccclass('CrownManager')

@@ -1,9 +1,9 @@
 import { _decorator, Component, Node, SpriteAtlas, Sprite, Vec2, v2, director, tween } from 'cc';
-import { GameManager } from './game';
 import { v3 } from 'cc';
 import { CrownManager } from './crownBuild';
 import { PhysicsSystem2D } from 'cc';
 import { EPhysics2DDrawFlags } from 'cc';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BlockManager')

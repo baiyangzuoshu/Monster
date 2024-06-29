@@ -1,5 +1,6 @@
 import { _decorator, Component, SpriteAtlas, Node, Sprite, Vec3, ProgressBar, v3, tween, Label, instantiate } from 'cc';
-import { GameManager } from './game';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
+
 import { CrownManager } from './crownBuild';
 import HpEffect from './HpEffectNode';
 import { MonsterBuild } from './monsterBuild';

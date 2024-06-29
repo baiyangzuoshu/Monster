@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Label, SpriteAtlas, Sprite, Prefab, instantiate, v2, Vec2, tween, Tween } from 'cc';
-import { GameManager } from './game';
+import { GameManager } from '../Game/Scripts/Manager/GameManager';
+
 import { BUFFER_QUANPINGGONGJI } from './define';
 import { Vec3 } from 'cc';
 import { v3 } from 'cc';

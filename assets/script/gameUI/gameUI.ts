@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Prefab, instantiate, SpriteAtlas } from 'cc';
-import { GameManager } from '../game';
+import { GameManager } from '../../Game/Scripts/Manager/GameManager';
+
 import { g_GlobalData } from '../data/data';
 import { DataManager } from '../data/dataManager';
 import { TopUIManager } from './topUI';
