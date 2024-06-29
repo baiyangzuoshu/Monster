@@ -18,8 +18,7 @@ export class gun_6 extends GunBase {
     private m_bulletPool: NodePool = new NodePool();
     private m_effect: Animation = null;
     private m_effectEnd: boolean = false;
-    private m_fireAction: Tween<Node> = null;
-    private m_target: any;
+    private m_target: Node;
 
     onLoad() {
         const effectNode = this.node.getChildByName('effect');
@@ -27,13 +26,20 @@ export class gun_6 extends GunBase {
             this.m_effect = effectNode.getComponent(Animation);
             this.m_effect.on(Animation.EventType.FINISHED, this.onEffectEnd, this);
         }
+    }
 
-        this.m_fireAction = tween(this.node)
+    start() {
+        // Initialization code here
+    }
+
+    fire(target: Node) {
+        console.log("fire");
+        this.m_fire = true;
+        if (this.m_effect != null) {
+            this.m_effectEnd = false;
+
+            tween(this.node)
             .call(() => {
-                if (!GameManager.instance.isGameStart()) {
-                    this.endFire();
-                    return;
-                }
                 if (!this.m_effectEnd) {
                     this.m_effect.node.active = true;
                     this.m_effect.play('fire');
@@ -45,31 +51,19 @@ export class gun_6 extends GunBase {
             })
             .to(0.25, { position: v3(0, 0) })
             .call(() => {
-                if (this.m_effectEnd) {
-                    this.m_fireAction.stop();
-                    this.m_fire = false;
-                    if (this.m_endCallBack != null) {
-                        this.m_endCallBack(this.m_type);
-                    }
+                Tween.stopAllByTarget(this.node);
+                    
+                this.m_fire = false;
+                if (this.m_endCallBack != null) {
+                    this.m_endCallBack(this.m_type);
                 }
-            })
-            .repeatForever();
-    }
-
-    start() {
-        // Initialization code here
-    }
-
-    fire(target: any) {
-        this.m_fire = true;
-        if (this.m_effect != null) {
-            this.m_effectEnd = false;
-            this.m_fireAction.start();
+            }).start();
         }
         this.m_target = target;
     }
 
     endFire() {
+        console.log('endFire',this.m_effect);
         if (this.m_effect != null) {
             this.m_effectEnd = true;
         }

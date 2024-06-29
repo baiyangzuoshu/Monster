@@ -197,18 +197,19 @@ export class Cannon extends Component {
         if (!GameManager.instance.isGameStart()) {
             return;
         }
-
+        console.log('111111111');
         if (this.m_gunSprite == null) {
             this.scheduleOnce(this.beginFire.bind(this), 0.2);
             return;
         }
         const component = this.m_gunSprite.getComponent(GunBase);
-
+        console.log('222222');
         if (component != null && component.isFire()) {
             this.scheduleOnce(this.beginFire.bind(this), 0.2);
             return;
         }
-        if (component != null && component.fire != null && this.m_attackTarget != null && !this.m_attackTarget.getComponent(MonsterItem).isDead()) {
+        console.log('333333');
+        if (component != null && this.m_attackTarget != null && !this.m_attackTarget.getComponent(MonsterItem).isDead()) {
             component.fire(this.m_attackTarget);
         }
     }

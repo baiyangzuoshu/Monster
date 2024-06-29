@@ -1,13 +1,1 @@
-{
-  "ver": "1.1.50",
-  "importer": "prefab",
-  "imported": true,
-  "uuid": "9dea37e0-bc46-45d9-b49b-c47cf08f8c0d",
-  "files": [
-    ".json"
-  ],
-  "subMetas": {},
-  "userData": {
-    "syncNodeName": "UIGame"
-  }
-}
+{"ver":"1.1.50","importer":"prefab","imported":true,"uuid":"a5e2e2ee-b1a4-49cf-a039-a6973256bcff","files":[".json"],"subMetas":{},"userData":{"syncNodeName":"UIGame"}}

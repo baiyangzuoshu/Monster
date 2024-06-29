@@ -41,7 +41,7 @@ export class UIManager extends Component {
         var uiView: Node = instantiate(uiPrefab) as Node;
         parent = (!parent)? this.uiCanvas.node : parent;
         parent.addChild(uiView);
-
+        console.log("ShowUIPrefab: ", uiPrefab.data.name, " parent: ", parent.name, " withOutCtrl: ", withOutCtrl);
         //往根节点上挂下UI视图脚本;
         var uiCtrl = null;
         if(!withOutCtrl) {

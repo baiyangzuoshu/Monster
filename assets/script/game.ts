@@ -5,13 +5,16 @@ import { CannonManager } from './cannonBuild';
 import { CrownManager } from './crownBuild';
 import { g_GlobalData } from './data/data';
 import { MonsterBuild } from './monsterBuild';
+import { Prefab } from 'cc';
+import { instantiate } from 'cc';
+import { ResManager } from '../Framework/Scripts/Managers/ResManager';
+import { BundleName } from '../Game/Scripts/Constants';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
 export class GameManager extends Component {
     private static _instance: GameManager = null;
 
-    @property(JsonAsset)
     m_mapData: JsonAsset = null;
 
     private m_gameStart: boolean = false;
@@ -29,8 +32,9 @@ export class GameManager extends Component {
         DataManager.load();
     }
 
-    start() {
+    async Init() {
         // Initialization code
+        this.m_mapData=await ResManager.Instance.IE_GetAsset(BundleName.Datas,"mapData",JsonAsset) as JsonAsset;
     }
 
     isGameStart() {

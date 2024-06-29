@@ -10,6 +10,7 @@ import { ExcelManager } from '../../Framework/Scripts/Managers/ExcelManager';
 import { PoolManager } from '../../Framework/Scripts/Managers/PoolManager';
 import { WsNetMgr } from '../../Framework/Scripts/Managers/WsNetMgr';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
+import { GameManager } from '../../script/game';
 
 
 const { ccclass, property } = _decorator;
@@ -49,49 +50,26 @@ export class Boot extends Component {
 
     
     private async InitFramework() {
-        // 资源管理模块的初始化
+        //
         this.node.addComponent(ResManager).Init();
-        // end
-
-        // 自定义事件订阅与发布模块
         this.node.addComponent(EventManager).Init();
-        // end
-        
-        
-        // 初始化UI框架
         this.node.addComponent(UIManager).Init();
-        // end
-        
-        // Timer模块的初始化
         this.node.addComponent(TimerManager).Init();
-        //end
-
-        // 初始化声音播放模块
         this.node.addComponent(SoundManager).Init("Musics", "Sounds");
-        // end
-
-        // 初始化我们的Excel表格模块
         this.node.addComponent(ExcelManager).Init();
-        // end
-
-        // 初始化节点池
         this.node.addComponent(PoolManager).Init();
-        // end
-
         if(this.useWebSocket) {
             this.node.addComponent(WsNetMgr).Init();
         }
-        // 场景管理模块
         this.node.addComponent(SceneManager).Init();
-        // end
-
         // 初始化我们的日志管理模块
         if(this.isDebug) {
             await this.node.addComponent(Debug).Init();
         }
         // end
-        
-        
+        //
+        await this.node.addComponent(GameManager).Init();
+        //
         // 进入游戏
         this.node.addComponent(GameApp).Init();
         GameApp.Instance.EnterGame();

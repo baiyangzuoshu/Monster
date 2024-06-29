@@ -22,7 +22,8 @@ export class SkillManager extends Component {
     private m_timeData: number = 0;
     private m_maxTime: number = 60;
 
-    public bufferState:any=[];
+    public bufferState=[];
+
     static get instance() {
         return this._instance;
     }

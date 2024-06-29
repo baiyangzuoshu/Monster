@@ -178,16 +178,16 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.5165249670212434,
-      "y": 1.9309231869117427,
-      "z": 9.661460588005232
+      "x": 0,
+      "y": 0,
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": -0.0982983899956951,
-      "y": 0.026573192701081633,
-      "z": 0.002625759496575368,
-      "w": 0.9947986717627801
+      "x": 0,
+      "y": 0,
+      "z": 2.168404344971009e-18,
+      "w": 1
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -199,8 +199,8 @@
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": -11.286422779627168,
-      "y": 3.0602570350133873,
+      "x": 0,
+      "y": 0,
       "z": 2.4848083448933725e-16
     },
     "_id": "c9DMICJLFO5IeO07EPon7U"
@@ -215,7 +215,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_projection": 1,
+    "_projection": 0,
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
@@ -231,7 +231,7 @@
     },
     "_depth": 1,
     "_stencil": 0,
-    "_clearFlags": 14,
+    "_clearFlags": 0,
     "_rect": {
       "__type__": "cc.Rect",
       "x": 0,
@@ -243,7 +243,7 @@
     "_shutter": 7,
     "_iso": 0,
     "_screenScale": 1,
-    "_visibility": 1083179008,
+    "_visibility": 4294967295,
     "_targetTexture": null,
     "_postProcess": null,
     "_usePostProcess": false,
@@ -323,6 +323,9 @@
     "lightProbeInfo": {
       "__id__": 16
     },
+    "postSettings": {
+      "__id__": 17
+    },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
   },
@@ -385,6 +388,7 @@
       "z": 0
     },
     "_distance": 0,
+    "_planeBias": 1,
     "_shadowColor": {
       "__type__": "cc.Color",
       "r": 76,
@@ -476,5 +480,9 @@
     "_showConvex": false,
     "_data": null,
     "_lightProbeSphereVolume": 1
+  },
+  {
+    "__type__": "cc.PostSettingsInfo",
+    "_toneMappingType": 0
   }
 ]

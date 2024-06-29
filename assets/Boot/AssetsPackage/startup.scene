@@ -148,8 +148,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 640,
-      "y": 360,
+      "x": 320,
+      "y": 690,
       "z": 0
     },
     "_lrot": {
@@ -166,7 +166,7 @@
       "z": 1
     },
     "_mobility": 0,
-    "_layer": 33554432,
+    "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -234,7 +234,7 @@
     "_priority": 60000,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 360,
+    "_orthoHeight": 690,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -258,7 +258,7 @@
     "_shutter": 7,
     "_iso": 0,
     "_screenScale": 1,
-    "_visibility": 41943040,
+    "_visibility": 4294967295,
     "_targetTexture": null,
     "_postProcess": null,
     "_usePostProcess": false,
@@ -278,8 +278,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1280,
-      "height": 720
+      "width": 640,
+      "height": 1380
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -365,6 +365,9 @@
     "lightProbeInfo": {
       "__id__": 18
     },
+    "postSettings": {
+      "__id__": 19
+    },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
   },
@@ -427,6 +430,7 @@
       "z": 0
     },
     "_distance": 0,
+    "_planeBias": 1,
     "_shadowColor": {
       "__type__": "cc.Color",
       "r": 76,
@@ -458,7 +462,7 @@
     },
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
-    "_enabled": false,
+    "_enabled": true,
     "_useHDR": true,
     "_editableMaterial": null,
     "_reflectionHDR": null,
@@ -518,5 +522,9 @@
     "_showConvex": false,
     "_data": null,
     "_lightProbeSphereVolume": 1
+  },
+  {
+    "__type__": "cc.PostSettingsInfo",
+    "_toneMappingType": 0
   }
 ]
