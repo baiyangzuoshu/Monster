@@ -14,6 +14,9 @@ import { ResManager } from '../../../Framework/Scripts/Managers/ResManager';
 import { tween } from 'cc';
 import { v3 } from 'cc';
 import { CrownManager } from '../../../script/crownBuild';
+import { Prefab } from 'cc';
+import { instantiate } from 'cc';
+import { Vec3 } from 'cc';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -24,9 +27,14 @@ export class UIGameUICtrl extends UIComponent {
 
 
     private blockMaps:Node=null;
-
+    private m_curCrown: Node = null;
+    private m_nextCrown: Node = null;
+    private m_crown: Prefab = null;
+    private crownBuild:Node=null;
+    
     protected onLoad(): void {
         this.blockMaps=this.ViewNode("blockMaps");
+        this.crownBuild=this.ViewNode("crownBuild");
     }
     
     start(): void {
@@ -49,12 +57,14 @@ export class UIGameUICtrl extends UIComponent {
 
     async Init() {
         this.m_imageAtlas=await ResManager.Instance.IE_GetAsset(BundleName.Atlas,"block-1",SpriteAtlas) as SpriteAtlas;
-        console.log("block-1 atlas loaded!",this.m_imageAtlas);
 
         const blockMapData = GameManager.instance.getCurBlockData();
         this.buildBlockMap(0, blockMapData);
+        //
+        this.m_crown=await ResManager.Instance.IE_GetAsset(BundleName.Prefabs,"crown",Prefab) as Prefab;
+        this.buildEndPoint();
     }
-
+    //
     buildBlockNextMap(blockMapData: number[][]) {
         if (blockMapData == null) {
             return;
@@ -108,4 +118,51 @@ export class UIGameUICtrl extends UIComponent {
         
         CrownManager.instance.moveToNextMap();
     }
+    //crown
+    buildEndPoint() {
+        const list = GameManager.instance.getCurPahtList();
+        const lastPos = list[list.length - 1];
+
+        const pos = new Vec2(0, 0);
+        pos.x = lastPos.x * 106 + 106 / 2;
+        pos.y = -lastPos.y * 106 - 106 / 2;
+
+        if (this.m_curCrown == null) {
+            this.m_curCrown = instantiate(this.m_crown);
+            this.crownBuild.addChild(this.m_curCrown);
+        }
+        pos.y += 25;
+        this.m_curCrown.setPosition(new Vec3(pos.x, pos.y, 0));
+    }
+
+    showCrownBuild() {
+        this.crownBuild.active = true;
+    }
+
+    hideCrownBuild() {
+        this.crownBuild.active = false;
+    }
+
+    setNextCrownPos(pos: Vec2) {
+        if (this.m_nextCrown == null) {
+            this.m_nextCrown = instantiate(this.m_crown);
+            this.crownBuild.addChild(this.m_nextCrown);
+        }
+        pos.y += 25;
+        this.m_nextCrown.setPosition(new Vec3(pos.x, pos.y, 0));
+    }
+
+    crownBuildmoveToNextMap() {
+        const moveTo = { position: new Vec3(-640, 0, 0) };
+        const callFunc = () => {
+            this.crownBuild.setPosition(new Vec3(-320, 310, 0));
+            this.buildEndPoint();
+        };
+
+        tween(this.crownBuild)
+            .by(0.5, moveTo)
+            .call(callFunc)
+            .start();
+    }
+    //
 }

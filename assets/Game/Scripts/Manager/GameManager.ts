@@ -48,7 +48,7 @@ export class GameManager extends Component {
         if (pathData != null) {
             const endPos = pathData[pathData.length - 1];
             const calcPos = v2(endPos.x * 106 + 106 / 2, -endPos.y * 106 - 106 / 2);
-            CrownManager.instance.setNextCrownPos(v2(calcPos.x + 640, calcPos.y));
+            //CrownManager.instance.setNextCrownPos(v2(calcPos.x + 640, calcPos.y));
         }
         CannonManager.instance.jumpNextMap();
         this.scheduleOnce(() => {
@@ -75,7 +75,7 @@ export class GameManager extends Component {
         } else {
             this.scheduleOnce(() => {
                 MonsterBuild.instance.begin();
-                CrownManager.instance.show();
+                //CrownManager.instance.show();
             }, 0.5);
         }
     }

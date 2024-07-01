@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "848b8236-49ee-43e2-99bd-42367c2d0945",
+  "uuid": "93bd11fd-b031-49e2-af2a-fa286560cb57",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "ScrollViewDrallItem"
+    "syncNodeName": "UIIntensify"
   }
 }

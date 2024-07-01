@@ -5,5 +5,8 @@
   "uuid": "07dd1f84-7bb2-4ba5-8184-788969527ba1",
   "files": [],
   "subMetas": {},
-  "userData": {}
+  "userData": {
+    "isBundle": true,
+    "bundleName": "Prefabs"
+  }
 }

@@ -18,8 +18,6 @@ export class EffectBuild extends Component {
 
     onLoad() {
         EffectBuild._instance = this;
-        // @ts-ignore
-        window.g_effectBuild = this;
     }
 
     createDeadEffect(pos: Vec3) {

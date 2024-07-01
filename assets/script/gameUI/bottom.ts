@@ -2,13 +2,12 @@ import { _decorator, Component, Node, Label, Prefab, instantiate, tween, Vec3, U
 import { GameManager } from '../../Game/Scripts/Manager/GameManager';
 
 import { CannonManager } from '../cannonBuild';
-import { GameUIManager } from './gameUI';
 import { DataManager } from '../data/dataManager';
 import { INTENSIFY_KUORONG } from '../define';
 import { g_intensifyData } from '../data/intensifyData';
 import { v3 } from 'cc';
-import { TaskView } from './taskView';
-import { IntensifyView } from './intensifyView';
+import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
+import { GUI } from '../../Game/Scripts/Constants';
 
 const { ccclass, property } = _decorator;
 
@@ -24,12 +23,6 @@ export class BottomUIManager extends Component {
     @property(Node)
     m_water: Node = null;
 
-    @property(Prefab)
-    m_taskViewPrefab: Prefab = null;
-
-    @property(Prefab)
-    m_intensifyViewPrefab: Prefab = null;
-
     @property(Node)
     m_destroyNode: Node = null;
 
@@ -37,8 +30,6 @@ export class BottomUIManager extends Component {
     private m_maxMakeCount: number = 10;
     private m_hammerAction: boolean = false;
     private m_waterAction: boolean = false;
-    private m_taskView: any = null;
-    private m_intensifyView: any = null;
 
     private static _instance: BottomUIManager;
 
@@ -145,21 +136,11 @@ export class BottomUIManager extends Component {
     }
 
     showTaskView() {
-        if (this.m_taskView == null) {
-            this.m_taskView = instantiate(this.m_taskViewPrefab);
-            GameUIManager.instance.node.addChild(this.m_taskView);
-            this.m_taskView = this.m_taskView.getComponent(TaskView);
-        }
-        this.m_taskView.show();
+        UIManager.Instance.IE_ShowUIView(GUI.UITask);
     }
 
     showIntensifyView() {
-        if (this.m_intensifyView == null) {
-            this.m_intensifyView = instantiate(this.m_intensifyViewPrefab);
-            GameUIManager.instance.node.addChild(this.m_intensifyView);
-            this.m_intensifyView = this.m_intensifyView.getComponent(IntensifyView);
-        }
-        this.m_intensifyView.show();
+        UIManager.Instance.IE_ShowUIView(GUI.UIIntensify);
     }
 
     setShowDestroy(bShow: boolean) {
