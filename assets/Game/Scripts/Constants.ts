@@ -10,4 +10,5 @@ export enum GUI{
     UITask="UITask",
     UIIntensify="UIIntensify",
     UIBoss="UIBoss",
+    UISettlement="UISettlement",
 }

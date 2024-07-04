@@ -45,7 +45,7 @@ export class UIManager extends Component {
         //往根节点上挂下UI视图脚本;
         var uiCtrl = null;
         if(!withOutCtrl) {
-            uiView.addComponent(uiPrefab.data.name + "UICtrl");
+            uiCtrl=uiView.addComponent(uiPrefab.data.name + "UICtrl");
         }
         
         this.uiMap[uiPrefab.data.name] = uiView;

@@ -8,15 +8,13 @@ import { BottomUIManager } from './bottom';
 import { BossViewManager } from './bossView';
 import { Settlement } from './smallSettlement';
 import { MapView } from './mapView';
-import { UIManager } from 'assets/Framework/Scripts/Managers/UIManager';
-import { GUI } from 'assets/Game/Scripts/Constants';
+import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
+import { GUI } from '../../Game/Scripts/Constants';
+import { UISettlementUICtrl } from '../../Game/Scripts/UIControllers/UISettlementUICtrl';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameUIManager')
 export class GameUIManager extends Component {
-
-    @property(Prefab)
-    m_smallSettlementPrefab: Prefab = null;
 
     @property(Prefab)
     m_mapViewPrefab: Prefab = null;
@@ -27,7 +25,6 @@ export class GameUIManager extends Component {
     @property(SpriteAtlas)
     m_gameUIAtlas: SpriteAtlas = null;
 
-    private m_smallSettlement: any = null;
     private m_mapView: any = null;
 
     private static _instance: GameUIManager;
@@ -55,36 +52,29 @@ export class GameUIManager extends Component {
         TopUIManager.instance.updateGameUI();
     }
 
-    createSmallSettlement() {
-        if (this.m_smallSettlement == null) {
-            this.m_smallSettlement = instantiate(this.m_smallSettlementPrefab);
-            this.node.addChild(this.m_smallSettlement);
-            this.m_smallSettlement = this.m_smallSettlement.getComponent(Settlement);
-        }
-        return this.m_smallSettlement;
-    }
-
     createBossSettlement() {
         this.showMapView();
         return this.m_mapView;
     }
 
-    showSucceed() {
+    async showSucceed() {
+        const checkPoint = g_GlobalData.getCurCheckPoint();
+        DataManager.addGold(checkPoint.succedGold);
+        DataManager.addDiamond(checkPoint.diamond);
+        this.updateGameUI();
+
+
         let view;
         let delayTime = 0;
         if (g_GlobalData.isCurBossAttack()) {
             delayTime = 6;
             view = this.createBossSettlement();
+            view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
         } else {
             delayTime = 2;
-            view = this.createSmallSettlement();
+            view=await UIManager.Instance.IE_ShowUIView(GUI.UISettlement);
+            view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
         }
-
-        const checkPoint = g_GlobalData.getCurCheckPoint();
-        DataManager.addGold(checkPoint.succedGold);
-        DataManager.addDiamond(checkPoint.diamond);
-        this.updateGameUI();
-        view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
 
         this.scheduleOnce(() => {
             let isBoss = false;
@@ -93,7 +83,7 @@ export class GameUIManager extends Component {
                 view.hideBossView();
                 isBoss = true;
             } else {
-                this.hideSmallSettlement();
+                view.node.destroy();
             }
 
             this.updateGameUI();
@@ -101,9 +91,8 @@ export class GameUIManager extends Component {
         }, delayTime);
     }
 
-    showFaild() {
-        const view = this.createSmallSettlement();
-        //if (view.node.active) return;
+    async showFaild() {
+        const view =await UIManager.Instance.IE_ShowUIView(GUI.UISettlement) as UISettlementUICtrl;
 
         const checkPoint = g_GlobalData.getCurCheckPoint();
         DataManager.addGold(checkPoint.faildGold);
@@ -113,15 +102,11 @@ export class GameUIManager extends Component {
 
         this.scheduleOnce(() => {
             g_GlobalData.previousCheckPoint();
-            this.hideSmallSettlement();
+            view.node.destroy();
+
             this.updateGameUI();
             GameManager.instance.playGame();
         }, 2);
-    }
-
-    hideSmallSettlement() {
-        const view = this.createSmallSettlement();
-        view.hide();
     }
 
     showMapView() {
