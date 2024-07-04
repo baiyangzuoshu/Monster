@@ -5,9 +5,9 @@ import { GameManager } from '../Game/Scripts/Manager/GameManager';
 
 import { g_GlobalData } from './data/data';
 import { SkillManager } from './gameUI/skillBuffer';
-import { GameUIManager } from './gameUI/gameUI';
 import { MonsterItem } from './msItem';
-import { UITransform } from 'cc';
+import { GUI } from '../Game/Scripts/Constants';
+import { UIManager } from '../Framework/Scripts/Managers/UIManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterBuild')
@@ -64,8 +64,8 @@ export class MonsterBuild extends Component {
 
     begin() {
         if (g_GlobalData.isCurBossAttack()) {
-            GameUIManager.instance.playBossViewAnim(this.beginCreate.bind(this));
-            return;
+            UIManager.Instance.IE_ShowUIView(GUI.UIBoss);
+            //return;
         }
         this.beginCreate();
     }

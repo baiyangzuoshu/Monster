@@ -9,4 +9,5 @@ export enum GUI{
     UIGame="UIGame",
     UITask="UITask",
     UIIntensify="UIIntensify",
+    UIBoss="UIBoss",
 }

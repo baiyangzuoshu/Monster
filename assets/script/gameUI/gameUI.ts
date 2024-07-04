@@ -8,6 +8,8 @@ import { BottomUIManager } from './bottom';
 import { BossViewManager } from './bossView';
 import { Settlement } from './smallSettlement';
 import { MapView } from './mapView';
+import { UIManager } from 'assets/Framework/Scripts/Managers/UIManager';
+import { GUI } from 'assets/Game/Scripts/Constants';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameUIManager')
@@ -15,9 +17,6 @@ export class GameUIManager extends Component {
 
     @property(Prefab)
     m_smallSettlementPrefab: Prefab = null;
-
-    @property(Prefab)
-    m_bossViewPrefab: Prefab = null;
 
     @property(Prefab)
     m_mapViewPrefab: Prefab = null;
@@ -29,7 +28,6 @@ export class GameUIManager extends Component {
     m_gameUIAtlas: SpriteAtlas = null;
 
     private m_smallSettlement: any = null;
-    private m_bossView: BossViewManager = null;
     private m_mapView: any = null;
 
     private static _instance: GameUIManager;
@@ -124,15 +122,6 @@ export class GameUIManager extends Component {
     hideSmallSettlement() {
         const view = this.createSmallSettlement();
         view.hide();
-    }
-
-    playBossViewAnim(callFunc: Function) {
-        if (this.m_bossView == null) {
-            let bossNode = instantiate(this.m_bossViewPrefab);
-            this.node.addChild(bossNode);
-            this.m_bossView = bossNode.getComponent(BossViewManager);
-        }
-        this.m_bossView.play(callFunc);
     }
 
     showMapView() {
