@@ -43,6 +43,7 @@ export class UISettlementUICtrl extends UIComponent {
         this.node.setPosition(v3(0, 0));
         tween(this.node)
             .to(0.3, { position: v3(0, 980) })
+            .destroySelf()
             .start();
     }
 }

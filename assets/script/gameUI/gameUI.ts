@@ -5,27 +5,20 @@ import { g_GlobalData } from '../data/data';
 import { DataManager } from '../data/dataManager';
 import { TopUIManager } from './topUI';
 import { BottomUIManager } from './bottom';
-import { BossViewManager } from './bossView';
-import { Settlement } from './smallSettlement';
-import { MapView } from './mapView';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
 import { GUI } from '../../Game/Scripts/Constants';
 import { UISettlementUICtrl } from '../../Game/Scripts/UIControllers/UISettlementUICtrl';
+import { UIMapUICtrl } from '../../Game/Scripts/UIControllers/UIMapUICtrl';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameUIManager')
 export class GameUIManager extends Component {
-
-    @property(Prefab)
-    m_mapViewPrefab: Prefab = null;
 
     @property(Node)
     m_coinFlyNode: Node = null;
 
     @property(SpriteAtlas)
     m_gameUIAtlas: SpriteAtlas = null;
-
-    private m_mapView: any = null;
 
     private static _instance: GameUIManager;
 
@@ -52,9 +45,8 @@ export class GameUIManager extends Component {
         TopUIManager.instance.updateGameUI();
     }
 
-    createBossSettlement() {
-        this.showMapView();
-        return this.m_mapView;
+    async createBossSettlement() {
+        return await this.showMapView();
     }
 
     async showSucceed() {
@@ -76,10 +68,10 @@ export class GameUIManager extends Component {
             view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
         }
 
-        this.scheduleOnce(() => {
+        this.scheduleOnce(async () => {
             let isBoss = false;
             if (g_GlobalData.isCurBossAttack()) {
-                const view = this.createBossSettlement();
+                const view = await this.createBossSettlement() as UIMapUICtrl;
                 view.hideBossView();
                 isBoss = true;
             } else {
@@ -109,27 +101,21 @@ export class GameUIManager extends Component {
         }, 2);
     }
 
-    showMapView() {
-        if (this.m_mapView == null) {
-            this.m_mapView = instantiate(this.m_mapViewPrefab);
-            this.node.addChild(this.m_mapView);
-            this.m_mapView = this.m_mapView.getComponent(MapView);
-        }
-        this.m_mapView.show();
+    async showMapView() {
+        return await UIManager.Instance.IE_ShowUIView(GUI.UIMap);
     }
 
     hideMapView() {
-        this.m_mapView.hide();
+        UIManager.Instance.DestroyUIView(GUI.UIMap);
     }
 
     changeMapViewActive() {
-        if (this.m_mapView == null) {
-            this.showMapView();
-            return;
-        }
-        if (this.m_mapView.node.active) {
+        let view = UIManager.Instance.GetUIComponent(GUI.UIMap) as UIMapUICtrl;
+        
+        if(view){
             this.hideMapView();
-        } else {
+        }
+        else{
             this.showMapView();
         }
     }

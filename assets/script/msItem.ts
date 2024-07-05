@@ -107,7 +107,7 @@ export class MonsterItem extends Component {
             const y = -pathList[i].y * 106 - 106 / 2 - 35;
             this._pathPos.push(v3(x, y));
         }
-        console.log(this._pathPos[0].x, this._pathPos[0].y, this._pathPos[1].x, this._pathPos[1].y);
+        //console.log(this._pathPos[0].x, this._pathPos[0].y, this._pathPos[1].x, this._pathPos[1].y);
         this.node.setPosition(this._pathPos[0]);
 
         this.updateDir(this._pathPos[0], this._pathPos[1]);

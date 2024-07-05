@@ -53,6 +53,14 @@ export class UIManager extends Component {
         return uiCtrl as UIComponent;
     }
 
+    public GetUIComponent(viewName: string): UIComponent {
+        if(!this.uiMap[viewName]) {
+            return null;
+        }
+
+        return this.uiMap[viewName].getComponent(viewName + "UICtrl") as UIComponent
+    }
+
     public async IE_ShowUIView(viewName: string, parent: Node = null, bundleName: string = null, withOutCtrl: boolean = false): Promise<UIComponent> {
         // 实例化UI视图出来; 
         if(!bundleName) {
