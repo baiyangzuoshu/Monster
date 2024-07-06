@@ -124,6 +124,7 @@ export class UIMapUICtrl extends UIComponent {
 
     hide() {
         UIManager.Instance.DestroyUIView(GUI.UIMap);
+        UIManager.Instance.DestroyUIView(GUI.UISettlement);
     }
 
     onClickBG() {

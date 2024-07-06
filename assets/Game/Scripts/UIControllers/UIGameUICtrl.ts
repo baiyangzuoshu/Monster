@@ -24,6 +24,11 @@ import { DataManager } from '../../../script/data/dataManager';
 import { UIManager } from '../../../Framework/Scripts/Managers/UIManager';
 import { UIMapUICtrl } from './UIMapUICtrl';
 import { UISettlementUICtrl } from './UISettlementUICtrl';
+import { UITransform } from 'cc';
+import { INTENSIFY_KUORONG } from '../../../script/define';
+import { g_intensifyData } from '../../../script/data/intensifyData';
+import { CannonManager } from '../../../script/cannonBuild';
+import { numberToString } from '../../../script/utlis';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -31,8 +36,21 @@ export class UIGameUICtrl extends UIComponent {
 
     private startPos: Vec2[] = [];
     private m_mapBlockItem: Sprite[][][] = [];
-
-
+    //bottom
+    m_hammer: Node = null;
+    m_makeNumberLabel: Label = null;
+    m_water: Node = null;
+    m_destroyNode: Node = null;
+    private m_canMakeCount: number = 10;
+    private m_maxMakeCount: number = 10;
+    private m_hammerAction: boolean = false;
+    private m_waterAction: boolean = false;
+    //end
+    //top
+    m_labGold: Label = null;
+    m_diamond: Label = null;
+    m_labCheckPoint: Label = null;
+    //end
     private blockMaps:Node=null;
     private m_curCrown: Node = null;
     private m_nextCrown: Node = null;
@@ -42,11 +60,34 @@ export class UIGameUICtrl extends UIComponent {
     protected onLoad(): void {
         this.blockMaps=this.ViewNode("blockMaps");
         this.crownBuild=this.ViewNode("crownBuild");
+        //bottom
+        this.m_hammer=this.ViewNode("gameUI/bottom/make/ui_build_hammer/m_hammer");
+        this.m_makeNumberLabel=this.ViewComponent("gameUI/bottom/make/num",Label);
+        this.m_water=this.ViewNode("gameUI/bottom/make/ui_build_water");
+        this.m_destroyNode=this.ViewNode("gameUI/bottom/destroy");
+        this.updateGameBottomUI();
+        this.setShowDestroy('',false);
+
+        this.AddButtonListener("gameUI/bottom/make/make",this,this.onClickMake);
+        this.AddButtonListener("gameUI/bottom/make/autoMake",this,this.onClickAutoMake);
+        this.AddButtonListener("gameUI/bottom/task/bt",this,this.showTaskView);
+        this.AddButtonListener("gameUI/bottom/intensify",this,this.showIntensifyView);
+        //end
+
+        //top
+        this.m_labGold=this.ViewComponent("gameUI/top/glod/btGlod/ui_coin_rect/gold",Label);
+        this.m_diamond=this.ViewComponent("gameUI/top/glod/btDiamond/ui_coin_rect/diamond",Label);
+        this.m_labCheckPoint=this.ViewComponent("gameUI/top/checkPoint",Label);
+        this.updateGameTopUI();
+        //end
 
         this.AddEventListener(UIEventName.updateGameUI, this.updateGameUI,this);
         this.AddEventListener(UIEventName.showSucceed, this.showSucceed,this);
         this.AddEventListener(UIEventName.showFaild, this.showFaild,this);
         this.AddEventListener(UIEventName.changeMapViewActive, this.changeMapViewActive,this);
+        this.AddEventListener(UIEventName.updateGameBottomUI, this.updateGameBottomUI,this);
+        this.AddEventListener(UIEventName.setShowDestroy, this.setShowDestroy,this);
+        this.AddEventListener(UIEventName.isInDestroy, this.isInDestroy,this);
     }
     
     start(): void {
@@ -78,8 +119,8 @@ export class UIGameUICtrl extends UIComponent {
     }
     //gameui
     updateGameUI() {
-        BottomUIManager.instance.updateGameUI();
-        TopUIManager.instance.updateGameUI();
+        this.updateGameBottomUI();
+        this.updateGameTopUI();
     }
 
     async createBossSettlement() {
@@ -257,4 +298,133 @@ export class UIGameUICtrl extends UIComponent {
             .start();
     }
     //
+    //bottom
+    onClickMake() {
+        if (!GameManager.instance.isGameStart()) {
+            return;
+        }
+
+        const index = CannonManager.instance.getCanMakeIndex();
+        if (index == null) {
+            return;
+        }
+        if (this.m_canMakeCount == 0) {
+            return;
+        }
+        if (!this.m_hammerAction) {
+            this.m_hammerAction = true;
+            tween(this.m_hammer)
+                .to(0.2, { eulerAngles: new Vec3(-90, 0, 0) })
+                .to(0.2, { eulerAngles: new Vec3(0, 0, 0) })
+                .call(() => {
+                    this.m_hammerAction = false;
+                })
+                .start();
+        }
+        this.subMakeNumber();
+        CannonManager.instance.cannonBuild(index);
+    }
+
+    addMakeNumber() {
+        this.m_canMakeCount++;
+        if (this.m_canMakeCount > this.m_maxMakeCount) {
+            this.m_canMakeCount = this.m_maxMakeCount;
+        }
+        this.updateMakeCount();
+    }
+
+    subMakeNumber() {
+        this.m_canMakeCount--;
+        if (this.m_canMakeCount < 0) {
+            this.m_canMakeCount = 0;
+        }
+        if (!this.m_waterAction) {
+            this.m_water.getComponent(UITransform).setContentSize(0, 0);
+        }
+        this.updateMakeCount();
+    }
+
+    updateMakeCount() {
+        this.m_makeNumberLabel.string = `${this.m_canMakeCount}/${this.m_maxMakeCount}`;
+    }
+
+    updateBottom(dt: number) {
+        if (this.m_canMakeCount < this.m_maxMakeCount) {
+            const newHeight = this.m_water.getComponent(UITransform).height + dt * 50;
+            this.m_water.getComponent(UITransform).setContentSize(133, newHeight);
+            this.m_waterAction = true;
+            if (newHeight >= 133) {
+                this.addMakeNumber();
+                if (this.m_canMakeCount == this.m_maxMakeCount) {
+                    this.m_water.getComponent(UITransform).setContentSize(133, 133);
+                    this.m_waterAction = false;
+                } else {
+                    this.m_water.getComponent(UITransform).setContentSize(133, 0);
+                }
+            }
+        }
+    }
+
+    onClickAutoMake() {
+        if (!GameManager.instance.isGameStart()) {
+            return;
+        }
+        CannonManager.instance.autoMerge();
+    }
+
+    updateGameBottomUI() {
+        if (!this.m_waterAction) {
+            this.m_water.getComponent(UITransform).setContentSize(133, 0);
+        }
+
+        const lv = DataManager.getInternsifLevel(INTENSIFY_KUORONG);
+        this.m_maxMakeCount = g_intensifyData.getValue(INTENSIFY_KUORONG, lv);
+        this.updateMakeCount();
+    }
+
+    showTaskView() {
+        UIManager.Instance.IE_ShowUIView(GUI.UITask);
+    }
+
+    showIntensifyView() {
+        UIManager.Instance.IE_ShowUIView(GUI.UIIntensify);
+    }
+
+    setShowDestroy(_,bShow: boolean) {
+        console.log("setShowDestroy",_,bShow);
+        this.m_destroyNode.active = bShow;
+    }
+
+    isInDestroy(_,world_pos: Vec2) {
+        console.log("isInDestroy",_,world_pos);
+        const pos = this.m_destroyNode.getComponent(UITransform).convertToNodeSpaceAR(v3(world_pos.x, world_pos.y));
+        return pos.x < 50 && pos.x > -50 && pos.y < 50 && pos.y > -50;
+    }
+    //top
+    updateGameTopUI() {
+        const gold = DataManager.getGold();
+        const diamond = DataManager.getDiamond();
+        this.m_labGold.string = numberToString(gold);
+        this.m_diamond.string = numberToString(diamond);
+        this.updateCheckPoint();
+    }
+
+    updateCheckPoint() {
+        const checkPoint = DataManager.getCheckPoint();
+        const data = g_GlobalData.getData(checkPoint.big, checkPoint.small);
+        this.m_labCheckPoint.string = '关卡';
+        this.m_labCheckPoint.string += `${checkPoint.big + 1}-`;
+        this.m_labCheckPoint.string += `${checkPoint.small + 1}`;
+        if (!data.haveData) {
+            this.m_labCheckPoint.string += '*';
+        }
+    }
+
+    onClickMap() {
+        this.changeMapViewActive();
+    }
+    //end
+    protected update(dt: number): void {
+        this.updateBottom(dt);
+    }
 }

@@ -8,6 +8,8 @@ import { v3 } from 'cc';
 import { Cannon } from './cannon';
 import { randomNum } from './utlis';
 import { UIOpacity } from 'cc';
+import { EventManager } from '../Framework/Scripts/Managers/EventManager';
+import { UIEventName } from '../Game/Scripts/Constants';
 const { ccclass, property } = _decorator;
 class CannonBlock{
     pos:Vec3
@@ -77,7 +79,8 @@ export class CannonManager extends Component {
                 this.showCannonRange(cannon);
                 cannon.opacity = 127;
                 this.showCannonHint(cannon['_selfData'].cannon);
-                BottomUIManager.instance.setShowDestroy(true);
+                //BottomUIManager.instance.setShowDestroy(true);
+                EventManager.Instance.Emit(UIEventName.setShowDestroy, true);
             } else {
                 this.m_selecetCannon = null;
             }
@@ -125,8 +128,8 @@ export class CannonManager extends Component {
         }
 
         this.hideCannonRange();
-        BottomUIManager.instance.setShowDestroy(false);
-
+        //BottomUIManager.instance.setShowDestroy(false);
+        EventManager.Instance.Emit(UIEventName.setShowDestroy, false);
         if (BottomUIManager.instance.isInDestroy(worldPos)) {
             this.m_selecetCannon.cannon.removeFromParent();
             this.m_selecetCannon.cannon.destroy();
@@ -142,8 +145,8 @@ export class CannonManager extends Component {
         }
 
         this.hideCannonRange();
-        BottomUIManager.instance.setShowDestroy(false);
-
+        //BottomUIManager.instance.setShowDestroy(false);
+        EventManager.Instance.Emit(UIEventName.setShowDestroy, false);
         const worldPos = event.getUILocation();
         if (BottomUIManager.instance.isInDestroy(worldPos)) {
             this.m_selecetCannon.cannon.removeFromParent();

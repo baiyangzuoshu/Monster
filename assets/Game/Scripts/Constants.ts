@@ -19,4 +19,7 @@ export enum UIEventName{
     showSucceed="showSucceed",
     showFaild="showFaild",
     changeMapViewActive="changeMapViewActive",
+    updateGameBottomUI="updateGameBottomUI",
+    setShowDestroy="setShowDestroy",
+    isInDestroy="isInDestroy",
 }
