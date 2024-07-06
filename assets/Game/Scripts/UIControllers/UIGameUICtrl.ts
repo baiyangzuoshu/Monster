@@ -9,7 +9,7 @@ import { SpriteAtlas } from 'cc';
 import { Vec2 } from 'cc';
 import { Sprite } from 'cc';
 import { GameManager } from '../Manager/GameManager';
-import { BundleName } from '../Constants';
+import { BundleName, GUI, UIEventName } from '../Constants';
 import { ResManager } from '../../../Framework/Scripts/Managers/ResManager';
 import { tween } from 'cc';
 import { v3 } from 'cc';
@@ -17,6 +17,13 @@ import { CrownManager } from '../../../script/crownBuild';
 import { Prefab } from 'cc';
 import { instantiate } from 'cc';
 import { Vec3 } from 'cc';
+import { BottomUIManager } from '../../../script/gameUI/bottom';
+import { TopUIManager } from '../../../script/gameUI/topUI';
+import { g_GlobalData } from '../../../script/data/data';
+import { DataManager } from '../../../script/data/dataManager';
+import { UIManager } from '../../../Framework/Scripts/Managers/UIManager';
+import { UIMapUICtrl } from './UIMapUICtrl';
+import { UISettlementUICtrl } from './UISettlementUICtrl';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -35,6 +42,11 @@ export class UIGameUICtrl extends UIComponent {
     protected onLoad(): void {
         this.blockMaps=this.ViewNode("blockMaps");
         this.crownBuild=this.ViewNode("crownBuild");
+
+        this.AddEventListener(UIEventName.updateGameUI, this.updateGameUI,this);
+        this.AddEventListener(UIEventName.showSucceed, this.showSucceed,this);
+        this.AddEventListener(UIEventName.showFaild, this.showFaild,this);
+        this.AddEventListener(UIEventName.changeMapViewActive, this.changeMapViewActive,this);
     }
     
     start(): void {
@@ -63,6 +75,86 @@ export class UIGameUICtrl extends UIComponent {
         //
         this.m_crown=await ResManager.Instance.IE_GetAsset(BundleName.Prefabs,"crown",Prefab) as Prefab;
         this.buildEndPoint();
+    }
+    //gameui
+    updateGameUI() {
+        BottomUIManager.instance.updateGameUI();
+        TopUIManager.instance.updateGameUI();
+    }
+
+    async createBossSettlement() {
+        return await this.showMapView();
+    }
+
+    async showSucceed() {
+        const checkPoint = g_GlobalData.getCurCheckPoint();
+        DataManager.addGold(checkPoint.succedGold);
+        DataManager.addDiamond(checkPoint.diamond);
+        this.updateGameUI();
+
+
+        let view;
+        let delayTime = 0;
+        if (g_GlobalData.isCurBossAttack()) {
+            delayTime = 6;
+            view = this.createBossSettlement();
+            view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
+        } else {
+            delayTime = 2;
+            view=await UIManager.Instance.IE_ShowUIView(GUI.UISettlement);
+            view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
+        }
+
+        this.scheduleOnce(async () => {
+            let isBoss = false;
+            if (g_GlobalData.isCurBossAttack()) {
+                const view = await this.createBossSettlement() as UIMapUICtrl;
+                view.hideBossView();
+                isBoss = true;
+            } else {
+                view.node.destroy();
+            }
+
+            this.updateGameUI();
+            GameManager.instance.playGame(isBoss);
+        }, delayTime);
+    }
+
+    async showFaild() {
+        const view =await UIManager.Instance.IE_ShowUIView(GUI.UISettlement) as UISettlementUICtrl;
+
+        const checkPoint = g_GlobalData.getCurCheckPoint();
+        DataManager.addGold(checkPoint.faildGold);
+        this.updateGameUI();
+
+        view.showFaild(checkPoint.faildGold);
+
+        this.scheduleOnce(() => {
+            g_GlobalData.previousCheckPoint();
+            view.node.destroy();
+
+            this.updateGameUI();
+            GameManager.instance.playGame();
+        }, 2);
+    }
+
+    async showMapView() {
+        return await UIManager.Instance.IE_ShowUIView(GUI.UIMap);
+    }
+
+    hideMapView() {
+        UIManager.Instance.DestroyUIView(GUI.UIMap);
+    }
+
+    changeMapViewActive() {
+        let view = UIManager.Instance.GetUIComponent(GUI.UIMap) as UIMapUICtrl;
+        
+        if(view){
+            this.hideMapView();
+        }
+        else{
+            this.showMapView();
+        }
     }
     //
     buildBlockNextMap(blockMapData: number[][]) {

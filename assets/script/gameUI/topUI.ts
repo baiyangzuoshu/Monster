@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, Label } from 'cc';
-import { GameUIManager } from './gameUI';
 import { g_GlobalData } from '../data/data';
 import { DataManager } from '../data/dataManager';
 import { numberToString } from '../utlis';
+import { EventManager } from '../../Framework/Scripts/Managers/EventManager';
+import { UIEventName } from '../../Game/Scripts/Constants';
 const { ccclass, property } = _decorator;
 
 @ccclass('TopUIManager')
@@ -57,7 +58,7 @@ export class TopUIManager extends Component {
     }
 
     onClickMap() {
-        GameUIManager.instance.changeMapViewActive();
+        EventManager.Instance.Emit(UIEventName.changeMapViewActive)
     }
 
     // update(dt: number) {

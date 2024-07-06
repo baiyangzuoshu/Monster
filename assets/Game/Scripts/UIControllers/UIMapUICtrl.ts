@@ -4,7 +4,6 @@ import { CoinFlyManager } from '../../../script/coinFly';
 import { g_GlobalData } from '../../../script/data/data';
 import { DataManager } from '../../../script/data/dataManager';
 import DiamondFlyManager from '../../../script/diamondFly';
-import { GameUIManager } from '../../../script/gameUI/gameUI';
 import { numberToString } from '../../../script/utlis';
 import { Label } from 'cc';
 import { Vec3 } from 'cc';
@@ -14,7 +13,7 @@ import { tween } from 'cc';
 import { instantiate } from 'cc';
 import { ScrollView } from 'cc';
 import { _decorator, Component, Node } from 'cc';
-import { GUI } from '../Constants';
+import { GUI, UIEventName } from '../Constants';
 const { ccclass, property } = _decorator;
 
 @ccclass('UIMapUICtrl')
@@ -144,12 +143,14 @@ export class UIMapUICtrl extends UIComponent {
 
     goldFlyEnd(gold: number) {
         DataManager.addGold(gold);
-        GameUIManager.instance.updateGameUI();
+
+        this.EmitEventListener(UIEventName.updateGameUI);
     }
 
     diamondFlyEnd(diamond: number) {
         DataManager.addDiamond(diamond);
-        GameUIManager.instance.updateGameUI();
+        this.EmitEventListener(UIEventName.updateGameUI);
+
     }
 
     showSucceed(gold: number, diamond: number) {
@@ -179,7 +180,8 @@ export class UIMapUICtrl extends UIComponent {
                 clearInterval(flyInterval);
                 DataManager.setGold(gold);
                 DataManager.setDiamond(diamond);
-                GameUIManager.instance.updateGameUI();
+                this.EmitEventListener(UIEventName.updateGameUI);
+
             }
         }, 10);
     }

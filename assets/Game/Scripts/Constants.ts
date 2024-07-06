@@ -13,3 +13,10 @@ export enum GUI{
     UISettlement="UISettlement",
     UIMap="UIMap",
 }
+
+export enum UIEventName{
+    updateGameUI="updateGameUI",
+    showSucceed="showSucceed",
+    showFaild="showFaild",
+    changeMapViewActive="changeMapViewActive",
+}

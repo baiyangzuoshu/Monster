@@ -14,8 +14,9 @@ import EffectBuild from './effectBuild';
 import { UITransform } from 'cc';
 import { CircleCollider2D } from 'cc';
 import { CoinFlyManager } from './coinFly';
-import { GameUIManager } from './gameUI/gameUI';
 import { v2 } from 'cc';
+import { EventManager } from '../Framework/Scripts/Managers/EventManager';
+import { UIEventName } from '../Game/Scripts/Constants';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterItem')
@@ -172,7 +173,7 @@ export class MonsterItem extends Component {
                 this.m_isDead = true;
                 g_GlobalData.subCurMonsterCount();
                 if (g_GlobalData.getCurMonsterCount() <= 0) {
-                    GameUIManager.instance.showFaild();
+                    EventManager.Instance.Emit(UIEventName.showFaild, {});
                 }
             })
             .start();
@@ -309,13 +310,14 @@ export class MonsterItem extends Component {
             if (cale_gold > 0) {
                 CoinFlyManager.instance.createCoinToTip(this.node, (gold: number) => {
                     DataManager.addGold(gold);
-                    GameUIManager.instance.updateGameUI();
+                    EventManager.Instance.Emit(UIEventName.updateGameUI, {});
+
                 }, cale_gold);
             }
 
             g_GlobalData.subCurMonsterCount();
             if (g_GlobalData.getCurMonsterCount() <= 0) {
-                GameUIManager.instance.showSucceed();
+                EventManager.Instance.Emit(UIEventName.showSucceed, {});
             }
 
             DataManager.addTaskCount(TASK_JIDAO_DIREN);

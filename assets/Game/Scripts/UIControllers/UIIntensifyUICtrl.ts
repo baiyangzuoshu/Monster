@@ -9,10 +9,12 @@ import { instantiate } from 'cc';
 import { IntensifyItem } from '../../../script/gameUI/intensifyItem';
 import { g_intensifyData } from '../../../script/data/intensifyData';
 import { UIManager } from '../../../Framework/Scripts/Managers/UIManager';
+import { UI } from 'cc';
+import { UITntensifyItem } from './item/UITntensifyItem';
 
 @ccclass('UIIntensifyUICtrl')
 export class UIIntensifyUICtrl extends UIComponent {
-    private m_item: IntensifyItem[] = [];
+    private m_item: UITntensifyItem[] = [];
     private m_selectId: number = 0;
     private m_content:Node=null;
 
@@ -42,13 +44,15 @@ export class UIIntensifyUICtrl extends UIComponent {
         }
     }
 
-    async createItem(taskID: number) :Promise<IntensifyItem>{
+    async createItem(taskID: number) :Promise<UITntensifyItem>{
         let itemPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Prefabs,"intensifyItem",Prefab) as Prefab;
         let item = instantiate(itemPrefab);
         this.m_content.addChild(item);
         item.active = true;
         
-        let ts = item.getComponent(IntensifyItem);
+        let ts = item.addComponent(UITntensifyItem);
+        await ts.init();
+
         ts.setID(taskID);
         return ts;
     }

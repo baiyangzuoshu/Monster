@@ -9,10 +9,11 @@ import { Prefab } from 'cc';
 import { BundleName, GUI } from '../Constants';
 import { instantiate } from 'cc';
 import { UIManager } from '../../../Framework/Scripts/Managers/UIManager';
+import { UITaskItem } from './item/UITaskItem';
 
 @ccclass('UITaskUICtrl')
 export class UITaskUICtrl extends UIComponent {
-    private m_item: TaskItem[] = [];
+    private m_item: UITaskItem[] = [];
     private m_selectId: number = 0;
     private m_content:Node=null;
 
@@ -44,13 +45,13 @@ export class UITaskUICtrl extends UIComponent {
         }
     }
 
-    async createItem(taskID: number) :Promise<TaskItem>{
+    async createItem(taskID: number) :Promise<UITaskItem>{
         let itemPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Prefabs,"taskItem",Prefab) as Prefab;
         let item = instantiate(itemPrefab);
         this.m_content.addChild(item);
         item.active = true;
         
-        let ts = item.getComponent(TaskItem);
+        let ts = item.addComponent(UITaskItem);
         ts.setTaskID(taskID);
         return ts;
     }
