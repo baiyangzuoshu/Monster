@@ -11,6 +11,7 @@ import { PoolManager } from '../../Framework/Scripts/Managers/PoolManager';
 import { WsNetMgr } from '../../Framework/Scripts/Managers/WsNetMgr';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
 import { GameManager } from '../../Game/Scripts/Manager/GameManager';
+import { ECSWorld } from '../../Game/Scripts/ECS/ECSWorld';
 
 
 const { ccclass, property } = _decorator;
@@ -69,6 +70,7 @@ export class Boot extends Component {
         // end
         //
         await this.node.addComponent(GameManager).Init();
+        this.node.addComponent(ECSWorld);
         //
         // 进入游戏
         this.node.addComponent(GameApp).Init();
