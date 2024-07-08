@@ -3,6 +3,7 @@ export enum BundleName{
     Datas="Datas",
     Atlas="Atlas",
     Prefabs="Prefabs",
+    Role="Role",
 }
 
 export enum GUI{

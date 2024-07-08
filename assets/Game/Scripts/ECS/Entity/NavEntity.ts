@@ -1,6 +1,6 @@
-import { NavCompnent } from "../Compnent/NavCompnent";
+import { NaviComponent } from "../Component/NaviComponent";
 
 export class NavEntity  {
-    public navCompnent:NavCompnent=new NavCompnent;
+    public navCompnent:NaviComponent=new NaviComponent;
 }
 

@@ -38,8 +38,8 @@ export class ECSWorld extends Component {
         }
     }
 
-    public createMonster():MonsterEntity{
-        let entity=ECSFactory.createMonster();
+    public async createMonster():Promise<MonsterEntity>{
+        let entity=await ECSFactory.createMonster();
         this.monsters.push(entity);
         return entity;
     }

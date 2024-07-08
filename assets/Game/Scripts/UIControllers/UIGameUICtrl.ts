@@ -29,6 +29,7 @@ import { INTENSIFY_KUORONG } from '../../../script/define';
 import { g_intensifyData } from '../../../script/data/intensifyData';
 import { CannonManager } from '../../../script/cannonBuild';
 import { numberToString } from '../../../script/utlis';
+import { ECSFactory } from '../ECS/ECSFactory';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -88,6 +89,8 @@ export class UIGameUICtrl extends UIComponent {
         this.AddEventListener(UIEventName.updateGameBottomUI, this.updateGameBottomUI,this);
         this.AddEventListener(UIEventName.setShowDestroy, this.setShowDestroy,this);
         this.AddEventListener(UIEventName.isInDestroy, this.isInDestroy,this);
+
+        ECSFactory.init();
     }
     
     start(): void {

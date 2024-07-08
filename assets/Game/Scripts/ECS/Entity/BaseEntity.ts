@@ -1,6 +1,6 @@
-import { BaseCompnent } from "../Compnent/BaseCompnent";
+import { BaseComponent } from "../Component/BaseComponent";
 
 export class BaseEntity  {
-    public baseCompnent:BaseCompnent=new BaseCompnent;
+    public baseCompnent:BaseComponent=new BaseComponent;
 }
 

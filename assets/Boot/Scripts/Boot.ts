@@ -12,6 +12,7 @@ import { WsNetMgr } from '../../Framework/Scripts/Managers/WsNetMgr';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
 import { GameManager } from '../../Game/Scripts/Manager/GameManager';
 import { ECSWorld } from '../../Game/Scripts/ECS/ECSWorld';
+import { DataManager } from '../../Game/Scripts/Data/DataManager';
 
 
 const { ccclass, property } = _decorator;
@@ -69,6 +70,7 @@ export class Boot extends Component {
         }
         // end
         //
+        this.node.addComponent(DataManager).Init();
         await this.node.addComponent(GameManager).Init();
         this.node.addComponent(ECSWorld);
         //

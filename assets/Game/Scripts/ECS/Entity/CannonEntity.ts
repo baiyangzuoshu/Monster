@@ -1,14 +1,6 @@
-import { _decorator, Component, Node } from 'cc';
-const { ccclass, property } = _decorator;
+import { BaseEntity } from "./BaseEntity";
 
-@ccclass('CannonEntity')
-export class CannonEntity extends Component {
-    start() {
-
-    }
-
-    update(deltaTime: number) {
-        
-    }
+export class CannonEntity extends BaseEntity {
+    
 }
 
