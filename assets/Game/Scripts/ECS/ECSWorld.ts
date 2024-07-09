@@ -3,6 +3,7 @@ import { MonsterEntity } from './Entity/MonsterEntity';
 import { CannonEntity } from './Entity/CannonEntity';
 import { ECSFactory } from './ECSFactory';
 import { NavSystem } from './System/NavSystem';
+import { Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('ECSWorld')
@@ -45,8 +46,8 @@ export class ECSWorld extends Component {
         return entity;
     }
 
-    public createCannon():CannonEntity{
-        let entity=ECSFactory.createCannon();
+    public async createCannon(pos:Vec3):Promise<CannonEntity>{
+        let entity=await ECSFactory.createCannon(pos);
         this.cannons.push(entity);
         return entity;
     }

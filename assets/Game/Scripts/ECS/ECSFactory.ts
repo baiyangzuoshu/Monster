@@ -13,6 +13,9 @@ import { v2 } from "cc";
 import { v3 } from "cc";
 import { Vec3 } from "cc";
 import { Utils } from "../Utils/Utils";
+import { Cannon } from "../Role/Cannon";
+import { randomNum } from "../../../script/utlis";
+import { tween } from "cc";
 
 export class ECSFactory  {
     private static entityID:number=0;
@@ -68,9 +71,29 @@ export class ECSFactory  {
         return entity;
     }
 
-    public static createCannon():CannonEntity{
+    public static async createCannon(pos:Vec3):Promise<CannonEntity>{
         let entity=new CannonEntity();
+        
+        let cannonPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"Cannon",Prefab) as Prefab;
+        let cannon=instantiate(cannonPrefab);
+        this.entityLayer.addChild(cannon);
+
         entity.baseCompnent.id=this.entityID++;
+        entity.baseCompnent.gameObject=cannon;
+
+
+        const x = pos.x * 106 + 106 / 2;
+        const y = -pos.y * 106 - 106 / 2;
+
+        cannon.setPosition(v3(x, y));
+
+        const ts = cannon.addComponent(Cannon) as Cannon;
+        await ts.init();
+
+        ts.setRot(randomNum(0, 360));
+        const level =  0;
+        ts.createGun(level);
+        
         return entity;
     }
 }

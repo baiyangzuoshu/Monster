@@ -22,7 +22,6 @@ export class GameApp extends Component {
     }
 
     public async EnterGame() {
-        console.log("EnterGame #######");
         SceneManager.Instance.IE_RunScene("main");
     
         UIManager.Instance.IE_ShowUIView("UIGame");

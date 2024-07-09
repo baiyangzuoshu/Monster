@@ -3,7 +3,6 @@ import { _decorator, Component, JsonAsset, v2, Vec2 } from 'cc';
 import { BundleName } from '../Constants';
 import { DataManager } from '../../../script/data/dataManager';
 import BlockManager from '../../../script/blockMaps';
-import { CrownManager } from '../../../script/crownBuild';
 import { CannonManager } from '../../../script/cannonBuild';
 import { g_GlobalData } from '../../../script/data/data';
 import { MonsterBuild } from '../../../script/monsterBuild';

@@ -30,6 +30,7 @@ import { g_intensifyData } from '../../../script/data/intensifyData';
 import { CannonManager } from '../../../script/cannonBuild';
 import { numberToString } from '../../../script/utlis';
 import { ECSFactory } from '../ECS/ECSFactory';
+import { ECSWorld } from '../ECS/ECSWorld';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -325,7 +326,8 @@ export class UIGameUICtrl extends UIComponent {
                 .start();
         }
         this.subMakeNumber();
-        CannonManager.instance.cannonBuild(index);
+
+        CannonManager.instance.cannonBuild(index); 
     }
 
     addMakeNumber() {

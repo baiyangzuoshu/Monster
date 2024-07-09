@@ -10,6 +10,7 @@ import { randomNum } from './utlis';
 import { UIOpacity } from 'cc';
 import { EventManager } from '../Framework/Scripts/Managers/EventManager';
 import { UIEventName } from '../Game/Scripts/Constants';
+import { ECSWorld } from '../Game/Scripts/ECS/ECSWorld';
 const { ccclass, property } = _decorator;
 class CannonBlock{
     pos:Vec3
@@ -278,7 +279,7 @@ export class CannonManager extends Component {
         return null;
     }
 
-    cannonBuild(index: number, level?: number) {
+    async cannonBuild(index: number, level?: number) {
         if (this.m_cannonList[index] == null) {
             return;
         }
@@ -286,33 +287,14 @@ export class CannonManager extends Component {
             return;
         }
 
-        let cannon = instantiate(this.m_cannonPrefab);
-        this.node.addChild(cannon);
         const pos = this.m_cannonList[index].pos;
+
+        let cannonEntity=await ECSWorld.instance.createCannon(pos);
+        let cannon=cannonEntity.baseCompnent.gameObject;  
+        
         cannon['_selfData'] = this.m_cannonList[index];
 
-        cannon.setPosition(v3(317, -952));
-
-        const ts = cannon.getComponent(Cannon) as Cannon;
-        ts.setRot(randomNum(0, 360));
-        level = level ? level : 0;
-        ts.createGun(level);
         this.m_cannonList[index].cannon = cannon;
-
-        const x = pos.x * 106 + 106 / 2;
-        const y = -pos.y * 106 - 106 / 2;
-
-        tween(cannon)
-            .to(0.5, { position: v3(x,y) })
-            .to(0.2, { scale: new Vec3(4, 4) })
-            .delay(0.2)
-            .to(0.1, { scale: new Vec3(1, 1) })
-            .call(() => {
-                ts.effectAction();
-                ts.openLockEnemy();
-                ts.setFlying(false);
-            })
-            .start();
     }
 
     clearAllCannon() {
