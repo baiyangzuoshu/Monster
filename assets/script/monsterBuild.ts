@@ -8,6 +8,7 @@ import { SkillManager } from './gameUI/skillBuffer';
 import { MonsterItem } from './msItem';
 import { GUI } from '../Game/Scripts/Constants';
 import { UIManager } from '../Framework/Scripts/Managers/UIManager';
+import { ECSWorld } from '../Game/Scripts/ECS/ECSWorld';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterBuild')
@@ -73,7 +74,7 @@ export class MonsterBuild extends Component {
     beginCreate() {
         let index = 0;
         const list = GameManager.instance.getCurPahtList();
-        const levelData = g_GlobalData.getCurMonsterData();
+        const levelData= g_GlobalData.getCurMonsterData();
         g_GlobalData.setCurMonsterCount(levelData.length);
 
         let seq = tween(this.node);
@@ -91,7 +92,11 @@ export class MonsterBuild extends Component {
                 if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
                     js.setSlow(true);
                 }
+
+                ECSWorld.instance.createMonster(index);
+
                 index++;
+                
             });
         }
         seq.start();

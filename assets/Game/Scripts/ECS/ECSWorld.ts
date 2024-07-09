@@ -2,6 +2,7 @@ import { _decorator, Component, Node } from 'cc';
 import { MonsterEntity } from './Entity/MonsterEntity';
 import { CannonEntity } from './Entity/CannonEntity';
 import { ECSFactory } from './ECSFactory';
+import { NavSystem } from './System/NavSystem';
 const { ccclass, property } = _decorator;
 
 @ccclass('ECSWorld')
@@ -38,8 +39,8 @@ export class ECSWorld extends Component {
         }
     }
 
-    public async createMonster():Promise<MonsterEntity>{
-        let entity=await ECSFactory.createMonster();
+    public async createMonster(index:number):Promise<MonsterEntity>{
+        let entity=await ECSFactory.createMonster(index);
         this.monsters.push(entity);
         return entity;
     }
@@ -50,8 +51,14 @@ export class ECSWorld extends Component {
         return entity;
     }
 
+    private navMonster(deltaTime: number){
+        for (let i = 0; i < this.monsters.length; i++) {
+            NavSystem.update(this.monsters[i].baseCompnent,this.monsters[i].navCompnent,deltaTime);
+        }
+    }
+
     update(deltaTime: number) {
-        console.log('update ECSWorld');
+        this.navMonster(deltaTime);
     }
 }
 
