@@ -18,6 +18,8 @@ import { BundleName } from '../../Game/Scripts/Constants';
 import { SpriteAtlas } from 'cc';
 import { JsonAsset } from 'cc';
 import { Prefab } from 'cc';
+import { Scene } from 'cc';
+import { SceneAsset } from 'cc';
 
 
 const { ccclass, property } = _decorator;
@@ -59,6 +61,7 @@ export class Boot extends Component {
     private async CheckHotUpdate() {
         this.progressBar.progress = 0.2;
         await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Datas,JsonAsset);
+        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Scenes,SceneAsset);
         
         this.progressBar.progress = 0.5;
         await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Atlas,SpriteAtlas);

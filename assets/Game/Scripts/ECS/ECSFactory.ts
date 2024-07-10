@@ -22,7 +22,7 @@ export class ECSFactory  {
     private static entityLayer:Node=null;
 
     public static init(){
-        this.entityLayer=find("Canvas/EntityLayer");
+        this.entityLayer=find("mainCanvas/EntityLayer");
         console.log("ECSFactory init",this.entityLayer);
     }
 

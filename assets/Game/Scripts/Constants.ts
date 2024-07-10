@@ -4,6 +4,7 @@ export enum BundleName{
     Atlas="Atlas",
     Prefabs="Prefabs",
     Role="Role",
+    Scenes="Scenes",
 }
 
 export enum GUI{

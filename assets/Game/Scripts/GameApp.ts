@@ -22,9 +22,9 @@ export class GameApp extends Component {
     }
 
     public async EnterGame() {
-        SceneManager.Instance.IE_RunScene("main");
+        await SceneManager.Instance.IE_RunScene("main");
     
-        UIManager.Instance.IE_ShowUIView("UIGame");
+        await UIManager.Instance.IE_ShowUIView("UIGame");
     }
 }
 
