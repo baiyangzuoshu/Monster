@@ -17,6 +17,8 @@ import { CoinFlyManager } from './coinFly';
 import { v2 } from 'cc';
 import { EventManager } from '../Framework/Scripts/Managers/EventManager';
 import { UIEventName } from '../Game/Scripts/Constants';
+import { DataModelManager, ModelName } from '../Game/Scripts/Data/DataModelManager';
+import { GameModel, GameState } from '../Game/Scripts/Data/Model/GameModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterItem')
@@ -138,9 +140,15 @@ export class MonsterItem extends Component {
             .call(() => {
                 this.m_curMoveIndex++;
                 if (this.m_curMoveIndex === this._pathPos.length - 1) {
-                    if (GameManager.instance.isGameStart()) {
+                    let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        
+                    if (gameModel.state==GameState.Playering) {
                         this.m_diamond.active = true;
                         GameManager.instance.stopGame();
+
+                        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+                        gameModel.state=GameState.End;
+
                         CrownManager.instance.hide();
                         MonsterBuild.instance.setGameEndSpeed();
                     }
@@ -275,7 +283,9 @@ export class MonsterItem extends Component {
     }
 
     subHP(hp: number) {
-        if (!GameManager.instance.isGameStart() || this.m_isDead) {
+        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        
+        if (gameModel.state!=GameState.Playering || this.m_isDead) {
             return;
         }
         if (hp == null) {

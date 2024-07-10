@@ -9,6 +9,9 @@ import { MonsterItem } from './msItem';
 import { GUI } from '../Game/Scripts/Constants';
 import { UIManager } from '../Framework/Scripts/Managers/UIManager';
 import { ECSWorld } from '../Game/Scripts/ECS/ECSWorld';
+import { DataModelManager, ModelName } from '../Game/Scripts/Data/DataModelManager';
+import { Game } from 'cc';
+import { GameModel, GameState } from '../Game/Scripts/Data/Model/GameModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('MonsterBuild')
@@ -34,6 +37,9 @@ export class MonsterBuild extends Component {
         }, 0.5);
 
         GameManager.instance.playGame();
+
+        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        gameModel.state=GameState.Playering;
     }
 
     start() {

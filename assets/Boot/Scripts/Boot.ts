@@ -12,7 +12,7 @@ import { WsNetMgr } from '../../Framework/Scripts/Managers/WsNetMgr';
 import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
 import { GameManager } from '../../Game/Scripts/Manager/GameManager';
 import { ECSWorld } from '../../Game/Scripts/ECS/ECSWorld';
-import { DataManager } from '../../Game/Scripts/Data/DataManager';
+import { DataModelManager } from '../../Game/Scripts/Data/DataModelManager';
 import { ProgressBar } from 'cc';
 import { BundleName } from '../../Game/Scripts/Constants';
 import { SpriteAtlas } from 'cc';
@@ -97,7 +97,7 @@ export class Boot extends Component {
         }
         // end
         //
-        this.node.addComponent(DataManager).Init();
+        this.node.addComponent(DataModelManager).Init();
         await this.node.addComponent(GameManager).Init();
         this.node.addComponent(ECSWorld);
         //

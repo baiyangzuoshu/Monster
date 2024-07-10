@@ -1,4 +1,4 @@
-import { DataManager, IModel, ModelName } from "../DataManager";
+import { DataModelManager, IModel, ModelName } from "../DataModelManager";
 
 export class PlayerModel implements IModel{
     

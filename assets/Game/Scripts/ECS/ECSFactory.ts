@@ -19,11 +19,12 @@ import { tween } from "cc";
 
 export class ECSFactory  {
     private static entityID:number=0;
-    private static entityLayer:Node=null;
+    private static monsterNode:Node=null;
+    private static cannonNode:Node=null;
 
-    public static init(){
-        this.entityLayer=find("mainCanvas/EntityLayer");
-        console.log("ECSFactory init",this.entityLayer);
+    public static init(monsterNode:Node,cannonNode:Node){
+        this.monsterNode=monsterNode;
+        this.cannonNode=cannonNode;
     }
 
     public static async createMonster(index:number):Promise<MonsterEntity>{
@@ -31,7 +32,7 @@ export class ECSFactory  {
 
         let monsterPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"Monster",Prefab) as Prefab;
         let monster=instantiate(monsterPrefab);
-        this.entityLayer.addChild(monster);
+        this.monsterNode.addChild(monster);
 
         entity.baseCompnent.id=this.entityID++;
         entity.baseCompnent.gameObject=monster;
@@ -76,7 +77,7 @@ export class ECSFactory  {
         
         let cannonPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"Cannon",Prefab) as Prefab;
         let cannon=instantiate(cannonPrefab);
-        this.entityLayer.addChild(cannon);
+        this.cannonNode.addChild(cannon);
 
         entity.baseCompnent.id=this.entityID++;
         entity.baseCompnent.gameObject=cannon;

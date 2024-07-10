@@ -1,5 +1,6 @@
 import { _decorator, Component, Node } from 'cc';
 import { PlayerModel } from './Model/PlayerModel';
+import { GameModel } from './Model/GameModel';
 const { ccclass, property } = _decorator;
 
 export interface IModel{
@@ -8,11 +9,12 @@ export interface IModel{
 
 export enum ModelName{
     Player='Player',
+    Game='Game',
 }
 
-@ccclass('DataManager')
-export class DataManager extends Component {
-    private static _instance:DataManager=null;
+@ccclass('DataModelManager')
+export class DataModelManager extends Component {
+    private static _instance:DataModelManager=null;
 
     public static get instance(){
         return this._instance;
@@ -21,16 +23,17 @@ export class DataManager extends Component {
     private models:Map<ModelName,IModel>=new Map();
 
     onLoad() {
-        if(DataManager._instance){
+        if(DataModelManager._instance){
             this.destroy();
             return;
         }
 
-        DataManager._instance=this;    
+        DataModelManager._instance=this;    
     }
 
     public Init(){
-        DataManager.instance.registerModel(ModelName.Player,PlayerModel);
+        DataModelManager.instance.registerModel(ModelName.Player,PlayerModel);
+        DataModelManager.instance.registerModel(ModelName.Game,GameModel);
     }
 
     public registerModel(key:ModelName,modelClass:new()=>IModel){

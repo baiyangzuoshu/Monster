@@ -30,7 +30,8 @@ import { g_intensifyData } from '../../../script/data/intensifyData';
 import { CannonManager } from '../../../script/cannonBuild';
 import { numberToString } from '../../../script/utlis';
 import { ECSFactory } from '../ECS/ECSFactory';
-import { ECSWorld } from '../ECS/ECSWorld';
+import { DataModelManager, ModelName } from '../Data/DataModelManager';
+import { GameModel, GameState } from '../Data/Model/GameModel';
 
 @ccclass('UIGameUICtrl')
 export class UIGameUICtrl extends UIComponent {
@@ -91,7 +92,7 @@ export class UIGameUICtrl extends UIComponent {
         this.AddEventListener(UIEventName.setShowDestroy, this.setShowDestroy,this);
         this.AddEventListener(UIEventName.isInDestroy, this.isInDestroy,this);
 
-        ECSFactory.init();
+        ECSFactory.init(this.ViewNode("monsterNode"),this.ViewNode("cannonBuild"));
     }
     
     start(): void {
@@ -162,6 +163,8 @@ export class UIGameUICtrl extends UIComponent {
 
             this.updateGameUI();
             GameManager.instance.playGame(isBoss);
+            let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+            gameModel.state=GameState.Playering;
         }, delayTime);
     }
 
@@ -180,6 +183,8 @@ export class UIGameUICtrl extends UIComponent {
 
             this.updateGameUI();
             GameManager.instance.playGame();
+            let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+            gameModel.state=GameState.Playering;
         }, 2);
     }
 
@@ -304,7 +309,8 @@ export class UIGameUICtrl extends UIComponent {
     //
     //bottom
     onClickMake() {
-        if (!GameManager.instance.isGameStart()) {
+        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        if (gameModel.state!=GameState.Playering) {
             return;
         }
 
@@ -371,7 +377,8 @@ export class UIGameUICtrl extends UIComponent {
     }
 
     onClickAutoMake() {
-        if (!GameManager.instance.isGameStart()) {
+        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        if (gameModel.state!=GameState.Playering) {
             return;
         }
         CannonManager.instance.autoMerge();
