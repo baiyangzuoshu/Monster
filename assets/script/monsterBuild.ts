@@ -85,13 +85,13 @@ export class MonsterBuild extends Component {
                 if (index >= levelData.length) {
                     return;
                 }
-                const speed = levelData[index].speed;
-                const node = this.createMonsterByData(levelData[index], list);
-                const js = node.getComponent(MonsterItem);
-                js.go(speed);
-                if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
-                    js.setSlow(true);
-                }
+                // const speed = levelData[index].speed;
+                // const node = this.createMonsterByData(levelData[index], list);
+                // const js = node.getComponent(MonsterItem);
+                // js.go(speed);
+                // if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
+                //     js.setSlow(true);
+                // }
 
                 ECSWorld.instance.createMonster(index);
 
