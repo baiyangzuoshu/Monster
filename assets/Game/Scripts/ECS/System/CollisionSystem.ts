@@ -21,7 +21,7 @@ export class CollisionSystem  {
         var bottom2 = pos2.y + size2.height;
     
         if (left1 < right2 && right1 > left2 && top1 < bottom2 && bottom1 > top2) {
-            entity1.baseCompnent.gameObject.active = false;
+            entity1.attackComponent.m_bHit = true;
             return true;
         }
     

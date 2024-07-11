@@ -8,15 +8,32 @@ import { UITransform } from 'cc';
 import { CircleCollider2D } from 'cc';
 import { SpriteAtlas } from 'cc';
 import { ResManager } from '../../../Framework/Scripts/Managers/ResManager';
-import { BundleName } from '../Constants';
+import { BundleName, UIEventName } from '../Constants';
 import { Vec3 } from 'cc';
 import { Size } from 'cc';
+import { DataModelManager, ModelName } from '../Data/DataModelManager';
+import { GameModel, GameState } from '../Data/Model/GameModel';
+import { SkillManager } from '../../../script/gameUI/skillBuffer';
+import { BUFFER_GONGJIFANBEI, BUFFER_JINBIFANBEI, INTENSIFY_BAOJI, TASK_JIDAO_DIREN } from '../../../script/define';
+import { DataManager } from '../../../script/data/dataManager';
+import { g_intensifyData } from '../../../script/data/intensifyData';
+import EffectBuild from '../../../script/effectBuild';
+import { CoinFlyManager } from '../../../script/coinFly';
+import { EventManager } from '../../../Framework/Scripts/Managers/EventManager';
+import { g_GlobalData } from '../../../script/data/data';
+import { numberToString } from '../../../script/utlis';
+import HpEffect from '../../../script/HpEffectNode';
+import { v2 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Monster')
 export class Monster extends UIComponent {
     private m_type: number = 0;
     private m_index: number = 0;
+    private m_Hp: number = 0;
+    private m_maxHp: number = 0;
+    private m_deadGold: number = 0;
+    private m_isDead: boolean = false;
 
     m_itemNode: Node = null;
     m_scaleItem: Node = null;
@@ -135,6 +152,71 @@ export class Monster extends UIComponent {
         });
         moveList.push(callFunc);
         tween(this.m_itemNode).sequence(...moveList).start();
+    }
+
+    subHP(hp: number) {
+        let gameModel=DataModelManager.instance.getModel(ModelName.Game) as GameModel;
+        
+        if (gameModel.state!=GameState.Playering ) {
+            return;
+        }
+        if (hp == null) {
+            console.log('攻击力未定义');
+            return;
+        }
+        if (SkillManager.instance.bufferState[BUFFER_GONGJIFANBEI]) {
+            hp *= 2;
+        }
+        let double = false;
+        if (Math.random() * 1000 <= 500) {
+            const lv = DataManager.getInternsifLevel(INTENSIFY_BAOJI);
+            const doubleValue = g_intensifyData.getValue(INTENSIFY_BAOJI, lv);
+            hp = hp * 2 + hp * (doubleValue / 100);
+            hp = hp + hp * (doubleValue / 100);
+            hp = parseFloat(hp.toFixed(2));
+            double = true;
+        }
+
+        this.m_Hp -= hp;
+        if (this.m_Hp <= 0) {
+            this.m_HpBar.progress = 0;
+            this.m_isDead = true;
+            this.node.active = false;
+            const pos = this.node.getPosition();
+            EffectBuild.instance.createDeadEffect(pos);
+            let cale_gold = this.m_deadGold;
+            if (SkillManager.instance.bufferState[BUFFER_JINBIFANBEI]) {
+                cale_gold *= 2;
+            }
+            if (cale_gold > 0) {
+                CoinFlyManager.instance.createCoinToTip(this.node, (gold: number) => {
+                    DataManager.addGold(gold);
+                    EventManager.Instance.Emit(UIEventName.updateGameUI, {});
+
+                }, cale_gold);
+            }
+
+            g_GlobalData.subCurMonsterCount();
+            if (g_GlobalData.getCurMonsterCount() <= 0) {
+                EventManager.Instance.Emit(UIEventName.showSucceed, {});
+            }
+
+            DataManager.addTaskCount(TASK_JIDAO_DIREN);
+
+        } else {
+            this.m_HpBar.progress = this.m_Hp / this.m_maxHp;
+        }
+        let str = numberToString(hp);
+        if (double) {
+            str = '暴击' + str;
+        }
+
+        HpEffect.instance.createHpEffect(v2(this.node.getPosition().x,this.node.getPosition().y), str);
+    }
+
+    setMaxHP(hp: number) {
+        this.m_Hp = hp;
+        this.m_maxHp = hp;
     }
 }
 

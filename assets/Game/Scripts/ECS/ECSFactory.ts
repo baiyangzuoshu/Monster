@@ -71,6 +71,7 @@ export class ECSFactory  {
         let ts=monster.addComponent(Monster);
         await ts.init();
         ts.setImage(entity.roleComponent.type,entity.roleComponent.id);
+        ts.setMaxHP(levelData[index].hp);
 
         entity.collisionComponent.size=ts.getSize();
 
@@ -103,7 +104,7 @@ export class ECSFactory  {
         return entity;
     }
 
-    public static async createBullet(target:Node,pos:Vec3,index:number):Promise<BulletEntity>{
+    public static async createBullet(target:Node,pos:Vec3,index:number,atk:number):Promise<BulletEntity>{
         let entity=new BulletEntity();
         
         let bulletPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"bullet/bullet_"+index,Prefab) as Prefab;
@@ -114,6 +115,7 @@ export class ECSFactory  {
         entity.baseCompnent.gameObject=bullet;
 
         entity.attackComponent.m_attackTarget=target;
+        entity.attackComponent.m_atk=atk;
 
         bullet.setPosition(pos);
 

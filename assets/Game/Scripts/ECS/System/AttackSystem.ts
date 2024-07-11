@@ -5,6 +5,8 @@ import { CannonEntity } from "../Entity/CannonEntity";
 import { _decorator, Component, Node, Prefab, instantiate, NodePool, Vec3, tween, Tween } from 'cc';
 import { v3 } from "cc";
 import { Cannon } from "../../Role/Cannon";
+import { BulletEntity } from "../Entity/BulletEntity";
+import { Monster } from "../../Role/Monster";
 
 export class AttackSystem  {
     public static cannonAttackUpdate(cannonEntity:CannonEntity,dt: number) {
@@ -26,7 +28,7 @@ export class AttackSystem  {
             let angle = getAngle(v3(start.x,start.y), end);
             angle += 360;
             angle -= 90;
-            if (cannonEntity.attackComponent.m_bFire) {
+            if (cannonEntity.attackComponent.m_fireTime>0) {
                 cannonTS.setRot(angle);
             } else {
                 let moveAngle = 300 * dt;
@@ -36,13 +38,17 @@ export class AttackSystem  {
                 cannonTS.m_gunNode.angle += moveAngle;
                 if (cannonTS.m_gunNode.angle < 0) cannonTS.m_gunNode.angle += 360;
                 if (Math.abs(cannonTS.m_gunNode.angle - angle) < Math.abs(moveAngle)) {
-                    cannonEntity.attackComponent.m_bFire = false;
                     cannonEntity.attackComponent.m_fireTime = 1.0;
                     cannonTS.beginFire(cannonEntity.attackComponent.m_attackTarget);
                     cannonTS.setRot(angle);
                 }
             }
         }
+    }
+
+    public static bulletAttackUpdate(bulletEntity:BulletEntity,dt: number) {
+        const ts=bulletEntity.attackComponent.m_attackTarget.getComponent(Monster);
+        ts.subHP(bulletEntity.attackComponent.m_atk);
     }
 }
 

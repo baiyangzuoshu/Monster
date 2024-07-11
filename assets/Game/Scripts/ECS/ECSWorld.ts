@@ -37,16 +37,19 @@ export class ECSWorld extends Component {
         if(entity instanceof MonsterEntity){
             let index=this.monsters.indexOf(entity);
             if(index>=0){
+                this.monsters[index].baseCompnent.gameObject.destroy();
                 this.monsters.splice(index,1);
             }
         }else if(entity instanceof CannonEntity){
             let index=this.cannons.indexOf(entity);
             if(index>=0){
+                this.cannons[index].baseCompnent.gameObject.destroy();
                 this.cannons.splice(index,1);
             }
         }else if(entity instanceof BulletEntity){
             let index=this.bullets.indexOf(entity);
             if(index>=0){
+                this.bullets[index].baseCompnent.gameObject.destroy();
                 this.bullets.splice(index,1);
             }
         }
@@ -64,8 +67,8 @@ export class ECSWorld extends Component {
         return entity;
     }
 
-    public async createBullet(target:Node,pos:Vec3,index:number):Promise<BulletEntity>{
-        let entity=await ECSFactory.createBullet(target,pos,index);
+    public async createBullet(target:Node,pos:Vec3,index:number,atk:number):Promise<BulletEntity>{
+        let entity=await ECSFactory.createBullet(target,pos,index,atk);
         this.bullets.push(entity);
         return entity
     }
@@ -116,8 +119,25 @@ export class ECSWorld extends Component {
         }
     }
 
+    private bulletAttack(deltaTime: number){
+        let removeList:BulletEntity[]=[];
+        for (let i = 0; i < this.bullets.length; i++) {
+            if(!this.bullets[i].attackComponent.m_bHit)continue;
+
+            AttackSystem.bulletAttackUpdate(this.bullets[i],deltaTime);
+
+            removeList.push(this.bullets[i]);
+        }
+
+        for (let i = 0; i < removeList.length; i++) {
+            this.destroyEntity(removeList[i]);
+        }
+    }
+
     private checkBuletCollision(){
         for (let i = 0; i < this.bullets.length; i++) {
+            if(this.bullets[i].attackComponent.m_bHit)continue;
+
             for (let j = 0; j < this.monsters.length; j++) {
                 CollisionSystem.checkCollision(this.bullets[i],this.monsters[j]);
             }
@@ -130,6 +150,7 @@ export class ECSWorld extends Component {
         this.navBullet(deltaTime);
         //
         this.cannonAttack(deltaTime);
+        this.bulletAttack(deltaTime);
         //
         this.checkBuletCollision();
     }

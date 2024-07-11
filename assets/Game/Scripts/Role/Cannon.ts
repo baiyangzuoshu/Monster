@@ -27,6 +27,7 @@ export class Cannon extends UIComponent {
     m_gunSprite: Node = null;
     m_type: number = 0;
     m_levelData: number = -1;
+    m_atk: number = 0;
 
     m_gunAtlas: SpriteAtlas = null;
     m_padAtlas: SpriteAtlas = null;
@@ -95,7 +96,7 @@ export class Cannon extends UIComponent {
         const lvData = g_GlobalData.cannonUpLevel[curlevel];
         const type = lvData.type;
         const level = lvData.level;
-        const ATK = lvData.atk;
+        this.m_atk = lvData.atk;
         
         this.m_type = type;
         this.m_levelData = curlevel;
@@ -151,7 +152,7 @@ export class Cannon extends UIComponent {
     }
 
     async beginFire(target:Node) {
-        await ECSWorld.instance.createBullet(target,this.node.getPosition(), this.m_type);
+        await ECSWorld.instance.createBullet(target,this.node.getPosition(), this.m_type,this.m_atk);
     }
 }
 
