@@ -16,6 +16,8 @@ import { Utils } from "../Utils/Utils";
 import { Cannon } from "../Role/Cannon";
 import { randomNum } from "../../../script/utlis";
 import { tween } from "cc";
+import { BulletEntity } from "./Entity/BulletEntity";
+import { Bullet } from "../Role/Bullet";
 
 export class ECSFactory  {
     private static entityID:number=0;
@@ -95,6 +97,23 @@ export class ECSFactory  {
         const level =  0;
         ts.createGun(level);
         
+        return entity;
+    }
+
+    public static async createBullet(pos:Vec3,index:number):Promise<BulletEntity>{
+        let entity=new BulletEntity();
+        
+        let bulletPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"bullet/bullet_"+index,Prefab) as Prefab;
+        let bullet=instantiate(bulletPrefab);
+        this.cannonNode.addChild(bullet);
+
+        entity.baseCompnent.id=this.entityID++;
+        entity.baseCompnent.gameObject=bullet;
+
+        bullet.setPosition(pos);
+
+        const ts = bullet.addComponent(Bullet) as Bullet;
+
         return entity;
     }
 }

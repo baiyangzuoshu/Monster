@@ -46,7 +46,7 @@ export class Cannon extends UIComponent {
         this.m_padAtlas=await ResManager.Instance.IE_GetAsset(BundleName.Atlas,"pad",SpriteAtlas) as SpriteAtlas;
 
         for(let i=0;i<7;i++){
-            this.m_gunPrefab[i]=await ResManager.Instance.IE_GetAsset(BundleName.Role,"bullet/gun_"+i,Prefab) as Prefab;
+            this.m_gunPrefab[i]=await ResManager.Instance.IE_GetAsset(BundleName.Role,"gun/gun_"+i,Prefab) as Prefab;
         }
     }
 
@@ -105,6 +105,53 @@ export class Cannon extends UIComponent {
         if (!this.m_isFlying) {
             this.openLockEnemy();
         }
+    }
+
+    showHint() {
+        this.m_hintNode.active = true;
+    }
+
+    hideHint() {
+        this.m_hintNode.active = false;
+    }
+
+    showRange() {
+        this.m_rangeNode.active = true;
+    }
+
+    hideRange() {
+        this.m_rangeNode.active = false;
+    }
+
+    setTarget(target: Node) {
+        
+    }
+
+    compare(cannon: Cannon): boolean {
+        return this.m_levelData === cannon.m_levelData;
+    }
+
+    levelUp() {
+        this.setLevel(this.m_levelData + 1);
+        this.updateStyle();
+    }
+
+    setLevel(lv: number) {
+        if (this.m_levelData != lv) {
+            this.setTarget(null);
+            //this.closeLockEnemy();
+            if (this.m_gunSprite == null) {
+                this.createGun(lv);
+            } else {
+                
+            }
+        }
+        this.m_levelData = lv;
+        this.updateStyle();
+    }
+
+    beginFire() {
+        
     }
 }
 

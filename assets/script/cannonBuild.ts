@@ -5,12 +5,12 @@ import { BottomUIManager } from './gameUI/bottom';
 import { DataManager } from './data/dataManager';
 import { CHENGJIOU_QIANGHUA_JINENG, TASK_HEBING_FANGYUTA } from './define';
 import { v3 } from 'cc';
-import { Cannon } from './cannon';
 import { randomNum } from './utlis';
 import { UIOpacity } from 'cc';
 import { EventManager } from '../Framework/Scripts/Managers/EventManager';
 import { UIEventName } from '../Game/Scripts/Constants';
 import { ECSWorld } from '../Game/Scripts/ECS/ECSWorld';
+import { Cannon } from '../Game/Scripts/Role/Cannon';
 const { ccclass, property } = _decorator;
 class CannonBlock{
     pos:Vec3
@@ -131,11 +131,11 @@ export class CannonManager extends Component {
         this.hideCannonRange();
         //BottomUIManager.instance.setShowDestroy(false);
         EventManager.Instance.Emit(UIEventName.setShowDestroy, false);
-        if (BottomUIManager.instance.isInDestroy(worldPos)) {
-            this.m_selecetCannon.cannon.removeFromParent();
-            this.m_selecetCannon.cannon.destroy();
-            this.m_selecetCannon.cannon = null;
-        }
+        // if (BottomUIManager.instance.isInDestroy(worldPos)) {
+        //     this.m_selecetCannon.cannon.removeFromParent();
+        //     this.m_selecetCannon.cannon.destroy();
+        //     this.m_selecetCannon.cannon = null;
+        // }
     }
 
     onTouchCancel(event: EventTouch) {
@@ -149,11 +149,11 @@ export class CannonManager extends Component {
         //BottomUIManager.instance.setShowDestroy(false);
         EventManager.Instance.Emit(UIEventName.setShowDestroy, false);
         const worldPos = event.getUILocation();
-        if (BottomUIManager.instance.isInDestroy(worldPos)) {
-            this.m_selecetCannon.cannon.removeFromParent();
-            this.m_selecetCannon.cannon.destroy();
-            this.m_selecetCannon.cannon = null;
-        }
+        // if (BottomUIManager.instance.isInDestroy(worldPos)) {
+        //     this.m_selecetCannon.cannon.removeFromParent();
+        //     this.m_selecetCannon.cannon.destroy();
+        //     this.m_selecetCannon.cannon = null;
+        // }
     }
 
     showCannonRange(cannon: Node) {
@@ -291,7 +291,7 @@ export class CannonManager extends Component {
 
         let cannonEntity=await ECSWorld.instance.createCannon(pos);
         let cannon=cannonEntity.baseCompnent.gameObject;  
-        
+
         cannon['_selfData'] = this.m_cannonList[index];
 
         this.m_cannonList[index].cannon = cannon;

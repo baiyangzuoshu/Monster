@@ -4,6 +4,11 @@ import { CannonEntity } from './Entity/CannonEntity';
 import { ECSFactory } from './ECSFactory';
 import { NavSystem } from './System/NavSystem';
 import { Vec3 } from 'cc';
+import { BulletEntity } from './Entity/BulletEntity';
+import { SkillManager } from '../../../script/gameUI/skillBuffer';
+import { BUFFER_QUANPINGGONGJI } from '../../../script/define';
+import { getDistance } from '../../../script/utlis';
+import { AttackSystem } from './System/AttackSystem';
 const { ccclass, property } = _decorator;
 
 @ccclass('ECSWorld')
@@ -12,6 +17,7 @@ export class ECSWorld extends Component {
 
     private monsters:MonsterEntity[]=[];
     private cannons:CannonEntity[]=[];
+    private bullets:BulletEntity[]=[];
 
     static get instance(){
         return this._instance;
@@ -26,7 +32,7 @@ export class ECSWorld extends Component {
         ECSWorld._instance=this;
     }
 
-    public destroyEntity(entity:MonsterEntity|CannonEntity){
+    public destroyEntity(entity:MonsterEntity|CannonEntity|BulletEntity){
         if(entity instanceof MonsterEntity){
             let index=this.monsters.indexOf(entity);
             if(index>=0){
@@ -36,6 +42,11 @@ export class ECSWorld extends Component {
             let index=this.cannons.indexOf(entity);
             if(index>=0){
                 this.cannons.splice(index,1);
+            }
+        }else if(entity instanceof BulletEntity){
+            let index=this.bullets.indexOf(entity);
+            if(index>=0){
+                this.bullets.splice(index,1);
             }
         }
     }
@@ -52,14 +63,57 @@ export class ECSWorld extends Component {
         return entity;
     }
 
+    public async createBullet(pos:Vec3,index:number):Promise<BulletEntity>{
+        let entity=await ECSFactory.createBullet(pos,index);
+        this.bullets.push(entity);
+        return entity
+    }
+    //
+    calcNearDistance(cannon: Node) {
+        let minDis = 9999;
+        let minMonster:Node = null;
+        let curDis = 230;
+        if (SkillManager.instance.bufferState[BUFFER_QUANPINGGONGJI]) {
+            curDis *= 10;
+        }
+        for (let i = 0; i < this.monsters.length; i++) {
+            const dis = getDistance(this.monsters[i].baseCompnent.gameObject.getPosition(), cannon.getPosition());
+            if (dis < curDis && dis < Math.abs(minDis)) {
+                minDis = dis;
+                minMonster = this.monsters[i].baseCompnent.gameObject;
+            }
+        }
+        return minMonster;
+    }
+    //
     private navMonster(deltaTime: number){
         for (let i = 0; i < this.monsters.length; i++) {
             NavSystem.update(this.monsters[i].baseCompnent,this.monsters[i].navCompnent,deltaTime);
         }
     }
 
+    private navBullet(deltaTime: number){
+
+    }
+
+    private cannonAttack(deltaTime: number){
+        for (let i = 0; i < this.cannons.length; i++) {
+            const cannonEntity = this.cannons[i];
+            const target = this.calcNearDistance(this.cannons[i].baseCompnent.gameObject);
+            if (cannonEntity.attackComponent.m_attackTarget == null) {
+                cannonEntity.attackComponent.m_attackTarget=target;
+            }
+
+            AttackSystem.cannonAttackUpdate(cannonEntity,deltaTime);
+        }
+    }
+
     update(deltaTime: number) {
+        //
         this.navMonster(deltaTime);
+        this.navBullet(deltaTime);
+        //
+        this.cannonAttack(deltaTime);
     }
 }
 
