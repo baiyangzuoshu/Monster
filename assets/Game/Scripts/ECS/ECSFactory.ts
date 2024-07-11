@@ -72,6 +72,8 @@ export class ECSFactory  {
         await ts.init();
         ts.setImage(entity.roleComponent.type,entity.roleComponent.id);
 
+        entity.collisionComponent.size=ts.getSize();
+
         return entity;
     }
 
@@ -118,7 +120,8 @@ export class ECSFactory  {
         bullet.angle = getAngle(pos, target.getPosition());
 
         const ts = bullet.addComponent(Bullet) as Bullet;
-        ts.setTarget(target);
+        
+        entity.collisionComponent.size=ts.getSize();
 
         return entity;
     }

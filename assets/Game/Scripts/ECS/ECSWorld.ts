@@ -9,6 +9,7 @@ import { SkillManager } from '../../../script/gameUI/skillBuffer';
 import { BUFFER_QUANPINGGONGJI } from '../../../script/define';
 import { getDistance } from '../../../script/utlis';
 import { AttackSystem } from './System/AttackSystem';
+import { CollisionSystem } from './System/CollisionSystem';
 const { ccclass, property } = _decorator;
 
 @ccclass('ECSWorld')
@@ -115,12 +116,22 @@ export class ECSWorld extends Component {
         }
     }
 
+    private checkBuletCollision(){
+        for (let i = 0; i < this.bullets.length; i++) {
+            for (let j = 0; j < this.monsters.length; j++) {
+                CollisionSystem.checkCollision(this.bullets[i],this.monsters[j]);
+            }
+        }
+    }
+
     update(deltaTime: number) {
         //
         this.navMonster(deltaTime);
         this.navBullet(deltaTime);
         //
         this.cannonAttack(deltaTime);
+        //
+        this.checkBuletCollision();
     }
 }
 

@@ -10,6 +10,7 @@ import { SpriteAtlas } from 'cc';
 import { ResManager } from '../../../Framework/Scripts/Managers/ResManager';
 import { BundleName } from '../Constants';
 import { Vec3 } from 'cc';
+import { Size } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Monster')
@@ -25,6 +26,8 @@ export class Monster extends UIComponent {
     m_slow: Node = null;
     m_monsterTexture:SpriteAtlas[]=[];
 
+    monsterSize: Size = new Size(0, 0);
+
     onLoad() {
         this.m_itemNode=this.ViewNode("item");
         this.m_scaleItem=this.ViewNode("item/scale");
@@ -35,6 +38,10 @@ export class Monster extends UIComponent {
         this.m_slow=this.ViewNode("ui_enemy_slow");
 
         this.scaleAction();
+    }
+
+    public getSize():Size {
+        return this.monsterSize;
     }
 
     public async init(){
@@ -73,6 +80,9 @@ export class Monster extends UIComponent {
             width = sprite.node.getComponent(UITransform).width;
             height = sprite.node.getComponent(UITransform).height;
         }
+
+        this.monsterSize.width = width;
+        this.monsterSize.height = height;
 
         this.updateCollider(width, height);
         this.updateHpSize(width, height);
