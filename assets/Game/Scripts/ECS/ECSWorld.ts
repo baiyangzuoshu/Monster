@@ -63,8 +63,8 @@ export class ECSWorld extends Component {
         return entity;
     }
 
-    public async createBullet(pos:Vec3,index:number):Promise<BulletEntity>{
-        let entity=await ECSFactory.createBullet(pos,index);
+    public async createBullet(target:Node,pos:Vec3,index:number):Promise<BulletEntity>{
+        let entity=await ECSFactory.createBullet(target,pos,index);
         this.bullets.push(entity);
         return entity
     }
@@ -93,12 +93,19 @@ export class ECSWorld extends Component {
     }
 
     private navBullet(deltaTime: number){
-
+        for (let i = 0; i < this.bullets.length; i++) {
+            NavSystem.bulletUpdate(this.bullets[i].baseCompnent,this.bullets[i].attackComponent,deltaTime);
+        }
     }
 
     private cannonAttack(deltaTime: number){
         for (let i = 0; i < this.cannons.length; i++) {
             const cannonEntity = this.cannons[i];
+            cannonEntity.attackComponent.m_fireTime -= deltaTime;
+            if(cannonEntity.attackComponent.m_fireTime>0){
+                continue;
+            }
+
             const target = this.calcNearDistance(this.cannons[i].baseCompnent.gameObject);
             if (cannonEntity.attackComponent.m_attackTarget == null) {
                 cannonEntity.attackComponent.m_attackTarget=target;

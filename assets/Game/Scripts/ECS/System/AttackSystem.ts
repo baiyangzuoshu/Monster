@@ -36,8 +36,9 @@ export class AttackSystem  {
                 cannonTS.m_gunNode.angle += moveAngle;
                 if (cannonTS.m_gunNode.angle < 0) cannonTS.m_gunNode.angle += 360;
                 if (Math.abs(cannonTS.m_gunNode.angle - angle) < Math.abs(moveAngle)) {
-                    cannonEntity.attackComponent.m_bFire = true;
-                    cannonTS.beginFire();
+                    cannonEntity.attackComponent.m_bFire = false;
+                    cannonEntity.attackComponent.m_fireTime = 1.0;
+                    cannonTS.beginFire(cannonEntity.attackComponent.m_attackTarget);
                     cannonTS.setRot(angle);
                 }
             }

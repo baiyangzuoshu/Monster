@@ -14,10 +14,11 @@ import { v3 } from "cc";
 import { Vec3 } from "cc";
 import { Utils } from "../Utils/Utils";
 import { Cannon } from "../Role/Cannon";
-import { randomNum } from "../../../script/utlis";
+import { getAngle, randomNum } from "../../../script/utlis";
 import { tween } from "cc";
 import { BulletEntity } from "./Entity/BulletEntity";
 import { Bullet } from "../Role/Bullet";
+import { UITransform } from "cc";
 
 export class ECSFactory  {
     private static entityID:number=0;
@@ -100,7 +101,7 @@ export class ECSFactory  {
         return entity;
     }
 
-    public static async createBullet(pos:Vec3,index:number):Promise<BulletEntity>{
+    public static async createBullet(target:Node,pos:Vec3,index:number):Promise<BulletEntity>{
         let entity=new BulletEntity();
         
         let bulletPrefab=await ResManager.Instance.IE_GetAsset(BundleName.Role,"bullet/bullet_"+index,Prefab) as Prefab;
@@ -110,9 +111,14 @@ export class ECSFactory  {
         entity.baseCompnent.id=this.entityID++;
         entity.baseCompnent.gameObject=bullet;
 
+        entity.attackComponent.m_attackTarget=target;
+
         bullet.setPosition(pos);
 
+        bullet.angle = getAngle(pos, target.getPosition());
+
         const ts = bullet.addComponent(Bullet) as Bullet;
+        ts.setTarget(target);
 
         return entity;
     }

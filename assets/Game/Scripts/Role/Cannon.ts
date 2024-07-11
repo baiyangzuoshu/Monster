@@ -10,6 +10,7 @@ import { SpriteAtlas } from 'cc';
 import { Prefab } from 'cc';
 import { ResManager } from '../../../Framework/Scripts/Managers/ResManager';
 import { BundleName } from '../Constants';
+import { ECSWorld } from '../ECS/ECSWorld';
 const { ccclass, property } = _decorator;
 
 @ccclass('Cannon')
@@ -139,7 +140,6 @@ export class Cannon extends UIComponent {
     setLevel(lv: number) {
         if (this.m_levelData != lv) {
             this.setTarget(null);
-            //this.closeLockEnemy();
             if (this.m_gunSprite == null) {
                 this.createGun(lv);
             } else {
@@ -150,8 +150,8 @@ export class Cannon extends UIComponent {
         this.updateStyle();
     }
 
-    beginFire() {
-        
+    async beginFire(target:Node) {
+        await ECSWorld.instance.createBullet(target,this.node.getPosition(), this.m_type);
     }
 }
 
