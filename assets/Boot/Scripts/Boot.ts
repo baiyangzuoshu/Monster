@@ -13,13 +13,6 @@ import { UIManager } from '../../Framework/Scripts/Managers/UIManager';
 import { GameManager } from '../../Game/Scripts/Manager/GameManager';
 import { ECSWorld } from '../../Game/Scripts/ECS/ECSWorld';
 import { DataModelManager } from '../../Game/Scripts/Data/DataModelManager';
-import { ProgressBar } from 'cc';
-import { BundleName } from '../../Game/Scripts/Constants';
-import { SpriteAtlas } from 'cc';
-import { JsonAsset } from 'cc';
-import { Prefab } from 'cc';
-import { Scene } from 'cc';
-import { SceneAsset } from 'cc';
 
 
 const { ccclass, property } = _decorator;
@@ -34,8 +27,6 @@ export class Boot extends Component {
 
     @property
     public useWebSocket: boolean = false;
-    @property(ProgressBar)
-    public progressBar:ProgressBar=null;
 
     protected onLoad(): void {
         if(Boot.Instance === null) {
@@ -45,9 +36,6 @@ export class Boot extends Component {
             this.destroy();
             return;
         }
-
-        this.progressBar.progress = 0;
-        this.node.addComponent(ResManager).Init();
 
         director.addPersistRootNode(this.node); // 不随场景切换而删除的节点
         this.StartUp();
@@ -59,28 +47,12 @@ export class Boot extends Component {
     }
 
     private async CheckHotUpdate() {
-        this.progressBar.progress = 0.2;
-        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Datas,JsonAsset);
-        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Scenes,SceneAsset);
         
-        this.progressBar.progress = 0.5;
-        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Atlas,SpriteAtlas);
-
-        this.progressBar.progress = 0.65;
-        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.GUI,Prefab);
-
-        this.progressBar.progress = 0.8;
-        await ResManager.Instance.IE_LoadBundleAndAllAssets(BundleName.Prefabs,Prefab);
-
-        this.progressBar.progress = 1;
-
-        this.progressBar.node.active = false;
     }
-
     
     private async InitFramework() {
         //
-        
+        this.node.addComponent(ResManager).Init();
         this.node.addComponent(EventManager).Init();
         this.node.addComponent(UIManager).Init();
         this.node.addComponent(TimerManager).Init();
