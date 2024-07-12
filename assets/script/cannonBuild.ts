@@ -21,10 +21,6 @@ const offsetX=0;
 const offsetY=0;
 @ccclass('CannonManager')
 export class CannonManager extends Component {
-
-    @property(Prefab)
-    m_cannonPrefab: Prefab = null;
-
     @property(Node)
     m_moveCannonNode: Node = null;
     @property(Prefab)
