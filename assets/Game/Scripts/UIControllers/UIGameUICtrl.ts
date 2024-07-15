@@ -143,7 +143,7 @@ export class UIGameUICtrl extends UIComponent {
         let delayTime = 0;
         if (g_GlobalData.isCurBossAttack()) {
             delayTime = 6;
-            view = this.createBossSettlement();
+            view = await this.createBossSettlement();
             view.showSucceed(checkPoint.succedGold, checkPoint.diamond);
         } else {
             delayTime = 2;
