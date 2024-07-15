@@ -1195,10 +1195,6 @@
     "__prefab": {
       "__id__": 58
     },
-    "m_cannonPrefab": {
-      "__uuid__": "e6854383-e002-47f3-a990-4f87622c3da4",
-      "__expectedType__": "cc.Prefab"
-    },
     "m_moveCannonNode": {
       "__id__": 59
     },
@@ -1448,7 +1444,7 @@
       "__id__": 72
     },
     "m_crown": {
-      "__uuid__": "01144584-b566-4ff5-8bda-8e486831ad66",
+      "__uuid__": "1c535858-68fb-4914-babc-7351d9e309b7",
       "__expectedType__": "cc.Prefab"
     },
     "_id": ""
@@ -1583,7 +1579,7 @@
       "__id__": 80
     },
     "m_msItemPrefab": {
-      "__uuid__": "736bd016-db3a-493f-ba7f-e0c1d1666039",
+      "__uuid__": "a5246bcb-167e-4fd4-b99a-152898b58e24",
       "__expectedType__": "cc.Prefab"
     },
     "_id": ""
