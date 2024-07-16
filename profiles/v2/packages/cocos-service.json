@@ -17,6 +17,10 @@
       "wechatgame": {
         "configID": "7e3dde",
         "services": []
+      },
+      "bytedance-mini-game": {
+        "configID": "7e3dde",
+        "services": []
       }
     },
     "taskOptionsMap": {
@@ -33,6 +37,10 @@
         "services": []
       },
       "1721022156134": {
+        "configID": "7e3dde",
+        "services": []
+      },
+      "1721034726003": {
         "configID": "7e3dde",
         "services": []
       }

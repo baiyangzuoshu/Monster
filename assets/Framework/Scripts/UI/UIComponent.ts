@@ -1,8 +1,40 @@
-import { Camera, Canvas, Component, Node, Label, director, error, find, instantiate } from 'cc';
+import { Camera, Canvas, Component, Node, Label, error, find, instantiate } from 'cc';
 import { EventManager } from '../Managers/EventManager';
 import { UITransform } from 'cc';
+import { view } from 'cc';
+import { sys } from 'cc';
 export class UIComponent extends Component {
     private eventMap: any = {};  // {"eventName": [ {func: 回调的函数, caller: 函数里面的this}], "eventName": [], }
+    
+    public safeAreaUpdate(){
+        const topRoot=this.node.getChildByPath("TopRoot");
+        const bottomRoot=this.node.getChildByPath("BottomRoot");
+        //获取设计分辨率
+        const designResolution = view.getDesignResolutionSize();
+        console.log("designResolution",designResolution);
+        //获取手机实际分辨率
+        const frameSize = view.getVisibleSize();
+        console.log("frameSize",frameSize);
+
+        const offsetY = designResolution.height - frameSize.height;
+        if(topRoot){
+            topRoot.setPosition(topRoot.position.x,topRoot.position.y-offsetY/2);
+        }
+        if(bottomRoot){
+            bottomRoot.setPosition(bottomRoot.position.x,bottomRoot.position.y+offsetY/2);
+        }
+        //获取安全区域
+        const safeArea = sys.getSafeAreaRect();
+        console.log("safeArea",safeArea);
+        if(safeArea.y>0){
+            if(topRoot){
+                topRoot.setPosition(topRoot.position.x,topRoot.position.y-safeArea.y/2);
+            }
+            if(bottomRoot){
+                //bottomRoot.setPosition(bottomRoot.position.x,bottomRoot.position.y+safeArea.y/2);
+            }
+        }
+    }
     //静态文本合批
     public sortAllStaticLabel():void{
         var labels: Label[]  = this.node.getComponentsInChildren(Label);

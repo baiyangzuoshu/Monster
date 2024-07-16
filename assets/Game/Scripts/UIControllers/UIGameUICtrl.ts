@@ -64,23 +64,23 @@ export class UIGameUICtrl extends UIComponent {
         this.blockMaps=this.ViewNode("blockMaps");
         this.crownBuild=this.ViewNode("crownBuild");
         //bottom
-        this.m_hammer=this.ViewNode("gameUI/bottom/make/ui_build_hammer/m_hammer");
-        this.m_makeNumberLabel=this.ViewComponent("gameUI/bottom/make/num",Label);
-        this.m_water=this.ViewNode("gameUI/bottom/make/ui_build_water");
-        this.m_destroyNode=this.ViewNode("gameUI/bottom/destroy");
+        this.m_hammer=this.ViewNode("BottomRoot/make/ui_build_hammer/m_hammer");
+        this.m_makeNumberLabel=this.ViewComponent("BottomRoot/make/num",Label);
+        this.m_water=this.ViewNode("BottomRoot/make/ui_build_water");
+        this.m_destroyNode=this.ViewNode("BottomRoot/destroy");
         this.updateGameBottomUI();
         this.setShowDestroy('',false);
 
-        this.AddButtonListener("gameUI/bottom/make/make",this,this.onClickMake);
-        this.AddButtonListener("gameUI/bottom/make/autoMake",this,this.onClickAutoMake);
-        this.AddButtonListener("gameUI/bottom/task/bt",this,this.showTaskView);
-        this.AddButtonListener("gameUI/bottom/intensify",this,this.showIntensifyView);
+        this.AddButtonListener("BottomRoot/make/make",this,this.onClickMake);
+        this.AddButtonListener("BottomRoot/make/autoMake",this,this.onClickAutoMake);
+        this.AddButtonListener("BottomRoot/task/bt",this,this.showTaskView);
+        this.AddButtonListener("BottomRoot/intensify",this,this.showIntensifyView);
         //end
 
         //top
-        this.m_labGold=this.ViewComponent("gameUI/top/glod/btGlod/ui_coin_rect/gold",Label);
-        this.m_diamond=this.ViewComponent("gameUI/top/glod/btDiamond/ui_coin_rect/diamond",Label);
-        this.m_labCheckPoint=this.ViewComponent("gameUI/top/checkPoint",Label);
+        this.m_labGold=this.ViewComponent("TopRoot/glod/btGlod/ui_coin_rect/gold",Label);
+        this.m_diamond=this.ViewComponent("TopRoot/glod/btDiamond/ui_coin_rect/diamond",Label);
+        this.m_labCheckPoint=this.ViewComponent("TopRoot/checkPoint",Label);
         this.updateGameTopUI();
         //end
 
@@ -111,6 +111,8 @@ export class UIGameUICtrl extends UIComponent {
         this.startPos.push(v2(640, 0));
 
         this.Init();
+
+        this.safeAreaUpdate();
     }
 
     async Init() {
