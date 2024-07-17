@@ -11,7 +11,27 @@
     "platform": "bytedance-mini-game",
     "md5Cache": true,
     "mainBundleIsRemote": false,
-    "useSplashScreen": false
+    "useSplashScreen": false,
+    "startSceneAssetBundle": true,
+    "debug": false,
+    "scenes": [
+      {
+        "url": "db://assets/Boot/AssetsPackage/startup.scene",
+        "uuid": "86c4d210-e108-4b8e-bf00-2c154a0b9316"
+      },
+      {
+        "url": "db://assets/Game/AssetsPackage/Scenes/main.scene",
+        "uuid": "16662d0f-4e0a-4b6e-ae37-2726f8965add"
+      },
+      {
+        "url": "db://assets/Game/AssetsPackage/Scenes/start.scene",
+        "uuid": "1be94a9a-4149-4a4c-8fcc-068726191f3a"
+      },
+      {
+        "url": "db://assets/Game/AssetsPackage/Scenes/login.scene",
+        "uuid": "95d6ade0-4d9b-4854-a7c2-f231da1c7d31"
+      }
+    ]
   },
   "BuildTaskManager": {
     "taskMap": {
@@ -151,8 +171,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2024-7-16 10:22:19 build success in 17 s!",
-        "detailMessage": "// ---- build task cocos-service：onAfterBuild ----\r",
+        "message": "2024-7-17 15:16:24 build success in 21 s!",
+        "detailMessage": "builder:build-project-total (21467ms)\r",
         "options": {
           "name": "Monster",
           "server": "",
@@ -177,7 +197,7 @@
             "asyncFunctions": false
           },
           "experimentalEraseModules": false,
-          "startSceneAssetBundle": false,
+          "startSceneAssetBundle": true,
           "bundleConfigs": [],
           "useBuiltinServer": false,
           "mainBundleIsRemote": false,
@@ -200,6 +220,10 @@
             {
               "url": "db://assets/Game/AssetsPackage/Scenes/start.scene",
               "uuid": "1be94a9a-4149-4a4c-8fcc-068726191f3a"
+            },
+            {
+              "url": "db://assets/Game/AssetsPackage/Scenes/login.scene",
+              "uuid": "95d6ade0-4d9b-4854-a7c2-f231da1c7d31"
             }
           ],
           "wasmCompressionMode": false,
@@ -207,7 +231,7 @@
           "__version__": "1.3.8",
           "logDest": "project://temp/builder/log/bytedance-mini-game2024-7-15 17-12.log"
         },
-        "time": "2024-7-16 10:22:01",
+        "time": "2024-7-17 15:16:03",
         "dirty": false
       }
     }

@@ -32,9 +32,7 @@ export class startScene extends Component {
 
         this.progressBar.node.active = false;
 
-        SceneManager.Instance.EnterScene("main");
-    
-        await UIManager.Instance.IE_ShowUIView("UIGame");
+        SceneManager.Instance.EnterScene("login");
     }
 
     update(deltaTime: number) {
