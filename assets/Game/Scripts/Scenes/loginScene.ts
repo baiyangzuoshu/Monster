@@ -7,7 +7,7 @@ const { ccclass, property } = _decorator;
 @ccclass('loginScene')
 export class loginScene extends Component {
     start() {
-        ttSDK.checkUpdate();
+        (new ttSDK).checkUpdate();
     }
 
     async clickLogin() {

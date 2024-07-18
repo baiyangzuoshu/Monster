@@ -1,9 +1,10 @@
+import { iSDK } from "./iSDK";
 
 
 declare var tt: any;
 
-export class ttSDK {
-    public static login(){
+export class ttSDK implements iSDK {
+    public  login(){
         console.log('ttSDK login');
         tt.login({
             force: true,
@@ -29,7 +30,7 @@ export class ttSDK {
         });
     }
 
-    public static getSetting(){
+    public  getSetting(){
         tt.getSetting({
             success(res) {
               console.log("getSetting ",res);
@@ -40,7 +41,7 @@ export class ttSDK {
           });
     }
 
-    public static openSetting(){
+    public  openSetting(){
         tt.openSetting({
             success(res) {
               console.log("openSetting",res);
@@ -51,13 +52,13 @@ export class ttSDK {
           });
     }
 
-    public static checkUpdate(){
+    public  checkUpdate(){
         const updateManager = tt.getUpdateManager();
         updateManager.onCheckForUpdate((res) => {
             // 请求完新版本信息的回调
             if (!res.hasUpdate) {
               console.log("当前版本已经是最新版本");
-              ttSDK.login();
+              this.login();
             }
           });
 
@@ -83,10 +84,10 @@ export class ttSDK {
             });
         });
 
-        ttSDK.onRealNameAuthenticationComplete();
+        this.onRealNameAuthenticationComplete();
     }
 
-    public static authenticateRealName(){
+    public  authenticateRealName(){
         //实名认证需要用户点击触发
         tt.onTouchEnd(realNameAuth);
 
@@ -102,7 +103,7 @@ export class ttSDK {
           }
     }
 
-    public static onRealNameAuthenticationComplete(){
+    public  onRealNameAuthenticationComplete(){
         tt.onRealNameAuthenticationComplete(function (obj) {
             console.log("实名认证完成回调 ", obj);
         });
