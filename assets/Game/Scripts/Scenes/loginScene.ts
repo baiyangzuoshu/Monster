@@ -1,13 +1,13 @@
 import { SceneManager } from '../../../Framework/Scripts/Managers/SceneManager';
 import { UIManager } from '../../../Framework/Scripts/Managers/UIManager';
 import { _decorator, Component, Node } from 'cc';
-import { ttSDK } from '../SDK/ttSDK';
+import { wxSDK } from '../../../SDK/wxSDK';
 const { ccclass, property } = _decorator;
 
 @ccclass('loginScene')
 export class loginScene extends Component {
     start() {
-        (new ttSDK).checkUpdate();
+        (new wxSDK).checkUpdate();
     }
 
     async clickLogin() {

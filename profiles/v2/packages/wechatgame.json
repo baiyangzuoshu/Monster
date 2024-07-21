@@ -2,15 +2,33 @@
   "builder": {
     "common": {
       "buildPath": "project://build",
-      "outputName": "wechatgame",
+      "outputName": "wechatgame-001",
       "mainBundleCompressionType": "merge_dep",
       "platform": "wechatgame",
-      "md5Cache": true
+      "md5Cache": true,
+      "scenes": [
+        {
+          "url": "db://assets/Boot/AssetsPackage/startup.scene",
+          "uuid": "86c4d210-e108-4b8e-bf00-2c154a0b9316"
+        },
+        {
+          "url": "db://assets/Game/AssetsPackage/Scenes/main.scene",
+          "uuid": "16662d0f-4e0a-4b6e-ae37-2726f8965add"
+        },
+        {
+          "url": "db://assets/Game/AssetsPackage/Scenes/start.scene",
+          "uuid": "1be94a9a-4149-4a4c-8fcc-068726191f3a"
+        },
+        {
+          "url": "db://assets/Game/AssetsPackage/Scenes/login.scene",
+          "uuid": "95d6ade0-4d9b-4854-a7c2-f231da1c7d31"
+        }
+      ]
     },
     "options": {
       "wechatgame": {
         "orientation": "portrait",
-        "appid": "wx3c7dc082155faac1",
+        "appid": "wx80ae518efe37d89e",
         "buildOpenDataContextTemplate": "",
         "separateEngine": true,
         "highPerformanceMode": false,
@@ -20,7 +38,7 @@
     "taskOptionsMap": {
       "1721022156134": {
         "orientation": "portrait",
-        "appid": "wx3c7dc082155faac1",
+        "appid": "wx80ae518efe37d89e",
         "buildOpenDataContextTemplate": "",
         "separateEngine": true,
         "highPerformanceMode": false,
